@@ -1,3 +1,15 @@
+---
+title: Initial Repository Structure Proposal
+status: superseded
+version: 0.0
+baseline: pre-v0.1
+owner: research
+last_updated: 2026-08-15
+dependencies: []
+---
+
+> Historical design input retained for provenance. The controlled repository architecture is `ARCHITECTURE.md`; this proposal must not be used as an independent source of framework or normative claims.
+
 我建议这个仓库不要按“论文目录”来组织，而按**研究工程 + 规范基线 + 方法论模型 + 领域实例 + 工具实现**来组织。因为你后续不仅要写文档，还要做 DBSE→MBSE、标准映射、证据架构、规则检查和案例验证；如果一开始按 `chapter1/chapter2` 组织，后面会很快失控。
 
 一个比较稳妥的结构如下：

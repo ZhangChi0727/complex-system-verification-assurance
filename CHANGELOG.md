@@ -1,13 +1,22 @@
 # Changelog
 
-## 0.1.1 - 2026-08-15
+## v0.1 — Research Foundation Baseline
 
-- Changed the repository license from all rights reserved to the MIT License.
-- Prepared the GitHub repository for public visibility.
+### Added
 
-## 0.1.0 - 2026-08-15
+- Repository knowledge architecture
+- Research scope
+- Research questions
+- Working terminology baseline
+- Research roadmap
+- Normative research workspace
+- DBSE/MBSE future architecture
+- DCAS domain workspace
+- Initial DBSE templates
+- Publication views
 
-- Established Repository Baseline V0.1.
-- Placed the research outline and repository structure proposal in controlled locations.
-- Added initial ISO 15288 and ARP4754B standards baseline and five-column candidate mapping.
-- Added DBSE lifecycle, information-item, template and DCAS source-mapping foundations.
+### Licensing
+
+- Repository original content is released under the MIT License by explicit project decision.
+
+v0.1 establishes research infrastructure and does not claim completion or normative validation of the proposed Verification Assurance Framework.

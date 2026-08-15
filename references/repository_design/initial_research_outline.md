@@ -1,3 +1,15 @@
+---
+title: Initial Research Outline
+status: superseded
+version: 0.0
+baseline: pre-v0.1
+owner: research
+last_updated: 2026-08-15
+dependencies: []
+---
+
+> Historical design input retained for provenance. This document is not a normative baseline; its standard-related statements and proposed framework elements remain unverified unless promoted into the controlled v0.1 workspaces with identifiable sources.
+
 # 复杂系统验证保证框架研究大纲
 ## ——基于 DBSE/MBSE 的 Verification Assurance Framework 及 DCAS 领域实例化
 

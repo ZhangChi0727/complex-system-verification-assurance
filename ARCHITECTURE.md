@@ -1,20 +1,29 @@
 ---
+title: Repository and Knowledge Architecture
 status: baseline
 version: 0.1
-baseline_date: 2026-08-15
+baseline: v0.1
 owner: research
+last_updated: 2026-08-15
+dependencies: []
 ---
 
-# Repository Knowledge Architecture
+# Repository and Knowledge Architecture
+
+本仓库按研究资产与知识层级组织，而不是按论文 chapter 组织。论文目录会随叙事调整，规范来源、框架对象、领域实例和模型数据则需要稳定归属与可追溯关系。
+
+## Knowledge chain
 
 ```text
 Normative Source
       ↓
-Verification Objective
-      ↓
 Framework Rule
       ↓
-DBSE Activity / Information Item
+Verification Activity
+      ↓
+Information Item
+      ↓
+Verification Strategy
       ↓
 Verification Pattern
       ↓
@@ -22,27 +31,62 @@ Domain Profile
       ↓
 Concrete Case
       ↓
-Model Element / Automation Rule
+Evidence
       ↓
-Controlled Evidence → Compliance Claim
+Compliance Claim
+      ↓
+Model Element
+      ↓
+Automation Rule
 ```
 
-## 分层边界
+链条表示研究对象间的目标关系，不表示 v0.1 已经证明所有关系成立。任何 Framework Rule 都必须标明 direct normative requirement、guidance、interpretation、industrial practice 或 research proposal。
 
-- `docs/`：产品无关的方法论与受控研究基线。
-- `domains/`：DCAS、ARINC 615A 等领域 profile 与实例。
-- `data/`：可被脚本、表格或模型消费的机器可读研究数据。
-- `templates/`：DBSE 活动和信息项模板。
-- `models/`：后续 MBSE 元模型、视图与交换表示。
-- `tools/`：一致性、覆盖、影响分析与报告生成工具。
-- `references/`：引用元数据、结构决策、阅读索引与不公开材料定位说明；不存标准全文。
-- `publications/`：论文和教程发布视图，不复制权威定义。
-- `archive/`：被替代但仍需保留的研究资产。
+## Repository layers
 
-## 单一事实源
+- `docs/`：产品无关的方法论。标准研究先于框架规则，DBSE workflow 先于 MBSE realization。
+- `domains/`：DCAS、ARINC 615A 等领域实例化。Domain Profile 不能反向污染 generic framework。
+- `models/`：从稳定的 DBSE 信息模型迁移到 metamodel、schema、SysML/SysML v2 或图表示。
+- `data/`：standards matrix、traceability、coverage 和其他机器可读数据。
+- `references/`：合法 bibliographic metadata、检索策略、阅读记录和不可公开资料的定位说明。
+- `tools/`：未来的一致性、覆盖、影响分析、模型校验和文档生成工具。
+- `examples/`：脱敏、最小可复现和端到端研究实例。
+- `publications/`：论文和教程的发布视图，不是独立事实源。
+- `archive/`：superseded baseline 或 legacy transformation material；不能替代 Git history。
 
-规范结论以 `docs/01_normative_foundation/` 为权威入口，结构化行以 `data/standards/standard_verification_mapping.csv` 为权威数据源。论文、教程、模型与报告必须引用这些对象，不维护平行定义。
+核心定义只在 `docs/`、`models/`、`data/` 和 `domains/` 中维护。`publications/` 只能引用、重组或解释这些资产，避免 configuration drift。
 
-## 分类判据
+## Abstraction boundary
 
-若某规则在替换为非航空复杂系统后仍成立，则归入通用框架；依赖航空适航、IMA、总线、显示或组织惯例的内容分别归入航空保证层、领域 profile 或项目惯例层。
+```text
+Generic Framework
+      ↓ instantiates
+Domain Profile
+      ↓ specializes
+Concrete Project Practice
+```
+
+如果把 DCAS 替换成汽车 EPS、无人机或其他复杂系统后某规则仍然成立，它原则上属于 Generic Framework；依赖 IDU、IMA/GPM、ARINC 总线、告警抑制或具体组织流程的内容进入 Domain Profile 或 Concrete Project Practice。
+
+## Document status taxonomy
+
+- `working`：正在研究，尚未形成受控基线；
+- `baseline`：已纳入当前研究基线；
+- `planned`：已预留范围，但依赖尚未满足；
+- `superseded`：已被新基线替代。
+
+## Candidate stable IDs
+
+| Prefix | Object | Example |
+|---|---|---|
+| `STD-` | Standard / normative source | `STD-ARP4754B` |
+| `ACT-` | Verification activity | `ACT-V03-001` |
+| `VOB-` | Verification obligation | `VOB-0001` |
+| `VSR-` | Verification strategy record | `VSR-0001` |
+| `PAT-` | Verification pattern | `PAT-BVA-01` |
+| `COV-` | Coverage object | `COV-REQ-01` |
+| `EVD-` | Evidence | `EVD-0001` |
+| `CLM-` | Compliance claim | `CLM-0001` |
+| `ANM-` | Anomaly | `ANM-0001` |
+
+这些前缀是 v0.1 候选约定，不在本基线实现自动编号工具。
