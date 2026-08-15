@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1 - 2026-08-15
+
+- Changed the repository license from all rights reserved to the MIT License.
+- Prepared the GitHub repository for public visibility.
+
 ## 0.1.0 - 2026-08-15
 
 - Established Repository Baseline V0.1.
