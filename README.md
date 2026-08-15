@@ -1,40 +1,97 @@
+---
+title: Complex System Verification Assurance Framework
+status: baseline
+version: 0.1
+baseline: v0.1
+owner: research
+last_updated: 2026-08-15
+dependencies: []
+---
+
 # Complex System Verification Assurance Framework
 
-面向复杂工程系统的验证保证研究仓库。项目以国际系统工程与民机开发保证规范为依据，先建立可审计的 DBSE 研究基线，再逐步形成 MBSE 元模型、规则检查与领域实例。
+**面向复杂系统的验证保证框架研究——基于国际系统工程与民机开发保证规范的 DBSE/MBSE 方法**
 
-## 研究定位
+English working title: *A Verification Assurance Framework for Complex Systems: From Document-Based to Model-Based Verification Engineering*
 
-本仓库的单一事实源覆盖：规范基线、验证目标、DBSE 活动、信息项、证据、覆盖充分性、领域实例与后续机器可读模型。通用方法论与 DCAS 实例严格分层，论文和工程教程仅作为不同发布视图。
+## Why this research exists
 
-## Repository Baseline V0.1
+复杂系统已经积累大量 Verification 工程实践，但 standard requirements、organizational procedures、testing techniques、domain-specific knowledge、evidence management 与 tooling 往往混杂。本项目将这些内容按可追溯的研究层级重新组织：
 
-- 研究大纲：[`docs/00_overview/research_outline.md`](docs/00_overview/research_outline.md)
-- 知识架构：[`ARCHITECTURE.md`](ARCHITECTURE.md)
-- 规范基线：[`docs/01_normative_foundation/standards_baseline.md`](docs/01_normative_foundation/standards_baseline.md)
-- 五列映射：[`docs/01_normative_foundation/standards_map.md`](docs/01_normative_foundation/standards_map.md)
-- 机器可读映射：[`data/standards/standard_verification_mapping.csv`](data/standards/standard_verification_mapping.csv)
-- DBSE 生命周期：[`docs/03_dbse_workflow/lifecycle_overview.md`](docs/03_dbse_workflow/lifecycle_overview.md)
-- 信息项基线：[`docs/04_information_model/information_items.md`](docs/04_information_model/information_items.md)
-- DCAS 实践分类：[`domains/dcas/source_mapping/dcas_industrial_practice_map.md`](domains/dcas/source_mapping/dcas_industrial_practice_map.md)
+```text
+Normative Requirements
+        ↓
+Verification Assurance Framework
+        ↓
+DBSE Workflow
+        ↓
+Information / Coverage / Evidence Architecture
+        ↓
+MBSE → Automation → Domain Applications
+```
 
-## 当前研究顺序
+目标是建立一套标准可追溯、过程可执行、证据可审计、规则可检查、模型可实现、领域可复用的复杂系统 Verification Assurance Framework。
 
-1. ISO/IEC/IEEE 15288:2023 与 SAE ARP4754B 条款级精读和五列映射；
-2. 加入 ARP4761A，建立安全目标与验证严谨度关系；
-3. 加入 DO-178C、DO-254、DO-297，保持系统层与 item 层语境隔离；
-4. 将候选规则与 DCAS 现有实践做来源分类和 gap analysis；
-5. 稳定 DBSE 信息模型后再进入 MBSE 与自动化。
+## Research objectives
 
-## 内容与版权
+1. 建立 normative foundation；
+2. 形成 product-independent verification methodology；
+3. 定义 DBSE Verification Workflow；
+4. 建立 Verification Strategy 决策方法；
+5. 研究 Coverage 与 Verification Sufficiency；
+6. 建立 Evidence Architecture 与 Compliance Argument；
+7. 建立 Verification Pattern Library；
+8. 形成 MBSE verification metamodel；
+9. 支持一致性、覆盖与影响分析自动化；
+10. 通过 DCAS 与跨领域案例验证框架。
 
-仓库不保存 SAE、RTCA、ISO 等受版权保护标准的全文。仅保存合法取得材料的引用元数据、条款索引、研究笔记、派生映射和本地材料定位说明。
+## Current baseline
 
-## License
+```text
+Current Research Baseline: v0.1
+Status: Foundation / Research Infrastructure
+```
 
-本仓库原创内容采用 [MIT License](LICENSE) 发布。引用的第三方标准、名称与材料仍受各自权利人的版权和许可条件约束。
+v0.1 冻结研究对象、边界、架构和路线，不代表 Verification 方法论已经完成，也不声称已经通过 ISO/IEC/IEEE 15288、ARP4754B、ARP4761A、DO-178C、DO-254 或 DO-297 的系统校核。
 
-## 状态约定
+## Repository map
 
-- `working`：正在讨论或尚未完成来源核验；
-- `baseline`：已评审并形成研究共识；
-- `superseded`：已被后续基线替代。
+| Path | Purpose | Current status |
+|---|---|---|
+| `docs/00_overview/` | 研究范围、问题、术语和路线 | baseline |
+| `docs/01_normative_foundation/` | 标准研究目标、矩阵与 gap workspace | working |
+| `docs/02_verification_framework/` | 产品无关 Verification Assurance Framework | planned |
+| `docs/03_dbse_workflow/` | DBSE working lifecycle | planned |
+| `docs/04_information_model/` | Verification information entities and relations | planned |
+| `docs/05_coverage_and_evidence/` | Coverage、Sufficiency、Evidence 与 Argument | planned |
+| `docs/06_pattern_library/` | 通用 Verification Patterns | planned |
+| `docs/07_mbse/` | 机器可读模型与 MBSE realization | planned |
+| `docs/08_validation/` | DCAS 与跨领域验证策略 | planned |
+| `domains/` | 领域 profile；与 generic methodology 隔离 | working |
+| `models/`, `data/`, `tools/` | 后续模型、结构化数据与自动化 | planned |
+| `references/` | 检索策略、书目和阅读记录 | working |
+| `templates/` | DBSE research draft templates | working |
+| `publications/` | 论文与教程发布视图 | planned |
+
+## Research principles
+
+- Standards before framework rules.
+- DBSE before MBSE.
+- Generic methodology is separated from domain examples.
+- Traceability is not equivalent to an Assurance Argument.
+- Test is not equivalent to Verification.
+- Requirement Coverage alone does not prove Verification Sufficiency.
+- Automation follows stable information models.
+- No normative claim without an identifiable basis.
+
+## Expected outputs
+
+1. Research Repository；
+2. Academic Paper / Thesis；
+3. Engineering Handbook / Tutorial；
+4. Machine-readable Metamodel；
+5. Verification Automation Prototypes。
+
+## Copyright and license
+
+不要提交 SAE、RTCA、EUROCAE 等受版权限制的标准全文，或 proprietary DCAS/项目资料。仓库原创内容采用 [MIT License](LICENSE)；第三方材料仍受各自权利人的许可约束。

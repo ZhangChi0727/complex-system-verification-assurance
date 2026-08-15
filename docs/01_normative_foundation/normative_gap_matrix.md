@@ -1,14 +1,23 @@
 ---
+title: Normative Gap Matrix Template
 status: working
 version: 0.1
-baseline_date: 2026-08-15
+baseline: v0.1
 owner: research
+last_updated: 2026-08-15
+dependencies:
+  - standards_baseline.md
+  - standards_map.md
 ---
 
-# Normative Gap Matrix
+# Normative Gap Matrix Template
 
-| Rule / practice | Source class | Normative basis | Current DCAS practice | Gap | Proposed disposition |
-|---|---|---|---|---|---|
-| Requirement must be linked to a verification case | Candidate generic rule | ISO 15288 / ARP4754B clauses pending | Reported as current practice | Normative clause and sufficiency rule not yet established | Keep as working rule; perform clause review |
-| MC/DC at system level | Item-level concept candidate | DO-178C review pending | Unknown | Risk of inappropriate upward transfer | Prohibit generic use until applicability is demonstrated |
-| Flight-phase alert inhibition sequence | Domain instance | Normative basis pending | Known DCAS example | Generic state-transition pattern not yet separated from DCAS details | Map to STM pattern; retain concrete data under DCAS |
+v0.1 只建立结构，不进行正式 Gap Analysis。
+
+| ID | Framework Topic | Normative Source | Normative Statement/Object | Interpretation | Current DCAS Practice | Gap | Proposed Framework Response | Confidence | Status |
+|---|---|---|---|---|---|---|---|---|---|
+| TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD | Unreviewed |
+
+允许状态：`Unreviewed`、`In Review`、`Supported`、`Partially Supported`、`Interpretation`、`Industrial Practice Only`、`Research Proposal`、`Conflict`、`Closed`。
+
+每一行必须保留 direct statement/object 与 interpretation 的边界；无法公开原文时只保存合法的定位信息和自行撰写的总结。
