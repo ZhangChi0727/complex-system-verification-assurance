@@ -1,33 +1,33 @@
 ---
+title: Standards Research Target Baseline
 status: working
 version: 0.1
-baseline_date: 2026-08-15
+baseline: v0.1
 owner: research
+last_updated: 2026-08-15
+dependencies:
+  - README.md
 ---
 
-# Standards Baseline
+# Standards Research Target Baseline
 
-## 纳入规则
+本文件只冻结研究目标及资料可得性，不声称已完成全文精读。`Metadata / secondary-source only` 表示当前不能从仓库记录推出条款级结论。
 
-每项来源至少记录唯一 ID、准确版本、发布者、层级、适用范围、官方定位和条款级精读状态。正式规范结论必须能够追溯到合法取得的原文；官方公开摘要只用于版本和范围确认。
+| Level | Standard ID | Title | Version / Revision | Organization | Research role | Availability | Study status | Notes |
+|---|---|---|---|---|---|---|---|---|
+| A | ISO/IEC/IEEE 15288 | *Systems and software engineering — System life cycle processes* | 2023 | ISO/IEC/IEEE | General systems life-cycle process context | Public metadata confirmed; full text not committed | Not started | Clause-level extraction TBD |
+| A | ISO/IEC/IEEE 24748 series | TBD by part | TBD by part | ISO/IEC/IEEE | Life-cycle management and application guidance | Metadata / secondary-source only | Not started | Select applicable parts before study |
+| A | INCOSE Systems Engineering Handbook | TBD | TBD | INCOSE | Systems engineering practice context | Metadata / secondary-source only | Not started | Edition and access TBD |
+| A | NASA Systems Engineering Handbook | TBD | TBD | NASA | Public engineering guidance and comparison source | Public availability to be verified | Not started | Exact edition TBD |
+| B | SAE ARP4754B / EUROCAE ED-79B | *Guidelines for Development of Civil Aircraft and Systems* / paired EUROCAE document | ARP4754B; ED-79B details TBD | SAE / EUROCAE | Aircraft/system development assurance context | Public metadata confirmed for ARP4754B; full text not committed | Not started | Exact clause study TBD |
+| B | SAE ARP4754A / EUROCAE ED-79A | TBD | Historical revision | SAE / EUROCAE | Historical/project baseline comparison | Metadata / secondary-source only | Not started | Include only when needed |
+| C | SAE ARP4761A / EUROCAE ED-135 | TBD | TBD | SAE / EUROCAE | Safety assessment context | Metadata / secondary-source only | Not started | Do not infer safety-derived rigor before study |
+| D | RTCA DO-178C / EUROCAE ED-12C | TBD | TBD | RTCA / EUROCAE | Software item-level assurance context | Metadata / secondary-source only | Not started | Preserve item-level applicability |
+| D | RTCA DO-254 / EUROCAE ED-80 | TBD | TBD | RTCA / EUROCAE | Electronic hardware item-level assurance context | Metadata / secondary-source only | Not started | Preserve item-level applicability |
+| D | RTCA DO-297 / EUROCAE ED-124 | TBD | TBD | RTCA / EUROCAE | IMA roles and integration assurance context | Metadata / secondary-source only | Not started | Exact scope TBD |
+| D | RTCA DO-331 | TBD | TBD | RTCA | Candidate model-based supplement research | Metadata / secondary-source only | Not started | Do not equate with system MBSE |
+| D | RTCA DO-332 | TBD | TBD | RTCA | Candidate supplement research | Metadata / secondary-source only | Not started | Applicability TBD |
+| D | RTCA DO-333 | TBD | TBD | RTCA | Candidate supplement research | Metadata / secondary-source only | Not started | Applicability TBD |
+| E | DO-160; ARINC 429/664/661/653/615A; human factors; cybersecurity | TBD by source | TBD | Applicable organizations | Domain-specific constraints and validation cases | Metadata / secondary-source only | Not started | Add only when research scope requires |
 
-| ID | Standard | Layer | Baseline status | Official metadata | Full-text review |
-|---|---|---|---|---|---|
-| STD-ISO15288-2023 | ISO/IEC/IEEE 15288:2023, *Systems and software engineering — System life cycle processes* | 通用系统生命周期 | active | ISO，Edition 2，2023-05，Published | pending |
-| STD-ARP4754B | SAE ARP4754B, *Guidelines for Development of Civil Aircraft and Systems* | Aircraft/System Development Assurance | active | SAE，Revised 2023-12-20，DOI 10.4271/ARP4754B | pending |
-| STD-ARP4761A | SAE ARP4761A / EUROCAE ED-135 | System Safety | queued | 待官方元数据复核 | pending |
-| STD-DO178C | RTCA DO-178C / EUROCAE ED-12C | Software Item Assurance | queued | 待官方元数据复核 | pending |
-| STD-DO254 | RTCA DO-254 / EUROCAE ED-80 | Electronic Hardware Assurance | queued | 待官方元数据复核 | pending |
-| STD-DO297 | RTCA DO-297 / EUROCAE ED-124 | IMA Assurance | queued | 待官方元数据复核 | pending |
-
-## 官方入口
-
-- ISO/IEC/IEEE 15288:2023: https://www.iso.org/standard/81702.html
-- SAE ARP4754B: https://saemobilus.sae.org/standards/arp4754b-guidelines-development-civil-aircraft-systems
-- SAE ARP4754B DOI: https://doi.org/10.4271/ARP4754B
-
-## 分层解释
-
-- ISO 15288 提供跨领域的系统生命周期过程框架，不规定特定开发方法、建模方法或验证技术。
-- ARP4754B 面向民用航空 aircraft/system development，公开范围明确包含 requirements validation 与 design implementation verification，并把软件、电子硬件、IMA 和安全评估的详细过程分别指向相应文件。
-- 后续标准加入时必须保留适用层级，尤其不得把 DO-178C 的软件结构覆盖概念无条件上移到系统层。
+受版权限制的全文不得提交。不可公开资料只记录 `Source available internally — not committed`，且不能包含内部 URL、凭据或 confidential locator。
