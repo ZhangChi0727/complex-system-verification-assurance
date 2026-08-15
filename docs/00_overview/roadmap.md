@@ -1,7 +1,7 @@
 ---
 title: Research Roadmap
 status: baseline
-version: 0.1
+version: 0.2
 baseline: v0.1
 owner: research
 last_updated: 2026-08-15
@@ -34,7 +34,7 @@ Proposed Framework
 
 ## Phase 3 — DBSE Process Architecture
 
-研究以下 working architecture：
+研究以下 working Verification Assurance Process View / cross-process orchestration architecture：
 
 ```text
 V0  Verification Planning
@@ -52,7 +52,7 @@ V11 Coverage & Sufficiency Assessment
 V12 Verification Closure
 ```
 
-V0–V12 是 research hypothesis / working architecture，尚未声明已由标准完整验证。
+ISO/IEC/IEEE 15288:2023 的 5.7–5.8 与 ISO/IEC/IEEE 24748-1:2024 Clause 5、Annex A/D/E 支持迭代、递归、并发和跨过程 view，但不支持把 V-ID 解释为 lifecycle stage 或强制时间顺序。V0–V5/V7 暂按活动或信息设计处理，V8 是评价/决策，V9–V10 是跨过程 concern/orchestration，V11 是 assurance assessment，V6/V12 是 composite gates。所有边界、source-task mapping、Coverage、Sufficiency 和 Closure 规则仍是 research hypothesis。
 
 ## Phase 4 — Verification Information Architecture
 

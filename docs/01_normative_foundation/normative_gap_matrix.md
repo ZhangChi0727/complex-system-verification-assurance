@@ -1,7 +1,7 @@
 ---
-title: Normative Gap Matrix Template
+title: Normative Gap Matrix
 status: working
-version: 0.1
+version: 0.5
 baseline: v0.1
 owner: research
 last_updated: 2026-08-15
@@ -10,13 +10,24 @@ dependencies:
   - standards_map.md
 ---
 
-# Normative Gap Matrix Template
+# Normative Gap Matrix
 
-v0.1 只建立结构，不进行正式 Gap Analysis。
+本矩阵只记录会影响 Framework 架构或后续研究顺序的实质缺口。缺口表示截至当前已研究规范范围内，某项 Framework concern 尚未得到充分定义、支持或约束，并不表示相关标准本身不完整。
 
 | ID | Framework Topic | Normative Source | Normative Statement/Object | Interpretation | Current DCAS Practice | Gap | Proposed Framework Response | Confidence | Status |
 |---|---|---|---|---|---|---|---|---|---|
-| TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD | TBD | Unreviewed |
+| ISO-G01 | Verification independence | ISO 15288:2023, 6.3.8; 6.4.9 | QA process establishes QA independence; Verification Process does not establish a general independence requirement. | QA independence cannot be relabeled as independent verification. | `independence_requirement` exists in the VSR but has no resolved source/rule. | Generic verification independence is unsupported. | Keep the field domain-dependent; research ARP4754B, DO-178C and DO-254 before defining levels or roles. | High | Research Proposal |
+| ISO-G02 | Verification coverage | ISO 15288:2023, 5.10; 6.4.9 | Assurance cases may expose requirements-coverage gaps; the Verification Process requires traceability but supplies no universal coverage taxonomy or metric. | Trace completeness is not equivalent to coverage sufficiency. | `coverage_obligations` is a candidate list without a normative taxonomy. | Coverage dimensions and completeness rules are unresolved. | Preserve a pluggable obligation model; derive domain-specific coverage from later standards. | High | Research Proposal |
+| ISO-G03 | Verification sufficiency | ISO 15288:2023, 5.10 | Assurance uses claims, evidence and structured reasoning; no Verification Sufficiency definition or decision formula is given. | Evidence presence alone cannot justify a claim. | V11 proposes Coverage & Sufficiency Assessment. | V11 criteria and authority are undefined. | Build Claim–Argument–Evidence semantics; defer sufficiency rules to cross-standard and empirical study. | High | Research Proposal |
+| ISO-G04 | Oracle | ISO 15288:2023, 6.4.9.3(a)–(b) | Success criteria and expected results are addressed, but no separate Oracle entity is defined. | An oracle may be useful to justify expected results, but is a framework abstraction. | VSR contains `oracle`. | Source, validity and configuration rules for oracles are unresolved. | Retain explicitly as a proposal and test it against software/hardware/domain standards. | High | Research Proposal |
+| ISO-G05 | Regression | ISO 15288:2023, 6.3.5; 6.4.9.3(b)–(c); ISO 24748-1:2024, 6.3.4.3.6 | Approved changes and anomaly correction can drive re-verification; 24748-1 mentions frequent regression testing for interoperability, but neither source defines a generic Regression process or selection algorithm. | Context-specific regression guidance does not imply rerunning every prior test or a universal workflow. | V10 Regression exists as a distinct activity. | Entry triggers, impact rules and scope selection are unresolved. | Reclassify V10 as change/anomaly-driven cross-process orchestration; validate with later standards. | High | Interpretation |
+| ISO-G06 | Verification closure | ISO 15288:2023, 6.3.2; 6.4.9.3(c)(3)–(5); ISO 24748-1:2024, 4.3, Clause 5, 6.2.6 | Approval, traceability, baseline contribution, stage exit criteria and gate authorization are supported; neither source defines a named Verification Closure process or complete closure model. | These concepts support a composite closure gate but do not define waiver, reopening or authority semantics. | V12 Verification Closure is proposed. | Closure criteria, waiver rules and reopening semantics are unresolved. | Reclassify V12 as assurance assessment + approval decision + baseline event; develop rules from later sources. | High | Partially Supported |
+| ISO-G07 | Information-item schema | ISO 15288:2023, 5.6; 6.3.6; Annex B; ISO 24748-1:2024, 6.2.8 | Processes produce information items; 24748-1 guides documenting lifecycle/process mappings and rationale, but neither source mandates the repository's field schema. | A need to record decisions does not make a proposed template normative. | Repository templates define specific fields and record names. | Field-level normative basis is incomplete. | Study ISO/IEC/IEEE 15289; classify every template field as direct, indirect, or proposed. | High | Partially Supported |
+| ISO-G08 | MBSE automation and model evidence | ISO 15288:2023, Annex D; ISO 24748-1:2024, Annex A.10 | Models and queries can support checking, impact analysis and V&V; 24748-1 points to model-based methods guidance but mandates no MBSE implementation or evidence rule. | Informative model guidance does not establish language, tool qualification or evidence admissibility. | MBSE metamodel and automation are planned. | Model validity and evidence admissibility rules are unresolved. | Build from the controlled DBSE information model; define model-validation evidence before automated claims. | High | Research Proposal |
+| LC-G01 | Gate semantics | ISO 24748-1:2024, 4.3; Clause 5; 6.2.6 | Entry/exit criteria, reviews/milestones and decision gates are related lifecycle-management concepts. | Criteria satisfaction, review completion and authorization decision are not one event. | V6 and V12 are named as if each were one activity. | Composite state/event semantics and decision authority are unresolved. | Model V6/V12 as composites with separately traceable assessment, optional review, decision and baseline events. | High | Framework Implication |
+| LC-G02 | Review taxonomy | ISO 24748-1:2024, 6.4; Annex C; Annex F, F.3.6 | Annex F provides candidate joint stakeholder reviews; F.3.6 defines `Verification reviews`, not a mandatory `Verification Readiness Review`. | Lifecycle review is not the same abstraction as Verification Method inspection/peer review. | `Verification Readiness` may be read as a mandatory VRR. | Review levels, naming and authority remain domain/project dependent. | Maintain separate lifecycle-review and verification-method taxonomies; classify VRR as proposal until later sources support it. | High | Framework Implication |
+| LC-G03 | Process-view provenance | ISO 24748-1:2024, Annex D | A process view organizes selected activities/tasks from source processes but does not define new ones. | Framework orchestration objects require explicit source/proposal classification. | V0–V12 currently mix activities, evaluations, gates and orchestration. | Source-task provenance and ontology are incomplete. | Require every V-element to identify ontology, source mapping and framework-added behavior. | High | Framework Implication |
+| LC-G04 | Lifecycle/process instantiation evidence | ISO 24748-1:2024, 6.2.2–6.2.8 | Lifecycle and process selection, mappings, relationships and rationale should be documented in project planning. | The guidance supports a record concept, not a mandatory universal schema. | No dedicated controlled record exists. | Tailoring choices and stage/process rationale are not consistently auditable. | Add a candidate Lifecycle/Process Tailoring and Instantiation Record; validate fields against 24748-2. | High | Research Proposal |
 
 允许状态：`Unreviewed`、`In Review`、`Supported`、`Partially Supported`、`Interpretation`、`Industrial Practice Only`、`Research Proposal`、`Conflict`、`Closed`。
 

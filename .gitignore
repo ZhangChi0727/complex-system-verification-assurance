@@ -1,6 +1,7 @@
 # Local source material and licensed standards
 references/private/
 references/standards_fulltext/
+references/PDF/
 
 # Generated and temporary artifacts
 tmp/

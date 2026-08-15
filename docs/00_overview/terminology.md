@@ -1,7 +1,7 @@
 ---
 title: Working Terminology Baseline
 status: baseline
-version: 0.1
+version: 0.3
 baseline: v0.1
 owner: research
 last_updated: 2026-08-15
@@ -11,13 +11,63 @@ dependencies:
 
 # Working Terminology Baseline
 
-本文件冻结 v0.1 的工作语言，而不是声称已经完成跨标准术语协调。除非另有说明，所有条目的 **Normative status** 均为 `To be verified`。
+本文件冻结 v0.1 的工作语言，而不是声称已经完成跨标准术语协调。除非另有说明，所有条目的 **Normative status** 均为 `To be verified`。ISO 15288 的支持结论受其 Clause 4 conformance mode 约束；NOTE 与资料性附录只作为 informative guidance。
+
+### Life Cycle Model
+
+**Working definition:** 组织生命周期相关过程和活动的框架，可使用 stages 为决策、沟通和管理提供共同参照。
+
+**Normative status:** Direct term and guidance — ISO/IEC/IEEE 24748-1:2024, 3.25 and 4.3
+
+**Related concepts:** Life Cycle, Stage, Process, Decision Gate
+
+**Notes:** Life Cycle Model ≠ Process Model；模型具有 stages 不表示系统生命周期脱离模型后天然具有固定阶段。
+
+### Stage
+
+**Working definition:** 与系统描述或实现状态有关的一段生命周期期间，可关联重大进展、milestones、entry/exit criteria 和 decisions。
+
+**Normative status:** Direct term and guidance — ISO/IEC/IEEE 24748-1:2024, 3.48, 4.3 and Clause 5
+
+**Related concepts:** Life Cycle Model, Process, Entry Criterion, Exit Criterion
+
+**Notes:** Stage ≠ Process；stages 可重叠、并行、非顺序或重复。V0–V12 不属于 ISO 24748-1 lifecycle stages。
+
+### Decision Gate
+
+**Working definition:** 依据 stage criteria、风险、评审结果和外部事件等输入，由授权角色作出继续、开始、保持、重启或终止等决定的管理节点。
+
+**Normative status:** Guidance-supported working definition — ISO/IEC/IEEE 24748-1:2024, 4.3 and Clause 5
+
+**Related concepts:** Entry Criterion, Exit Criterion, Review, Decision Authority
+
+**Notes:** Criteria satisfaction ≠ Review completion ≠ Gate decision。V6/V12 的完整状态模型仍是 research proposal。
+
+### Process View
+
+**Working definition:** 围绕某项跨生命周期 concern，选择和组织源标准中已有 process activities/tasks 的视图，并声明 stakeholder、purpose、outcomes 与 source references。
+
+**Normative status:** Informative guidance — ISO/IEC/IEEE 24748-1:2024, Annex D
+
+**Related concepts:** Process, Activity, Task, Verification Assurance
+
+**Notes:** Process view 不定义自己的新源标准活动或任务。框架新增 orchestration behavior 必须明确标为 interpretation/proposal。
+
+### Lifecycle / Process Instantiation Record
+
+**Working definition:** 记录项目语境、适用标准、development approach、stages、criteria、gates、过程选择/排除、映射关系和理由的受控信息项。
+
+**Normative status:** Record concept is guidance-supported; schema and name are a research proposal — ISO/IEC/IEEE 24748-1:2024, 6.2.2–6.2.8
+
+**Related concepts:** Tailoring, Life Cycle Model, Process View, Decision Record
+
+**Notes:** 该记录用于审计 project instantiation，不应被描述为 ISO 24748-1 强制模板。
 
 ### Verification
 
 **Working definition:** 为判断规定的要求是否得到满足而规划、实施、评价并记录客观活动与结果的工程过程。
 
-**Normative status:** To be verified
+**Normative status:** Direct normative support — ISO/IEC/IEEE 15288:2023, 3.55 and 6.4.9
 
 **Related concepts:** Test, Analysis, Inspection, Evidence
 
@@ -27,11 +77,21 @@ dependencies:
 
 **Working definition:** 评价需求、系统或产品相对于预期用途和运行语境是否适当的过程。
 
-**Normative status:** To be verified
+**Normative status:** Direct normative support — ISO/IEC/IEEE 15288:2023, 3.54 and 6.4.11
 
 **Related concepts:** Verification, Intended Use, Operational Context
 
 **Notes:** 与 Verification 的精确边界需要按来源和生命周期层级研究。
+
+### Requirement
+
+**Working definition:** 表达或转化某项 need，并包含其相关 constraints 和 conditions 的陈述。
+
+**Normative status:** Direct normative support — ISO/IEC/IEEE 15288:2023, 3.36
+
+**Related concepts:** Stakeholder Need, Verification Basis, Verification Obligation, Traceability
+
+**Notes:** Requirement information model 必须保留相关约束和条件，不能只表达期望行为。Stakeholder requirement validation、system requirement validation、requirement quality/verification 与 system validation 应分别建模。
 
 ### Verification Assurance
 
@@ -87,11 +147,11 @@ dependencies:
 
 **Working definition:** 针对 Verification Obligation 对执行层级、方法、技术、环境、配置、Oracle、Coverage、独立性和 Evidence 的受控选择及理由。
 
-**Normative status:** Research proposal
+**Normative status:** Direct concept support; field model remains a research proposal — ISO/IEC/IEEE 15288:2023, 6.4.9.3(a)(4)
 
 **Related concepts:** Level, Method, Technique, Oracle, Evidence
 
-**Notes:** 不是正式 industry standard；v0.1 只建立研究草案。
+**Notes:** 定义 Verification Strategy 的 task 有直接支持；scope、actions、methods、success criteria、enablers、evidence points 和 trade-offs 的详细内容主要来自 NOTE。当前完整 VSR schema 不是标准规定。
 
 ### Verification Level
 
@@ -107,11 +167,11 @@ dependencies:
 
 **Working definition:** 用于获得 Verification 结论的一级实现类别，如 Test、Analysis 或 Inspection 等候选分类。
 
-**Normative status:** To be verified
+**Normative status:** Method selection is directly supported; taxonomy examples are informative — ISO/IEC/IEEE 15288:2023, 6.4.9.3(a)(3)
 
 **Related concepts:** Verification Technique, Verification Case
 
-**Notes:** Verification Method ≠ Verification Technique；最终 taxonomy 待标准研究。
+**Notes:** ISO 15288 的 NOTE 示例为 Inspection、Analysis、Demonstration、Testing；peer review 是 Inspection 示例。Verification Method ≠ Verification Technique；最终 taxonomy 仍待跨标准研究。
 
 ### Verification Technique
 
@@ -137,7 +197,7 @@ dependencies:
 
 **Working definition:** 在指定环境和配置中执行 Verification Case 的可操作步骤与记录要求。
 
-**Normative status:** Research proposal
+**Normative status:** Procedure concept directly supported; this working definition remains partly proposed — ISO/IEC/IEEE 15288:2023, 6.4.9.3(b)(1)
 
 **Related concepts:** Verification Case, Environment, Execution Record
 
@@ -147,7 +207,7 @@ dependencies:
 
 **Working definition:** 执行 Verification 所需的设施、设备、软件、模型、接口、人员能力及受控条件。
 
-**Normative status:** To be verified
+**Normative status:** Direct concept support — ISO/IEC/IEEE 15288:2023, 6.4.9.3(a)–(b)
 
 **Related concepts:** Configuration, Tool, Procedure
 
@@ -157,7 +217,7 @@ dependencies:
 
 **Working definition:** 与 Verification 对象、环境、输入、工具和数据有关的受控版本及组合状态。
 
-**Normative status:** To be verified
+**Normative status:** Direct cross-process support — ISO/IEC/IEEE 15288:2023, 3.8, 6.3.5 and 6.4.9.3(c)(5)
 
 **Related concepts:** Baseline, Change, Evidence
 
@@ -237,21 +297,21 @@ dependencies:
 
 **Working definition:** 具有可识别来源、适用配置、完整性和可复核性的受控信息，用于支持 claim 或 argument。
 
-**Normative status:** To be verified
+**Normative status:** Direct concept support; framework definition is narrower — ISO/IEC/IEEE 15288:2023, 5.10 and 6.4.9
 
 **Related concepts:** Result, Traceability, Compliance Claim
 
-**Notes:** 原始记录、评价结果与 Evidence 的关系待信息模型研究。
+**Notes:** ISO 15288 支持 objective evidence，并在 assurance case 中区分 claim、argument 与 evidence；原始记录何时成为可用于 claim 的 Evidence 仍待信息模型研究。
 
 ### Traceability
 
 **Working definition:** 在来源、要求、活动、信息项、结果、Evidence 和 Claim 之间建立可导航关系的能力。
 
-**Normative status:** To be verified
+**Normative status:** Direct concept support — ISO/IEC/IEEE 15288:2023, 3.52 and 6.4.9.3(c)(4)
 
 **Related concepts:** Digital Thread, Evidence, Change Impact
 
-**Notes:** Traceability ≠ Assurance Argument；关联存在不自动证明证据充分。
+**Notes:** ISO 15288 的 NOTE 支持 verified element 与 strategy、architecture、design、requirements、results/evidence、anomalies 和 deviations 的双向关联。Traceability ≠ Assurance Argument；关联存在不自动证明证据充分。
 
 ### Compliance Claim
 
@@ -267,7 +327,7 @@ dependencies:
 
 **Working definition:** 解释一组 Evidence 为什么足以支持某个 claim 的结构化推理。
 
-**Normative status:** To be verified
+**Normative status:** Direct concept support — ISO/IEC/IEEE 15288:2023, 5.10
 
 **Related concepts:** Compliance Claim, Evidence, GSN
 
@@ -277,7 +337,7 @@ dependencies:
 
 **Working definition:** Verification 过程中发现的预期与观察不一致、过程偏离、数据问题或其他需要处置的异常事项。
 
-**Normative status:** To be verified
+**Normative status:** Direct concept support — ISO/IEC/IEEE 15288:2023, 6.4.9.2 and 6.4.9.3(c)
 
 **Related concepts:** Disposition, Change, Regression
 
@@ -287,11 +347,11 @@ dependencies:
 
 **Working definition:** 因变更、异常处置或影响分析而重新执行或重新评价 Verification 的活动集合。
 
-**Normative status:** To be verified
+**Normative status:** Indirect support only; named Regression process remains a research proposal — ISO/IEC/IEEE 15288:2023, 6.3.5 and 6.4.9.3(b)–(c)
 
 **Related concepts:** Change Impact, Evidence Validity, Configuration
 
-**Notes:** Regression 不等同于无差别重复全部测试。
+**Notes:** 标准支持因变更或异常处置进行适用的 verification/re-verification，但未定义通用 Regression taxonomy 或选择算法。Regression 不等同于无差别重复全部测试。
 
 ### Verification Closure
 
@@ -301,7 +361,7 @@ dependencies:
 
 **Related concepts:** Sufficiency, Compliance Claim, Baseline
 
-**Notes:** v0.1 不冻结具体 closure criteria。
+**Notes:** ISO 24748-1:2024 的 stage exit criteria、decision gates 和 authorization 为组合 closure decision 提供指导性支撑，但不定义名为 Verification Closure 的过程。v0.1 不冻结具体 closure criteria、waiver、reopening 或 authority semantics。
 
 ### DBSE
 
@@ -317,11 +377,11 @@ dependencies:
 
 **Working definition:** Model-Based Systems Engineering；以机器可解释模型作为重要工程信息载体，支持关联、查询、约束和分析。
 
-**Normative status:** To be verified
+**Normative status:** Informative support — ISO/IEC/IEEE 15288:2023, Annex D
 
 **Related concepts:** Metamodel, SysML, Automation
 
-**Notes:** MBSE ≠ “把已有文档画成 SysML 图”。
+**Notes:** Annex D 支持模型查询、检查、影响分析和模型辅助 V&V，但不强制 MBSE、SysML 或特定工具；替代实物的模型用途依赖模型验证。MBSE ≠ “把已有文档画成 SysML 图”。
 
 ### Domain Profile
 
