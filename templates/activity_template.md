@@ -1,23 +1,54 @@
 ---
-id:
+title: DBSE Activity Template
 status: working
 version: 0.1
-owner:
-normative_basis: []
+baseline: v0.1
+owner: research
+last_updated: 2026-08-15
+dependencies: []
 ---
 
-# Activity: <name>
+# ACT-XXX — Activity Name
 
-- Purpose:
-- Inputs:
-- Entry criteria:
-- Responsible role:
-- Supporting roles:
-- Process:
-- Decision rules:
-- Outputs:
-- Records:
-- Traceability:
-- Independence requirements:
-- Configuration requirements:
-- Exit criteria:
+> Research Draft — not an industry standard.
+
+## Metadata
+
+- ID:
+- Status:
+- Version:
+- Owner:
+- Applicable Assurance Level:
+- Dependencies:
+
+## Purpose
+
+## Normative Basis
+
+## Inputs
+
+## Entry Criteria
+
+## Roles
+
+### Responsible Role
+
+### Supporting Roles
+
+## Process
+
+## Decision Rules
+
+## Outputs
+
+## Required Records
+
+## Traceability
+
+## Independence Requirements
+
+## Configuration-Control Requirements
+
+## Exit Criteria
+
+## Open Issues
