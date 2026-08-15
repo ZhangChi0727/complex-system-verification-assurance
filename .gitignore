@@ -1,0 +1,21 @@
+# Local source material and licensed standards
+references/private/
+references/standards_fulltext/
+
+# Generated and temporary artifacts
+tmp/
+build/
+dist/
+*.log
+~$*
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# Editors
+.idea/
+.vscode/
