@@ -1,10 +1,10 @@
 ---
 title: Research Scope
 status: baseline
-version: 0.1
+version: 0.2
 baseline: v0.1
 owner: research
-last_updated: 2026-08-15
+last_updated: 2026-08-16
 dependencies: []
 ---
 
@@ -20,7 +20,7 @@ dependencies: []
 - Verification Assurance 与 requirements-based verification；
 - Verification lifecycle、strategy、level、methods 与 techniques；
 - Coverage、Verification Sufficiency、Traceability、Evidence 与 Compliance Argument；
-- Configuration、Anomaly、Regression 与 Verification Closure；
+- Configuration、Anomaly、Change Impact & Re-verification 与 Verification Closure；
 - DBSE workflow 与 information architecture；
 - MBSE realization、domain instantiation 与后续 automation。
 

@@ -1,10 +1,10 @@
 ---
 title: Research Roadmap
 status: baseline
-version: 0.2
+version: 0.4
 baseline: v0.1
 owner: research
-last_updated: 2026-08-15
+last_updated: 2026-08-16
 dependencies:
   - research_scope.md
   - research_questions.md
@@ -47,12 +47,14 @@ V6  Verification Readiness
 V7  Verification Execution
 V8  Result Evaluation
 V9  Anomaly Resolution
-V10 Regression
+V10 Change Impact & Re-verification
 V11 Coverage & Sufficiency Assessment
 V12 Verification Closure
 ```
 
-ISO/IEC/IEEE 15288:2023 的 5.7–5.8 与 ISO/IEC/IEEE 24748-1:2024 Clause 5、Annex A/D/E 支持迭代、递归、并发和跨过程 view，但不支持把 V-ID 解释为 lifecycle stage 或强制时间顺序。V0–V5/V7 暂按活动或信息设计处理，V8 是评价/决策，V9–V10 是跨过程 concern/orchestration，V11 是 assurance assessment，V6/V12 是 composite gates。所有边界、source-task mapping、Coverage、Sufficiency 和 Closure 规则仍是 research hypothesis。
+ISO/IEC/IEEE 15288:2023 的 5.7–5.8 与 ISO/IEC/IEEE 24748-1:2024 Clause 5、Annex A/D/E 支持迭代、递归、并发和跨过程 view；ISO/IEC/IEEE 24748-2:2024 进一步澄清策略整合、多次调用和 gate cadence；SAE ARP4754B, 6.3–6.4 支持把 V10 专门化为 change-impact、prior-evidence validity 和 selected re-verification orchestration。ARP4761A, 3.1、Appendices D–F/P 进一步给出 aviation Safety Reassessment、safety-evidence aggregation 和 completion inputs。它们均不支持把 V-ID 解释为 lifecycle stage 或强制时间顺序，也不支持把 AFHA–ASA 替换为 V0–V12。V0–V5/V7 暂按活动或信息设计处理，V8 是评价/决策，V9–V10 是跨过程 concern/orchestration，V11 是 assurance assessment，V6/V12 是 composite gates。完整 generic Coverage、Sufficiency 和 Closure 规则仍是 research hypothesis。
+
+当前规范研究停点：在进入 DO-178C、DO-254 或 DO-297 前，先完成 ISO 15288、ISO 24748-1/2、ARP4754B 与 ARP4761A 的 Cross-Standard Consistency & Gap Review。
 
 ## Phase 4 — Verification Information Architecture
 
