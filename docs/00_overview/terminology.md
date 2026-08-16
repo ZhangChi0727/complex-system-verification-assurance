@@ -1,10 +1,10 @@
 ---
 title: Working Terminology Baseline
 status: baseline
-version: 0.3
+version: 0.7
 baseline: v0.1
 owner: research
-last_updated: 2026-08-15
+last_updated: 2026-08-16
 dependencies:
   - research_scope.md
 ---
@@ -73,6 +73,8 @@ dependencies:
 
 **Notes:** Test 只是候选 Verification activity/method 之一，不能代表全部 Verification。
 
+**Aviation profile:** SAE ARP4754B, 2.2 and 5.5 将 Verification 限定为评价 requirements 的 implementation 是否满足已验证 requirements。该定义是 aircraft/system development context，不覆盖 ISO 通用定义。
+
 ### Validation
 
 **Working definition:** 评价需求、系统或产品相对于预期用途和运行语境是否适当的过程。
@@ -82,6 +84,8 @@ dependencies:
 **Related concepts:** Verification, Intended Use, Operational Context
 
 **Notes:** 与 Verification 的精确边界需要按来源和生命周期层级研究。
+
+**Aviation profile:** SAE ARP4754B, 2.2 and 5.4 将 Validation 定义为判断产品 requirements 是否正确且完整。它是 requirements-validation taxonomy，不与 ISO intended-use/system-validation 定义强制同义。
 
 ### Requirement
 
@@ -107,11 +111,21 @@ dependencies:
 
 **Working definition:** 在开发生命周期中，通过规划、过程和目标达成降低开发错误风险的保证语境。
 
-**Normative status:** To be verified
+**Normative status:** Direct aviation-domain definition — SAE ARP4754B, 1.2 and 2.2
 
 **Related concepts:** Verification Assurance, Independence, Assurance Level
 
-**Notes:** 其航空语境和分配机制需在 ARP4754B 等来源中研究。
+**Notes:** ARP4754B 把 Development Assurance 定位为 planned/systematic、与 safety-derived rigor 相称的过程，用于建立 development errors 已识别和纠正的信心。它是航空 profile 概念，不替代 ISO 通用 Assurance；FDAL/IDAL 详细分配继续由 ARP4761A 研究。
+
+### Assurance Applicability / Rigor
+
+**Working definition:** 在某一 domain profile 中，描述 assurance level 与 objective applicability、活动独立性及输出控制强度之间关系的集合。
+
+**Normative status:** Aviation relationship directly supported; unified entity remains a research proposal — SAE ARP4754B, 5.2, 5.6.4 and Appendix A
+
+**Related concepts:** FDAL, IDAL, Process Independence, System Control Category, Certification Credit Intent
+
+**Notes:** 不能压缩成一个 `DAL` 或 `independent=true`。Appendix A 的 `R* / R / A / N` 只在 `source × objective × FDAL × cell` 上下文中分别表达带独立性的推荐、推荐、认证协商和认证不要求；它们不是 generic assurance-level enum，也不直接决定工程活动是否必要。Certification Credit Intent 是独立的 project/certification-use relation，不由 FDAL 自动推导。
 
 ### Verification Basis
 
@@ -161,7 +175,7 @@ dependencies:
 
 **Related concepts:** Allocation, Integration, Verification Strategy
 
-**Notes:** Requirement allocation level 与 verification execution level 可能不同。
+**Notes:** Requirement allocation level 与 verification execution level 可能不同。ARP4754B, 4.6.1 和 5.5.4 进一步要求 aviation profile 记录跨 aircraft/system/item 层级的 allocation、delegation、evidence acceptance 和 credit basis。
 
 ### Verification Method
 
@@ -171,7 +185,7 @@ dependencies:
 
 **Related concepts:** Verification Technique, Verification Case
 
-**Notes:** ISO 15288 的 NOTE 示例为 Inspection、Analysis、Demonstration、Testing；peer review 是 Inspection 示例。Verification Method ≠ Verification Technique；最终 taxonomy 仍待跨标准研究。
+**Notes:** ISO 15288 的 NOTE 示例为 Inspection、Analysis、Demonstration、Testing。ARP4754B, 5.5.5 使用 Inspection/Review、Analysis、Testing or Demonstration、Similarity/Service Experience。两者是可映射的 contextual taxonomies；lifecycle review/gate 不因名称相同而成为 Verification Method。
 
 ### Verification Technique
 
@@ -251,7 +265,7 @@ dependencies:
 
 **Related concepts:** Expected Result, Result Evaluation, Raw Record
 
-**Notes:** Result ≠ Evidence；只有满足来源、配置和控制条件的信息才能成为适用 Evidence。
+**Notes:** Result 与 Evidence 是不同的 assurance roles。Observed Result 可以构成或支持 Evidence；其 provenance、integrity/control、claim applicability、credibility 和对 sufficiency 的贡献应分别评价，不能建模为固定条件触发的 Result→Evidence 二值转换。
 
 ### Acceptance Criterion
 
@@ -301,7 +315,27 @@ dependencies:
 
 **Related concepts:** Result, Traceability, Compliance Claim
 
-**Notes:** ISO 15288 支持 objective evidence，并在 assurance case 中区分 claim、argument 与 evidence；原始记录何时成为可用于 claim 的 Evidence 仍待信息模型研究。
+**Notes:** ISO 15288 支持 objective evidence，并在 assurance case 中区分 claim、argument 与 evidence。ARP4754B, 5.5.6 and 5.6 支持 Verification Data 提供 evidence 并在约定语境中用于 compliance substantiation，但不定义 generic Result→Evidence conversion rule。某项 result/data 可构成或支持 Evidence；其对特定 claim 的 applicability、credibility、control 和 sufficiency 是分开的评价。Certification approval 不是 Evidence。
+
+### Verification Data
+
+**Working definition:** 对 Verification 的计划、程序、执行结果、矩阵、汇总和问题记录进行组织并受配置控制的数据集合。
+
+**Normative status:** Direct aviation-domain concept — SAE ARP4754B, 5.5.6 and Appendix A
+
+**Related concepts:** Result, Evidence, Configuration, Compliance Substantiation
+
+**Notes:** Verification Data 可以提供、构成或支持 evidence，但 data/result 与 evidence role 不自动等价。Evidence identity 与其对特定 claim 的 applicability、credibility/control、sufficiency 需要分开；认证用途取决于 certification coordination，而不是 Evidence existence 的定义条件。
+
+### Evidence Credit
+
+**Working definition:** 在新或变更应用中，经 baseline traceability、适用性/差异分析和补充活动证明后，对既有受控 evidence 的有限接受关系。
+
+**Normative status:** Aviation relationship directly supported; unified entity remains a research proposal — SAE ARP4754B, 6.4
+
+**Related concepts:** Evidence Reuse, Modification Impact, Service History, Certification Baseline
+
+**Notes:** `credit` ≠ copy，也不等于既有认证自动延续；应记录 credit objective、basis、differences、limitations、acceptance 和 supplemental evidence。
 
 ### Traceability
 
@@ -343,15 +377,15 @@ dependencies:
 
 **Notes:** 分类、授权和 closure rules 待研究。
 
-### Regression
+### Change Impact & Re-verification
 
-**Working definition:** 因变更、异常处置或影响分析而重新执行或重新评价 Verification 的活动集合。
+**Working definition:** 因变更、异常处置或既有证据适用性变化，识别受影响的 requirements、claims、配置和 evidence，并选择重新执行或重新评价 Verification 的跨过程活动集合。
 
-**Normative status:** Indirect support only; named Regression process remains a research proposal — ISO/IEC/IEEE 15288:2023, 6.3.5 and 6.4.9.3(b)–(c)
+**Normative status:** Generic concept support plus direct aviation specialization; named orchestration remains framework-defined — ISO/IEC/IEEE 15288:2023, 6.3.5 and 6.4.9; SAE ARP4754B, 6.3–6.4
 
 **Related concepts:** Change Impact, Evidence Validity, Configuration
 
-**Notes:** 标准支持因变更或异常处置进行适用的 verification/re-verification，但未定义通用 Regression taxonomy 或选择算法。Regression 不等同于无差别重复全部测试。
+**Notes:** V10 保留稳定 ID，并从 `Regression` 改名为 `Change Impact & Re-verification`。ARP4754B 直接支持 modification impact 和 prior-evidence credit 的航空关系，但仍未定义通用选择算法；re-verification 不等同于无差别重复全部测试。
 
 ### Verification Closure
 
@@ -402,3 +436,93 @@ dependencies:
 **Related concepts:** Verification Technique, Case Design, Domain Instance
 
 **Notes:** v0.1 中的 pattern 名称与 taxonomy 均为 working proposal。
+
+### Failure Condition
+
+**Working definition:** 由 failures/errors 造成或促成、并结合飞行阶段、运行/环境事件等语境描述的 aircraft/occupant condition。
+
+**Normative status:** Aviation definition — SAE ARP4761A, 2.2
+
+**Related concepts:** Failure Effect, Failure Mode, Classification, Safety Objective
+
+**Notes:** Failure Mode 是对象失效的具体方式；Failure Effect 是其后果；Failure Condition 是上游 safety object，不是 Verification Case。其 classification 影响分析与保证严谨度，但不直接定义测试数量。
+
+### Safety Objective
+
+**Working definition:** 与 Failure Condition 相关、规定可接受 safety performance 的判据。
+
+**Normative status:** Aviation definition — SAE ARP4761A, 2.2
+
+**Related concepts:** Failure Condition, Classification, Verification Basis, Safety Requirement
+
+**Notes:** 可作为 Verification Basis 输入，但不等同 Verification Objective、Case 或 Procedure。
+
+### Safety Requirement
+
+**Working definition:** 为实现 Safety Objective，或满足 Safety Process 所建立 constraint 而必需的 requirement。
+
+**Normative status:** Aviation definition — SAE ARP4761A, 2.2
+
+**Related concepts:** Requirement, Safety Objective, Verification Obligation
+
+**Notes:** Framework 中作为 `Requirement` subtype/classification，并允许多个 typed origins：Safety Objective、Safety Process Constraint、Independence Principle、转化为受控 requirement 的 Assumption，以及适用的 architecture/analysis result。保留 source analysis、rationale、allocation 与 assumption provenance；不能退化为单一 `SafetyObjective → SafetyRequirement` source 字段。
+
+### Safety Assessment
+
+**Working definition:** 对 Failure Conditions、Safety Objectives/Requirements、architecture、assumptions 和适用 evidence 进行系统评价的航空过程族。
+
+**Normative status:** Aviation concept support — SAE ARP4761A, Section 3 and Appendices A–F
+
+**Related concepts:** AFHA, PASA, SFHA, PSSA, SSA, ASA, Safety Analysis
+
+**Notes:** SSA/ASA 可专门化为 aviation assurance assessments；`SSA ≠ generic Verification Process`，`ASA ≠ V12`。
+
+### Safety Analysis Method
+
+**Working definition:** 用于分析 failure behavior、failure combinations/probabilities、common causes、zones 或 particular risks 的方法类型。
+
+**Normative status:** Aviation taxonomy — SAE ARP4761A, 3.1.2 and Section 4
+
+**Related concepts:** FTA, DD, MA, MBSA, FMEA/FMES, CEA, ZSA, PRA, CMA
+
+**Notes:** 与 Verification Method 分层；受控分析结果可以构成或支持 Safety Analysis Evidence。
+
+### FDAL / IDAL
+
+**Working definition:** 分别调节 function/system development 与 software/electronic-hardware item development assurance tasks 严谨度的航空等级。
+
+**Normative status:** Aviation definition and assignment guidance — SAE ARP4761A, 2.2, 3.9 and Appendix P
+
+**Related concepts:** Failure Condition Classification, Architecture, Functional Failure Set, Assurance Constraint
+
+**Notes:** 不是 Verification Level、method、safety classification 或自动 certification credit；应建模为带 source/assignment provenance 的 Assurance Constraint。
+
+### Independence
+
+**Working definition:** ARP4761A 区分四种航空 independence：Functional Independence 以不同 functions 降低 common development error likelihood；Item Development Independence 以不同 item designs 降低 common development error likelihood；Physical Independence 以 separation/segregation 降低物理失效、损伤或环境效应造成的 common failures；Process Independence 以职责分离实现由活动执行者之外人员进行 objective evaluation。
+
+**Normative status:** Aviation definitions — SAE ARP4761A, 2.2
+
+**Related concepts:** Independence Principle, Independence Requirement, Independence Claim, CMA, ZSA, PRA
+
+**Notes:** Source definition 与 substantiation criterion 分开。Appendix P 在 FDAL/IDAL assignment 语境中通过 requirement sets、item designs、development processes 与 common-error sources 评价 functional/item-development independence claim，并可使用 CMA 或等效技术提供 substantiation；这些判定条件不替代 2.2 definition。
+
+### Independence Principle / Independence Requirement
+
+**Working definition:** Independence Principle 是 intended implementation 中被判定需要 independence 的特征；Independence Requirement 是对该需要的可分配、可确认约束。
+
+**Normative status:** Aviation definition/concept — SAE ARP4761A, 2.2 and Appendix P
+
+**Related concepts:** Functional Independence, Item Development Independence, Physical Independence, Process Independence
+
+**Notes:** Principle ≠ Requirement。四类 independence 需要分别记录 claim、rationale 和 CMA/ZSA/PRA 或 development-process substantiation；不能压缩为一个布尔值。
+
+### Assumption
+
+**Working definition:** 在尚未获得已验证信息时用于分析的 premise，并在生命周期中被拥有、传播、确认或纠正。
+
+**Normative status:** Aviation definition/lifecycle support; generic promotion pending — SAE ARP4761A, 2.2, A.6 and D.4.3.2
+
+**Related concepts:** Assumption Obligation, Assumption Confirmation, Requirement, Change Impact
+
+**Notes:** 组织可控制的 premise 宜转化为 proposed requirement；未确认 assumption 会限制 safety conclusion validity。是否提升为 Generic Framework object 留待跨标准复审。
