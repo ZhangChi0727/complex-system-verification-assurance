@@ -1,7 +1,7 @@
 ---
 title: DBSE Verification Workflow Workspace
 status: working
-version: 0.6
+version: 0.7
 baseline: v0.1
 owner: research
 last_updated: 2026-08-16
@@ -38,7 +38,8 @@ SAE ARP4761A 增加一个相互连接但不替代 V0–V12 的 **Safety Assessme
 
 ```text
 AFHA/SFHA → Failure Conditions + classifications + Safety Objectives
-PASA/PSSA → architecture assessment + Safety Requirements + FDAL/IDAL/independence
+PASA/PSSA → objectives/constraints/independence/assumptions/architecture analysis
+          → typed Safety Requirement origins + FDAL/IDAL/independence
 SSA       → implemented-system safety assurance assessment
 ASA       → aircraft-level safety assurance aggregation
 ```

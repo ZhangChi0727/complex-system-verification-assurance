@@ -1,7 +1,7 @@
 ---
 title: Verification Strategy Record Template
 status: working
-version: 0.5
+version: 0.6
 baseline: v0.1
 owner: research
 last_updated: 2026-08-16
@@ -64,6 +64,7 @@ safety_context: # optional aviation-profile candidate; not a generic requirement
   failure_condition_classifications: []
   safety_objective_ids: []
   safety_requirement_ids: []
+  safety_requirement_provenance: [] # typed origins; objective, safety-process constraint, independence principle, controlled assumption, or architecture/analysis result
   assurance_constraint_ids: [] # e.g., traceable FDAL/IDAL assignments
   independence_constraints: [] # type + principle/requirement/claim + substantiation references
   assumption_ids: []

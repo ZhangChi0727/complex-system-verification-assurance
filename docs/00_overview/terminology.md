@@ -1,7 +1,7 @@
 ---
 title: Working Terminology Baseline
 status: baseline
-version: 0.6
+version: 0.7
 baseline: v0.1
 owner: research
 last_updated: 2026-08-16
@@ -459,13 +459,13 @@ dependencies:
 
 ### Safety Requirement
 
-**Working definition:** 为满足一个或多个 Safety Objectives 而实施的 requirement。
+**Working definition:** 为实现 Safety Objective，或满足 Safety Process 所建立 constraint 而必需的 requirement。
 
 **Normative status:** Aviation definition — SAE ARP4761A, 2.2
 
 **Related concepts:** Requirement, Safety Objective, Verification Obligation
 
-**Notes:** Framework 中作为 `Requirement` subtype/classification，并保留 source analysis、rationale、allocation 与 assumption provenance；不是平行且无关的核心实体。
+**Notes:** Framework 中作为 `Requirement` subtype/classification，并允许多个 typed origins：Safety Objective、Safety Process Constraint、Independence Principle、转化为受控 requirement 的 Assumption，以及适用的 architecture/analysis result。保留 source analysis、rationale、allocation 与 assumption provenance；不能退化为单一 `SafetyObjective → SafetyRequirement` source 字段。
 
 ### Safety Assessment
 
@@ -496,6 +496,16 @@ dependencies:
 **Related concepts:** Failure Condition Classification, Architecture, Functional Failure Set, Assurance Constraint
 
 **Notes:** 不是 Verification Level、method、safety classification 或自动 certification credit；应建模为带 source/assignment provenance 的 Assurance Constraint。
+
+### Independence
+
+**Working definition:** ARP4761A 区分四种航空 independence：Functional Independence 以不同 functions 降低 common development error likelihood；Item Development Independence 以不同 item designs 降低 common development error likelihood；Physical Independence 以 separation/segregation 降低物理失效、损伤或环境效应造成的 common failures；Process Independence 以职责分离实现由活动执行者之外人员进行 objective evaluation。
+
+**Normative status:** Aviation definitions — SAE ARP4761A, 2.2
+
+**Related concepts:** Independence Principle, Independence Requirement, Independence Claim, CMA, ZSA, PRA
+
+**Notes:** Source definition 与 substantiation criterion 分开。Appendix P 在 FDAL/IDAL assignment 语境中通过 requirement sets、item designs、development processes 与 common-error sources 评价 functional/item-development independence claim，并可使用 CMA 或等效技术提供 substantiation；这些判定条件不替代 2.2 definition。
 
 ### Independence Principle / Independence Requirement
 

@@ -1,7 +1,7 @@
 ---
 title: SAE ARP4761A Internal Research Review
 status: completed
-version: 0.1
+version: 0.2
 baseline: candidate
 owner: research
 last_updated: 2026-08-16
@@ -44,7 +44,7 @@ review_target:
 
 | Conclusion | Primary locator | Check |
 |---|---|---|
-| Recommended-practice scope and alternative effective processes | 1.1–1.4 | PASS |
+| Recommended-practice scope and alternative effective processes | Section 1; 1.3 | PASS |
 | Core definitions and four independence types | 2.2 | PASS |
 | Iterative safety-assessment interactions and completion | 3.1.1 | PASS |
 | Safety-analysis method taxonomy | 3.1.2; Section 4 | PASS |
@@ -57,7 +57,7 @@ review_target:
 | ASA completion/outputs | F.4–F.5 | PASS |
 | MBSA technology neutrality, model verification and documentation | N.1; N.3.6; N.5 | PASS |
 | FDAL/IDAL assignment, independence and reuse | P.1–P.5 | PASS |
-| Appendix Q illustrative status | 1.4; Appendix Q | PASS |
+| Appendix Q illustrative status | 1.3; Appendix Q | PASS |
 
 ## 3. Boundary assertions
 
@@ -79,3 +79,23 @@ review_target:
 ## 5. Recommended next step
 
 Run a Cross-Standard Consistency & Gap Review over ISO/IEC/IEEE 15288:2023, ISO/IEC/IEEE 24748-1:2024, ISO/IEC/IEEE 24748-2:2024, SAE ARP4754B and SAE ARP4761A. Do not start item-level standards automatically.
+
+## 6. External PR review follow-up
+
+The original internal-review result above is preserved as historical research provenance. A subsequent PR #4 external review identified three source-provenance/ontology-strength findings:
+
+- `R-01` — invalid ARP4761A `1.4` locator;
+- `R-02` — over-linear Safety Requirement provenance;
+- `R-03` — source definition and substantiation criterion mixed for independence.
+
+The branch returned temporarily to `CHANGES REQUIRED` while these targeted corrections were applied. V0–V12 stable IDs, V10 `Change Impact & Re-verification`, the dual process-view architecture, SAF-G01–SAF-G06 and the Generic/Aviation Profile boundary were retained.
+
+## 7. Finding disposition
+
+| Finding | Status | Files changed | Resolution |
+|---|---|---|---|
+| R-01 | CLOSED | `sae_arp4761a.md`; this review | Replaced nonexistent `1.1–1.4`/`1.4` references with Section 1 and 1.3 locators; repository scan confirms no ARP4761A `1.4` locator remains |
+| R-02 | CLOSED | ARP4761A note; gap/map; terminology; DBSE/information model; VSR | Replaced the unique linear chain with typed multi-source origins from Safety Objective or Safety Process constraints, including Independence Principle, controlled assumption and architecture/analysis provenance; obligation formation still requires a Requirement/Constraint relation |
+| R-03 | CLOSED | ARP4761A note; terminology | Restored the 2.2 source definitions for all four independence types and separated Appendix P/CMA claim-substantiation criteria and evidence |
+
+**Status after targeted corrections:** READY FOR PR RE-REVIEW

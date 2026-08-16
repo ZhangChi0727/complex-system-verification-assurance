@@ -1,7 +1,7 @@
 ---
 title: SAE ARP4761A Standards Research Note
 status: working
-version: 0.1
+version: 0.2
 baseline: candidate
 owner: research
 last_updated: 2026-08-16
@@ -19,26 +19,32 @@ source:
 
 SAE ARP4761A, *Guidelines for Conducting the Safety Assessment Process on Civil Aircraft, Systems, and Equipment*, is an SAE Aerospace Recommended Practice revised in December 2023. This study uses the licensed local publication only; the PDF, extracted text, screenshots, figures and Appendix Q examples are not repository artefacts.
 
-ARP4761A supplies civil-aircraft safety-assessment guidance that can support certification programmes and organizational practices. It is not itself a regulation, does not define the whole certification basis, and allows other effective processes. Its intended relationship with ARP4754B, DO-178C, DO-254, DO-297 and applicable regulatory/advisory material is contextual (1.1–1.4).
+ARP4761A supplies civil-aircraft safety-assessment guidance that can support certification programmes and organizational practices. It is not itself a regulation, does not define the whole certification basis, and allows other effective processes (Section 1). Its intended relationship with ARP4754B, DO-178C, DO-254, DO-297 and applicable regulatory/advisory material is contextual (1.3).
 
 Classification labels used below are `SAFETY-ASSESSMENT GUIDANCE`, `DEFINITION`, `INTERPRETATION`, `FRAMEWORK IMPLICATION`, `AVIATION PROFILE RULE` and `RESEARCH PROPOSAL`. A recommendation is not silently promoted to a universal requirement.
 
 ## 2. Principal conclusion
 
-The normative research chain is:
+The principal Failure Condition path and the additional Safety Process origins are:
 
 ```text
 Failure Condition
   → classification
   → Safety Objective
-  → Safety Requirement
-  → Assurance / Independence Constraint
-  → Verification Obligation
+                    ┐
+Safety-process Constraint
+Independence Principle
+Controlled Assumption
+Applicable architecture / analysis result
+                    ├→ Safety Requirement
+                    └→ Assurance / Independence Constraint
+                              ↓
+                 Verification / Assurance Obligation
   → Development Verification Evidence + Safety Analysis Evidence
   → SSA / ASA Safety Assessment Evidence
 ```
 
-The arrows are typed relations, not automatic transformations. A classification informs objectives and analysis/development-assurance rigor, but does not directly prescribe a test count or one verification method. Safety-assessment results interact with development verification; they do not replace it.
+The diagram is a multi-source provenance model, not an assertion that every Safety Requirement passes through one linear chain. A classification informs objectives and analysis/development-assurance rigor, but does not directly prescribe a test count or one verification method. A Verification/Assurance Obligation still requires a traceable Requirement or Constraint relation; it is not generated automatically from a Failure Condition. Safety-assessment results interact with development verification; they do not replace it.
 
 ## 3. Core concepts and definitions
 
@@ -49,7 +55,7 @@ The arrows are typed relations, not automatic transformations. A classification 
 | Failure Condition Classification | Severity classification is selected using applicable regulatory/advisory criteria | Safety-criticality input; not a Verification Level | 2.2; 3.8 |
 | Safety / Risk | Safety is freedom from unacceptable risk; risk combines predicted frequency and severity | Context for acceptability; no single framework metric follows | 2.2 |
 | Safety Objective | Criterion associated with a Failure Condition that defines acceptable safety performance | Candidate Verification Basis input | 2.2; 3.2; Appendix A |
-| Safety Requirement | Requirement implemented to satisfy one or more Safety Objectives | `Requirement` subtype/classification with safety provenance | 2.2; 3.3; 3.5; D.4.3 |
+| Safety Requirement | Requirement necessary to achieve a Safety Objective or satisfy a constraint established by the Safety Process | `Requirement` subtype/classification with one or more typed safety-provenance relations | 2.2; 3.3; 3.5; D.4.3 |
 | Assurance | Planned/systematic actions that provide confidence/evidence | Broader assurance relation; do not collapse into testing | 2.2 |
 | FDAL / IDAL | Rigor applied respectively to function and item development-assurance tasks | Aviation `Assurance Constraint`, not Verification Level | 2.2; 3.9; Appendix P |
 | Independence | Functional, item-development, physical and process forms | Typed constraint/object with claim and substantiation | 2.2 |
@@ -83,7 +89,7 @@ SFHA identifies and classifies system-function Failure Conditions, establishes s
 
 ## 8. PSSA
 
-PSSA evaluates a proposed system architecture against PASA allocations and SFHA Safety Objectives. It derives and allocates proposed Safety Requirements, including independence, quantitative, monitoring/detection, protection, redundancy/reconfiguration and required-test concerns, and establishes FDAL/IDAL information (3.5; D.4.3; Appendix P).
+PSSA evaluates a proposed system architecture against PASA allocations and SFHA Safety Objectives. It derives and allocates proposed Safety Requirements from applicable Safety Objectives and Safety Process constraints, including independence principles, quantitative and architecture-analysis results, monitoring/detection, protection, redundancy/reconfiguration and required-test concerns, and establishes FDAL/IDAL information (2.2; 3.5; D.4.3; Appendix P).
 
 Each proposed Safety Requirement should retain rationale, source analysis and allocation. External or uncontrolled premises remain assumptions; matters under organizational control should normally be converted to proposed requirements (D.4.3.1–D.4.3.2). This provenance is the bridge from safety analysis to development and verification obligations.
 
@@ -117,12 +123,14 @@ FDAL/IDAL are not safety classifications, verification levels, methods, critical
 
 ## 14. Independence
 
-ARP4761A distinguishes four types (2.2):
+ARP4761A distinguishes four source-defined types (2.2):
 
-- `Functional Independence` — independence between functions;
-- `Item Development Independence` — sufficient separation/difference of item requirements and development sources;
-- `Physical Independence` — installation/physical separation against common causes;
-- `Process Independence` — independence between defined development-process activities or roles.
+- `Functional Independence` — a characteristic that reduces the likelihood of common development errors by using different functions;
+- `Item Development Independence` — a characteristic that reduces the likelihood of common development errors by using different item designs;
+- `Physical Independence` — a characteristic that reduces common failures caused by physical failure, damage or environmental effects through separation or segregation;
+- `Process Independence` — a practice using separation of responsibilities so someone other than the activity performer provides objective evaluation.
+
+These definitions are distinct from substantiation criteria. Appendix P evaluates claimed functional/item-development independence in the FDAL/IDAL assignment context by examining common sources of error across requirement sets, designs and development processes; CMA or equivalent techniques may substantiate those claims (P.3.2.2; P.3.2.4; P.4). Physical independence and particular-risk concerns use the applicable ZSA/PRA/CMA evidence. The analysis criterion must not silently replace the 2.2 definition.
 
 An `Independence Principle` is an intended implementation feature whose independence is judged necessary. It is not the same as a verified Independence Requirement. The principle is refined into requirements/constraints and must be substantiated through relevant development and analyses; CMA, ZSA and PRA address different common-cause/physical aspects (2.2; 3.1.2; Appendices J–M, P).
 
@@ -206,8 +214,8 @@ Open or deferred problem reports remain explicit completion inputs: their safety
 ## 25. Relationship to the Verification Assurance Framework
 
 - Safety Objective may contribute to `Verification Basis`, but is not a procedure or case.
-- Failure Condition is an upstream source object; together with classification and architecture it can derive Safety Objectives and Safety Requirements.
-- Safety Requirement should be represented as a `Requirement` subtype/classification with explicit provenance.
+- Failure Condition is an upstream source object; classification establishes the basis for Safety Objectives, while Safety Requirements can also originate from Safety Process constraints, Independence Principles, controlled assumptions and applicable architecture/analysis results.
+- Safety Requirement should be represented as a `Requirement` subtype/classification with one or more explicit, typed provenance relations.
 - Safety analysis can generate a `Verification Obligation` only through a traceable objective/requirement/constraint relation.
 - FDAL/IDAL and independence are aviation Assurance Constraints referenced by strategy, not flattened strategy scalars.
 - SSA/ASA aggregate multiple evidence sources and contribute to V11/V12 decisions without replacing generic verification.
@@ -252,10 +260,16 @@ Candidate aviation entities/relations:
 ```text
 FailureCondition -classifiedAs→ FailureConditionClassification
 FailureCondition -establishesBasisFor→ SafetyObjective
-SafetyObjective -satisfiedBy→ SafetyRequirement
+SafetyRequirementOrigin {
+  SafetyObjective,
+  SafetyProcessConstraint,
+  IndependencePrinciple,
+  ControlledAssumption,
+  ArchitectureOrAnalysisResult
+} -derives→ SafetyRequirement
 SafetyRequirement -subtypeOf→ Requirement
-SafetyRequirement -derives→ VerificationObligation
-AssuranceConstraint {FDAL, IDAL, IndependenceRequirement}
+SafetyRequirement | AssuranceConstraint -derives→ VerificationOrAssuranceObligation
+AssuranceConstraint {FDAL, IDAL, IndependenceRequirement, SafetyProcessConstraint}
 Assumption -creates→ AssumptionObligation -closedBy→ AssumptionConfirmation
 SafetyAnalysisResult -maySupport→ SafetyAnalysisEvidence
 SSA/ASA -aggregates→ {DevelopmentVerificationEvidence, SafetyAnalysisEvidence}
@@ -268,11 +282,11 @@ Cardinalities, lifecycle states and generic promotion remain research items.
 | ID | Answer |
 |---|---|
 | R4761-Q01 | AFHA/SFHA identify a Failure Condition, assess effects and select a classification; the classification establishes the basis for the corresponding Safety Objective. |
-| R4761-Q02 | PASA/PSSA evaluate proposed architecture against objectives and derive allocated qualitative, quantitative, independence and other Safety Requirements. |
+| R4761-Q02 | PASA/PSSA evaluate proposed architecture and derive allocated Safety Requirements from applicable Safety Objectives or other Safety Process constraints, including independence, quantitative, architecture and assumption-derived sources. |
 | R4761-Q03 | Classification is a principal depth/rigor driver, but design characteristics, information and advisory material also matter; it does not prescribe test count. |
 | R4761-Q04 | FC/classification drives initial rigor; architecture and substantiated independence can alter permitted allocations; PSSA assigns/reassesses FDAL/IDAL across functions/items. |
 | R4761-Q05 | It adds safety-derived objectives, requirements, assumptions, DAL/independence constraints and analysis evidence to the aviation Verification Strategy/rigor context. |
-| R4761-Q06 | Model Safety Requirement as a Requirement subtype/classification with derivation and allocation provenance. |
+| R4761-Q06 | Model Safety Requirement as a Requirement subtype/classification with typed, potentially multi-source derivation and allocation provenance. |
 | R4761-Q07 | Independence Principle is an intended architecture feature; Process Independence is one independence type concerning development activities/roles. |
 | R4761-Q08 | PSSA traces AFHA/PASA/SFHA inputs through architecture analyses to proposed allocated requirements with rationale and source-analysis links. |
 | R4761-Q09 | ARP4754B verifies implementation against validated requirements; SSA/ASA evaluate safety satisfaction using those results plus safety-analysis evidence. |

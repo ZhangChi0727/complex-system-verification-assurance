@@ -25,6 +25,9 @@ v0.1 establishes research infrastructure and does not claim completion or normat
 
 ### Research
 
+- Addressed PR #4 external review findings: corrected ARP4761A Section 1 locators, replaced the linear Safety Requirement chain with typed multi-source provenance, and separated independence definitions from Appendix P/CMA substantiation criteria.
+- Preserved the original ARP4761A internal-review result as historical provenance and recorded R-01–R-03 dispositions for re-review.
+
 - Added a clause- and appendix-level SAE ARP4761A research note covering AFHA/PASA/SFHA/PSSA/SSA/ASA, FDAL/IDAL, typed independence, assumptions, safety-analysis methods, evidence and completion boundaries.
 - Added the ARP4761A five-column mapping and six safety-specific gap candidates (`SAF-G01`–`SAF-G06`).
 - Established a dual Verification Assurance / Safety Assessment process-view architecture without replacing V0–V12.

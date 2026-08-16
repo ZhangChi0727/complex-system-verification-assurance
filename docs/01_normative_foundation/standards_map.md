@@ -1,7 +1,7 @@
 ---
 title: Cross-Standard Research Map
 status: working
-version: 0.9
+version: 0.10
 baseline: v0.1
 owner: research
 last_updated: 2026-08-16
@@ -60,7 +60,7 @@ dependencies:
 | SAE ARP4754B, 5.5.5; Appendix A 5.1–5.5 | 证明 implementation 满足已验证 requirements，并以适当 rigor 识别 deficiency/unintended behavior | inspection/review、analysis、testing/demonstration、similarity/service experience；coverage 和 readiness review | Verification Procedures、Results/Matrix、Summary、Problem Reports | FDAL-dependent objective、independence、procedure sufficiency、pass/fail、coverage、deficiency/safety-impact records |
 | SAE ARP4754B, 5.5.6; 5.6 | 形成可用于 agreed compliance substantiation 的 Verification Data | 汇总 results，控制来源/方法/对象/环境配置，建立 baseline 和 System Control Category | Verification Data、configuration index、CM records | result/data 可构成或支持 Evidence；其对特定 claim 的 provenance、applicability、credibility/control 和 sufficiency 分别评价 |
 | SAE ARP4754B, 6.3–6.4 | 对变更和既有 certification evidence 的适用性取得信心 | modification impact、affected/unaffected 分类、prior-objective credit、差异分析和补充 verification | impact analysis、reuse strategy、baseline/trace links、new/supplemented data | prior-evidence validity、适用性理由、补充活动和更新后的 substantiation |
-| SAE ARP4761A, 3.2–3.5; Appendices A–D | 从 Failure Condition 及其分类建立 Safety Objective，并经 proposed architecture 产生可分配 Safety Requirements | AFHA/SFHA 识别分类；PASA/PSSA 评价 architecture、common causes、independence 和 quantitative needs | Failure Condition、classification、Safety Objective、Safety Requirement、assumption、FDAL/IDAL/independence constraint | 分类理由、requirement derivation/allocation、source-analysis trace、assumption record；属 safety-assessment guidance |
+| SAE ARP4761A, 2.2; 3.2–3.5; Appendices A–D | 从 Failure Condition/classification 建立 Safety Objective，并从 objective 或 Safety Process constraint 形成可分配 Safety Requirements | AFHA/SFHA 识别分类；PASA/PSSA 评价 architecture、common causes、independence、quantitative needs 与 controlled assumptions | Failure Condition、classification、Safety Objective、Safety Process Constraint、Independence Principle、Safety Requirement、assumption、FDAL/IDAL constraint | 多源 requirement derivation/allocation、source-analysis/rationale trace、assumption-to-requirement record；属 safety-assessment guidance |
 | SAE ARP4761A, 3.6–3.7; Appendices E–F | 确认 implemented system/aircraft 满足适用 Safety Objectives 与 Safety Requirements | SSA 汇聚 development verification 和 safety analyses；ASA 汇聚 SSAs 与 aircraft-level analyses | SSA/ASA record、requirement/objective status、problem/assumption status、configuration and analysis references | Development Verification Evidence、Safety Analysis Evidence 与 Safety Assessment Evidence；SSA/ASA 不等同 generic Verification Process/V12 |
 | SAE ARP4761A, 3.8–3.9; Appendix P | 使 safety-analysis depth 与 development-assurance rigor 对 Failure Condition、architecture 和 independence 保持相称 | 选择 analysis depth；分配/复核 FDAL、IDAL 与 Functional Failure Set independence | classification、architecture、FFS、FDAL/IDAL assignment、independence claim/requirement | assignment rationale、CMA/ZSA/PRA 等 independence substantiation、reassessment record；FDAL/IDAL 不是 Verification Level |
 | SAE ARP4761A, A.6; D.4.3.2; D.5; E.4 | 维持假设有效性并在变化后保持安全结论可用 | capture/propagate/convert/confirm assumptions；执行 impact analysis 与 PSSA/SSA reassessment | Assumption、Assumption Obligation/Confirmation、change impact、affected safety objects | confirmation/correction evidence、updated analysis/DAL and prior-evidence-validity rationale；形成 V10 aviation subflow |
