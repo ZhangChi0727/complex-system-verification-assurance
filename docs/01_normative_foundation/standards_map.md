@@ -1,17 +1,30 @@
 ---
 title: Cross-Standard Research Map
-status: working
-version: 0.10
+status: reviewed
+version: 0.11
 baseline: v0.1
 owner: research
 last_updated: 2026-08-16
 dependencies:
   - standards_baseline.md
+  - consolidation/five_source_consistency_gap_review.md
 ---
 
 # Cross-Standard Research Map
 
 本矩阵按标准精读进度更新。`Direct` 表示规范正文直接支持，`Informative` 表示 NOTE 或资料性附录支持，`Indirect` 表示由相关生命周期过程提供支撑，`Gap` 表示在已研究范围内未建立该框架概念。所有结论必须保留条款定位和 conformance 边界。
+
+五源 consolidation 已冻结 source roles：ISO 15288 是 generic lifecycle/V&V/assurance foundation；ISO 24748-1 是 lifecycle/process-view guidance；ISO 24748-2 是 `Reviewed Supporting Source`；ARP4754B 是 civil-aircraft Development Assurance profile；ARP4761A 是 civil-aircraft Safety Assessment/Safety Assurance profile。未发现 source-role conflict 或 true semantic conflict；context、object level 与 abstraction level 差异不得被抹平。
+
+Consolidated classification：
+
+| Framework layer | Stable concepts | Controlled boundary |
+|---|---|---|
+| Generic Core | Verification/Validation contextual taxonomy、typed Verification Basis Element role（Requirement / Specified Characteristic / Applicable Constraint）、Verification Obligation、Strategy、Result/Evidence/Argument/Claim、Traceability/Provenance、Change Impact & Re-verification、Composite Gate | framework-defined objects retain provenance; basis-role schema is not frozen or attributed as a source-native term |
+| Generic Extension Point | Assurance Constraint、Independence Constraint、Coverage Obligation、Sufficiency Assessment、Assumption、Prior Evidence Applicability | profile supplies taxonomy, criteria and authority |
+| Civil Aviation Profile | Implementation/Requirement Validation context、FDAL/IDAL、Safety Objective/Requirement、typed independence、SSA/ASA、Verification/Certification Credit | never promoted into a universal complex-system rule |
+| Supporting Guidance | ISO 24748-1/2 application and lifecycle guidance | does not add new ISO 15288 requirements |
+| Research Proposal / Open Gap | Oracle、domain coverage/sufficiency algorithms、closure state/authority、information-item schema、model evidence | remains visibly non-normative |
 
 | Framework Concern | ISO 15288 | ISO 24748-1 | ISO 24748-2 | ARP4754B | ARP4761A | DO-178C | DO-254 | DO-297 | Status |
 |---|---|---|---|---|---|---|---|---|---|

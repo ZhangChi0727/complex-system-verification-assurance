@@ -44,7 +44,7 @@ Applicable architecture / analysis result
   → SSA / ASA Safety Assessment Evidence
 ```
 
-The diagram is a multi-source provenance model, not an assertion that every Safety Requirement passes through one linear chain. A classification informs objectives and analysis/development-assurance rigor, but does not directly prescribe a test count or one verification method. A Verification/Assurance Obligation still requires a traceable Requirement or Constraint relation; it is not generated automatically from a Failure Condition. Safety-assessment results interact with development verification; they do not replace it.
+The diagram is a multi-source provenance model, not an assertion that every Safety Requirement passes through one linear chain. A classification informs objectives and analysis/development-assurance rigor, but does not directly prescribe a test count or one verification method. Within this aviation profile, a Verification/Assurance Obligation still requires a traceable Requirement、Constraint or other explicitly controlled typed Basis relation；it is not generated automatically from a Failure Condition. Safety-assessment results interact with development verification; they do not replace it.
 
 ## 3. Core concepts and definitions
 
@@ -145,7 +145,7 @@ capture → identify owner/source → propagate/allocate
 → assess impact → revise design/assessment/evidence after change
 ```
 
-Assumptions may affect Failure Condition effects/classification, architecture, independence, exposure times, crew actions, interfaces and DAL assignments (A.6; D.4.3.2). Unconfirmed assumptions limit the validity of safety conclusions. Candidate entities are `Assumption`, `Assumption Obligation` and `Assumption Confirmation`; promotion to the generic core is deferred to cross-standard review.
+Assumptions may affect Failure Condition effects/classification, architecture, independence, exposure times, crew actions, interfaces and DAL assignments (A.6; D.4.3.2). Unconfirmed assumptions limit the validity of safety conclusions. Five-source consolidation promotes `Assumption` to a Generic Extension Point whose conceptual semantics can represent statement/context/affected objects and applicable validity、confirmation、ownership information；it does not freeze mandatory fields or states. `Assumption Obligation` and `Assumption Confirmation` remain aviation lifecycle specializations rather than universal states.
 
 ## 16. Safety-analysis method taxonomy
 
@@ -216,7 +216,7 @@ Open or deferred problem reports remain explicit completion inputs: their safety
 - Safety Objective may contribute to `Verification Basis`, but is not a procedure or case.
 - Failure Condition is an upstream source object; classification establishes the basis for Safety Objectives, while Safety Requirements can also originate from Safety Process constraints, Independence Principles, controlled assumptions and applicable architecture/analysis results.
 - Safety Requirement should be represented as a `Requirement` subtype/classification with one or more explicit, typed provenance relations.
-- Safety analysis can generate a `Verification Obligation` only through a traceable objective/requirement/constraint relation.
+- Safety analysis can lead to a `Verification Obligation` only after the relevant objective/analysis result is formalized through a traceable Requirement、Constraint or other explicitly controlled typed Basis relation；a Failure Condition is never a direct shortcut.
 - FDAL/IDAL and independence are aviation Assurance Constraints referenced by strategy, not flattened strategy scalars.
 - SSA/ASA aggregate multiple evidence sources and contribute to V11/V12 decisions without replacing generic verification.
 
@@ -275,7 +275,7 @@ SafetyAnalysisResult -maySupport→ SafetyAnalysisEvidence
 SSA/ASA -aggregates→ {DevelopmentVerificationEvidence, SafetyAnalysisEvidence}
 ```
 
-Cardinalities, lifecycle states and generic promotion remain research items.
+Five-source consolidation resolves generic promotion/classification but not complete cardinalities or lifecycle states. Stable generic/profile relations are maintained in `docs/04_information_model/README.md`.
 
 ## 31. Primary research questions R4761-Q01–Q15
 
@@ -321,4 +321,4 @@ Open questions for the cross-standard review are: generic assumption semantics; 
 
 ## 33. Final conclusions
 
-ARP4761A closes the first safety-assurance research slice and connects ARP4754B development assurance to safety-derived rigor and multi-source evidence. The result is a reviewed candidate aviation profile, not a final normative baseline. The next action is a Cross-Standard Consistency & Gap Review across ISO 15288, ISO 24748-1/2, ARP4754B and ARP4761A. Item-level standards are deliberately not started in this round.
+ARP4761A closes the first safety-assurance research slice and connects ARP4754B development assurance to safety-derived rigor and multi-source evidence. The five-source Cross-Standard Consistency & Gap Review subsequently froze this source as the civil-aviation Safety Assessment/Safety Assurance profile, while retaining generic/profile boundaries and open schema/criteria gaps. The next normative priority is ISO/IEC/IEEE 15289；item-level standards are not started automatically.

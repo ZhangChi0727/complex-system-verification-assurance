@@ -1,7 +1,7 @@
 ---
 title: Working Terminology Baseline
-status: baseline
-version: 0.7
+status: reviewed
+version: 0.8
 baseline: v0.1
 owner: research
 last_updated: 2026-08-16
@@ -11,7 +11,7 @@ dependencies:
 
 # Working Terminology Baseline
 
-本文件冻结 v0.1 的工作语言，而不是声称已经完成跨标准术语协调。除非另有说明，所有条目的 **Normative status** 均为 `To be verified`。ISO 15288 的支持结论受其 Clause 4 conformance mode 约束；NOTE 与资料性附录只作为 informative guidance。
+本文件记录五源 consolidation 后的 conceptual terminology baseline。每个 framework-defined term 仍须与 source-native term 区分；`GENERIC CORE` 表示进入 Framework conceptual baseline，不表示某份标准使用同名信息项。ISO 15288 的支持结论受其 Clause 4 conformance mode 约束；NOTE 与资料性附录只作为 informative guidance，ARP4754B/ARP4761A 规则保持 civil-aviation profile。
 
 ### Life Cycle Model
 
@@ -42,6 +42,16 @@ dependencies:
 **Related concepts:** Entry Criterion, Exit Criterion, Review, Decision Authority
 
 **Notes:** Criteria satisfaction ≠ Review completion ≠ Gate decision。V6/V12 的完整状态模型仍是 research proposal。
+
+### Composite Gate
+
+**Working definition:** 由 criteria-driven Assessment、可选 Review、Authority Decision 与 State/Baseline Event 组成的 framework-defined decision architecture。
+
+**Normative status:** `GENERIC CORE` framework architecture — supported by ISO/IEC/IEEE 24748-1:2024, 4.3 and Clause 5; name/composition is framework-defined
+
+**Related concepts:** Assessment, Review, Decision Gate, Decision Authority, Baseline
+
+**Notes:** `optional Review` 表示是否评审由适用来源/profile/project 决定；Assessment、Review、Decision 和 Event 必须分别可追溯。V6/V12 是 Composite Gates，不是标准原生过程或固定评审。
 
 ### Process View
 
@@ -97,15 +107,25 @@ dependencies:
 
 **Notes:** Requirement information model 必须保留相关约束和条件，不能只表达期望行为。Stakeholder requirement validation、system requirement validation、requirement quality/verification 与 system validation 应分别建模。
 
+### Specified Characteristic
+
+**Working definition:** 被明确指定为 Verification 比较/确认对象的 characteristic，即使项目尚未将其建模为 Requirement。
+
+**Normative status:** Direct verification-scope support — ISO/IEC/IEEE 15288:2023, 6.4.9.1–6.4.9.2
+
+**Related concepts:** Requirement, Verification Basis, Verification Obligation
+
+**Notes:** 在 Framework 中可承担 `VerificationBasisElement` role；v0.2 不冻结其独立 class/schema，也不允许未受控的 project property 自动成为 obligation basis。
+
 ### Verification Assurance
 
 **Working definition:** 对 Verification 过程、结果及其充分性建立可信性，使相关 claim 能由受控、可追溯和可复核的信息支持。
 
-**Normative status:** Research proposal
+**Normative status:** `GENERIC CORE` framework concern — cross-source support; term remains framework-defined
 
 **Related concepts:** Assurance Argument, Evidence, Sufficiency
 
-**Notes:** 这是本研究核心概念，尚未声明为任何标准的原生术语。
+**Notes:** 这是跨过程 assurance view，不是任何标准的原生 process。它与 aviation Development Assurance governance profile 和 Safety Assessment view 交互，但不与二者合并为一条专用流程。
 
 ### Development Assurance
 
@@ -115,37 +135,37 @@ dependencies:
 
 **Related concepts:** Verification Assurance, Independence, Assurance Level
 
-**Notes:** ARP4754B 把 Development Assurance 定位为 planned/systematic、与 safety-derived rigor 相称的过程，用于建立 development errors 已识别和纠正的信心。它是航空 profile 概念，不替代 ISO 通用 Assurance；FDAL/IDAL 详细分配继续由 ARP4761A 研究。
+**Notes:** ARP4754B 把 Development Assurance 定位为 planned/systematic、与 safety-derived rigor 相称的过程，用于建立 development errors 已识别和纠正的信心。它是航空 governance/profile 概念，不替代 ISO 通用 Assurance；ARP4761A 提供 safety-derived FDAL/IDAL 与 independence specialization。
 
-### Assurance Applicability / Rigor
+### Assurance Constraint
 
-**Working definition:** 在某一 domain profile 中，描述 assurance level 与 objective applicability、活动独立性及输出控制强度之间关系的集合。
+**Working definition:** 对 Verification/Assurance Obligation 的 applicability、执行方式、责任/独立性、rigor、所需 Evidence 或信息控制施加的受控约束。
 
-**Normative status:** Aviation relationship directly supported; unified entity remains a research proposal — SAE ARP4754B, 5.2, 5.6.4 and Appendix A
+**Normative status:** `GENERIC EXTENSION POINT`; aviation relationship directly supported — SAE ARP4754B, 5.2, 5.6.4 and Appendix A; SAE ARP4761A, 3.9 and Appendix P
 
 **Related concepts:** FDAL, IDAL, Process Independence, System Control Category, Certification Credit Intent
 
-**Notes:** 不能压缩成一个 `DAL` 或 `independent=true`。Appendix A 的 `R* / R / A / N` 只在 `source × objective × FDAL × cell` 上下文中分别表达带独立性的推荐、推荐、认证协商和认证不要求；它们不是 generic assurance-level enum，也不直接决定工程活动是否必要。Certification Credit Intent 是独立的 project/certification-use relation，不由 FDAL 自动推导。
+**Notes:** Generic Framework 只冻结 extension interface，不规定 universal levels。航空 profile 不能压缩成一个 `DAL` 或 `independent=true`；Appendix A 的 `R* / R / A / N` 只在 `source × objective × FDAL × cell` 上下文中解释。Certification Credit Intent 是独立 project/certification-use relation，不由 FDAL 自动推导。
 
 ### Verification Basis
 
-**Working definition:** 规定 Verification 适用要求、约束、架构、接口、配置和适用来源的受控集合。
+**Working definition:** 规定 Verification 的受控 scope/context，并包含可通过 typed relation 形成 obligation basis 的 elements；至少允许 Requirement、Specified Characteristic 与 Applicable Constraint。
 
 **Normative status:** Research proposal
 
 **Related concepts:** Requirement, Configuration, Normative Source
 
-**Notes:** 候选 DBSE information item。
+**Notes:** `VerificationBasisElement` 是 conceptual union/typed relation role，不在 v0.2 冻结为独立 information-item class 或复杂 schema。架构、接口、配置和适用来源可以限定 basis context，但只有明确受控的 basis relation 才生成 obligation。
 
 ### Verification Obligation
 
-**Working definition:** 对某项 Requirement 或 Assurance Objective 需要证明什么的明确陈述。
+**Working definition:** 基于一个或多个 typed、受控 Verification Basis Elements，明确需要通过 Verification 证明什么的受控对象。
 
-**Normative status:** Research proposal
+**Normative status:** `GENERIC CORE` framework-defined object — promoted by five-source consolidation
 
 **Related concepts:** Verification Objective, Verification Strategy
 
-**Notes:** 不等同于 Requirement 本身。
+**Notes:** 不等同于 Requirement 本身。Generic basis 至少允许 Requirement、Specified Characteristic 与 Applicable Constraint；关系为受约束的 many-to-many。适用且需要验证的 Requirement/Specified Characteristic 至少由一个 obligation 覆盖或具有明确 disposition。Failure Condition、Safety Objective、DAL、Assumption 或未受控 project custom 不能跳过适当的 Requirement/Constraint/Basis relation 直接生成 obligation。
 
 ### Verification Objective
 
@@ -289,23 +309,23 @@ dependencies:
 
 ### Coverage
 
-**Working definition:** 对已执行 Verification 相对于明确 coverage obligations 的范围度量或状态描述。
+**Working definition:** 对明确 population 和 criterion 的覆盖范围、证据/结果及 uncovered disposition 的受控评价。
 
-**Normative status:** To be verified
+**Normative status:** `GENERIC EXTENSION POINT`; universal taxonomy/percentage remains open
 
 **Related concepts:** Coverage Obligation, Sufficiency, Requirement Type
 
-**Notes:** 不假设所有 coverage dimensions 对所有系统均强制适用。
+**Notes:** `CoverageObligation` 最小结构为 population/scope、criterion、evidence/result、uncovered disposition 和 configuration/context。不假设所有 dimensions 对所有系统均强制适用；Coverage Result 不自动证明 sufficiency。
 
 ### Verification Sufficiency
 
-**Working definition:** 对所选策略、活动、coverage、配置、异常处置和 Evidence 是否足以支持目标 claim 的综合评价。
+**Working definition:** 对 obligations、coverage、Evidence、limitations、assumptions、anomalies 和 assurance constraints 是否足以支持目标 claim 的 reasoned assessment。
 
-**Normative status:** Research proposal
+**Normative status:** `GENERIC EXTENSION POINT`; assessment interface promoted, algorithm/criteria remain profile-specific
 
 **Related concepts:** Coverage, Evidence, Assurance Argument
 
-**Notes:** Requirement Coverage = 100% 本身不证明充分。
+**Notes:** `SufficiencyAssessment` 必须输出 conclusion、rationale、residual gaps 和 decision context。Requirement Coverage = 100% 本身不证明充分。
 
 ### Evidence
 
@@ -346,6 +366,16 @@ dependencies:
 **Related concepts:** Digital Thread, Evidence, Change Impact
 
 **Notes:** ISO 15288 的 NOTE 支持 verified element 与 strategy、architecture、design、requirements、results/evidence、anomalies 和 deviations 的双向关联。Traceability ≠ Assurance Argument；关联存在不自动证明证据充分。
+
+### Provenance
+
+**Working definition:** 记录对象、结论、配置、Evidence 或 credit 从何处产生、经过何种转化和决定的来源历史。
+
+**Normative status:** `GENERIC CORE` relation — promoted by five-source consolidation; detailed schema remains framework-defined
+
+**Related concepts:** Traceability, Argument, Configuration, Safety Requirement Origin, Evidence Credit
+
+**Notes:** Traceability 回答“什么与什么相关”，Provenance 回答“从哪里来”，Argument 回答“为什么足以支持结论”。三者不能互相替代。
 
 ### Compliance Claim
 
@@ -391,11 +421,11 @@ dependencies:
 
 **Working definition:** 对目标、coverage、Evidence、配置、异常和限制是否满足关闭条件的正式评价与决策。
 
-**Normative status:** Research proposal
+**Normative status:** `GENERIC CORE` framework-defined Composite Gate; authority/state details remain open
 
 **Related concepts:** Sufficiency, Compliance Claim, Baseline
 
-**Notes:** ISO 24748-1:2024 的 stage exit criteria、decision gates 和 authorization 为组合 closure decision 提供指导性支撑，但不定义名为 Verification Closure 的过程。v0.1 不冻结具体 closure criteria、waiver、reopening 或 authority semantics。
+**Notes:** ISO 24748-1:2024 的 stage exit criteria、decision gates 和 authorization 为组合 closure decision 提供指导性支撑，但不定义名为 Verification Closure 的过程。Closure ≠ all tests passed ≠ review completed ≠ certification approval ≠ SSA/ASA。waiver、reopening 和 authority semantics 仍 open。
 
 ### DBSE
 
@@ -507,6 +537,16 @@ dependencies:
 
 **Notes:** Source definition 与 substantiation criterion 分开。Appendix P 在 FDAL/IDAL assignment 语境中通过 requirement sets、item designs、development processes 与 common-error sources 评价 functional/item-development independence claim，并可使用 CMA 或等效技术提供 substantiation；这些判定条件不替代 2.2 definition。
 
+### Independence Constraint
+
+**Working definition:** 对特定 activity、object 或 claim 所需 separation/independence type、condition、rationale、claim 和 substantiation 的受控约束。
+
+**Normative status:** `GENERIC EXTENSION POINT`; typed aviation specialization — SAE ARP4754B, 5.2 and Appendix A; SAE ARP4761A, 2.2 and Appendices E, J–M, P
+
+**Related concepts:** Independence Type, Independence Principle, Independence Requirement, Independence Claim, Substantiation Evidence
+
+**Notes:** 不使用一个 `independent: true/false` 代替完整结构。何时需要何种 independence、由谁决定及证据充分性仍由 profile 或项目规则规定。
+
 ### Independence Principle / Independence Requirement
 
 **Working definition:** Independence Principle 是 intended implementation 中被判定需要 independence 的特征；Independence Requirement 是对该需要的可分配、可确认约束。
@@ -521,8 +561,8 @@ dependencies:
 
 **Working definition:** 在尚未获得已验证信息时用于分析的 premise，并在生命周期中被拥有、传播、确认或纠正。
 
-**Normative status:** Aviation definition/lifecycle support; generic promotion pending — SAE ARP4761A, 2.2, A.6 and D.4.3.2
+**Normative status:** `GENERIC EXTENSION POINT`; aviation lifecycle specialization — ISO/IEC/IEEE 24748-2:2024, 6.7.5.3.5; SAE ARP4761A, 2.2, A.6 and D.4.3.2
 
 **Related concepts:** Assumption Obligation, Assumption Confirmation, Requirement, Change Impact
 
-**Notes:** 组织可控制的 premise 宜转化为 proposed requirement；未确认 assumption 会限制 safety conclusion validity。是否提升为 Generic Framework object 留待跨标准复审。
+**Notes:** Generic conceptual semantics 应能表示 identity、statement、scope/context、affected objects、适用时的 validity/confirmation information，以及 applicable process/profile/project 已定义的 ownership/responsibility；这不是 mandatory field list。Exact ownership、required fields、validity states、confirmation obligations、cardinalities 和 lifecycle transitions 保持 open。航空 profile 进一步规定 capture、propagation、受控 premise 转 proposed requirement、confirmation/correction 与 safety reassessment。

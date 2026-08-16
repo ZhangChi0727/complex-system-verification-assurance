@@ -1,7 +1,7 @@
 ---
 title: DBSE Verification Workflow Workspace
 status: working
-version: 0.7
+version: 0.8
 baseline: v0.1
 owner: research
 last_updated: 2026-08-16
@@ -12,15 +12,17 @@ dependencies:
 
 # DBSE Verification Workflow Workspace
 
-候选架构包含 `V0` 至 `V12`，详见 [research roadmap](../00_overview/roadmap.md)。ISO/IEC/IEEE 15288:2023 的 5.7–5.8 支持迭代、递归和并发应用过程；ISO/IEC/IEEE 24748-1:2024 Clause 5、Annex A、D 和 E 进一步说明 stage ≠ process、过程可跨阶段调用，以及 process view 不定义新的源标准任务。
+v0.2 conceptual baseline 包含 `V0` 至 `V12`，详见 [five-source consolidation](../01_normative_foundation/consolidation/five_source_consistency_gap_review.md) 与 [research roadmap](../00_overview/roadmap.md)。ISO/IEC/IEEE 15288:2023 的 5.7–5.8 支持迭代、递归和并发应用过程；ISO/IEC/IEEE 24748-1:2024 Clause 5、Annex A、D 和 E 进一步说明 stage ≠ process、过程可跨阶段调用，以及 process view 不定义新的源标准任务。
 
-因此 V0–V12 定位为 **Verification Assurance Process View / cross-process orchestration architecture**：编号仅用于稳定标识和覆盖分析，不表示 lifecycle stage、强制时间顺序或瀑布模型。每个 V-element 必须声明自身本体和源任务映射：
+因此 V0–V12 冻结为 **Verification Assurance Process View / cross-process orchestration architecture**：编号仅用于稳定标识和覆盖分析，不表示 lifecycle stage、强制时间顺序或瀑布模型。每个 V-element 必须声明自身本体和源任务映射：
 
 - `Activity / information design`：V0–V5、V7；
 - `Evaluation / decision`：V8；
 - `Cross-process concern or orchestration`：V9–V10，其中 V10 现命名为 `Change Impact & Re-verification`；
 - `Assurance assessment`：V11；
 - `Composite gate`：V6 与 V12。
+
+V1–V3 使用 typed obligation-basis relation：`Requirement | Specified Characteristic | Applicable Constraint → Verification Obligation → Verification Strategy`。`VerificationBasisElement` 仅是 conceptual union/role；不在 v0.2 冻结为复杂 schema。Failure Condition、Safety Objective、DAL、Assumption 或未受控 project custom 不能跳过适当的受控 basis relation 直接生成 obligation；航空 profile 仍以 Safety Requirement 与 Assurance/Independence Constraint 作为直接 basis。
 
 V6 `Verification Readiness` 是 framework-defined composite gate，由 criteria-driven lifecycle evaluation、可选 verification/lifecycle review 和 authorization decision 组成。V12 `Verification Closure` 同样是 framework-defined composite gate，整合 assurance assessment、approval decision、traceability/baseline completion 及适用的 lifecycle-gate semantics。ISO 24748-1 Annex F 只给出候选 `Verification reviews`，不要求名为 `Verification Readiness Review` 的固定 gate，也不定义名为 `Verification Closure` 的过程。
 
@@ -46,10 +48,28 @@ ASA       → aircraft-level safety assurance aggregation
 
 双视图通过 Safety Objective/Requirement、Verification Obligation、Assurance Constraint、Assumption 和 Evidence 关联。`Safety Analysis Method` 与 `Verification Method` 分层；SSA 不是 generic Verification Process，ASA 不是 V12。
 
+Generic Assumption semantics 只要求 Framework 能表达 statement/context/affected objects 及适用的 validity、confirmation、ownership information；不冻结 mandatory owner/status/link fields、cardinality 或 lifecycle state machine。
+
+ARP4754B Development Assurance 采用 aviation governance/profile layer，而不是第三套与 V0–V12 竞争的 Process View。它约束 planning、objective applicability、rigor、independence、information control 和 credit；Safety Assessment view 则与 V0–V12 交换 requirements、constraints、assumptions、results/evidence 与 completion status。
+
 ARP4761A 对稳定 V-ID 的影响限定为 profile extension：V0–V3 接收 safety basis/constraints；V10 增加 `safety impact → assumption/FDAL/IDAL reassessment → prior-evidence validity → selected re-analysis/re-verification`；V11 评价 Failure Condition、objective、requirement、assumption、independence coverage 及 heterogeneous evidence sufficiency；V12 接收 SSA/ASA completion 作为 aviation-specific input，但仍保留 assessment、review、decision 与 baseline event 的分离。
 
 每个 view element 未来统一描述：Element ID、Ontology、Purpose、Normative Basis、Source Process/Activity/Task Mapping、Inputs、Entry Criteria、Roles/Decision Authority、Process/Assessment、Decision Rules、Outputs、Required Records、Traceability、Independence、Configuration Control、Exit Criteria、Iteration/Re-entry Rules。
 
+V10 与 V11 的 conceptual contracts 已冻结：
+
+```text
+V10: Change → Impact Scope → affected basis/claims/assumptions/configuration
+     → Prior-Evidence Validity → selected re-verification/re-analysis
+     → updated evidence → reassessment/re-entry
+
+V11 inputs: obligations + coverage + evidence + limitations + assumptions
+            + anomalies + assurance constraints
+    output: conclusion + rationale + residual gaps + decision context
+```
+
+V6/V12 共用 Composite Gate ontology：Assessment + optional Review + Authority Decision + State/Baseline Event。V12 还必须接收 applicable obligations disposition、coverage/sufficiency conclusion、anomaly/deviation disposition、identified configuration 和 required dependent assurance assessment status。具体 authority、waiver/reopening 与 state machine 仍 open。
+
 项目实例应使用 [Lifecycle / Process Tailoring and Instantiation Record](../../templates/lifecycle_process_instantiation_record.md) 记录适用标准、development approach、阶段/条件/gates、过程选择及理由。模板是 research draft，不是 ISO 24748-1 规定的信息项 schema。
 
-**Status:** ISO 15288、ISO 24748-1、ISO 24748-2 supporting guidance、ARP4754B development assurance 与 ARP4761A safety assurance 已 mapped；generic gate state model、完整 coverage/sufficiency、closure authority 和 item-level objectives 仍不冻结。下一步是 Cross-Standard Consistency & Gap Review，而非自动进入 item-level 标准。
+**Status:** Five-source conceptual consolidation completed。V0–V12 labels/ontology、V10 chain、V11 interface、V6/V12 Composite Gate architecture 与 generic/profile boundary 已冻结；domain coverage/sufficiency criteria、closure authority/state、information-item schema 和 item-level objectives 仍不冻结。下一 normative priority 是 ISO/IEC/IEEE 15289。
