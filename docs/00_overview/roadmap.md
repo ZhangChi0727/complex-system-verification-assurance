@@ -1,7 +1,7 @@
 ---
 title: Research Roadmap
 status: baseline
-version: 0.4
+version: 0.5
 baseline: v0.1
 owner: research
 last_updated: 2026-08-16
@@ -19,6 +19,8 @@ dependencies:
 ## Phase 1 — Normative Foundation
 
 系统研究 ISO/IEC/IEEE 15288、ISO/IEC/IEEE 24748、INCOSE、NASA Systems Engineering Handbook、SAE ARP4754B、SAE ARP4761A、RTCA DO-178C、DO-254、DO-297 及适用补充标准。仅在合法取得全文和准确定位后形成规范性结论。
+
+第一轮五源 consolidation 已完成：ISO 15288、ISO 24748-1/2、ARP4754B 与 ARP4761A 的 source roles、Generic Core/extension points、Civil Aviation Profile 和 inherited gaps 已统一。下一主要标准由 gap-priority matrix 选择为 **ISO/IEC/IEEE 15289**；ISO 29148 次之。DO-178C、DO-254、DO-297 不再按引用链自动启动。
 
 ## Phase 2 — Normative Gap Analysis
 
@@ -52,13 +54,15 @@ V11 Coverage & Sufficiency Assessment
 V12 Verification Closure
 ```
 
-ISO/IEC/IEEE 15288:2023 的 5.7–5.8 与 ISO/IEC/IEEE 24748-1:2024 Clause 5、Annex A/D/E 支持迭代、递归、并发和跨过程 view；ISO/IEC/IEEE 24748-2:2024 进一步澄清策略整合、多次调用和 gate cadence；SAE ARP4754B, 6.3–6.4 支持把 V10 专门化为 change-impact、prior-evidence validity 和 selected re-verification orchestration。ARP4761A, 3.1、Appendices D–F/P 进一步给出 aviation Safety Reassessment、safety-evidence aggregation 和 completion inputs。它们均不支持把 V-ID 解释为 lifecycle stage 或强制时间顺序，也不支持把 AFHA–ASA 替换为 V0–V12。V0–V5/V7 暂按活动或信息设计处理，V8 是评价/决策，V9–V10 是跨过程 concern/orchestration，V11 是 assurance assessment，V6/V12 是 composite gates。完整 generic Coverage、Sufficiency 和 Closure 规则仍是 research hypothesis。
+ISO/IEC/IEEE 15288:2023 的 5.7–5.8 与 ISO/IEC/IEEE 24748-1:2024 Clause 5、Annex A/D/E 支持迭代、递归、并发和跨过程 view；ISO/IEC/IEEE 24748-2:2024 进一步澄清策略整合、多次调用和 gate cadence；SAE ARP4754B, 6.3–6.4 支持 V10 的 aviation modification/credit specialization，ARP4761A, 3.1、Appendices D–F/P 支持 Safety Reassessment、safety-evidence aggregation 和 completion inputs。
 
-当前规范研究停点：在进入 DO-178C、DO-254 或 DO-297 前，先完成 ISO 15288、ISO 24748-1/2、ARP4754B 与 ARP4761A 的 Cross-Standard Consistency & Gap Review。
+五源 consolidation 已冻结 V0–V12 名称和 ontology：V0–V5/V7 是 activity/information design，V8 是 evaluation/decision，V9–V10 是 cross-process orchestration，V11 是 assurance assessment，V6/V12 是 framework-defined Composite Gates。Coverage/Sufficiency 的 generic interfaces 已稳定，但 domain taxonomies/criteria、closure authority/state 与 V10 selection rules仍 open。
 
 ## Phase 4 — Verification Information Architecture
 
 定义 candidate entities、字段、关系、状态、ownership、traceability 和 configuration semantics。
+
+入口条件已由五源 conceptual consolidation 满足。先以稳定 entity/relation set 为基础研究 ISO 15289；不得从现有 YAML 字段倒推 ontology，也不得在 source basis 到位前冻结 cardinality/schema。
 
 ## Phase 5 — Coverage & Evidence Architecture
 

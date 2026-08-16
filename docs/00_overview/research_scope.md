@@ -1,7 +1,7 @@
 ---
 title: Research Scope
 status: baseline
-version: 0.2
+version: 0.3
 baseline: v0.1
 owner: research
 last_updated: 2026-08-16
@@ -45,8 +45,13 @@ dependencies: []
 
 | Layer | Meaning | Example |
 |---|---|---|
-| Generic Framework | 跨产品仍成立的研究方法与语义 | Verification Strategy、Coverage、Evidence |
-| Domain Profile | 特定行业架构、接口和约束对通用框架的实例化 | DCAS alerting、IMA integration context |
+| Generic Core | 跨产品仍成立的对象、关系和 assurance semantics | Verification Obligation、Strategy、Evidence、Provenance、Composite Gate |
+| Generic Extension Point | Framework 确认需要、但 taxonomy/criteria/authority 由 profile 决定的维度 | Assurance/Independence Constraint、Coverage Obligation、Sufficiency Assessment、Assumption |
+| Domain Profile | 特定行业规则对 Generic Core/extension points 的受控特化 | Civil Aviation FDAL/IDAL、Safety Requirement、SSA/ASA、typed independence |
 | Concrete Project Practice | 特定组织、项目、工具或配置采用的做法 | 项目审批流、具体台架与记录格式 |
 
 任何内容进入通用层前都必须回答：更换领域后该规则是否仍然成立，以及它的 normative basis 或 research rationale 是什么。
+
+## v0.2 conceptual-baseline boundary
+
+五源 consolidation 的 verdict 是 `CONDITIONALLY READY FOR v0.2 CONCEPTUAL BASELINE`。这允许冻结稳定 terminology、V0–V12 ontology、Generic/Profile boundary、evidence/change/gate semantics 与受控 open gaps；不允许宣称 executable schema、统一 coverage/sufficiency algorithm、item-level assurance completeness、certification acceptance 或 framework validation 已完成。
