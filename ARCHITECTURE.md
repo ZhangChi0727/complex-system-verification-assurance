@@ -45,7 +45,7 @@ Automation Rule
 ## Repository layers
 
 - `docs/`：产品无关的方法论。标准研究先于框架规则，DBSE workflow 先于 MBSE realization。
-- `domains/`：DCAS、ARINC 615A 等领域实例化。Domain Profile 不能反向污染 generic framework。
+- `domains/`：领域 profile 与 industrial-practice knowledge source（如 DCAS）。Domain Profile 不能反向污染 generic framework；框架验证实例统一由 `docs/08_validation/` 管理，不在此层实例化。
 - `models/`：从稳定的 DBSE 信息模型迁移到 metamodel、schema、SysML/SysML v2 或图表示。
 - `data/`：standards matrix、traceability、coverage 和其他机器可读数据。
 - `references/`：合法 bibliographic metadata、检索策略、阅读记录和不可公开资料的定位说明。
