@@ -1,10 +1,10 @@
 ---
 title: Research Roadmap
 status: baseline
-version: 0.5
+version: 0.6
 baseline: v0.1
 owner: research
-last_updated: 2026-08-16
+last_updated: 2026-08-17
 dependencies:
   - research_scope.md
   - research_questions.md
@@ -18,9 +18,9 @@ dependencies:
 
 ## Phase 1 — Normative Foundation
 
-系统研究 ISO/IEC/IEEE 15288、ISO/IEC/IEEE 24748、INCOSE、NASA Systems Engineering Handbook、SAE ARP4754B、SAE ARP4761A、RTCA DO-178C、DO-254、DO-297 及适用补充标准。仅在合法取得全文和准确定位后形成规范性结论。
+系统研究 ISO/IEC/IEEE 15288、ISO/IEC/IEEE 24748、INCOSE、NASA Systems Engineering Handbook、SAE ARP4754B、SAE ARP4761A、RTCA DO-178C、DO-254、DO-297、generic conformance-testing methodology 来源（ISO/IEC 9646 / ITU-T X.290 系列、ETSI TTCN-3）及适用补充标准。仅在合法取得全文和准确定位后形成规范性结论。
 
-第一轮五源 consolidation 已完成：ISO 15288、ISO 24748-1/2、ARP4754B 与 ARP4761A 的 source roles、Generic Core/extension points、Civil Aviation Profile 和 inherited gaps 已统一。下一主要标准由 gap-priority matrix 选择为 **ISO/IEC/IEEE 15289**；ISO 29148 次之。DO-178C、DO-254、DO-297 不再按引用链自动启动。
+第一轮五源 consolidation 已完成：ISO 15288、ISO 24748-1/2、ARP4754B 与 ARP4761A 的 source roles、Generic Core/extension points、Civil Aviation Profile 和 inherited gaps 已统一。下一轮在定位变更触发的 gap-priority 重评分后采用**双轨**：**ISO/IEC/IEEE 15289 全量条款精读**（ISO-G07 主线）与 **ISO/IEC 9646 / ITU-T X.290 概念切片 targeted review**（first-instance 前置）并行；ISO 29148 与 ISO/IEC/IEEE 15026-2 排后批；ETSI TTCN-3 待平台原型启动前。DO-178C、DO-254、DO-297 维持 deferred，不按引用链自动启动。标准纳入与分层管理遵循 `01_normative_foundation/standards_baseline.md` 的 layering policy。
 
 ## Phase 2 — Normative Gap Analysis
 
@@ -70,11 +70,11 @@ ISO/IEC/IEEE 15288:2023 的 5.7–5.8 与 ISO/IEC/IEEE 24748-1:2024 Clause 5、A
 
 ## Phase 6 — Verification Pattern Library
 
-从跨项目问题和 DCAS 实践中抽象 generic patterns，记录适用边界和 domain instantiation。
+从跨项目问题、DCAS 实践（knowledge source）和验证实例中抽象 generic patterns，经抽象阶梯（见 research_scope）进入方法论，记录适用边界和 domain instantiation。
 
-## Phase 7 — DCAS Re-instantiation
+## Phase 7 — DCAS Knowledge-Source Re-instantiation
 
-通过 source mapping 把工业实践重新分类为 Generic Methodology、Domain Rule、Concrete Example、Tooling 或 Organizational Practice。
+通过 source mapping 把 DCAS 工业实践重新分类为 Generic Methodology、Domain Rule、Concrete Example、Tooling 或 Organizational Practice。DCAS 不承担框架验证实例职能，仅作为 industrial-practice knowledge source 喂给 pattern library 与 aviation profile；验证实例见 `docs/08_validation/`。
 
 ## Phase 8 — MBSE Metamodel
 
@@ -82,11 +82,11 @@ ISO/IEC/IEEE 15288:2023 的 5.7–5.8 与 ISO/IEC/IEEE 24748-1:2024 Clause 5、A
 
 ## Phase 9 — Automation
 
-研究 traceability checking、coverage checking、impact analysis、model validation 与 document generation。不得在信息模型稳定前固化工具规则。
+研究 traceability checking、coverage checking、impact analysis、model validation 与 document generation。不得在信息模型稳定前固化工具规则。本阶段产出为**非产品化的 Verification Platform 研究原型**——方法论与模型化架构的执行和演示载体，不进行产品化开发。
 
 ## Phase 10 — Cross-Domain Validation
 
-以 DCAS 为 primary case，以 ARINC 615A 为 cross-domain candidate，评价 completeness、traceability、repeatability、scalability、reusability 和 Evidence quality。
+以 **ARINC 615A 协议符合性验证**为 first instance，以无人机飞管系统验证与 LLM 服务可靠性与性能验证为后续实例，按实例 × 框架元素锻炼矩阵（`docs/08_validation/`）评价 completeness、traceability、repeatability、scalability、reusability 和 Evidence quality。DCAS 不作为验证实例。
 
 ## Phase gates
 

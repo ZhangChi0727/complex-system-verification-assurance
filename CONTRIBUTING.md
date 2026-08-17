@@ -31,6 +31,20 @@ DCAS-specific 内容不能直接进入 generic `docs/`。先判断其属于 Gene
 - Result ≠ Evidence；
 - Test 不等同于全部 Verification。
 
+## Standards-research touch points
+
+新增或修订一份标准研究切片时，按序检查以下触点（漏检即一致性缺陷）：
+
+1. `standards_baseline.md`——来源行、研究角色与优先级；
+2. `standard_notes/` 研究笔记——条款定位与五级分类；
+3. `standards_map.md`——concern 行、五列切片与 coverage note；
+4. `normative_gap_matrix.md`——gap 新增/disposition/状态迁移（含"创新输入"性质迁移）；
+5. consolidation report §28 annex——若产生新 promotion，先登记后扩散；
+6. `terminology.md`——引用 annex 行，不重定义；
+7. `templates/`——candidate 字段标注，不升级为 generic schema；
+8. `reviews/`——internal/external 评审 provenance 与 disposition；
+9. `CHANGELOG.md`——研究记录。
+
 ## Change quality
 
 - 使用稳定 ID 和统一 YAML metadata；

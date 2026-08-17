@@ -1,10 +1,10 @@
 ---
 title: Research Questions
 status: baseline
-version: 0.1
+version: 0.3
 baseline: v0.1
 owner: research
-last_updated: 2026-08-15
+last_updated: 2026-08-17
 dependencies:
   - research_scope.md
 ---
@@ -36,6 +36,8 @@ dependencies:
 
 **Status:** Open
 
+**v0.2 partial progress:** `SufficiencyAssessment` 的 generic I/O interface 已冻结（inputs / conclusion / rationale / residual gaps / decision context，见 consolidation §13 与 ISO-G03A）；**推理语义——为何 coverage 不足以证明充分、异构证据如何聚合为 reasoned conclusion、阈值与 decision authority——保持 open**（ISO-G03B），由 Phase 5 构建并经 UAV FMS 与 LLM 服务实例检验。接口冻结不得被解读为 RQ4 已闭合；充分性语义是框架核心论题（见 research_scope"标准没说什么"创新登记）。
+
 ## RQ5 — Evidence and claim
 
 Verification Evidence 如何通过可审查的 Assurance Argument 支持 Compliance Claim？
@@ -56,6 +58,6 @@ DBSE Verification Workflow 如何形成机器可解释、可查询和可检查�
 
 ## RQ8 — Framework validation
 
-如何通过 DCAS 和至少一个非 DCAS 案例验证 framework 的 completeness、traceability、repeatability、scalability 与 reusability？
+如何通过多领域实例（ARINC 615A 协议符合性验证为 first instance，无人机飞管系统验证与 LLM 服务可靠性与性能验证为后续实例）验证 framework 的 completeness、traceability、repeatability、scalability 与 reusability？
 
 **Status:** Open

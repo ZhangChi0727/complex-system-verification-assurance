@@ -1,17 +1,17 @@
 ---
 title: DCAS Domain Workspace
 status: working
-version: 0.1
+version: 0.2
 baseline: v0.1
 owner: research
-last_updated: 2026-08-15
+last_updated: 2026-08-17
 dependencies:
   - ../README.md
 ---
 
 # DCAS Domain Workspace
 
-现有 DCAS 材料在本研究中的角色是 **Industrial Practice Source**，不是 Normative Verification Standard。
+现有 DCAS 材料在本研究中的角色是 **Industrial Practice Knowledge Source**，不是 Normative Verification Standard，也**不作为框架验证实例**（验证实例见 `docs/08_validation/`）。DCAS 模式经抽象阶梯（profile 实践 → 候选 pattern → generic pattern → 跨域实例检验，见 `docs/00_overview/research_scope.md`）进入方法论。
 
 已知知识类别包括 verification methods/document types、TC/TP、numerical display、boundary、resolution、LSB、hysteresis、source selection、alerting、alert inhibition、validity、reconfiguration、retention、CRC、EDE、BIT、lab environment、automation tools、troubleshooting 与 PR workflow。
 

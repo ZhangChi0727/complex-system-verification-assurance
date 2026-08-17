@@ -25,6 +25,20 @@ v0.1 establishes research infrastructure and does not claim completion or normat
 
 ### Research
 
+- Recorded the next research round: gap-priority rescoring triggered by repositioning, then dual-track study — full ISO/IEC/IEEE 15289 clause study plus an ISO/IEC 9646 / ITU-T X.290 concept-slice targeted review; ISO 29148 and ISO/IEC/IEEE 15026-2 queued behind them; TTCN-3 gated on platform-prototype start; DO-178C/DO-254/DO-297 remain deferred.
+- Added a standards layering policy to the target baseline: one primary layer role per source (generic methodological / domain assurance profile / instance standard / execution technology), layer-bounded conclusion rights, dual-role splitting and abstraction-ladder-only cross-layer flow.
+- Added ISO/IEC/IEEE 15026-2 (assurance case content, Phase 5/RQ4 input) and ISO/IEC/IEEE 29119-11 (AI-based system testing, third-instance reference) to the standards backlog; marked TTCN-3 as execution technology under the layering policy.
+- Added a framework-object provenance annex (§28) to the five-source consolidation report: per-object source-native/framework-defined attribution, non-aviation generic-basis audit, frozen boundaries, open items and schema gates; zero new files, definition-ownership rule recorded in ARCHITECTURE.md.
+- Recorded RQ4 partial-progress boundary (assessment interface frozen; reasoning semantics, criteria and authority open for Phase 5).
+- Added a coverage note to the cross-standard map so unstudied TBD columns cannot be misread as conclusions; map rows double as the methodology constraint register.
+- Marked the normative gap matrix as the innovation-side register ("what standards do not say") with status-migration tracking; linked ISO-G04 Oracle to the conformance-testing methodology candidate basis.
+- Added a standards-research touch-point checklist to CONTRIBUTING.md.
+- Repositioned DCAS from primary validation case to industrial-practice knowledge source; ARINC 615A protocol conformance verification becomes the first validation instance, with UAV flight-management and LLM service reliability/performance verification as planned instances.
+- Recorded the three-tier research output chain: product-independent Verification Methodology → Model-Based Verification Architecture → non-productized Verification Platform research prototype.
+- Recorded the two-sided standards-research goal (what standards say = construction basis; what they omit = innovation space) and the explicit abstraction ladder for promoting domain practices and instance-related standards into the generic methodology.
+- Added the instance × framework-element exercise matrix and validation-instance set to the validation workspace so each instance's thesis contribution is explicit.
+- Added generic conformance-testing methodology sources (ISO/IEC 9646 / ITU-T X.290 series; ETSI ES 201 873 TTCN-3) to the standards target baseline as generic-layer research targets scored alongside ISO 15289; registered ARINC 615A as the first-instance protocol standard (Level E).
+- Updated RQ8 and publication candidate views to match the new instance strategy.
 - Addressed PR #4 external review findings: corrected ARP4761A Section 1 locators, replaced the linear Safety Requirement chain with typed multi-source provenance, and separated independence definitions from Appendix P/CMA substantiation criteria.
 - Preserved the original ARP4761A internal-review result as historical provenance and recorded R-01–R-03 dispositions for re-review.
 

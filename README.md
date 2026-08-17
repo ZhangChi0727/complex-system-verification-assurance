@@ -1,10 +1,10 @@
 ---
 title: Complex System Verification Assurance Framework
 status: baseline
-version: 0.1
+version: 0.2
 baseline: v0.1
 owner: research
-last_updated: 2026-08-15
+last_updated: 2026-08-17
 dependencies: []
 ---
 
@@ -43,7 +43,7 @@ MBSE → Automation → Domain Applications
 7. 建立 Verification Pattern Library；
 8. 形成 MBSE verification metamodel；
 9. 支持一致性、覆盖与影响分析自动化；
-10. 通过 DCAS 与跨领域案例验证框架。
+10. 通过多领域实例（ARINC 615A 协议符合性验证、无人机飞管系统验证、LLM 服务可靠性验证）验证框架。
 
 ## Current baseline
 
@@ -66,8 +66,8 @@ v0.1 冻结研究对象、边界、架构和路线，不代表 Verification 方�
 | `docs/05_coverage_and_evidence/` | Coverage、Sufficiency、Evidence 与 Argument | planned |
 | `docs/06_pattern_library/` | 通用 Verification Patterns | planned |
 | `docs/07_mbse/` | 机器可读模型与 MBSE realization | planned |
-| `docs/08_validation/` | DCAS 与跨领域验证策略 | planned |
-| `domains/` | 领域 profile；与 generic methodology 隔离 | working |
+| `docs/08_validation/` | 验证实例定位与实例 × 框架元素锻炼矩阵 | working |
+| `domains/` | 领域 profile 与知识源（DCAS）；与 generic methodology 隔离 | working |
 | `models/`, `data/`, `tools/` | 后续模型、结构化数据与自动化 | planned |
 | `references/` | 检索策略、书目和阅读记录 | working |
 | `templates/` | DBSE research draft templates | working |
@@ -87,10 +87,10 @@ v0.1 冻结研究对象、边界、架构和路线，不代表 Verification 方�
 ## Expected outputs
 
 1. Research Repository；
-2. Academic Paper / Thesis；
-3. Engineering Handbook / Tutorial；
-4. Machine-readable Metamodel；
-5. Verification Automation Prototypes。
+2. 产品无关的 Verification Methodology；
+3. Model-Based Verification Architecture（machine-readable metamodel）；
+4. 非产品化的 Verification Platform 研究原型；
+5. Academic Paper / Thesis 与 Engineering Handbook / Tutorial。
 
 ## Copyright and license
 

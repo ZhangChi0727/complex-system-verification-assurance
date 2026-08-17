@@ -1,10 +1,10 @@
 ---
 title: Normative Gap Matrix
 status: reviewed
-version: 1.0
+version: 1.1
 baseline: v0.1
 owner: research
-last_updated: 2026-08-16
+last_updated: 2026-08-17
 dependencies:
   - standards_baseline.md
   - standards_map.md
@@ -15,6 +15,8 @@ dependencies:
 
 本矩阵记录会影响 Framework 架构或后续研究顺序的实质缺口。缺口表示截至五源 consolidation，某项 concern 尚未得到充分定义、支持或约束；不表示相关标准本身不完整。`Disposition` 是本次交叉评审对原 gap 的处理，`Status` 是处理后的持续状态。
 
+**Gap = 创新输入：** 本矩阵同时是"标准没说什么"的创新登记（见 research_scope）：每条 open gap 是方法论的候选创新点。当后续标准研究为某 gap 提供对象依据时（如 generic conformance-testing methodology 之于 ISO-G04 Oracle），其性质从纯研究提案迁移为有依据构建；该状态迁移通过 Disposition/Status 列跟踪，不删除历史。方法论与标准"不矛盾"的校验由 `standards_map.md` 的条款定位承担。
+
 | ID | Framework topic | Five-source basis | Consolidated interpretation / framework response | Disposition | Status |
 |---|---|---|---|---|---|
 | ISO-G01 | Independence applicability and substantiation | ISO 15288, 6.3.8/6.4.9；ISO 24748-1, 6.2.2/6.4；ARP4754B, 5.2/5.7/App. A；ARP4761A, 2.2/Apps. E, J–M, P | Generic `IndependenceConstraint` extension point and aviation typed taxonomy are established. Universal rules for when, who, authority and sufficient substantiation remain open. | PARTIALLY RESOLVED | Open |
@@ -24,7 +26,7 @@ dependencies:
 | ISO-G03 | Verification sufficiency (parent) | ISO 15288, 5.10；ARP4754B, 5.5.4–5.5.5/App. A Obj. 5.1；ARP4761A, D.5/E.4/F.4 | Split stable assessment interface from domain decision criteria/authority. | SPLIT → ISO-G03A/B | Closed as parent |
 | ISO-G03A | Sufficiency Assessment interface | Same as ISO-G03 | Freeze inputs, reasoned conclusion, rationale and residual-gaps output; no universal algorithm. | RESOLVED GENERICALLY | Resolved |
 | ISO-G03B | Domain sufficiency criteria and decision authority | ARP4754B, 5.5.4–5.5.5；ARP4761A, D.5/E.4/F.4 | Aviation completion criteria are profile inputs; thresholds, aggregation rules and acceptance authority remain contextual. | KEEP OPEN | Open |
-| ISO-G04 | Oracle validity/configuration | ISO 15288, 6.4.9.3(a)–(b) supports expected results/success criteria but no Oracle object | Retain Oracle as explicit research proposal; do not infer an independent entity from success criteria. | KEEP PROPOSAL | Research Proposal |
+| ISO-G04 | Oracle validity/configuration | ISO 15288, 6.4.9.3(a)–(b) supports expected results/success criteria but no Oracle object | Retain Oracle as explicit research proposal; do not infer an independent entity from success criteria. Generic conformance-testing methodology（ISO/IEC 9646 / ITU-T X.290 系列）列为候选对象依据，研究后重评。 | KEEP PROPOSAL | Research Proposal |
 | ISO-G05 | Re-verification selection and impact semantics | ISO 15288, 6.3.5/6.4.9；ISO 24748-2, 6.7.5.4.4；ARP4754B, 6.3–6.4；ARP4761A, 3.1.1/A.6/E.4/P.1 | V10 and the impact→prior-evidence validity→selected activity→updated evidence chain are resolved; universal trigger/selection rules are not. | RENAME + PARTIALLY RESOLVED | Open |
 | ISO-G06 | Closure authority and state semantics | ISO 15288, 6.3.2/6.4.9；ISO 24748-1, 4.3/Clause 5；ISO 24748-2, 6.4；ARP4754B, 3.2.2/4.7/5.5–5.7；ARP4761A, 3.1.1/E.4/F.4 | Composite Gate architecture is resolved. Authority, waiver/deviation, reopening and scope-level state machine remain open. | RENAME + PARTIALLY RESOLVED | Open |
 | ISO-G07 | Information-item schema | ISO 15288, 5.6/6.3.6/6.4.9/Annex B；ISO 24748-1, 6.2.8；ISO 24748-2, 6.7.4/6.8；ARP4754B, 5.4.7/5.5.6/App. A | Five sources support records and typed basis relations, including Requirement/Specified Characteristic/Applicable Constraint→Obligation, but not a unified class/field/cardinality schema. ISO 15289 is the next priority. | KEEP OPEN | Open |
