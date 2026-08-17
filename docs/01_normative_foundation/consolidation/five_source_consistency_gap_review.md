@@ -1,10 +1,10 @@
 ---
 title: Five-Source Cross-Standard Consistency & Gap Review
 status: reviewed
-version: 0.2
+version: 0.3
 baseline: v0.1
 owner: research
-last_updated: 2026-08-16
+last_updated: 2026-08-17
 dependencies:
   - ../standard_notes/iso_15288.md
   - ../standard_notes/iso_24748_1.md
@@ -554,3 +554,38 @@ Framework 的稳定主干是 `Verification Basis Element {Requirement | Specifie
 |---|---|---|
 | R-01 Verification Obligation basis completeness | CLOSED | Replaced Requirement/Constraint-only basis with typed Requirement / Specified Characteristic / Applicable Constraint basis role；retained prohibition of direct FC/DAL/uncontrolled-project shortcut and deferred schema detail |
 | R-02 Assumption conceptual/schema boundary | CLOSED | Replaced mandatory generic minimum fields with capability-oriented conceptual semantics；ownership、states、confirmation obligations、cardinalities and lifecycle transitions remain open |
+
+## 28. Framework-object provenance annex（post-freeze governance）
+
+本 annex 是 §22–§23 晋级决定的对象级 provenance 权威登记，不改变任何已冻结结论。目的：使 `PROMOTE ≠ source-native` 成为可查询事实，防止 framework-defined 对象在后续 Phase 4/5/8 中被误当作标准原生信息项。列含义：**Source-native** = 是否为五源原生术语/对象；**Non-aviation basis** = 是否存在非航空来源依据（generic 侧审计列）；**Schema gate** = 进入 executable schema 前必须满足的条件。
+
+| Object | Classification | Source-native | Non-aviation basis | v0.2 frozen boundary | Open items | Schema gate |
+|---|---|---|---|---|---|---|
+| Verification Obligation | GENERIC CORE (framework-defined) | No | Indirect（ISO 15288 verification scope/trace tasks） | 对象存在；typed-basis 规则；受约束 many-to-many | field schema；disposition 语义 | ISO 15289 + conformance-testing methodology 研究后 |
+| Verification Strategy | GENERIC CORE (source-supported) | Yes（6.4.9.3(a)(4)） | Direct | 概念 + 最小 semantic contract | 完整 VSR schema | ISO-G07 |
+| Verification Basis Element role | framework-defined union role | No（构造于 ISO 概念之上） | Direct（3.36；6.4.9.1–.2） | typed union {Requirement \| Specified Characteristic \| Applicable Constraint} | class schema、subtypes、cardinality | ISO 15289 / 29148 |
+| Verification Action / Procedure | source-supported | Yes（6.4.9.3(b)(1)） | Direct | 概念 | item-level 判据 | Phase 4 + item standards |
+| Observation / Result | framework semantics over source concept | Partial | Direct（6.4.9.3(b)–(c)） | 与 Evidence 的 role 区分 | record schema | Phase 4 |
+| Evidence | GENERIC CORE | Yes（5.10；6.4.9） | Direct | role 语义；mayConstituteOrSupport 关系 | physical artifact schema | ISO-G07 |
+| Claim / Argument | GENERIC CORE | Conceptual support（5.10） | Direct | 与 Evidence 的关系 | claim ontology | Phase 5 |
+| Configuration / Baseline | source-native | Yes（3.8；6.3.5） | Direct | 强制依赖 | — | — |
+| Change / ImpactAssessment | framework-defined | No | Indirect（6.3.5 re-verification） | V10 chain | selection algorithm | ISO-G05 successor |
+| Decision / Composite Gate | framework-defined | No | Guidance（ISO 24748-1 4.3/Clause 5） | assessment + optional review + authority decision + state/baseline event 分离 | waiver/reopen/authority/state model | ISO-G06 successor |
+| Evidence Provenance | GENERIC CORE relation | No | Indirect（5.10） | 与 traceability/argumentation 三分 | schema | Phase 4 |
+| Assurance Constraint | GENERIC EXTENSION POINT | No | Framework interface | extension interface | universal levels（不主张） | profile-supplied |
+| Independence Constraint | GENERIC EXTENSION POINT | No | Hook only（ISO QA independence） | typed 结构（type/rationale/applicability/claim/substantiation） | applicability/authority/substantiation rules | ISO-G01 |
+| Coverage Obligation / Result | GENERIC EXTENSION POINT | No | Framework meta-model | population+criterion+evidence+disposition+context | domain taxonomies/completion rules | ISO-G02B |
+| Sufficiency Assessment | GENERIC EXTENSION POINT | No | Indirect（5.10 reasoning context） | I/O interface | reasoning semantics、criteria、authority | ISO-G03B / RQ4 / Phase 5 |
+| Assumption | GENERIC EXTENSION POINT | No | Indirect（ISO 规划/分析语境提及 assumptions） | capability-oriented conceptual semantics | states/ownership/cardinality | ISO 15289 |
+| Prior Evidence Applicability | GENERIC EXTENSION POINT | No | Framework concept | applicability relation | 与 credit 的边界/cardinality | Phase 4/5 |
+| Oracle | RESEARCH PROPOSAL | No | None in five sources | 保持提案 | 对象依据 | conformance-testing methodology 研究（候选） |
+| Verification Case / Technique / Stimulus / Expected / Observed / Acceptance Criterion | RESEARCH PROPOSAL layer | No | Informative NOTEs partial | 术语提案 | schemas | Phase 4/5 |
+| Aviation Profile objects（Safety Requirement subtype、Failure Condition/Classification、Safety Objective、FDAL/IDAL assignment、Independence Principle/Requirement/Claim、Safety Analysis Method/Result、PSSA/SSA/ASA、Verification/Certification Credit） | PROFILE-ONLY | ARP-native | n/a（profile） | role 级 profile taxonomy | item-level 细化 | DO-178C/DO-254 轮次 |
+
+**Generic-basis 审计结论（§22 复核）：** 无任何 Generic Core / Extension Point 对象仅依赖航空来源——航空专属候选（Safety Requirement、Verification/Certification Credit）均已保持 PROFILE-ONLY。该结论应随每次新增 promotion 重新验证。
+
+**维护规则：**
+
+1. 任何对象进入 Phase 4 executable schema 前，其 annex 行的 Schema gate 必须满足并更新为 `schema-ready`；
+2. 新增 promotion 必须先在本 annex 登记（含来源属性与通用侧依据），再进入 terminology / templates / map；
+3. 本 annex 是 framework-defined 对象 provenance 的唯一权威；其他文件引用不重定义（见 ARCHITECTURE.md definition-ownership 规则）。

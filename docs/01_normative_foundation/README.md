@@ -1,10 +1,10 @@
 ---
 title: Normative Foundation Workspace
 status: working
-version: 0.7
+version: 0.8
 baseline: v0.1
 owner: research
-last_updated: 2026-08-16
+last_updated: 2026-08-17
 dependencies:
   - ../00_overview/research_scope.md
 ---
@@ -38,4 +38,4 @@ Framework Rule
 - aviation safety-assurance study: [SAE ARP4754B](standard_notes/sae_arp4754b.md) development-assurance slice 与 [SAE ARP4761A](standard_notes/sae_arp4761a.md) safety-assessment slice 已完成；两者通过 Safety Requirement provenance、FDAL/IDAL、typed independence 和 multi-source evidence 连接，但不合并过程本体。
 - external informal review: [ISO 24748-2 / SAE ARP4754B review](reviews/ISO-24748-2--SAE-ARP4754B-External-Informal-Review.md) 的 2 项 Major 与 4 项 Minor findings 已关闭；Test Readiness Review/V6、Result/Evidence、Appendix A provenance 和 certification-credit dimensionality 已按较低 ontology strength 修正。
 - readiness: `CONDITIONALLY READY FOR v0.2 CONCEPTUAL BASELINE`；不宣称 executable schema、item-level completeness、certification acceptance 或 framework validation；
-- next normative priority: ISO/IEC/IEEE 15289，随后按 gap 重新评分；不自动启动 DO-178C、DO-254 或 DO-297。
+- next normative priority: ISO/IEC/IEEE 15289；generic conformance-testing methodology 来源（ISO/IEC 9646 / ITU-T X.290 系列、ETSI TTCN-3）已加入 target baseline，作为 first-instance 前置依赖与 15289 一并评分；不自动启动 DO-178C、DO-254 或 DO-297。

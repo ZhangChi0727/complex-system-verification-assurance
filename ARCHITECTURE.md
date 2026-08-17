@@ -1,10 +1,10 @@
 ---
 title: Repository and Knowledge Architecture
 status: baseline
-version: 0.1
+version: 0.2
 baseline: v0.1
 owner: research
-last_updated: 2026-08-15
+last_updated: 2026-08-17
 dependencies: []
 ---
 
@@ -56,6 +56,8 @@ Automation Rule
 
 核心定义只在 `docs/`、`models/`、`data/` 和 `domains/` 中维护。`publications/` 只能引用、重组或解释这些资产，避免 configuration drift。
 
+**Definition ownership：** framework-defined 对象的对象级定义、晋级决定与 provenance 以 five-source consolidation report 的 provenance annex（§28）为唯一权威登记；`terminology.md`、`templates/`、`standards_map.md`、`normative_gap_matrix.md` 只引用不重定义。后续迁入 `data/` 结构化形态时该权威随迁。
+
 ## Abstraction boundary
 
 ```text
@@ -89,4 +91,4 @@ Concrete Project Practice
 | `CLM-` | Compliance claim | `CLM-0001` |
 | `ANM-` | Anomaly | `ANM-0001` |
 
-这些前缀是 v0.1 候选约定，不在本基线实现自动编号工具。
+这些前缀是 v0.1 候选约定，不在本基线实现自动编号工具。对象的分级、来源属性（source-native / framework-defined）与 schema gate 登记见 `docs/01_normative_foundation/consolidation/five_source_consistency_gap_review.md` §28 annex。
