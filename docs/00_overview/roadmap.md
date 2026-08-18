@@ -4,7 +4,7 @@ status: baseline
 version: 0.6
 baseline: v0.1
 owner: research
-last_updated: 2026-08-17
+last_updated: 2026-08-18
 dependencies:
   - research_scope.md
   - research_questions.md
@@ -20,7 +20,7 @@ dependencies:
 
 系统研究 ISO/IEC/IEEE 15288、ISO/IEC/IEEE 24748、INCOSE、NASA Systems Engineering Handbook、SAE ARP4754B、SAE ARP4761A、RTCA DO-178C、DO-254、DO-297、generic conformance-testing methodology 来源（ISO/IEC 9646 / ITU-T X.290 系列、ETSI TTCN-3）及适用补充标准。仅在合法取得全文和准确定位后形成规范性结论。
 
-第一轮五源 consolidation 已完成：ISO 15288、ISO 24748-1/2、ARP4754B 与 ARP4761A 的 source roles、Generic Core/extension points、Civil Aviation Profile 和 inherited gaps 已统一。下一轮在定位变更触发的 gap-priority 重评分后采用**双轨**：**ISO/IEC/IEEE 15289 全量条款精读**（ISO-G07 主线）与 **ISO/IEC 9646 / ITU-T X.290 概念切片 targeted review**（first-instance 前置）并行；ISO 29148 与 ISO/IEC/IEEE 15026-2 排后批；ETSI TTCN-3 待平台原型启动前。DO-178C、DO-254、DO-297 维持 deferred，不按引用链自动启动。标准纳入与分层管理遵循 `01_normative_foundation/standards_baseline.md` 的 layering policy。
+第一轮五源 consolidation 已完成：ISO 15288、ISO 24748-1/2、ARP4754B 与 ARP4761A 的 source roles、Generic Core/extension points、Civil Aviation Profile 和 inherited gaps 已统一。其后的 ISO/IEC/IEEE 29148:2018 与 ISO/IEC/IEEE 15026-2:2022 研究建立了 Requirement/Basis→Obligation→Result 与 Evidence Item→Supported Claim/Inference 的受控接口。下一轮采用双轨：**ISO/IEC/IEEE 15289 全量条款精读**（ISO-G07B 主线）与 **ISO/IEC 9646 / ITU-T X.290 概念切片 targeted review**（first-instance 前置）并行；ISO/IEC/IEEE 15026-1 是 assurance/claim/uncertainty 的并行术语依赖。ETSI TTCN-3 待平台原型启动前；DO-178C、DO-254、DO-297 维持 deferred。标准纳入与分层管理遵循 `01_normative_foundation/standards_baseline.md` 的 layering policy。
 
 ## Phase 2 — Normative Gap Analysis
 
@@ -62,7 +62,7 @@ ISO/IEC/IEEE 15288:2023 的 5.7–5.8 与 ISO/IEC/IEEE 24748-1:2024 Clause 5、A
 
 定义 candidate entities、字段、关系、状态、ownership、traceability 和 configuration semantics。
 
-入口条件已由五源 conceptual consolidation 满足。先以稳定 entity/relation set 为基础研究 ISO 15289；不得从现有 YAML 字段倒推 ontology，也不得在 source basis 到位前冻结 cardinality/schema。
+入口条件已由五源 conceptual consolidation 满足。29148/15026-2 已解析 conceptual item/view taxonomy 与 assurance-case recursive structure，但 executable schema、cardinality 和 15289 interoperability 仍开放。先研究 ISO 15289，并解决或显式接受 15026-1 dependency；不得从现有 YAML 字段倒推 ontology。
 
 ## Phase 5 — Coverage & Evidence Architecture
 
