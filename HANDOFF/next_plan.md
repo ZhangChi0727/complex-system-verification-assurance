@@ -1,7 +1,7 @@
 ---
 title: Next Plan
 status: working
-version: 0.2
+version: 0.3
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-19
@@ -17,7 +17,7 @@ dependencies:
 
 1. **ISO/IEC/IEEE 15289:2019**：信息项内容研究，推进 ISO-G07；
 2. **ISO/IEC 9646 / ITU-T X.290**：conformance-testing targeted study，检验 ISO-G04 与 Case/Procedure 候选；
-3. **ISO/IEC/IEEE 15026-1:2019 / 2025 delta**：研究 5.3.3 的 dated 2019 Claim-type dependency、Clause 2/3 的 current undated 2025 dependency 及两版差异；
+3. **ISO/IEC/IEEE 15026-1:2025**：以正式发布的 2025 版作为当前 assurance vocabulary and concepts 基础，研究 15026-2 Clause 2/3 的不注日期依赖，并对框架实际采用的 Claim、assurance、uncertainty 等概念进行限定兼容性检查；不开展 2019→2025 全文版本差异研究。15026-2:2022 中的明示 2019 引用仅作为原始来源追溯保留；
 4. **ISO/IEC/IEEE 29119-2/3/4**：测试过程、文档与技术；
 5. **IEEE 1012-2024 / ISO/IEC/IEEE 15026-3:2023**：V&V rigor 与 assurance-intensity；
 6. **Executable information schema**：仅在相关 schema gates 满足后启动；
@@ -25,7 +25,7 @@ dependencies:
 8. **Platform reference architecture**：在信息模型稳定后进行可替换技术选型；
 9. **External-instance integration**：通过临时映射迁移到稳定 registry，并使用 Framework Change Proposal 接收反馈。
 
-ISO 29148:2018 与 ISO 15026-2:2022 的现有研究已在本 consolidated integration 中完成独立评审修正；它们不会因评审完成而关闭 15289、15026-1、executable schema、sufficiency/authority 或 stable-registry 依赖，也不改写上述下一轮顺序。
+ISO 29148:2018 与 ISO 15026-2:2022 的现有研究已在本 consolidated integration 中完成独立评审修正；它们不会因评审完成而关闭 15289、15026-1:2025 targeted compatibility、executable schema、sufficiency/authority 或 stable-registry 依赖，也不改写上述下一轮顺序。ISO/IEC/IEEE 15026-1:2019 不再是独立 clause-study 对象或待研究标准。
 
 ## Triggered work
 

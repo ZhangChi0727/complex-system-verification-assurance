@@ -1,7 +1,7 @@
 ---
 title: Object Promotion and Disposition Register — ISO 29148 / ISO 15026-2
 status: reviewed
-version: 0.1
+version: 0.2
 baseline: post-v0.2-candidate
 owner: research
 last_updated: 2026-08-19
@@ -34,7 +34,7 @@ Section 2 records the evidence summary. Section 3 records this research round's 
 | OP-11 | RTM/VCRM | Representation option | RETAIN AS EXAMPLE | 29148, 6.5.2 | No mandatory spreadsheet/matrix ontology |
 | OP-12 | Assurance Case | Generic Core aggregate | REFINE | 15026-2, 3.1.1/5.2 | Structure does not prove content quality |
 | OP-13 | Supported Claim | Generic Core recursive node | PROMOTE | 15026-2, 5.3.5 | Distinct from bare Claim |
-| OP-14 | Claim | Generic Core | RETAIN WITH DEPENDENCY | 15026-2, 5.3.3; 15026-1 dependency | Full definition not frozen |
+| OP-14 | Claim | Generic Core | RETAIN WITH DEPENDENCY | 15026-2, 5.3.3 structure/provenance; current vocabulary dependency is 15026-1:2025 | Full definition and targeted compatibility not frozen |
 | OP-15 | Argument | Generic Core | REFINE | 15026-2, 5.3.5 | Preserve undeveloped vs inference/evidence-reference alternatives |
 | OP-16 | Inference | Generic Core | PROMOTE | 15026-2, 3.1.4/5.3.4–5.3.5 | Explicit premises, conclusion and context |
 | OP-17 | Context | Generic Core relation/value role | PROMOTE | 15026-2, 5.3.1 | Scoped definition/basic assumption/document reference |
@@ -64,12 +64,12 @@ Section 2 records the evidence summary. Section 3 records this research round's 
 | Verification Result | Generic Core | Result/objective information remains upstream of framework-defined Evidence Item characterization | KEEP AS GENERIC CORE | Cross-source; 29148, 6.5.2.2–6.5.2.3 | Result ≠ Evidence Item ≠ Claim | V7/V8/evidence; schema OPEN; normative review complete |
 | Evidence | Generic Core role | 15026-2 provides precise `Evidence Item`; generic evidence wording remains broader | SPLIT | Cross-source concept | Separate candidate artefact/result, Evidence Item and evidence role; do not equate inventory with support | Evidence workspace; schema OPEN; review required |
 | Evidence Artefact | Generic Core artefact role | 15026-2 artefact is one Evidence Item field | RENAME | Framework-defined → `Candidate Evidence Artefact` where not yet admitted; 15026-2, 5.3.2(a) | Artefact existence ≠ Evidence Item | Evidence workspace; schema OPEN; review required |
-| Evidence Item | Not fully distinguished | Four-part source-native record found; independent management allowed | source-native adopted | Source-native record; 15026-2, 5.3.2 | Framework characterization constrained by the record may establish an Evidence Item; existence/reference are separate and existence ≠ claim support | Info/evidence model; workflow/schema BLOCKED by 15289/15026-1; reviewed with dependencies open |
+| Evidence Item | Not fully distinguished | Four-part source-native record found; independent management allowed | source-native adopted | Source-native record; 15026-2, 5.3.2 | Framework characterization constrained by the record may establish an Evidence Item; existence/reference are separate and existence ≠ claim support | Info/evidence model; workflow/schema BLOCKED by 15289/15026-1:2025; reviewed with dependencies open |
 | Provenance | Generic Core relation | Complements but is not a substitute for 15026-2 applicability/uncertainty | KEEP AS GENERIC CORE | Framework abstraction with five-source support | Provenance ≠ Context ≠ Argument | Info/evidence; schema OPEN; review required |
 | Traceability | Generic Core relation | 29148 strengthens bidirectional lifecycle trace; 15026-2 requires reasoning structure beyond trace | KEEP AS GENERIC CORE | Source-native relation; 29148, 6.5.2.3 | Trace link ≠ Inference/Argument | Info model; schema OPEN; review required |
-| Claim | Generic Core | 15026-2 type depends on 15026-1 | KEEP OPEN | Source-native; 15026-2, 5.3.3; dependency open | Do not freeze full semantics from examples or secondary definitions | Terminology; schema BLOCKED; review required |
+| Claim | Generic Core | 15026-2 structure uses a dated locator; current vocabulary depends on 15026-1:2025 | KEEP OPEN | Source-native 15026-2, 5.3.3 provenance + framework adoption of current 2025 vocabulary; targeted compatibility open | Do not freeze full semantics from examples, mechanically replace the dated locator, or presume equivalence | Terminology; schema BLOCKED; review required |
 | Compliance Claim | Generic Core candidate | No direct equivalence to 15026-2 Claim or authority acceptance | KEEP AS EXTENSION POINT | Framework/domain term; 15026-2 gives generic claim structure only | Do not imply regulatory acceptance | Closure/profile; schema OPEN; review required |
-| Assurance Claim | Generic Core candidate | Generic Claim in assurance-case context; vocabulary dependency remains | KEEP OPEN | Candidate specialization/typing of `Claim`; decision blocked by 15026-1 | Do not merge or duplicate classes before the normative vocabulary dependency is resolved | Terminology; schema BLOCKED; review required |
+| Assurance Claim | Generic Core candidate | Generic Claim in assurance-case context; current vocabulary dependency remains | KEEP OPEN | Candidate specialization/typing of `Claim`; decision blocked by 15026-1:2025 study and targeted compatibility review | Do not merge or duplicate classes before the normative vocabulary dependency is resolved | Terminology; schema BLOCKED; review required |
 | Supported Claim | Previously implicit | Recursive Claim+Argument+Contexts structure is direct | PROMOTE TO GENERIC CORE | Source-native; 15026-2, 5.3.5 | Supported Claim ≠ bare Claim or status field | Info/evidence model; schema OPEN; review required |
 | Inference | Previously implicit/research proposal | Explicit reasoning step with premises/conclusion | PROMOTE TO GENERIC CORE | Source-native; 15026-2, 3.1.4/5.3.4–5.3.5 | Inference ≠ trace, approval or automated result | Argument model; schema OPEN; review required |
 | Argument | Generic Core | Recursive alternatives now precise | KEEP AS GENERIC CORE | Source-native; 15026-2, 5.3.5 | Preserve undeveloped/inference/evidence-reference alternatives | Argument model; schema OPEN; review required |

@@ -1,7 +1,7 @@
 ---
 title: ISO/IEC/IEEE 15026-2:2022 Clause Study
 status: reviewed
-version: 0.1
+version: 0.2
 baseline: post-v0.2-candidate
 owner: research
 last_updated: 2026-08-19
@@ -36,18 +36,17 @@ ISO/IEC/IEEE 15026-2:2022 规定 assurance case 的**结构术语及其含义**�
 
 ## 2. Normative dependencies
 
-Clause 2 对 ISO/IEC/IEEE 15026-1 采用未注明年份的规范性引用；按本标准的 undated-reference rule，现行版 ISO/IEC/IEEE 15026-1:2025 是该引用以及 Clause 3 imported terms 的当前依赖。另一方面，5.3.3 对 `Claim` type 明确引用 ISO/IEC/IEEE 15026-1:2019；该 2019 版还出现在一个关于 uncertainty 的资料性 NOTE 中。
+Clause 2 对 ISO/IEC/IEEE 15026-1 采用未注明年份的规范性引用；按本标准的 undated-reference rule，现行版 ISO/IEC/IEEE 15026-1:2025 是该引用以及 Clause 3 imported terms 的当前依赖，也是本框架唯一现行采用的 assurance vocabulary and concepts 版本。另一方面，5.3.3 对 `Claim` type 明确引用 ISO/IEC/IEEE 15026-1:2019；该 2019 版还出现在一个关于 uncertainty 的资料性 NOTE 中。这些 dated references 只保存 source-native provenance，不构成当前版本采用或独立研究任务。
 
-仓库没有 ISO/IEC/IEEE 15026-1:2019 或 15026-1:2025 原文或研究笔记。因此以下事项登记为 `DEPENDENCY OPEN`：
+仓库已取得 ISO/IEC/IEEE 15026-1:2025 的本地受许可原文但尚未完成条款研究；不要求取得或单独研究 2019 全文。以下事项保持开放：
 
-- assurance、claim 和 uncertainty 的完整 source-native 定义；
-- 5.3.3 的 dated 2019 `Claim` type 依赖；
-- Clause 2/3 的 current undated-reference dependency；
-- 2019→2025 vocabulary/concept delta 与兼容性；
-- 15026-1 与当前 ISO 15288:2023 assurance terminology 的精确版本映射；
-- 由 15026-1 支撑的 claim 属性、限制和不确定性语义。
+- 2025 版中 assurance、claim、uncertainty 及仓库实际采用共用概念的条款级定义；
+- Clause 2/3 的 current undated-reference dependency mapping；
+- 把 2025 Claim 概念连接到 15026-2:2022, 5.3.3 结构前的限定兼容性检查；
+- 15026-1:2025 与当前 ISO 15288:2023 assurance terminology 的精确版本映射；
+- 由 15026-1:2025 支撑的 claim 属性、限制和不确定性语义。
 
-这不妨碍研究 15026-2 自身明确规定的 record types 和 relations，但本轮不能宣称完整的 15026 系列术语基线。
+不开展 2019→2025 全文 delta，也不把 15026-2 的明示 2019 locator 机械改写成 2025 条款号。这不妨碍研究 15026-2 自身明确规定的 record types 和 relations；在 targeted compatibility review 完成前，只能声明框架主动采用 2025 定义，不能声明 15026-2:2022 的 dated Claim type 与 2025 完全等价。
 
 ## 3. Clause-level findings
 
@@ -107,7 +106,7 @@ The standard permits many artefact kinds and defines `Evidence Item` as a four-f
 
 ### 3.5 Claim and inference — 5.3.3–5.3.4
 
-Claim type in 5.3.3 is explicitly inherited from ISO/IEC/IEEE 15026-1:2019 and therefore remains dependency-constrained in this repository. Clause 2/3 separately creates a current undated dependency on 15026-1:2025. Examples show claims can include limits on property value, duration or uncertainty. They are informative examples, not a closed claim taxonomy.
+15026-2:2022, 5.3.3 source-native provenance: dated reference to ISO/IEC/IEEE 15026-1:2019, 3.1.4. The framework's current vocabulary baseline is ISO/IEC/IEEE 15026-1:2025; equivalence is not presumed pending targeted compatibility review. Examples show claims can include limits on property value, duration or uncertainty. They are informative examples, not a closed claim taxonomy. The dated locator must remain unchanged in provenance records.
 
 Inference is the reasoning step that derives a conclusion claim from premise claims under a specified context. Justification can be given in context. Even an “obvious” inference remains explicit so assumptions are visible. Framework consequences:
 
@@ -142,11 +141,11 @@ Cardinality conclusions must remain conservative. The record definition gives ea
 
 ### 3.6.1 Claim and related-object candidate structure
 
-Only `Claim` itself and the Supported Claim/Argument relations are source-native here; several implementation fields below remain candidates because the full Claim definition comes from ISO 15026-1.
+Only `Claim` itself and the Supported Claim/Argument relations are source-native here; several implementation fields below remain candidates because the current full Claim definition must be established from ISO 15026-1:2025 and checked against the 15026-2 structures actually adopted by the framework.
 
 | Candidate | Support status | Basis / boundary |
 |---|---|---|
-| statement/assertion | DEPENDENCY OPEN | Claim definition imported from ISO 15026-1 |
+| statement/assertion | DEPENDENCY OPEN | Current Claim definition to be established from ISO 15026-1:2025 |
 | property under assurance | Direct explanatory support | 4.1; claims concern selected system properties |
 | subject/system scope | Indirect/candidate | System of interest is described in narrative/context; exact Claim field not defined in 15026-2 |
 | limitation / applicable condition | Example-supported candidate | 5.3.3 examples; do not promote example shape into mandatory field |
@@ -207,7 +206,7 @@ No direct universal equivalence is established between `Requirement` and `Claim`
 |---|---|---|---|
 | Assurance Case | Generic Core aggregate | PROMOTE / REFINE | Structure source-backed; content quality not guaranteed |
 | Supported Claim | Generic Core recursive node | PROMOTE | Distinct from bare Claim |
-| Claim | Generic Core | RETAIN WITH DEPENDENCY | Full definition depends on 15026-1 |
+| Claim | Generic Core | RETAIN WITH DEPENDENCY | Full current definition and targeted compatibility depend on 15026-1:2025 |
 | Argument | Generic Core | REFINE | Either undeveloped or context plus inference/evidence reference |
 | Inference | Generic Core | PROMOTE | Distinct reasoning step with premises and conclusion |
 | Evidence Item | Generic Core | REFINE | Artefact + applicability + uncertainty + assumptions |
@@ -231,9 +230,9 @@ No direct universal equivalence is established between `Requirement` and `Claim`
 
 | ID | Status | Boundary |
 |---|---|---|
-| DEP-15026-01 | DEPENDENCY OPEN | ISO/IEC/IEEE 15026-1:2025 is the current dependency for the undated Clause 2 reference and Clause 3 imported terms; source/study absent |
-| DEP-15026-01A | DEPENDENCY OPEN | ISO/IEC/IEEE 15026-1:2019 is the explicit dated `Claim` type dependency in 5.3.3; source/study absent |
-| DEP-15026-01B | VERSION-MAPPING OPEN | The 2019→2025 delta must be assessed before freezing a current complete assurance vocabulary baseline |
+| DEP-15026-01 | SOURCE ACQUIRED; CLAUSE STUDY PENDING | ISO/IEC/IEEE 15026-1:2025 is the sole current vocabulary version and the current dependency for the undated Clause 2 reference and Clause 3 imported terms |
+| DEP-15026-01A | DATED-REFERENCE PROVENANCE ONLY; NO STANDALONE STUDY PLANNED | ISO/IEC/IEEE 15026-1:2019, 3.1.4 is the explicit source-native `Claim` locator in 5.3.3; related uncertainty provenance is retained without adopting or independently studying the 2019 edition |
+| DEP-15026-01B | TARGETED COMPATIBILITY REVIEW OPEN | Review only the 2025 Claim, assurance, uncertainty and repository-adopted concepts needed to connect the current vocabulary to 15026-2; no full 2019→2025 delta and no equivalence presumption |
 | DEP-15026-02 | DEPENDENCY OPEN | ISO/IEC/IEEE 15289:2019 report/record references are not independently studied in this repository |
 | NC-15026-01 | PROHIBITED CLAIM | Structural conformance or completeness does not prove claim truth |
 | NC-15026-02 | PROHIBITED CLAIM | The standard does not define universal evidence quality or sufficiency thresholds |
@@ -244,6 +243,6 @@ No direct universal equivalence is established between `Requirement` and `Claim`
 
 ## 8. Baseline decision
 
-**Decision: CLAUSE STUDY REVIEWED; ISO 15026-1:2019/2025 DEPENDENCIES OPEN.**
+**Decision: CLAUSE STUDY REVIEWED; ISO 15026-1:2025 CURRENT VOCABULARY STUDY / TARGETED COMPATIBILITY OPEN; 2019 DATED-REFERENCE PROVENANCE ONLY.**
 
 Independent review confirms the locally defined record types and relations while preserving the source/framework boundary for evidence characterization. The study promotes Supported Claim, Inference, Context, Undeveloped Argument and Narrative Introduction concepts, and records Evidence Item as artefact/applicability/uncertainty/assumptions. It strengthens but does not close generic sufficiency, authority, executable-schema or claim-vocabulary gaps.

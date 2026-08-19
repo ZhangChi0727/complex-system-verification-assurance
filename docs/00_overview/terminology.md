@@ -1,7 +1,7 @@
 ---
 title: Working Terminology Baseline
 status: reviewed
-version: 0.8
+version: 0.9
 baseline: v0.2
 owner: research
 last_updated: 2026-08-19
@@ -12,6 +12,8 @@ dependencies:
 # Working Terminology Baseline
 
 本文件记录五源 consolidation 后的 conceptual terminology baseline。每个 framework-defined term 仍须与 source-native term 区分；`GENERIC CORE` 表示进入 Framework conceptual baseline，不表示某份标准使用同名信息项。ISO 15288 的支持结论受其 Clause 4 conformance mode 约束；NOTE 与资料性附录只作为 informative guidance，ARP4754B/ARP4761A 规则保持 civil-aviation profile。
+
+**Assurance-vocabulary version policy:** 本框架把 ISO/IEC/IEEE 15026-1:2025 作为 assurance、claim、uncertainty、assurance-case 相关通用词汇及 Part 2/3/4 共用概念的唯一现行版本。其条款研究尚待完成，因此具体定义仍保持 working/dependency-open；在 targeted compatibility review 完成前，不宣称 15026-2:2022, 5.3.3 的 dated 2019 `Claim` type 与 2025 定义完全等价。ISO/IEC/IEEE 15026-1:2019 仅保存 source-native dated-reference provenance，不构成当前采用版本或独立研究对象。
 
 ### Life Cycle Model
 

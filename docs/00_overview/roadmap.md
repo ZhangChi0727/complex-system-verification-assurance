@@ -1,7 +1,7 @@
 ---
 title: Research Roadmap
 status: baseline
-version: 0.6
+version: 0.7
 baseline: v0.2
 owner: research
 last_updated: 2026-08-19
@@ -20,7 +20,7 @@ dependencies:
 
 系统研究 ISO/IEC/IEEE 15288、ISO/IEC/IEEE 24748、INCOSE、NASA Systems Engineering Handbook、SAE ARP4754B、SAE ARP4761A、RTCA DO-178C、DO-254、DO-297、generic conformance-testing methodology 来源（ISO/IEC 9646 / ITU-T X.290 系列、ETSI TTCN-3）及适用补充标准。仅在合法取得全文和准确定位后形成规范性结论。
 
-第一轮 five-source consolidation 已由 `research-baseline/v0.2` 固化。post-v0.2 来源采用 Controlled Candidate-Source Baseline：候选登记、资料取得、条款研究和评审是不同状态，未研究来源不能关闭 gap。ISO/IEC/IEEE 29148:2018 与 15026-2:2022 的 clause studies 已通过独立评审，建立 Requirement/Basis→Obligation→Result 与 Evidence Item→Argument→Supported Claim/Inference 的受控接口；其中 evidence characterization 是受 15026-2, 5.3.2 约束的 framework-defined relation。下一序列为 ISO 15289 → ISO 9646/X.290 → 15026-1:2019/2025 delta → 29119-2/3/4 → IEEE 1012/15026-3；随后才进入 executable schema、versioned object registry、platform reference architecture 与 external-instance integration。
+第一轮 five-source consolidation 已由 `research-baseline/v0.2` 固化。post-v0.2 来源采用 Controlled Candidate-Source Baseline：候选登记、资料取得、条款研究和评审是不同状态，未研究来源不能关闭 gap。ISO/IEC/IEEE 29148:2018 与 15026-2:2022 的 clause studies 已通过独立评审，建立 Requirement/Basis→Obligation→Result 与 Evidence Item→Argument→Supported Claim/Inference 的受控接口；其中 evidence characterization 是受 15026-2, 5.3.2 约束的 framework-defined relation。下一序列为 ISO 15289 → ISO 9646/X.290 → 15026-1:2025 clause study + targeted Claim/assurance/uncertainty compatibility review → 29119-2/3/4 → IEEE 1012/15026-3；不开展 15026-1:2019 独立研究或 2019→2025 全文 delta，随后才进入 executable schema、versioned object registry、platform reference architecture 与 external-instance integration。
 
 ## Phase 2 — Normative Gap Analysis
 
@@ -62,7 +62,7 @@ ISO/IEC/IEEE 15288:2023 的 5.7–5.8 与 ISO/IEC/IEEE 24748-1:2024 Clause 5、A
 
 定义 candidate entities、字段、关系、状态、ownership、traceability 和 configuration semantics。
 
-入口条件已由五源 conceptual consolidation 满足。29148/15026-2 已解析 conceptual item/view taxonomy 与 assurance-case recursive structure，但 executable schema、cardinality 和 15289 interoperability 仍开放。先研究 ISO 15289，并解决或显式接受 15026-1 dependency；不得从现有 YAML 字段倒推 ontology。
+入口条件已由五源 conceptual consolidation 满足。29148/15026-2 已解析 conceptual item/view taxonomy 与 assurance-case recursive structure，但 executable schema、cardinality 和 15289 interoperability 仍开放。先研究 ISO 15289，再以 15026-1:2025 精化当前 assurance vocabulary，并在连接 2025 Claim 与 15026-2:2022, 5.3.3 前完成限定兼容性检查；不得从现有 YAML 字段倒推 ontology。
 
 ## Phase 5 — Coverage & Evidence Architecture
 

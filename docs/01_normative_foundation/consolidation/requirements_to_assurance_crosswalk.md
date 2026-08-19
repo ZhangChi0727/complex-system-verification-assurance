@@ -1,7 +1,7 @@
 ---
 title: Requirements-to-Assurance Crosswalk — ISO 29148 and ISO 15026-2
 status: reviewed
-version: 0.1
+version: 0.2
 baseline: post-v0.2-candidate
 owner: research
 last_updated: 2026-08-19
@@ -91,7 +91,7 @@ Assurance Case / Sufficiency Assessment
 |---|---|---|---|
 | Requirement | What capability/property/constraint must the subject satisfy? | 29148, 5.2.4 | A requirement is not a claim that implementation already satisfies it |
 | Verification Obligation | What controlled demonstration must address a basis element under criteria/context? | Framework-defined using 29148/15288 relations | Not source-native; not automatically one-to-one with Requirement |
-| Claim | What proposition about a property is asserted for assurance reasoning? | 15026-2 using 15026-1 definition | Full source definition remains dependency-open; a claim may concern more than one requirement |
+| Claim | What proposition about a property is asserted for assurance reasoning? | 15026-2 structure using the current 15026-1:2025 vocabulary | 2025 definition and targeted compatibility remain dependency-open; a claim may concern more than one requirement; dated 2019 provenance does not establish equivalence |
 | Supported Claim | How is a Claim linked to an Argument and Context? | 15026-2, 5.3.5 | It is a recursive assurance-case node, not a requirement status field |
 
 ## 6. Evidence characterization and Argument-use interface

@@ -1,7 +1,7 @@
 ---
 title: Five-Source Cross-Standard Consistency & Gap Review
 status: reviewed
-version: 0.3
+version: 0.4
 baseline: v0.2
 owner: research
 last_updated: 2026-08-19
@@ -529,9 +529,9 @@ Failure Condition
 | DO-254 | 4 | 4 | 5 | 5 | 16.0 | 硬件 item assurance 与 cross-level evidence |
 | DO-297 | 3 | 4 | 5 | 4 | 15.0 | IMA allocation/integration/credit，需在 item semantics 后研究更有效 |
 
-下一主要标准选择为 **ISO/IEC/IEEE 15289**。后续受控顺序为 ISO 9646/X.290、15026-1:2019/2025 delta、29119-2/3/4、IEEE 1012/15026-3；每一步按 gap search 状态和 availability 重评，不自动沿引用链推进。
+下一主要标准选择为 **ISO/IEC/IEEE 15289**。后续受控顺序为 ISO 9646/X.290、15026-1:2025 clause study + targeted Claim/assurance/uncertainty compatibility review、29119-2/3/4、IEEE 1012/15026-3；不安排 15026-1:2019 独立研究或 2019→2025 全文 delta。每一步按 gap search 状态和 availability 重评，不自动沿引用链推进。
 
-**Post-round update (2026-08-18):** ISO/IEC/IEEE 29148:2018 与 ISO/IEC/IEEE 15026-2:2022 已按用户批准的研究顺序完成，详见 §29。下一轮采用 ISO/IEC/IEEE 15289 全量研究与 ISO/IEC 9646 / ITU-T X.290 targeted review 双轨；ISO/IEC/IEEE 15026-1 是本轮新确认的规范术语依赖。上表保留为当时评分记录，不再表示 29148 尚未研究。
+**Post-round update (2026-08-18):** ISO/IEC/IEEE 29148:2018 与 ISO/IEC/IEEE 15026-2:2022 已按用户批准的研究顺序完成，详见 §29。下一轮采用 ISO/IEC/IEEE 15289 全量研究与 ISO/IEC 9646 / ITU-T X.290 targeted review 双轨；ISO/IEC/IEEE 15026-1:2025 是本轮新确认的现行规范术语依赖。上表保留为当时评分记录，不再表示 29148 尚未研究。
 
 ## 26. Open questions
 
@@ -573,9 +573,9 @@ Framework 的稳定主干是 `Verification Basis Element {Requirement | Specifie
 | Verification Action / Procedure | source-supported | Yes（6.4.9.3(b)(1)） | Direct | 概念 | item-level 判据 | Phase 4 + item standards |
 | Observation / Result | framework semantics over source concept | Partial | Direct（6.4.9.3(b)–(c)） | 与 Evidence 的 role 区分 | record schema | Phase 4 |
 | Evidence | GENERIC CORE | Yes（ISO 15288, 5.10/6.4.9） | Direct | broad role semantics；distinct from Result and Evidence Item | physical artifact/admission schema | ISO-G07B / ASC-G02 |
-| Evidence Item | POST-v0.2 REVIEWED DELTA — GENERIC CORE | Yes（ISO 15026-2, 5.3.2 record） | Direct record; framework characterization | artefact + applicability + uncertainty + assumptions | identity/cardinality/admission workflow | ISO 15289/15026-1 |
-| Claim / Argument | GENERIC CORE; POST-v0.2 reviewed refinement | Claim dependency-open；Argument direct（ISO 15026-2, 5.3.3/5.3.5） | Direct/Dependency open | recursive support, inference/evidence-reference alternatives | full Claim ontology；argument-quality assessment | ISO 15026-1 / ASC-G03 |
-| Supported Claim / Inference / Context / Undeveloped Argument | POST-v0.2 REVIEWED DELTA — GENERIC CORE structure | Yes（ISO 15026-2, 3.1.4/3.1.7/5.3.1/5.3.4–5.3.5） | Direct | recursive assurance-case abstract structure | identity/reuse/cardinality/validity rules | ISO 15026-1 |
+| Evidence Item | POST-v0.2 REVIEWED DELTA — GENERIC CORE | Yes（ISO 15026-2, 5.3.2 record） | Direct record; framework characterization | artefact + applicability + uncertainty + assumptions | identity/cardinality/admission workflow | ISO 15289/15026-1:2025 |
+| Claim / Argument | GENERIC CORE; POST-v0.2 reviewed refinement | Claim dependency-open；Argument direct（ISO 15026-2, 5.3.3/5.3.5） | Direct/Dependency open | recursive support, inference/evidence-reference alternatives | full Claim ontology；argument-quality assessment | ISO 15026-1:2025 / ASC-G03 |
+| Supported Claim / Inference / Context / Undeveloped Argument | POST-v0.2 REVIEWED DELTA — GENERIC CORE structure | Yes（ISO 15026-2, 3.1.4/3.1.7/5.3.1/5.3.4–5.3.5） | Direct | recursive assurance-case abstract structure | identity/reuse/cardinality/validity rules | ISO 15026-1:2025 |
 | Narrative Introduction / Assurance Case Report | POST-v0.2 REVIEWED DELTA — information-item/view | Yes（ISO 15026-2, 3.1.2/5.2/5.3.6） | Direct | report/index view distinct from whole Assurance Case | snapshot/version/assembly rules | ISO 15289 / ASC-G04 |
 | Configuration / Baseline | source-native | Yes（3.8；6.3.5） | Direct | 强制依赖 | — | — |
 | Change / ImpactAssessment | framework-defined | No | Indirect（6.3.5 re-verification） | V10 chain | selection algorithm | ISO-G05 successor |
@@ -610,7 +610,7 @@ This annex records the effect of the first post-v0.2 normative round. It does no
 | Added source | Role | Baseline effect |
 |---|---|---|
 | ISO/IEC/IEEE 29148:2018 | Reviewed requirements-engineering clause study | Reviewed support for Requirement/Set, method/criteria traceability and BRS/StRS/SyRS/SRS views; 15288 version mapping open |
-| ISO/IEC/IEEE 15026-2:2022 | Reviewed assurance-case structure clause study | Reviewed four-field Evidence Item and assurance structure; 15026-1:2019/2025 dependencies open |
+| ISO/IEC/IEEE 15026-2:2022 | Reviewed assurance-case structure clause study | Reviewed four-field Evidence Item and assurance structure; current 15026-1:2025 study/targeted compatibility open; dated 2019 locator retained only as provenance |
 
 ### 29.2 Refined architecture
 
@@ -650,7 +650,7 @@ The arrows spanning Requirement/Basis to Verification Obligation and Result/Arte
 
 ### 29.4 Gap effect and dependencies
 
-ISO-G07 remains open: `ISO-G07A` is a partially supported conceptual requirements/assurance-case slice, `ISO-G07B` keeps executable schema/cardinality/state/serialization open, and `ISO-G07C` keeps ISO 15289 interoperability open. The 15289:2019 source is acquired but unstudied. ISO 15026-1:2025 is the current dependency for the undated Clause 2 reference and Clause 3 imported terms; ISO 15026-1:2019 is the explicit dated Claim-type dependency in 5.3.3. Both source studies and the 2019→2025 delta remain open. ISO 29148's 15288:2015→2023 mapping is also open.
+ISO-G07 remains open: `ISO-G07A` is a partially supported conceptual requirements/assurance-case slice, `ISO-G07B` keeps executable schema/cardinality/state/serialization open, and `ISO-G07C` keeps ISO 15289 interoperability open. The 15289:2019 source is acquired but unstudied. ISO 15026-1:2025 is the framework's sole current assurance-vocabulary version and the current dependency for the undated Clause 2 reference and Clause 3 imported terms; its licensed source is acquired and clause study is pending. ISO 15026-2:2022, 5.3.3 source-native provenance remains a dated reference to 15026-1:2019, 3.1.4, but 2019 is not an adopted version or standalone study target. Equivalence is not presumed pending a targeted Claim/assurance/uncertainty compatibility review; no full-edition delta is planned. ISO 29148's 15288:2015→2023 mapping is also open.
 
 Detailed decisions are recorded in:
 

@@ -43,21 +43,21 @@ v0.1 establishes research infrastructure and does not claim completion or normat
 - Closed and externally confirmed re-review findings F-01/F-02 by aligning all current gap references to the authoritative matrix (`REQ-G01` identity/lifecycle schema, `REQ-G02` criterion placement/cardinality, `ISO-G07C` 15289 interoperability) and normalizing the acquired-source/pending-study status.
 - Froze `research-baseline/v0.2` before post-v0.2 increments.
 - Integrated PR #8 governance through a Controlled Candidate-Source Baseline, controlled candidate-contribution register, temporary cross-repository mappings and governed instance feedback.
-- Integrated PR #7 ISO 29148/15026-2 clause studies after independent normative review, with an open ISO-G07 A/B/C split, split 15026-1 dependencies and explicit source/framework evidence provenance.
+- Integrated PR #7 ISO 29148/15026-2 clause studies after independent normative review, with an open ISO-G07 A/B/C split, a current 15026-1:2025 vocabulary dependency, dated-2019 source provenance and explicit source/framework evidence provenance.
 - Added a consolidated integration review packet and repository-wide consistency validation. PR #9 was approved and merged by ordinary merge commit `658e3cfcee1d66147c6cbf2d048fc1d46a846f14`; PR #7/#8 were closed as superseded without direct merge, the temporary remote branches were deleted, and `main` is the only remote branch. The controlled research stop now advances to the ISO/IEC/IEEE 15289:2019 clause-level study.
 
 ### Research
 
 - Completed independent review of the ISO/IEC/IEEE 29148:2018 and ISO/IEC/IEEE 15026-2:2022 clause studies; retained the post-v0.2 conceptual-candidate boundary and all schema, sufficiency, authority and certification non-claims.
 - Clarified ISO 29148 full-conformance scope under 4.2/6.1, classified 5.2.3 as `DIRECT-DESCRIPTIVE`, and separated reproduced lifecycle-task modal force, ISO guidance and direct `shall` statements in 6.5/6.6.
-- Split the ISO 15026-1 dependency into the current 2025 undated-reference dependency, the explicit 2019 dated Claim-type dependency in 15026-2, 5.3.3, and the open 2019→2025 delta.
+- Adopted ISO 15026-1:2025 as the sole current assurance-vocabulary version; retained the explicit 2019 Claim-type/uncertainty references in 15026-2 only as dated source provenance, cancelled standalone 2019 study and full-edition delta, and kept a targeted Claim/assurance/uncertainty compatibility review open.
 - Corrected evidence provenance: ISO 15026-2 defines the four-field Evidence Item record and later leaf-Argument reference, while Result/Artefact characterization/admission remains a framework-defined relation constrained by 5.3.2.
 - Selectively promoted reviewed clause support into the gap matrix without closing ISO-G07, ISO-G07B/C, REQ-G01/G02 or ASC-G01–G04.
 - Added a controlled candidate-contribution register with claim type, novelty/validation status, falsification condition, source/gap anchor and non-claim; gaps and five-source absences are explicitly not novelty proof.
 - Added a HANDOFF workspace (current progress snapshot + next plan) maintained per merged PR; not a source of truth.
 - Established a Controlled Candidate-Source Baseline: the source-change process is controlled without claiming a closed source universe; official metadata, availability, layer role, trigger and study state are separated.
 - Updated the validation workspace with the methodology–instance decoupling boundary (mapping methodology is generic research; instance artifacts live in external repos).
-- Recorded the controlled next sequence: ISO 15289 → ISO 9646/X.290 → 15026-1:2019/2025 delta → 29119-2/3/4 → IEEE 1012/15026-3 → executable schema → versioned registry → platform architecture → external integration.
+- Recorded the controlled next sequence: ISO 15289 → ISO 9646/X.290 → 15026-1:2025 clause study and targeted compatibility review → 29119-2/3/4 → IEEE 1012/15026-3 → executable schema → versioned registry → platform architecture → external integration.
 - Added a standards layering policy to the target baseline: one primary layer role per source (generic methodological / domain assurance profile / instance standard / execution technology), layer-bounded conclusion rights, dual-role splitting and abstraction-ladder-only cross-layer flow.
 - Added ISO/IEC/IEEE 15026-2 (assurance case content, Phase 5/RQ4 input) and ISO/IEC TR 29119-11:2020 (AI-based system testing, third-instance reference) to the candidate-source backlog; marked TTCN-3 as execution technology.
 - Added a framework-object provenance annex (§28) to the five-source consolidation report: per-object source-native/framework-defined attribution, non-aviation generic-basis audit, frozen boundaries, open items and schema gates; zero new files, definition-ownership rule recorded in ARCHITECTURE.md.

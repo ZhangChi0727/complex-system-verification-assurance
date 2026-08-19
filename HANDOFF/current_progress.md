@@ -1,7 +1,7 @@
 ---
 title: Current Progress
 status: working
-version: 0.5
+version: 0.6
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-19
@@ -36,8 +36,9 @@ v0.2 是由 ISO 15288、ISO 24748-1/2、ARP4754B、ARP4761A 形成的 five-sourc
 ## Source state
 
 - `CLAUSE STUDY REVIEWED`：five-source v0.2 sources；
-- `SOURCE ACQUIRED; CLAUSE STUDY PENDING`：ISO/IEC/IEEE 15289:2019；
-- `CLAUSE STUDY REVIEWED; OPEN DEPENDENCIES`：ISO/IEC/IEEE 29148:2018（15288:2015→2023 mapping open）、ISO/IEC/IEEE 15026-2:2022（15026-1:2025 undated-reference dependency、15026-1:2019 dated Claim-type dependency 与 delta open）；
+- `SOURCE ACQUIRED; CLAUSE STUDY PENDING`：ISO/IEC/IEEE 15289:2019、ISO/IEC/IEEE 15026-1:2025；
+- `CLAUSE STUDY REVIEWED; OPEN DEPENDENCIES`：ISO/IEC/IEEE 29148:2018（15288:2015→2023 mapping open）、ISO/IEC/IEEE 15026-2:2022（15026-1:2025 Clause 2/3 dependency 与 Claim/assurance/uncertainty targeted compatibility review open）；
+- `DATED-REFERENCE PROVENANCE ONLY; NO STANDALONE STUDY PLANNED`：ISO/IEC/IEEE 15026-1:2019，仅忠实记录 15026-2:2022, 5.3.3 的 Claim type 及相关 uncertainty 说明来源；
 - `PLANNED; NOT STARTED`：ISO/IEC 9646 / ITU-T X.290 targeted study；
 - 后续候选源与官方元数据状态见 `docs/01_normative_foundation/standards_baseline.md`。
 

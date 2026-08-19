@@ -1,7 +1,7 @@
 ---
 title: Gap Migration Report — ISO 29148 / ISO 15026-2
 status: reviewed
-version: 0.1
+version: 0.2
 baseline: post-v0.2-candidate
 owner: research
 last_updated: 2026-08-19
@@ -36,7 +36,7 @@ dependencies:
 |---|---|---|---|---|
 | REQ-G01 | Requirement/Set identity and lifecycle schema | 29148, 5.2.4–5.2.8/7/9 supplies reviewed concepts/content but not an executable lifecycle schema | Identity, mandatory attributes, state and cardinality remain open; formation/grouping/splitting and condition/constraint representation are unnumbered subproblems; 29148:2018→15288:2023 mapping is an open dependency | High — information model |
 | REQ-G02 | Verification Criterion placement and cardinality | 29148, 6.5.2.2 supports method/criterion relations while retaining the 4.2/6.1 conformance boundary | Criterion-to-action/basis/requirement representation and cardinality remain framework decisions; no 1:1 Requirement-to-Procedure rule | High — information model |
-| ASC-G01 | ISO 15026-1 terminology dependency | 15026-2 Clause 2/3 undated reference and 5.3.3 dated 2019 Claim type | Claim/assurance/uncertainty definitions and the 2019→2025 delta cannot be fully frozen | High |
+| ASC-G01 | ISO 15026-1 terminology dependency | 15026-2 Clause 2/3 undated reference resolves to the current 2025 edition; 5.3.3 retains a dated 2019 Claim locator as source provenance | 2025 Claim/assurance/uncertainty clauses and their targeted compatibility with the adopted 15026-2 structures must be reviewed; no 2019 standalone study or full-edition delta | High |
 | ASC-G02 | Framework characterization and later Argument use | Framework relation constrained by 15026-2, 5.3.2; source-native 5.3.5 reference | Four-field Evidence Item structure is established, but characterization/admission workflow/state/authority/cardinality and later Claim-specific use remain distinct/open | High — evidence architecture |
 | ASC-G03 | Inference validity and argument-quality assessment | 15026-2, 4.1/5.3.4 | Structure identifies inference but supplies no universal validity-evaluation method | High — sufficiency/profile |
 | ASC-G04 | Assurance-case report/snapshot/version semantics | 15026-2, 3.1.2/5.3.6 | Need versioning, assembly/index and baseline rules compatible with repository model | Medium |
@@ -66,10 +66,10 @@ The parent remains open. ISO-G07A is only partially supported and does not autho
 
 ## 5. Research-priority effect
 
-The pending clause study of the acquired ISO 15289 source remains the largest information-item dependency. ISO 15026-1 is a parallel high-priority dependency: Clause 2/3 use an undated reference resolved to the current 2025 edition, while 5.3.3 explicitly imports the dated 2019 Claim type. A rational next sequence is:
+The pending clause study of the acquired ISO 15289 source remains the largest information-item dependency. ISO 15026-1:2025 is a parallel high-priority dependency and the framework's sole current vocabulary version. Clause 2/3 use an undated reference resolved to 2025, while the 5.3.3 dated 2019 Claim locator remains source-native provenance only. A rational next sequence is:
 
 1. ISO/IEC/IEEE 15289 — information-item taxonomy/interoperability;
-2. ISO/IEC/IEEE 15026-1:2019 and 2025 — dated/undated dependencies plus delta;
+2. ISO/IEC/IEEE 15026-1:2025 — clause study plus targeted compatibility review for the adopted Claim/assurance/uncertainty concepts; no standalone 2019 study or full-edition delta;
 3. return to ISO-G07B/ASC-G02 schema decisions;
 4. only then freeze DBSE cardinalities or automated validation rules.
 

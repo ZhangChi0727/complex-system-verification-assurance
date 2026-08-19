@@ -1,7 +1,7 @@
 ---
 title: Consolidated v0.2 / PR7 / PR8 Integration Review Packet
 status: merged
-version: 1.3
+version: 1.4
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-19
@@ -46,7 +46,7 @@ v0.2 contains only the five-source conceptual normative foundation, V0–V12 ont
 | ISO 29148 conformance | Full/process conformance follows 4.2/6.1; 5.2.3 is `DIRECT-DESCRIPTIVE`; 6.5/6.6 lifecycle-task text, ISO guidance and direct `shall` statements remain distinguishable |
 | Evidence Item | 15026-2, 5.3.2 defines the four-field record; Result/Artefact characterization/admission is framework-defined and source-constrained; later 5.3.5 leaf-Argument reference supports a specific Claim |
 | ISO-G07 | Parent Open; G07A Partially Supported with reviewed slices; G07B Open; G07C Open with 15289 source acquired/study pending |
-| Dependencies | 15026-1:2025 is the current undated-reference dependency for Clause 2/3; 15026-1:2019 is the dated Claim-type dependency in 5.3.3; both studies/delta and 29148→15288 mapping remain open |
+| Dependencies | 15026-1:2025 is the sole current vocabulary version and Clause 2/3 dependency; its clause study and targeted Claim/assurance/uncertainty compatibility review remain open. The 5.3.3 dated 15026-1:2019 locator is provenance only; no standalone 2019 study or full-edition delta is planned. 29148→15288 mapping remains open. |
 | Research maturity | 29148/15026-2 assets are `reviewed` post-v0.2 conceptual research deltas; no executable schema, sufficiency/authority or certification promotion |
 
 ## Gap migration summary
@@ -106,4 +106,4 @@ The correction was deliberately additive: Commits 1–4 and the v0.2 tag remaine
 
 ## Non-claims and residual work
 
-This integration does not establish executable architecture/schema, universal sufficiency, certification acceptance, stable cross-repository IDs, platform implementation or framework validation. ISO 15289, ISO 9646/X.290, 15026-1 delta, 29119-2/3/4, IEEE 1012/15026-3 and all schema/registry/platform/instance results remain future work.
+This integration does not establish executable architecture/schema, universal sufficiency, certification acceptance, stable cross-repository IDs, platform implementation or framework validation. ISO 15289, ISO 9646/X.290, the 15026-1:2025 clause study and targeted compatibility review, 29119-2/3/4, IEEE 1012/15026-3 and all schema/registry/platform/instance results remain future work. ISO 15026-1:2019 is retained only as dated-reference provenance, not future standalone research.

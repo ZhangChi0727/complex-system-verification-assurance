@@ -1,7 +1,7 @@
 ---
 title: Cross-Standard Research Map
 status: reviewed
-version: 0.13
+version: 0.14
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-19
@@ -67,7 +67,7 @@ Consolidated classification：
 | Assumptions | Requirement assumptions documented/validated; SyRS/SRS assumption content: 5.2.7; 9.5.19; 9.6.8 | Basic Assumption in Context; Evidence Item assumptions: 5.3.1–5.3.2 | Generic conceptual semantics strengthened; universal lifecycle schema remains open |
 | Sufficiency | No universal evidence threshold | Readers assess sufficiency; content quality not specified: Introduction; 4.1 | Generic interface strengthened; criteria/authority remain open |
 | Change | Requirements impact, version and baseline management: 6.6 | Case maintained for system/environment/use change; version-change narrative: 4.1; 5.3.6 | V10 impact scope extended conceptually |
-| Dependencies | 15288:2015 process citations and 15289 interaction | Clause 2/3 undated dependency on current 15026-1:2025; 5.3.3 explicit dated 15026-1:2019 Claim type; 15289 references | 2019→2025 delta and all clause mappings remain open; no inferred vocabulary |
+| Dependencies | 15288:2015 process citations and 15289 interaction | Clause 2/3 undated dependency on current 15026-1:2025; 5.3.3 explicit dated 15026-1:2019 Claim locator retained as provenance; 15289 references | 2025 clause mapping and targeted Claim/assurance/uncertainty compatibility remain open; no inferred equivalence and no full-edition delta |
 
 ## 标准—验证目标—活动—信息项—证据映射
 

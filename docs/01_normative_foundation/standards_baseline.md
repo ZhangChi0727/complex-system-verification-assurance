@@ -1,7 +1,7 @@
 ---
 title: Controlled Candidate-Source Baseline
 status: reviewed
-version: 1.1
+version: 1.2
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-19
@@ -40,9 +40,8 @@ dependencies:
 | ISO/IEC/IEEE 24748-2:2024 | International Standard | *Life cycle management — Part 2* | Ed. 2 / 2024-03 | ISO/IEC/IEEE | Published | 24748-2:2018 | Local licensed source; not committed | Generic methodological source | v0.2 foundation | CLAUSE STUDY REVIEWED |
 | ISO/IEC/IEEE 15289:2019 | International Standard | *Content of life-cycle information items (documentation)* | Ed. 4 / 2019-07 | ISO/IEC/IEEE | Published; revision under development | 15289:2017 | Source acquired; not committed | Generic methodological source | ISO-G07C / interoperability | SOURCE ACQUIRED; CLAUSE STUDY PENDING |
 | ISO/IEC/IEEE 29148:2018 | International Standard | *Life cycle processes — Requirements engineering* | Ed. 2 / 2018-11 | ISO/IEC/IEEE | Published; current-status recheck pending | metadata pending | Local licensed source; not committed | Generic methodological source | Verification Basis / requirement quality | CLAUSE STUDY REVIEWED; 15288:2015→2023 VERSION MAPPING OPEN |
-| ISO/IEC/IEEE 15026-1:2025 | International Standard | *Systems and software assurance — Part 1: Vocabulary and concepts* | Ed. 2 / 2025-12 | ISO/IEC/IEEE | Published | Supersedes 15026-1:2019; current target of the 15026-2 Clause 2 undated reference and Clause 3 imported terms | Not acquired | Generic methodological source | assurance vocabulary / delta | METADATA VERIFIED; CLAUSE STUDY PENDING |
-| ISO/IEC/IEEE 15026-1:2019 | International Standard | *Systems and software assurance — Part 1: Concepts and vocabulary* | Ed. 1 / 2019-03 | ISO/IEC/IEEE | Withdrawn | Replaced by 15026-1:2025; explicit dated Claim-type dependency in 15026-2:2022, 5.3.3 | Not acquired | Generic methodological source | dependency and 2019→2025 delta | METADATA VERIFIED; CLAUSE STUDY PENDING |
-| ISO/IEC/IEEE 15026-2:2022 | International Standard | *Systems and software assurance — Part 2: Assurance case* | Ed. 2 / 2022-11 | ISO/IEC/IEEE | Published | ISO/IEC 15026-2:2011 | Local licensed source; not committed | Generic methodological source | Claim–Argument–Evidence / RQ4 | CLAUSE STUDY REVIEWED; 15026-1:2025 UNDATED-REFERENCE AND 15026-1:2019 DATED CLAIM-TYPE DEPENDENCIES OPEN |
+| ISO/IEC/IEEE 15026-1:2025 | International Standard | *Systems and software assurance — Part 1: Vocabulary and concepts* | Ed. 2 / 2025-12 | ISO/IEC/IEEE | Published | Supersedes 15026-1:2019; current target of the 15026-2 Clause 2 undated reference and Clause 3 imported terms | Local licensed source; not committed | Generic methodological source | current assurance vocabulary and Part 2/3/4 shared concepts / 15026-2 Clause 2/3 dependency | SOURCE ACQUIRED; CLAUSE STUDY PENDING |
+| ISO/IEC/IEEE 15026-2:2022 | International Standard | *Systems and software assurance — Part 2: Assurance case* | Ed. 2 / 2022-11 | ISO/IEC/IEEE | Published | ISO/IEC 15026-2:2011 | Local licensed source; not committed | Generic methodological source | Claim–Argument–Evidence / RQ4 | CLAUSE STUDY REVIEWED; 15026-1:2025 TARGETED COMPATIBILITY REVIEW OPEN; 2019 DATED-REFERENCE PROVENANCE RETAINED |
 | ISO/IEC/IEEE 15026-3:2023 | International Standard | *Systems and software assurance — Part 3: System integrity levels* | Ed. 3 / 2023-10 | ISO/IEC/IEEE | Published | ISO/IEC 15026-3:2015 | Not acquired | Generic methodological source | assurance-intensity candidate | METADATA VERIFIED; CLAUSE STUDY PENDING |
 | ISO/IEC/IEEE 15026-4:2021 | International Standard | *Systems and software assurance — Part 4: Assurance in the life cycle* | Ed. 1 / 2021-05 | ISO/IEC/IEEE | Current published; DIS revision is not a published replacement | ISO/IEC 15026-4:2012 | Not acquired | Generic methodological source | assurance lifecycle | METADATA VERIFIED; CLAUSE STUDY PENDING |
 | ISO/IEC/IEEE 29119-1:2022 | International Standard | *Software testing — Part 1: General concepts* | Ed. 2 / 2022-01 | ISO/IEC/IEEE | Published | 29119-1:2013 | Not acquired | Generic methodological source | testing concepts | METADATA VERIFIED; CLAUSE STUDY PENDING |
@@ -62,5 +61,13 @@ dependencies:
 | RTCA DO-178C / DO-254 / DO-297 / supplements | Domain standards / supplements | metadata pending by document | metadata pending | RTCA / EUROCAE | metadata pending | metadata pending | Not acquired | Domain assurance profile | UAV/item-level scope | METADATA PENDING; TRIGGER NOT MET |
 | ARINC 615A and applicable instance standards | Instance standards | metadata pending by instance | metadata pending | applicable issuers | metadata pending | metadata pending | Not acquired | Instance standard | external instance | INSTANCE-CONTROLLED; METADATA PENDING |
 | ETSI TTCN-3 / SysML / SysML v2 / tools | Specifications / technologies | metadata pending by selection | metadata pending | applicable issuers | metadata pending | — | Not acquired | Execution technology | platform ADR | SELECTION NOT STARTED |
+
+## Historical / dated-reference provenance
+
+本节保存来源真实性，不构成 candidate-source register、当前 Generic Core 规范基础或待执行研究计划。不得把 dated locator 机械替换为现行版条款号。
+
+| Source identifier | Provenance role | Framework adoption | Controlled status |
+|---|---|---|---|
+| ISO/IEC/IEEE 15026-1:2019 | ISO/IEC/IEEE 15026-2:2022, 5.3.3 explicitly cites the 2019 `Claim` type; an informative uncertainty note also carries a dated 2019 reference | Not adopted as the current vocabulary version; retained only to preserve source-native provenance | DATED-REFERENCE PROVENANCE ONLY; NO STANDALONE STUDY PLANNED |
 
 候选源登记是 discovery control，不是新颖性或规范支持证据。强创新主张必须等相关检索达到 `SOURCE SEARCH COMPLETE` 并通过 falsification review。
