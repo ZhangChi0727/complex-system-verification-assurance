@@ -1,7 +1,7 @@
 ---
 title: Current Progress
 status: working
-version: 0.4
+version: 0.5
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-19
@@ -13,17 +13,19 @@ dependencies:
 # Current Progress
 
 - **Snapshot source:** `research-baseline/v0.2`
-- **Integration status:** Draft PR #9 is open; external re-review findings F-01/F-02 are applied as a fifth incremental correction; renewed external re-review is the current stop point
+- **Integration status:** PR #9 is merged; external re-review findings F-01/F-02 are externally confirmed and closed
 - **Integrated research head before this final review commit:** `40018f996c746034092a7add81d1ba5f2d21349c`
-- **Final review snapshot locator:** the commit containing this HANDOFF revision (`git rev-parse HEAD` after checkout). Merge commit/main SHA can only be recorded after review and ordinary merge.
-- **External re-review correction locator:** the commit containing this snapshot; its exact SHA is recorded in PR #9 after ordinary push
+- **PR #9 reviewed head:** `3359927286a39411ccb0e5f6dd34883702eb3ece`
+- **PR #9 merge commit / synchronized main:** `658e3cfcee1d66147c6cbf2d048fc1d46a846f14`
+- **Superseded PRs:** PR #7 and PR #8 are closed as superseded; neither was merged directly
+- **Repository topology:** temporary integration/source branches are deleted; the only remote branch is `main`
 - **Repository maturity:** `Normative-foundation research late stage / conceptual architecture early stage`
 
 ## Established baseline
 
 v0.2 是由 ISO 15288、ISO 24748-1/2、ARP4754B、ARP4761A 形成的 five-source conceptual baseline。它不宣称 executable schema、domain criteria、item-level completeness、certification acceptance 或 framework validation。
 
-## Governance increment in progress
+## Established post-v0.2 governance increment
 
 - standards register 已改为 **Controlled Candidate-Source Baseline**：控制来源变更过程，不封闭未来 source universe；
 - gap matrix 区分 established clause basis 与 candidate-source search；未研究来源不能关闭 gap；
@@ -41,6 +43,6 @@ v0.2 是由 ISO 15288、ISO 24748-1/2、ARP4754B、ARP4761A 形成的 five-sourc
 
 ## Open work
 
-ISO-G07 information-item schema、ISO-G04 Oracle、ISO-G02B coverage、ISO-G03B sufficiency、ISO-G05 selection、ISO-G06 closure 与 ISO-G08 model evidence 继续保持可见。F-01 已按权威矩阵统一为 `REQ-G01` Requirement/Set identity and lifecycle schema、`REQ-G02` Verification Criterion placement/cardinality、`ISO-G07C` ISO 15289 interoperability；F-02 已把 ISO-G07C 状态统一为 `SOURCE ACQUIRED; CLAUSE STUDY PENDING`。PR-level five-commit integrity and repository checks pass；当前停点是 renewed external re-review。只有复审确认后才能转 Ready 并使用 ordinary merge commit。Merge SHA 与最终 `main` 状态只能在合并后记录。
+ISO-G07 information-item schema、ISO-G04 Oracle、ISO-G02B coverage、ISO-G03B sufficiency、ISO-G05 selection、ISO-G06 closure 与 ISO-G08 model evidence 继续保持可见。F-01 已按权威矩阵统一为 `REQ-G01` Requirement/Set identity and lifecycle schema、`REQ-G02` Verification Criterion placement/cardinality、`ISO-G07C` ISO 15289 interoperability；F-02 已把 ISO-G07C 状态统一为 `SOURCE ACQUIRED; CLAUSE STUDY PENDING`。两项 finding 均已通过外部复审并关闭。当前研究停点转入 **ISO/IEC/IEEE 15289:2019 条款级研究**，用于精化 information-item interoperability 与 document/record mapping；尚未开始的条款结论不得提前写入 established clause basis。
 
 Executable metamodel/schema、versioned object registry、platform implementation 和 ARINC 615A/UAV/LLM instance results 均未建立。仓库不声称 certification-ready、evidence sufficiency solved 或 framework validated。

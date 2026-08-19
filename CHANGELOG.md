@@ -40,11 +40,11 @@ v0.1 establishes research infrastructure and does not claim completion or normat
 
 ### Consolidated integration
 
-- Closed external re-review findings F-01/F-02 by aligning all current gap references to the authoritative matrix (`REQ-G01` identity/lifecycle schema, `REQ-G02` criterion placement/cardinality, `ISO-G07C` 15289 interoperability) and normalizing the acquired-source/pending-study status.
+- Closed and externally confirmed re-review findings F-01/F-02 by aligning all current gap references to the authoritative matrix (`REQ-G01` identity/lifecycle schema, `REQ-G02` criterion placement/cardinality, `ISO-G07C` 15289 interoperability) and normalizing the acquired-source/pending-study status.
 - Froze `research-baseline/v0.2` before post-v0.2 increments.
 - Integrated PR #8 governance through a Controlled Candidate-Source Baseline, controlled candidate-contribution register, temporary cross-repository mappings and governed instance feedback.
 - Integrated PR #7 ISO 29148/15026-2 clause studies after independent normative review, with an open ISO-G07 A/B/C split, split 15026-1 dependencies and explicit source/framework evidence provenance.
-- Added a consolidated integration review packet and repository-wide consistency validation; original PR #7/#8 remain intentionally unmerged while Draft PR #9 awaits external re-review.
+- Added a consolidated integration review packet and repository-wide consistency validation. PR #9 was approved and merged by ordinary merge commit `658e3cfcee1d66147c6cbf2d048fc1d46a846f14`; PR #7/#8 were closed as superseded without direct merge, the temporary remote branches were deleted, and `main` is the only remote branch. The controlled research stop now advances to the ISO/IEC/IEEE 15289:2019 clause-level study.
 
 ### Research
 
