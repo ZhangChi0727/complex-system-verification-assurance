@@ -569,7 +569,7 @@ Framework 的稳定主干是 `Verification Basis Element {Requirement | Specifie
 | Verification Strategy | GENERIC CORE (source-supported) | Yes（6.4.9.3(a)(4)） | Direct | 概念 + 最小 semantic contract | 完整 VSR schema | ISO-G07 |
 | Verification Basis Element role | framework-defined union role | No（构造于 ISO 概念之上） | Direct（ISO 15288, 3.36/6.4.9.1–.2；ISO 29148, 5.2.4/6.5.2.1） | typed union {Requirement \| Specified Characteristic \| Applicable Constraint} | class schema、subtypes、cardinality | ISO 15289 |
 | Requirement Set | POST-v0.2 REVIEWED DELTA — GENERIC CORE aggregate/view | Yes（ISO 29148, 5.2.6） | Direct | separate set-quality assessment | executable representation/cardinality | ISO 15289 |
-| Verification Criterion | POST-v0.2 REVIEWED DELTA — GENERIC CORE concept | Yes（ISO 29148, 6.5.2.2） | Direct with conformance/modal boundary | relation-bearing concept between obligation/action/result | entity vs value/relation；cardinality | ISO-G07B/REQ-G01 |
+| Verification Criterion | POST-v0.2 REVIEWED DELTA — GENERIC CORE concept | Yes（ISO 29148, 6.5.2.2） | Direct with conformance/modal boundary | relation-bearing concept between obligation/action/result | entity vs value/relation；cardinality | ISO-G07B/REQ-G02 |
 | Verification Action / Procedure | source-supported | Yes（6.4.9.3(b)(1)） | Direct | 概念 | item-level 判据 | Phase 4 + item standards |
 | Observation / Result | framework semantics over source concept | Partial | Direct（6.4.9.3(b)–(c)） | 与 Evidence 的 role 区分 | record schema | Phase 4 |
 | Evidence | GENERIC CORE | Yes（ISO 15288, 5.10/6.4.9） | Direct | broad role semantics；distinct from Result and Evidence Item | physical artifact/admission schema | ISO-G07B / ASC-G02 |

@@ -1,7 +1,7 @@
 ---
 title: Consolidated v0.2 / PR7 / PR8 Integration Review Packet
-status: reviewed
-version: 1.1
+status: ready-for-external-rereview
+version: 1.2
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-19
@@ -24,9 +24,10 @@ dependencies:
 | Annotated tag | `research-baseline/v0.2` → freeze commit exactly |
 | Governance source | PR #8 / `7792abc8ac1bcb136fab835ae8d5dfd051f660d0`; integrated with corrections, not merged |
 | Research source | PR #7 / `71f7d841abd49c1f7fe040f41e6f75fc9d0fbaae`; integrated with corrections, not merged |
-| Commit 2 | `023069a` — controlled source/governance increment |
+| Commit 2 | `023069a2fd4fe4335c534b434614e2a555d19f20` — controlled source/governance increment |
 | Commit 3 | `40018f996c746034092a7add81d1ba5f2d21349c` — independently reviewed 29148/15026-2 research increment |
-| Commit 4 | commit containing this final review snapshot; resolve externally with `git rev-parse HEAD` to avoid circular self-reference |
+| Commit 4 | `1028e35dcfdf9e5381674fc5dd491460c0ac5fd1` — independent-review corrections and refreshed repository handoff |
+| Commit 5 | commit containing the F-01/F-02 external re-review corrections; exact SHA recorded in PR #9 after ordinary push |
 
 ## Frozen versus post-baseline boundary
 
@@ -62,7 +63,7 @@ v0.2 contains only the five-source conceptual normative foundation, V0–V12 ont
 
 | Check | Result |
 |---|---|
-| Four-commit intent and source provenance | PASS |
+| Five-commit intent and source provenance | PASS |
 | Tag points to pre-PR7/PR8 freeze commit | PASS |
 | Conflict-marker and `git diff --check` scan | PASS |
 | Local Markdown links | PASS |
@@ -82,12 +83,23 @@ Validation was performed with `git diff --check origin/main...HEAD`, local Markd
 Known Blocker/Major findings: 0
 Independent-review findings: CLOSED — IR-29148-01 through IR-PR9-04
 Independent 29148/15026-2 normative review: PASS WITH OPEN DEPENDENCIES
-Consolidated PR-level four-commit/completeness review: PASS
+Consolidated PR-level five-commit/completeness review: PASS LOCALLY
 Recommendation: KEEP PR #9 DRAFT FOR EXTERNAL RE-REVIEW
 Merge policy after explicit approval: ORDINARY MERGE COMMIT; NO SQUASH
 ```
 
 PR #7 and PR #8 remain open and unmerged. After PR #9 is explicitly approved and merged, they may be closed as superseded and only these exact temporary remote branches may be removed: `codex/29148-15026-2-research`, `agent/innovation-statement-handoff`, and `codex/consolidate-v02-pr7-pr8`. No cleanup is authorized before successful merge verification.
+
+## External re-review correction — F-01 / F-02
+
+The external review locked `normative_gap_matrix.md` as the only authority for controlled gap identifiers and found two consistency defects. Both are closed in the fifth PR commit, pending reviewer confirmation:
+
+| Finding | Correction | Current disposition |
+|---|---|---|
+| F-01 Controlled gap-ID semantic conflict | `REQ-G01` now means only Requirement/Set identity and lifecycle schema; formation/grouping/splitting, condition/constraint representation and 29148→15288 mapping are subordinate open concerns. `REQ-G02` now means only Verification Criterion placement and cardinality. 15289 interoperability points only to `ISO-G07C`. The former labels `REQ-G03` and `INF-G01` are historical/non-controlled and have no effective definition after this correction. | CLOSED LOCALLY — EXTERNAL CONFIRMATION PENDING |
+| F-02 ISO 15289 search-state contradiction | Added and applied the canonical state `SOURCE ACQUIRED; CLAUSE STUDY PENDING` to `ISO-G07C`, aligned with the standards register and HANDOFF. No in-progress study is claimed. | CLOSED LOCALLY — EXTERNAL CONFIRMATION PENDING |
+
+The correction is deliberately additive: Commits 1–4 and the v0.2 tag remain unchanged. PR #9 stays Draft until renewed external review confirms F-01/F-02 closure.
 
 ## Non-claims and residual work
 

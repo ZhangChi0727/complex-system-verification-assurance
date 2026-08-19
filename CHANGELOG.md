@@ -40,6 +40,7 @@ v0.1 establishes research infrastructure and does not claim completion or normat
 
 ### Consolidated integration
 
+- Closed external re-review findings F-01/F-02 by aligning all current gap references to the authoritative matrix (`REQ-G01` identity/lifecycle schema, `REQ-G02` criterion placement/cardinality, `ISO-G07C` 15289 interoperability) and normalizing the acquired-source/pending-study status.
 - Froze `research-baseline/v0.2` before post-v0.2 increments.
 - Integrated PR #8 governance through a Controlled Candidate-Source Baseline, controlled candidate-contribution register, temporary cross-repository mappings and governed instance feedback.
 - Integrated PR #7 ISO 29148/15026-2 clause studies after independent normative review, with an open ISO-G07 A/B/C split, split 15026-1 dependencies and explicit source/framework evidence provenance.

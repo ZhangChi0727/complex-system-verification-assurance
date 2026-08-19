@@ -34,14 +34,14 @@ dependencies:
 
 | ID | Topic | Source trigger | Why open | Priority |
 |---|---|---|---|---|
-| REQ-G01 | Requirement-to-Obligation formation/cardinality | 29148, 6.5.2.2 supports per-action method/criteria but no obligation object | Need rules for grouping/splitting and criteria ownership without forcing 1:1 mapping | High — information model |
-| REQ-G02 | Requirement condition/constraint representation | 29148, 5.2.4 permits qualifiers, linked constraints and standalone requirements | Need typed representation that preserves semantics across projects | Medium |
-| REQ-G03 | 29148:2018 to ISO 15288:2023 process mapping | 29148 cites 15288:2015 | Exact task/version deltas not studied | Medium |
+| REQ-G01 | Requirement/Set identity and lifecycle schema | 29148, 5.2.4–5.2.8/7/9 supplies reviewed concepts/content but not an executable lifecycle schema | Identity, mandatory attributes, state and cardinality remain open; formation/grouping/splitting and condition/constraint representation are unnumbered subproblems; 29148:2018→15288:2023 mapping is an open dependency | High — information model |
+| REQ-G02 | Verification Criterion placement and cardinality | 29148, 6.5.2.2 supports method/criterion relations while retaining the 4.2/6.1 conformance boundary | Criterion-to-action/basis/requirement representation and cardinality remain framework decisions; no 1:1 Requirement-to-Procedure rule | High — information model |
 | ASC-G01 | ISO 15026-1 terminology dependency | 15026-2 Clause 2/3 undated reference and 5.3.3 dated 2019 Claim type | Claim/assurance/uncertainty definitions and the 2019→2025 delta cannot be fully frozen | High |
 | ASC-G02 | Framework characterization and later Argument use | Framework relation constrained by 15026-2, 5.3.2; source-native 5.3.5 reference | Four-field Evidence Item structure is established, but characterization/admission workflow/state/authority/cardinality and later Claim-specific use remain distinct/open | High — evidence architecture |
 | ASC-G03 | Inference validity and argument-quality assessment | 15026-2, 4.1/5.3.4 | Structure identifies inference but supplies no universal validity-evaluation method | High — sufficiency/profile |
 | ASC-G04 | Assurance-case report/snapshot/version semantics | 15026-2, 3.1.2/5.3.6 | Need versioning, assembly/index and baseline rules compatible with repository model | Medium |
-| INF-G01 | 15289 interoperability | Both sources refer to 15289; source acquired, clause study pending | Cannot yet verify information-item type/content mappings or schema provenance | Highest dependency |
+
+`REQ-G01` also carries the open 29148:2018→15288:2023 version-mapping dependency. Requirement formation/grouping/splitting and condition/constraint representation are research subproblems under that authoritative gap; they are not separately numbered controlled gaps in this PR. ISO 15289 information-item interoperability is controlled solely by `ISO-G07C`, whose source is acquired and whose clause study remains pending.
 
 ## 4. Gap split details
 

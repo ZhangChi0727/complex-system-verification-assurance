@@ -15,7 +15,7 @@ dependencies:
 
 本矩阵把**已经研究并评审的条款依据**与**尚待研究/评审的候选来源**分开。Gap 是研究问题和候选贡献的输入，不是创新证明。未评审来源不得进入 `Established clause basis`、关闭 gap 或支撑强 novelty claim。
 
-受控检索状态：`SEARCH NOT STARTED`、`PARTIAL SOURCE COVERAGE`、`PLANNED SOURCES IDENTIFIED`、`SOURCE ACQUISITION OPEN`、`CLAUSE STUDY IN PROGRESS`、`SOURCE SEARCH COMPLETE`、`NO ADEQUATE SOURCE FOUND`。`SOURCE SEARCH COMPLETE` 也不等于原创性证明。
+受控检索状态：`SEARCH NOT STARTED`、`PARTIAL SOURCE COVERAGE`、`PLANNED SOURCES IDENTIFIED`、`SOURCE ACQUISITION OPEN`、`SOURCE ACQUIRED; CLAUSE STUDY PENDING`、`CLAUSE STUDY IN PROGRESS`、`SOURCE SEARCH COMPLETE`、`NO ADEQUATE SOURCE FOUND`。`SOURCE SEARCH COMPLETE` 也不等于原创性证明。
 
 | ID | Framework topic | Established clause basis | Candidate source scope | Source-search status | Current interpretation / response | Disposition | Status |
 |---|---|---|---|---|---|---|---|
@@ -32,7 +32,7 @@ dependencies:
 | ISO-G07 | Overall Verification-Assurance Information-Item Architecture | Five-source record/relation basis: ISO 15288, 5.6/6.3.6/6.4.9; 24748-1, 6.2.8; 24748-2, 6.7.4/6.8; ARP4754B, 5.4.7/5.5.6 | Reviewed refinements: 29148/15026-2; remaining: 15289/29119-3 | PARTIAL SOURCE COVERAGE | Reviewed requirements/assurance slices refine successors but do not complete the parent taxonomy. | SPLIT → ISO-G07A/B/C | Open |
 | ISO-G07A | Requirements and Assurance-Case Conceptual Item/View Taxonomy | Five-source conceptual relations; ISO 29148, 4.4/7/9.5/9.6; ISO 15026-2, 5.2/5.3.1–5.3.6 | ISO 15289 interoperability and remaining VAF views | PARTIAL SOURCE COVERAGE | Requirement/Set, BRS/StRS/SyRS/SRS and assurance-case structure are reviewed slices; whole-VAF completeness not claimed. | PARTIALLY RESOLVED | Partially Supported |
 | ISO-G07B | Executable schema, cardinality, state and serialization | Five sources do not establish executable schema | 15289; 29119-3; schema literature | PLANNED SOURCES IDENTIFIED | Fields, identities, cardinalities, lifecycle states and serialization remain open. | KEEP OPEN | Open |
-| ISO-G07C | ISO 15289 interoperability and document/record mapping | — | ISO/IEC/IEEE 15289:2019 (source acquired) | SOURCE ACQUISITION OPEN | Source acquired; clause-level mapping not started. | NEW — KEEP OPEN | Open |
+| ISO-G07C | ISO 15289 interoperability and document/record mapping | — | ISO/IEC/IEEE 15289:2019 (source acquired) | SOURCE ACQUIRED; CLAUSE STUDY PENDING | Source acquired; clause-level mapping not started. | NEW — KEEP OPEN | Open |
 | ISO-G08 | MBSE/model evidence | ISO 15288, Annex D; 24748-1, Annex A.10; ARP4761A, Appendix N | 24641; IEEE 1012; literature | PLANNED SOURCES IDENTIFIED | No generic tool qualification/admissibility regime. | KEEP OPEN | Open |
 | LC-G01 | Gate ontology | ISO 24748-1, 4.3/Cl.5/6.2.6 | 24748-8 | PARTIAL SOURCE COVERAGE | Assessment, optional review, authority decision and event remain separate. | RESOLVED GENERICALLY | Resolved |
 | LC-G02 | Review taxonomy | ISO 24748-1, 6.4/Annexes C,F | 24748-8 | SOURCE ACQUISITION OPEN | Method/lifecycle review and decision distinct. | RESOLVED GENERICALLY | Resolved |

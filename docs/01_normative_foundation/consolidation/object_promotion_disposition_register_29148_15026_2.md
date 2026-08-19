@@ -79,7 +79,7 @@ Section 2 records the evidence summary. Section 3 records this research round's 
 | Composite Gate | Framework-defined Generic Core | Assurance case/report can inform it; authority remains outside argument | KEEP AS GENERIC CORE | Framework-defined; five-source basis + 15026-2, 4.1 | Gate ≠ Argument/Supported Claim; structure ≠ acceptance | Closure; schema OPEN; review required |
 | Verification Closure | Framework Composite Gate/state concern | Top-level supported claim is input, not closure itself | KEEP AS EXTENSION POINT | Framework-defined; no direct source-native closure process | Do not infer closure from complete case or passed claim structure | V12; authority/state OPEN; review required |
 
-`Verification Criterion` promotion is conceptual: it is a stable relation-bearing concept needed between obligation/action/result. Whether it is an entity, value object or controlled relation remains part of ISO-G07B/REQ-G01 and cannot be fixed by this decision.
+`Verification Criterion` promotion is conceptual: it is a stable relation-bearing concept needed between obligation/action/result. Whether it is an entity, value object or controlled relation remains part of ISO-G07B/REQ-G02 and cannot be fixed by this decision.
 
 ### 3.1 Authoritative allowed-state dispositions
 
