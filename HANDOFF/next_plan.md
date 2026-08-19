@@ -1,0 +1,38 @@
+---
+title: Next Plan
+status: working
+version: 0.2
+baseline: post-v0.2
+owner: research
+last_updated: 2026-08-19
+dependencies:
+  - README.md
+  - current_progress.md
+  - ../docs/01_normative_foundation/standards_baseline.md
+---
+
+# Next Plan
+
+`research-baseline/v0.2` 已完成，不再重复执行冻结动作。后续研究按 open gap、candidate-source 状态和 source availability 排序：
+
+1. **ISO/IEC/IEEE 15289:2019**：信息项内容研究，推进 ISO-G07；
+2. **ISO/IEC 9646 / ITU-T X.290**：conformance-testing targeted study，检验 ISO-G04 与 Case/Procedure 候选；
+3. **ISO/IEC/IEEE 15026-1:2019 / 2025 delta**：先满足 15026-2:2022 的 dated dependency，再研究现行词汇变化；
+4. **ISO/IEC/IEEE 29119-2/3/4**：测试过程、文档与技术；
+5. **IEEE 1012-2024 / ISO/IEC/IEEE 15026-3:2023**：V&V rigor 与 assurance-intensity；
+6. **Executable information schema**：仅在相关 schema gates 满足后启动；
+7. **Versioned object registry**：建立稳定引用所需版本、定位和兼容规则；
+8. **Platform reference architecture**：在信息模型稳定后进行可替换技术选型；
+9. **External-instance integration**：通过临时映射迁移到稳定 registry，并使用 Framework Change Proposal 接收反馈。
+
+ISO 29148:2018 与 ISO 15026-2:2022 的现有研究先在本 consolidated integration 中完成评审修正；它们不会因提前完成而改写上述下一轮依赖顺序。
+
+## Triggered work
+
+| Trigger | Work |
+|---|---|
+| platform prototype ADR | TTCN-3 / modelling technology selection |
+| UAV item-level scope | DO-178C / DO-254 / DO-297 and applicable supplements |
+| LLM-service instance | AI testing guidance current-source assessment |
+
+任何新增候选源都必须按 Controlled Candidate-Source Baseline 登记；候选登记不构成 normative support 或 novelty proof。

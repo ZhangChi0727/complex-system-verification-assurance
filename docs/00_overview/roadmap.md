@@ -20,7 +20,7 @@ dependencies:
 
 系统研究 ISO/IEC/IEEE 15288、ISO/IEC/IEEE 24748、INCOSE、NASA Systems Engineering Handbook、SAE ARP4754B、SAE ARP4761A、RTCA DO-178C、DO-254、DO-297、generic conformance-testing methodology 来源（ISO/IEC 9646 / ITU-T X.290 系列、ETSI TTCN-3）及适用补充标准。仅在合法取得全文和准确定位后形成规范性结论。
 
-第一轮五源 consolidation 已完成：ISO 15288、ISO 24748-1/2、ARP4754B 与 ARP4761A 的 source roles、Generic Core/extension points、Civil Aviation Profile 和 inherited gaps 已统一。下一轮在定位变更触发的 gap-priority 重评分后采用**双轨**：**ISO/IEC/IEEE 15289 全量条款精读**（ISO-G07 主线）与 **ISO/IEC 9646 / ITU-T X.290 概念切片 targeted review**（first-instance 前置）并行；ISO 29148 与 ISO/IEC/IEEE 15026-2 排后批；ETSI TTCN-3 待平台原型启动前。DO-178C、DO-254、DO-297 维持 deferred，不按引用链自动启动。标准纳入与分层管理遵循 `01_normative_foundation/standards_baseline.md` 的 layering policy。
+第一轮 five-source consolidation 已由 `research-baseline/v0.2` 固化。post-v0.2 来源采用 Controlled Candidate-Source Baseline：候选登记、资料取得、条款研究和评审是不同状态，未研究来源不能关闭 gap。下一序列为 ISO 15289 → ISO 9646/X.290 → 15026-1:2019/2025 delta → 29119-2/3/4 → IEEE 1012/15026-3；随后才进入 executable schema、versioned object registry、platform reference architecture 与 external-instance integration。ISO 29148 与 15026-2 的已完成研究作为当前 integration increment 纳入，不改变该依赖序列。
 
 ## Phase 2 — Normative Gap Analysis
 

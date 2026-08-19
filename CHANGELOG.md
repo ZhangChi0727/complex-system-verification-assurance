@@ -40,13 +40,17 @@ v0.1 establishes research infrastructure and does not claim completion or normat
 
 ### Research
 
-- Recorded the next research round: gap-priority rescoring triggered by repositioning, then dual-track study — full ISO/IEC/IEEE 15289 clause study plus an ISO/IEC 9646 / ITU-T X.290 concept-slice targeted review; ISO 29148 and ISO/IEC/IEEE 15026-2 queued behind them; TTCN-3 gated on platform-prototype start; DO-178C/DO-254/DO-297 remain deferred.
+- Added a controlled candidate-contribution register with claim type, novelty/validation status, falsification condition, source/gap anchor and non-claim; gaps and five-source absences are explicitly not novelty proof.
+- Added a HANDOFF workspace (current progress snapshot + next plan) maintained per merged PR; not a source of truth.
+- Established a Controlled Candidate-Source Baseline: the source-change process is controlled without claiming a closed source universe; official metadata, availability, layer role, trigger and study state are separated.
+- Updated the validation workspace with the methodology–instance decoupling boundary (mapping methodology is generic research; instance artifacts live in external repos).
+- Recorded the controlled next sequence: ISO 15289 → ISO 9646/X.290 → 15026-1:2019/2025 delta → 29119-2/3/4 → IEEE 1012/15026-3 → executable schema → versioned registry → platform architecture → external integration.
 - Added a standards layering policy to the target baseline: one primary layer role per source (generic methodological / domain assurance profile / instance standard / execution technology), layer-bounded conclusion rights, dual-role splitting and abstraction-ladder-only cross-layer flow.
 - Added ISO/IEC/IEEE 15026-2 (assurance case content, Phase 5/RQ4 input) and ISO/IEC/IEEE 29119-11 (AI-based system testing, third-instance reference) to the standards backlog; marked TTCN-3 as execution technology under the layering policy.
 - Added a framework-object provenance annex (§28) to the five-source consolidation report: per-object source-native/framework-defined attribution, non-aviation generic-basis audit, frozen boundaries, open items and schema gates; zero new files, definition-ownership rule recorded in ARCHITECTURE.md.
 - Recorded RQ4 partial-progress boundary (assessment interface frozen; reasoning semantics, criteria and authority open for Phase 5).
 - Added a coverage note to the cross-standard map so unstudied TBD columns cannot be misread as conclusions; map rows double as the methodology constraint register.
-- Marked the normative gap matrix as the innovation-side register ("what standards do not say") with status-migration tracking; linked ISO-G04 Oracle to the conformance-testing methodology candidate basis.
+- Refactored the gap matrix to separate established clause basis, candidate-source scope and controlled source-search status; unstudied sources cannot close gaps or establish novelty.
 - Added a standards-research touch-point checklist to CONTRIBUTING.md.
 - Repositioned DCAS from primary validation case to industrial-practice knowledge source; ARINC 615A protocol conformance verification becomes the first validation instance, with UAV flight-management and LLM service reliability/performance verification as planned instances.
 - Recorded the three-tier research output chain: product-independent Verification Methodology → Model-Based Verification Architecture → non-productized Verification Platform research prototype.

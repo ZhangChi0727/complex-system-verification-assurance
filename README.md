@@ -1,8 +1,8 @@
 ---
 title: Complex System Verification Assurance Framework
 status: baseline
-version: 0.2
-baseline: v0.2
+version: 0.3
+baseline: post-v0.2
 owner: research
 last_updated: 2026-08-19
 dependencies: []
@@ -58,7 +58,7 @@ Status: Conceptual Normative-Foundation Baseline
 
 | Path | Purpose | Current status |
 |---|---|---|
-| `docs/00_overview/` | 研究范围、问题、术语和路线 | baseline |
+| `docs/00_overview/` | 研究范围、问题、术语、路线与创新主张/边界 | baseline |
 | `docs/01_normative_foundation/` | 标准研究目标、矩阵与 gap workspace | working |
 | `docs/02_verification_framework/` | 产品无关 Verification Assurance Framework | planned |
 | `docs/03_dbse_workflow/` | DBSE working lifecycle | planned |
@@ -71,6 +71,7 @@ Status: Conceptual Normative-Foundation Baseline
 | `models/`, `data/`, `tools/` | 后续模型、结构化数据与自动化 | planned |
 | `references/` | 检索策略、书目和阅读记录 | working |
 | `templates/` | DBSE research draft templates | working |
+| `HANDOFF/` | 仓库当前进度与下一步计划（交接快照，非事实源） | working |
 | `publications/` | 论文与教程发布视图 | planned |
 
 ## Research principles

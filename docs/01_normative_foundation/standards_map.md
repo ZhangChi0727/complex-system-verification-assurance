@@ -1,8 +1,8 @@
 ---
 title: Cross-Standard Research Map
 status: reviewed
-version: 0.12
-baseline: v0.2
+version: 0.13
+baseline: post-v0.2
 owner: research
 last_updated: 2026-08-19
 dependencies:
@@ -14,9 +14,9 @@ dependencies:
 
 本矩阵按标准精读进度更新。`Direct` 表示规范正文直接支持，`Informative` 表示 NOTE 或资料性附录支持，`Indirect` 表示由相关生命周期过程提供支撑，`Gap` 表示在已研究范围内未建立该框架概念。所有结论必须保留条款定位和 conformance 边界。
 
-**Coverage note:** 本矩阵仅覆盖已研究来源。DO-178C、DO-254、DO-297 及其他 Level D/E 来源仍为 `metadata / secondary-source only`（见 `standards_baseline.md`），其列与单元格的 `TBD` 是**未研究占位，不是结论**——不得解读为支持、反对或 gap 判定；矩阵整体不构成全标准比较主张。本矩阵各行同时充当方法论设计的约束登记：framework rule 与标准"不矛盾"的主张以行内条款定位为校验依据。
+**Coverage note:** 本矩阵的条款结论仅覆盖 `CLAUSE STUDY REVIEWED` 来源。DO-178C、DO-254、DO-297 及其他未研究来源的 `TBD` 是**未研究占位，不是结论**；候选源、资料可得性和检索状态由 `standards_baseline.md` 与 `normative_gap_matrix.md` 控制。候选登记不得被解释为支持、反对、gap closure 或 novelty evidence。
 
-五源 consolidation 已冻结 source roles：ISO 15288 是 generic lifecycle/V&V/assurance foundation；ISO 24748-1 是 lifecycle/process-view guidance；ISO 24748-2 是 `Reviewed Supporting Source`；ARP4754B 是 civil-aircraft Development Assurance profile；ARP4761A 是 civil-aircraft Safety Assessment/Safety Assurance profile。未发现 source-role conflict 或 true semantic conflict；context、object level 与 abstraction level 差异不得被抹平。
+v0.2 five-source consolidation 已冻结其 snapshot 内的 source roles：ISO 15288 是 generic lifecycle/V&V/assurance foundation；ISO 24748-1 是 lifecycle/process-view guidance；ISO 24748-2 是 `Reviewed Supporting Source`；ARP4754B 是 civil-aircraft Development Assurance profile；ARP4761A 是 civil-aircraft Safety Assessment/Safety Assurance profile。post-v0.2 新来源按 Controlled Candidate-Source Baseline 进入，只有完成条款研究和评审后才扩展本矩阵。
 
 Consolidated classification：
 

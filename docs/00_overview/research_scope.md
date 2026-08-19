@@ -1,8 +1,8 @@
 ---
 title: Research Scope
 status: baseline
-version: 0.4
-baseline: v0.2
+version: 0.5
+baseline: post-v0.2
 owner: research
 last_updated: 2026-08-19
 dependencies: []
@@ -41,6 +41,8 @@ dependencies: []
 - **LLM 服务可靠性与性能验证** — planned：概率性、弱 oracle，检验 sufficiency、evidence/argument 与 coverage 定义边界。
 
 实例定位与实例 × 框架元素锻炼矩阵见 `docs/08_validation/`。实例相关标准（如符合性测试方法论）按抽象原则进入 generic layer，不作为单一实例的专属资产。
+
+**方法论与实例受控解耦**：本仓库控制 implementation framework 层级的定义，实例在独立仓库执行且不得直接重定义 framework object。versioned object registry 建立前使用受控临时映射；实例 finding 可通过 Framework Change Proposal、跨实例相关性分析、依据评审与 §28 登记反馈到框架。完整契约见 `innovation_statement.md`。
 
 ## Out of scope for v0.1
 

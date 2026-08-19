@@ -45,6 +45,10 @@ DCAS-specific 内容不能直接进入 generic `docs/`。先判断其属于 Gene
 8. `reviews/`——internal/external 评审 provenance 与 disposition；
 9. `CHANGELOG.md`——研究记录。
 
+候选来源必须与 established clause basis 分栏管理。只有完成条款研究和评审的来源可进入 established basis；未研究来源只能使用受控 source-search 状态，不得关闭 gap 或证明 novelty。新增来源须更新 Controlled Candidate-Source Baseline 的版本、状态、availability、layer role 与 trigger。
+
+外部实例在 versioned object registry 建立前只能维护受控临时映射；`VOB-`、`VSR-`、`COV-` 等是 candidate prefixes，不是稳定 ID。实例 finding 反馈必须形成 Framework Change Proposal，经跨实例相关性、依据、评审与 §28 登记后才能改变 framework definition。
+
 ## Change quality
 
 - 使用稳定 ID 和统一 YAML metadata；

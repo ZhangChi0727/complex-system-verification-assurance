@@ -515,9 +515,9 @@ Failure Condition
 
 条件是：v0.2 只能宣称 conceptual baseline，不宣称 executable schema、item-level assurance coverage、certification acceptance 或 validated framework。ISO-G07、ISO-G02B、ISO-G03B、ISO-G05 successor、ISO-G06 successor 和 ISO-G08 必须保持可见。
 
-## 25. Next-standard prioritization
+## 25. Candidate-source prioritization and search governance
 
-评分使用 `Gap relevance × expected new information × domain authority ÷ research cost`，每个因子 1–5；数值只用于透明排序，不伪装为精确工程度量。
+本节保留 v0.2 snapshot 的原始评分作为历史决策依据。post-v0.2 的权威检索状态位于 `../normative_gap_matrix.md`，来源元数据与变更过程位于 `../standards_baseline.md`。评分只用于透明排序，不构成来源全集冻结、gap closure 或 novelty evidence。
 
 | Candidate | Relevance | New information | Authority | Cost | Score | Priority rationale |
 |---|---:|---:|---:|---:|---:|---|
@@ -527,7 +527,7 @@ Failure Condition
 | DO-254 | 4 | 4 | 5 | 5 | 16.0 | 硬件 item assurance 与 cross-level evidence |
 | DO-297 | 3 | 4 | 5 | 4 | 15.0 | IMA allocation/integration/credit，需在 item semantics 后研究更有效 |
 
-下一主要标准选择为 **ISO/IEC/IEEE 15289**。它不表示 item standards 不重要，而是当前最大结构性 gap 已从“有没有 process”转为“信息项内容、关系和 schema provenance”。之后应重新评分，不自动沿引用链推进。
+下一主要标准选择为 **ISO/IEC/IEEE 15289**。后续受控顺序为 ISO 9646/X.290、15026-1:2019/2025 delta、29119-2/3/4、IEEE 1012/15026-3；每一步按 gap search 状态和 availability 重评，不自动沿引用链推进。
 
 ## 26. Open questions
 
@@ -557,7 +557,7 @@ Framework 的稳定主干是 `Verification Basis Element {Requirement | Specifie
 
 ## 28. Framework-object provenance annex（post-freeze governance）
 
-本 annex 是 §22–§23 晋级决定的对象级 provenance 权威登记，不改变任何已冻结结论。目的：使 `PROMOTE ≠ source-native` 成为可查询事实，防止 framework-defined 对象在后续 Phase 4/5/8 中被误当作标准原生信息项。列含义：**Source-native** = 是否为五源原生术语/对象；**Non-aviation basis** = 是否存在非航空来源依据（generic 侧审计列）；**Schema gate** = 进入 executable schema 前必须满足的条件。
+本 annex 是 §22–§23 晋级决定的对象级 provenance 权威登记，不改变 v0.2 snapshot 结论。目的：使 `PROMOTE ≠ source-native` 成为可查询事实。**Source-native** 仅回答 five-source snapshot 是否使用该术语/对象；post-v0.2 新研究必须以新增 provenance 记录扩展，而不能改写历史来源属性。**Schema gate** 满足前，任何 ID prefix 和字段集合都只是候选。
 
 | Object | Classification | Source-native | Non-aviation basis | v0.2 frozen boundary | Open items | Schema gate |
 |---|---|---|---|---|---|---|
@@ -588,4 +588,6 @@ Framework 的稳定主干是 `Verification Basis Element {Requirement | Specifie
 
 1. 任何对象进入 Phase 4 executable schema 前，其 annex 行的 Schema gate 必须满足并更新为 `schema-ready`；
 2. 新增 promotion 必须先在本 annex 登记（含来源属性与通用侧依据），再进入 terminology / templates / map；
-3. 本 annex 是 framework-defined 对象 provenance 的唯一权威；其他文件引用不重定义（见 ARCHITECTURE.md definition-ownership 规则）。
+3. gap matrix 只能把 `CLAUSE STUDY REVIEWED` 来源写入 Established clause basis；候选来源保留独立 scope/status，不能因登记或取得全文而关闭 gap；
+4. stable object reference 必须等待 versioned registry；candidate prefixes 不构成稳定标识承诺。
+5. 本 annex 是 framework-defined 对象 provenance 的唯一权威；其他文件引用不重定义（见 ARCHITECTURE.md definition-ownership 规则）。
