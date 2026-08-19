@@ -15,7 +15,7 @@ review_type: independent-normative-research-review
 复核本轮研究是否准确建立：
 
 1. Requirement / Requirement Set 到 Verification Obligation 的受控接口；
-2. Result/Artefact 到 Evidence Item 的 admission boundary；
+2. Result/Artefact 到 Evidence Item 的 framework-defined characterization boundary，以及后续 source-native Argument-use boundary；
 3. Evidence Item、Argument、Inference、Supported Claim 和 Context 的结构；
 4. requirement/verification chain 与 assurance-case chain 的连接；
 5. ISO 15289 与 ISO 15026-1 缺失依赖是否被诚实保留。

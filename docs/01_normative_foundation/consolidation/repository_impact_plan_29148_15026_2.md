@@ -37,7 +37,7 @@ dependencies:
 | `docs/00_overview/research_questions.md` | Refine RQ-A–D around basis formation, framework characterization, recursive argument and closure boundary | Independent review accepted conceptual delta | Next controlled baseline PR |
 | `docs/03_process_model/` | Add explicit V2 individual-vs-set requirement assessment; refine V8 result-to-evidence admission and V11 argument/sufficiency inputs | Crosswalk accepted | Later model update |
 | `docs/04_information_model/README.md` | Replace linear evidence shorthand with recursive Supported Claim/Inference structure; add candidate item/view taxonomy | ISO 15289 + ISO 15026-1 research preferred before schema freeze | Deferred |
-| `docs/05_coverage_and_evidence/README.md` | Separate Result/Artefact, Evidence Item, evidence admission, evidence applicability and sufficiency | Crosswalk accepted | Later evidence-architecture update |
+| `docs/05_coverage_and_evidence/README.md` | Separate Result/Artefact, framework-defined characterization, source-native Evidence Item/later Argument use, applicability and sufficiency | Crosswalk accepted | Later evidence-architecture update |
 | `docs/06_change_and_reverification/` | Extend impact targets to context, assumptions, claims, arguments and evidence | 15026-2 lifecycle maintenance semantics | Later model update |
 | `docs/07_closure/` | Use assurance case/report as decision input; preserve independent authority/decision/state | ISO-G06 remains open | Later closure update |
 | `docs/08_validation/README.md` | Add tests for structural completeness vs claim truth, evidence applicability and inference reconstruction | Executable conceptual model exists | Deferred |

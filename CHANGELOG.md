@@ -38,6 +38,13 @@ v0.1 establishes research infrastructure and does not claim completion or normat
 
 ## Unreleased
 
+### Consolidated integration
+
+- Froze `research-baseline/v0.2` before post-v0.2 increments.
+- Integrated PR #8 governance through a Controlled Candidate-Source Baseline, controlled candidate-contribution register, temporary cross-repository mappings and governed instance feedback.
+- Integrated PR #7 ISO 29148/15026-2 clause studies after independent normative review, with an open ISO-G07 A/B/C split, split 15026-1 dependencies and explicit source/framework evidence provenance.
+- Added a consolidated integration review packet and repository-wide consistency validation; original PR #7/#8 remain intentionally unmerged while Draft PR #9 awaits external re-review.
+
 ### Research
 
 - Completed independent review of the ISO/IEC/IEEE 29148:2018 and ISO/IEC/IEEE 15026-2:2022 clause studies; retained the post-v0.2 conceptual-candidate boundary and all schema, sufficiency, authority and certification non-claims.

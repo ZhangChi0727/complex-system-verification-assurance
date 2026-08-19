@@ -50,6 +50,7 @@ MBSE → Automation → Domain Applications
 ```text
 Current Research Baseline: v0.2
 Status: Conceptual Normative-Foundation Baseline
+Repository maturity: Normative-foundation research late stage / conceptual architecture early stage
 ```
 
 [`research-baseline/v0.2`](docs/00_overview/research_baseline_v0.2.md) 冻结五源 normative foundation、V0–V12 conceptual ontology、generic/profile 边界及 PR #6 的实例定位和 meta-risk governance。它不是完整方法论产品基线，不代表 executable architecture、certification acceptance 或 framework validation 已建立。后续标准研究和治理变更均作为 post-v0.2 增量管理。

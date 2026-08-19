@@ -17,7 +17,7 @@ dependencies:
 
 1. **ISO/IEC/IEEE 15289:2019**：信息项内容研究，推进 ISO-G07；
 2. **ISO/IEC 9646 / ITU-T X.290**：conformance-testing targeted study，检验 ISO-G04 与 Case/Procedure 候选；
-3. **ISO/IEC/IEEE 15026-1:2019 / 2025 delta**：先满足 15026-2:2022 的 dated dependency，再研究现行词汇变化；
+3. **ISO/IEC/IEEE 15026-1:2019 / 2025 delta**：研究 5.3.3 的 dated 2019 Claim-type dependency、Clause 2/3 的 current undated 2025 dependency 及两版差异；
 4. **ISO/IEC/IEEE 29119-2/3/4**：测试过程、文档与技术；
 5. **IEEE 1012-2024 / ISO/IEC/IEEE 15026-3:2023**：V&V rigor 与 assurance-intensity；
 6. **Executable information schema**：仅在相关 schema gates 满足后启动；
@@ -25,7 +25,7 @@ dependencies:
 8. **Platform reference architecture**：在信息模型稳定后进行可替换技术选型；
 9. **External-instance integration**：通过临时映射迁移到稳定 registry，并使用 Framework Change Proposal 接收反馈。
 
-ISO 29148:2018 与 ISO 15026-2:2022 的现有研究先在本 consolidated integration 中完成评审修正；它们不会因提前完成而改写上述下一轮依赖顺序。
+ISO 29148:2018 与 ISO 15026-2:2022 的现有研究已在本 consolidated integration 中完成独立评审修正；它们不会因评审完成而关闭 15289、15026-1、executable schema、sufficiency/authority 或 stable-registry 依赖，也不改写上述下一轮顺序。
 
 ## Triggered work
 
