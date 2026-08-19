@@ -2,9 +2,9 @@
 title: ISO/IEC/IEEE 24748-2:2024 Targeted Applicability Review
 status: reviewed
 version: 0.1
-baseline: supporting-source
+baseline: v0.2
 owner: research
-last_updated: 2026-08-16
+last_updated: 2026-08-19
 research_type: targeted-applicability-review
 source_role: supporting-guidance
 baseline_status: supporting-source

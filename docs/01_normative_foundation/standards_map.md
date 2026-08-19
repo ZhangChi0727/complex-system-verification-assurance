@@ -1,10 +1,10 @@
 ---
 title: Cross-Standard Research Map
 status: reviewed
-version: 0.12
-baseline: v0.1
+version: 0.13
+baseline: post-v0.2
 owner: research
-last_updated: 2026-08-17
+last_updated: 2026-08-19
 dependencies:
   - standards_baseline.md
   - consolidation/five_source_consistency_gap_review.md
@@ -14,9 +14,11 @@ dependencies:
 
 本矩阵按标准精读进度更新。`Direct` 表示规范正文直接支持，`Informative` 表示 NOTE 或资料性附录支持，`Indirect` 表示由相关生命周期过程提供支撑，`Gap` 表示在已研究范围内未建立该框架概念。所有结论必须保留条款定位和 conformance 边界。
 
-**Coverage note:** 本矩阵仅覆盖已研究来源。DO-178C、DO-254、DO-297 及其他 Level D/E 来源仍为 `metadata / secondary-source only`（见 `standards_baseline.md`），其列与单元格的 `TBD` 是**未研究占位，不是结论**——不得解读为支持、反对或 gap 判定；矩阵整体不构成全标准比较主张。本矩阵各行同时充当方法论设计的约束登记：framework rule 与标准"不矛盾"的主张以行内条款定位为校验依据。
+**Coverage note:** 本矩阵的条款结论仅覆盖 `CLAUSE STUDY REVIEWED` 来源。DO-178C、DO-254、DO-297 及其他未研究来源的 `TBD` 是**未研究占位，不是结论**；候选源、资料可得性和检索状态由 `standards_baseline.md` 与 `normative_gap_matrix.md` 控制。候选登记不得被解释为支持、反对、gap closure 或 novelty evidence。
 
-五源 consolidation 已冻结 source roles：ISO 15288 是 generic lifecycle/V&V/assurance foundation；ISO 24748-1 是 lifecycle/process-view guidance；ISO 24748-2 是 `Reviewed Supporting Source`；ARP4754B 是 civil-aircraft Development Assurance profile；ARP4761A 是 civil-aircraft Safety Assessment/Safety Assurance profile。未发现 source-role conflict 或 true semantic conflict；context、object level 与 abstraction level 差异不得被抹平。
+v0.2 five-source consolidation 已冻结其 snapshot 内的 source roles：ISO 15288 是 generic lifecycle/V&V/assurance foundation；ISO 24748-1 是 lifecycle/process-view guidance；ISO 24748-2 是 `Reviewed Supporting Source`；ARP4754B 是 civil-aircraft Development Assurance profile；ARP4761A 是 civil-aircraft Safety Assessment/Safety Assurance profile。post-v0.2 新来源按 Controlled Candidate-Source Baseline 进入，只有完成条款研究和评审后才扩展本矩阵。
+
+Post-v0.2 clause studies for ISO/IEC/IEEE 29148:2018 and ISO/IEC/IEEE 15026-2:2022 are **independently reviewed conceptual research deltas with open dependencies**. They selectively extend `Established clause basis` only where the reviewed clauses support a concept. The large matrix remains the reviewed five-source snapshot; the separate section records the post-v0.2 delta without changing the v0.2 tag.
 
 Consolidated classification：
 
@@ -53,6 +55,20 @@ Consolidated classification：
 | Entry/exit criteria and gates | Decision support | Lifecycle guidance: 4.3; Clause 5 | Governance cadence: 6.4.2 | Transition criteria and checkpoints/reviews: 3.2.2 | PSSA/SSA/ASA completion criteria are assessment inputs, not generic gates: D.5; E.4; F.4 | TBD | TBD | TBD | Generic + aviation specialization |
 | Process views / development approach | Iterative/recursive/concurrent | Process-view and approach guidance: Annex D/E | No ontology change | Aircraft/system/item assurance flow; iterative planning: Sections 3–4 | Iterative interacting AFHA/PASA/SFHA/PSSA/SSA/ASA safety view: 3.1 | TBD | TBD | TBD | Dual-view ontology retained |
 
+## Post-v0.2 reviewed requirements-to-assurance delta
+
+| Framework concern | ISO/IEC/IEEE 29148:2018 | ISO/IEC/IEEE 15026-2:2022 | Consolidated status |
+|---|---|---|---|
+| Verification Basis | Requirement construct/quality and verification purpose covering specified requirements/characteristics: 5.2.4–5.2.7; 6.5.2.1 | Requirements/specifications can appear in Context; no basis definition: 5.3.1 | Typed basis role retained; Requirement strengthened |
+| Obligation formation | Method/technique and criteria for verification actions; method associated with requirements: 6.5.2.2 | No Verification Obligation concept | Framework-defined obligation retained; grouping/cardinality open |
+| Result to Evidence | Objective information and traceability: 6.5.2.2–6.5.2.3 | Four-field Evidence Item record: 5.3.2; no source-native admission workflow | Reviewed two-stage interface: framework characterization constrained by 5.3.2; workflow/authority/cardinality open |
+| Evidence to Claim | Not defined as assurance reasoning | Later Evidence Item reference by leaf Argument plus inference recursion: 5.3.4–5.3.5 | Reviewed usage relation; unreferenced item supports no Claim |
+| Requirement information items | BRS/StRS/SyRS/SRS content: Clauses 7 and 9 | Assurance Case main/evidence/report structure: 5.2 | ISO-G07A partially supported; overall architecture/schema open |
+| Assumptions | Requirement assumptions documented/validated; SyRS/SRS assumption content: 5.2.7; 9.5.19; 9.6.8 | Basic Assumption in Context; Evidence Item assumptions: 5.3.1–5.3.2 | Generic conceptual semantics strengthened; universal lifecycle schema remains open |
+| Sufficiency | No universal evidence threshold | Readers assess sufficiency; content quality not specified: Introduction; 4.1 | Generic interface strengthened; criteria/authority remain open |
+| Change | Requirements impact, version and baseline management: 6.6 | Case maintained for system/environment/use change; version-change narrative: 4.1; 5.3.6 | V10 impact scope extended conceptually |
+| Dependencies | 15288:2015 process citations and 15289 interaction | Clause 2/3 undated dependency on current 15026-1:2025; 5.3.3 explicit dated 15026-1:2019 Claim type; 15289 references | 2019→2025 delta and all clause mappings remain open; no inferred vocabulary |
+
 ## 标准—验证目标—活动—信息项—证据映射
 
 本表采用统一的“标准—验证目标—活动—信息项—证据”五列视图，对已研究标准逐步追加跨标准切片。ISO/IEC/IEEE 15288 的 conformance 受 Clause 4 约束；24748-1/2 保持 guidance 定位；ARP4754B 保持 recommended-practice 与 certification-applicability 边界，不把 `should` 改写成法规义务。
@@ -80,3 +96,6 @@ Consolidated classification：
 | SAE ARP4761A, 3.8–3.9; Appendix P | 使 safety-analysis depth 与 development-assurance rigor 对 Failure Condition、architecture 和 independence 保持相称 | 选择 analysis depth；分配/复核 FDAL、IDAL 与 Functional Failure Set independence | classification、architecture、FFS、FDAL/IDAL assignment、independence claim/requirement | assignment rationale、CMA/ZSA/PRA 等 independence substantiation、reassessment record；FDAL/IDAL 不是 Verification Level |
 | SAE ARP4761A, A.6; D.4.3.2; D.5; E.4 | 维持假设有效性并在变化后保持安全结论可用 | capture/propagate/convert/confirm assumptions；执行 impact analysis 与 PSSA/SSA reassessment | Assumption、Assumption Obligation/Confirmation、change impact、affected safety objects | confirmation/correction evidence、updated analysis/DAL and prior-evidence-validity rationale；形成 V10 aviation subflow |
 | SAE ARP4761A, Section 4; Appendices G–O | 以适用 safety-analysis methods 评价 failure behavior、probability、common causes 和 physical risks | FTA/DD/MA/MBSA、FMEA/FMES、CEA/ZSA/PRA/CMA | analysis model/input/baseline、failure modes/events、cut sets/sequences/results、limitations | 受控 Safety Analysis Results 可构成或支持 Evidence；Safety Analysis Method 与 Verification Method 分层 |
+| ISO/IEC/IEEE 29148:2018, 5.2.4–5.2.7 | 形成必要、正确、完整、可行、无歧义且可验证的需求和需求集 | needs transformation；individual/set quality analysis；assumption documentation/validation | Requirement、Requirement Set、Condition、Constraint、attributes | 需求质量 assessment record；不等同 implementation verification evidence |
+| ISO/IEC/IEEE 29148:2018, 6.5.2; 9.5.18; 9.6.19 | 为 specified requirements/characteristics 规划并取得 objective information | 为 verification action 选择 method/technique 和 criteria；维护 requirement-to-method/work-product traceability | SyRS/SRS verification view、method/criteria、RTM/VCRM 或等效 repository view | objective information/results and trace links；计划内容本身不是执行证据 |
+| ISO/IEC/IEEE 15026-2:2022, 5.2–5.3 | 以可审计 argument 在 context/uncertainty 下支持关于系统属性的 claim | 构造 Supported Claim；以 inference 递归连接 premise claims，或以 Evidence Item reference 支持 leaf claim | Assurance Case main/evidence/report fields；Supported Claim、Argument、Inference、Context、Narrative Introduction | Evidence Item = artefact + applicability scope + uncertainty + assumptions；结构完整不代表 claim truth/sufficiency/acceptance |

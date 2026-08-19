@@ -1,10 +1,10 @@
 ---
 title: Framework Validation Workspace
 status: working
-version: 0.2
-baseline: v0.1
+version: 0.3
+baseline: post-v0.2
 owner: research
-last_updated: 2026-08-17
+last_updated: 2026-08-19
 dependencies:
   - ../00_overview/research_scope.md
   - ../00_overview/research_questions.md
@@ -14,7 +14,7 @@ dependencies:
 
 本目录管理框架验证实例与验证策略，回答 RQ8：framework 的 completeness、traceability、repeatability、scalability 与 reusability 是否成立。评价维度还包括 Reviewability、Change Impact Detection、Coverage Explicitness、Evidence Quality 与 Automation Potential。
 
-实例只检验框架，不反向污染 generic methodology（见 research_scope 抽象边界与抽象阶梯）。
+实例只检验框架且不得直接重定义 generic methodology。实例 finding 可受控反馈：形成 Framework Change Proposal，经跨实例相关性、依据、评审与 §28 登记后再更新框架。
 
 ## Validation instances
 
@@ -53,8 +53,12 @@ dependencies:
 
 实例相关标准按抽象原则处理（见 research_scope 抽象阶梯）：符合性测试方法论（ISO/IEC 9646 / ITU-T X.290 系列、ETSI TTCN-3）作为 **generic-layer 方法论来源**研究并向上抽象，不作为 ARINC 615A 专属资产；ARINC 615A 本体保持 Level E 实例标准。详见 `../01_normative_foundation/standards_baseline.md`。
 
+## Methodology–instance decoupling
+
+本仓库只维护**实例策略**（定位、锻炼矩阵、验收判据与评价协议）；**实例执行在外部独立仓库**进行（首个：ARINC 615A 协议符合性验证实例仓库，全面基于本仓库方法论与平台框架）。PICS→Verification Basis、test purpose→Verification Case、verdict→Oracle/Result 的**映射方法论**属 generic 研究，在 `01_normative_foundation` 的 9646/X.290 概念切片中完成；实例专属工件（实际 PICS、测试套）只存在于外部实例仓库。解耦契约见 `../00_overview/innovation_statement.md`。
+
 ## Status
 
 - working：实例定位与锻炼矩阵（本文件）；
-- planned：ARINC 615A 实例 scoping note——研究 PICS/PIXIT → Verification Basis、test purpose → Verification Case、verdict → Oracle/Result 的映射，并检验符合性测试方法论对 ISO-G04/ISO-G07 的支撑；
+- working：versioned object registry 建立前，外部实例使用 candidate prefixes 的受控临时映射；稳定引用字段与兼容规则尚未建立；
 - 不声称 framework 已通过任何实例验证。

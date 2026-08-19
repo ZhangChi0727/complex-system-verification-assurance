@@ -1,10 +1,10 @@
 ---
 title: Complex System Verification Assurance Framework
 status: baseline
-version: 0.2
-baseline: v0.1
+version: 0.3
+baseline: post-v0.2
 owner: research
-last_updated: 2026-08-17
+last_updated: 2026-08-19
 dependencies: []
 ---
 
@@ -48,17 +48,18 @@ MBSE → Automation → Domain Applications
 ## Current baseline
 
 ```text
-Current Research Baseline: v0.1
-Status: Foundation / Research Infrastructure
+Current Research Baseline: v0.2
+Status: Conceptual Normative-Foundation Baseline
+Repository maturity: Normative-foundation research late stage / conceptual architecture early stage
 ```
 
-v0.1 冻结研究对象、边界、架构和路线，不代表 Verification 方法论已经完成，也不声称已经通过 ISO/IEC/IEEE 15288、ARP4754B、ARP4761A、DO-178C、DO-254 或 DO-297 的系统校核。
+[`research-baseline/v0.2`](docs/00_overview/research_baseline_v0.2.md) 冻结五源 normative foundation、V0–V12 conceptual ontology、generic/profile 边界及 PR #6 的实例定位和 meta-risk governance。它不是完整方法论产品基线，不代表 executable architecture、certification acceptance 或 framework validation 已建立。后续标准研究和治理变更均作为 post-v0.2 增量管理。
 
 ## Repository map
 
 | Path | Purpose | Current status |
 |---|---|---|
-| `docs/00_overview/` | 研究范围、问题、术语和路线 | baseline |
+| `docs/00_overview/` | 研究范围、问题、术语、路线与创新主张/边界 | baseline |
 | `docs/01_normative_foundation/` | 标准研究目标、矩阵与 gap workspace | working |
 | `docs/02_verification_framework/` | 产品无关 Verification Assurance Framework | planned |
 | `docs/03_dbse_workflow/` | DBSE working lifecycle | planned |
@@ -71,6 +72,7 @@ v0.1 冻结研究对象、边界、架构和路线，不代表 Verification 方�
 | `models/`, `data/`, `tools/` | 后续模型、结构化数据与自动化 | planned |
 | `references/` | 检索策略、书目和阅读记录 | working |
 | `templates/` | DBSE research draft templates | working |
+| `HANDOFF/` | 仓库当前进度与下一步计划（交接快照，非事实源） | working |
 | `publications/` | 论文与教程发布视图 | planned |
 
 ## Research principles

@@ -1,10 +1,10 @@
 ---
 title: Repository and Knowledge Architecture
 status: baseline
-version: 0.2
-baseline: v0.1
+version: 0.3
+baseline: post-v0.2
 owner: research
-last_updated: 2026-08-17
+last_updated: 2026-08-19
 dependencies: []
 ---
 
@@ -51,6 +51,7 @@ Automation Rule
 - `references/`：合法 bibliographic metadata、检索策略、阅读记录和不可公开资料的定位说明。
 - `tools/`：未来的一致性、覆盖、影响分析、模型校验和文档生成工具。
 - `examples/`：脱敏、最小可复现和端到端研究实例。
+- `HANDOFF/`：仓库当前进度与下一步计划的交接快照；不是事实源，事实源仍为 `docs/`、`models/`、`data/`、`domains/`。
 - `publications/`：论文和教程的发布视图，不是独立事实源。
 - `archive/`：superseded baseline 或 legacy transformation material；不能替代 Git history。
 
@@ -77,7 +78,7 @@ Concrete Project Practice
 - `planned`：已预留范围，但依赖尚未满足；
 - `superseded`：已被新基线替代。
 
-## Candidate stable IDs
+## Candidate object prefixes
 
 | Prefix | Object | Example |
 |---|---|---|
@@ -91,4 +92,4 @@ Concrete Project Practice
 | `CLM-` | Compliance claim | `CLM-0001` |
 | `ANM-` | Anomaly | `ANM-0001` |
 
-这些前缀是 v0.1 候选约定，不在本基线实现自动编号工具。对象的分级、来源属性（source-native / framework-defined）与 schema gate 登记见 `docs/01_normative_foundation/consolidation/five_source_consistency_gap_review.md` §28 annex。
+这些只是 candidate prefixes，不是 stable IDs。versioned object registry 建立前，仓库内外使用受控临时映射。稳定引用至少需要 `ObjectID`、`ObjectVersion`、`DefinitionVersion`、`IntroducedIn`、`SupersededBy`、`Status`、`CanonicalLocator` 与 `CompatibilityRule`。对象分级、来源属性与 schema gate 见 `docs/01_normative_foundation/consolidation/five_source_consistency_gap_review.md` §28 annex。

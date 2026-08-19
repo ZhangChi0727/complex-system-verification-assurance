@@ -2,15 +2,17 @@
 title: Five-Source Cross-Standard Consistency & Gap Review
 status: reviewed
 version: 0.3
-baseline: v0.1
+baseline: v0.2
 owner: research
-last_updated: 2026-08-17
+last_updated: 2026-08-19
 dependencies:
   - ../standard_notes/iso_15288.md
   - ../standard_notes/iso_24748_1.md
   - ../standard_notes/iso_24748_2_targeted_review.md
   - ../standard_notes/sae_arp4754b.md
   - ../standard_notes/sae_arp4761a.md
+  - ../standard_notes/iso_iec_ieee_29148_2018_clause_study.md
+  - ../standard_notes/iso_iec_ieee_15026_2_2022_clause_study.md
   - ../standards_map.md
   - ../normative_gap_matrix.md
 ---
@@ -515,9 +517,9 @@ Failure Condition
 
 条件是：v0.2 只能宣称 conceptual baseline，不宣称 executable schema、item-level assurance coverage、certification acceptance 或 validated framework。ISO-G07、ISO-G02B、ISO-G03B、ISO-G05 successor、ISO-G06 successor 和 ISO-G08 必须保持可见。
 
-## 25. Next-standard prioritization
+## 25. Candidate-source prioritization and search governance
 
-评分使用 `Gap relevance × expected new information × domain authority ÷ research cost`，每个因子 1–5；数值只用于透明排序，不伪装为精确工程度量。
+本节保留 v0.2 snapshot 的原始评分作为历史决策依据。post-v0.2 的权威检索状态位于 `../normative_gap_matrix.md`，来源元数据与变更过程位于 `../standards_baseline.md`。评分只用于透明排序，不构成来源全集冻结、gap closure 或 novelty evidence。
 
 | Candidate | Relevance | New information | Authority | Cost | Score | Priority rationale |
 |---|---:|---:|---:|---:|---:|---|
@@ -527,7 +529,9 @@ Failure Condition
 | DO-254 | 4 | 4 | 5 | 5 | 16.0 | 硬件 item assurance 与 cross-level evidence |
 | DO-297 | 3 | 4 | 5 | 4 | 15.0 | IMA allocation/integration/credit，需在 item semantics 后研究更有效 |
 
-下一主要标准选择为 **ISO/IEC/IEEE 15289**。它不表示 item standards 不重要，而是当前最大结构性 gap 已从“有没有 process”转为“信息项内容、关系和 schema provenance”。之后应重新评分，不自动沿引用链推进。
+下一主要标准选择为 **ISO/IEC/IEEE 15289**。后续受控顺序为 ISO 9646/X.290、15026-1:2019/2025 delta、29119-2/3/4、IEEE 1012/15026-3；每一步按 gap search 状态和 availability 重评，不自动沿引用链推进。
+
+**Post-round update (2026-08-18):** ISO/IEC/IEEE 29148:2018 与 ISO/IEC/IEEE 15026-2:2022 已按用户批准的研究顺序完成，详见 §29。下一轮采用 ISO/IEC/IEEE 15289 全量研究与 ISO/IEC 9646 / ITU-T X.290 targeted review 双轨；ISO/IEC/IEEE 15026-1 是本轮新确认的规范术语依赖。上表保留为当时评分记录，不再表示 29148 尚未研究。
 
 ## 26. Open questions
 
@@ -557,17 +561,22 @@ Framework 的稳定主干是 `Verification Basis Element {Requirement | Specifie
 
 ## 28. Framework-object provenance annex（post-freeze governance）
 
-本 annex 是 §22–§23 晋级决定的对象级 provenance 权威登记，不改变任何已冻结结论。目的：使 `PROMOTE ≠ source-native` 成为可查询事实，防止 framework-defined 对象在后续 Phase 4/5/8 中被误当作标准原生信息项。列含义：**Source-native** = 是否为五源原生术语/对象；**Non-aviation basis** = 是否存在非航空来源依据（generic 侧审计列）；**Schema gate** = 进入 executable schema 前必须满足的条件。
+本 annex 是 §22–§23 晋级决定的对象级 provenance 权威登记，不改变 v0.2 snapshot 结论。`Source-native` 仅回答对应已评审来源是否使用该术语/对象；post-v0.2 reviewed study 以新增 provenance 扩展，不改写历史来源属性。`POST-v0.2 REVIEWED DELTA` 表示可选择性进入 Established clause basis 的概念研究成果，但不把它冻结为 v0.2 或 executable schema。**Schema gate** 满足前，任何 prefix、字段集合或 cardinality 都只是候选。
 
 | Object | Classification | Source-native | Non-aviation basis | v0.2 frozen boundary | Open items | Schema gate |
 |---|---|---|---|---|---|---|
-| Verification Obligation | GENERIC CORE (framework-defined) | No | Indirect（ISO 15288 verification scope/trace tasks） | 对象存在；typed-basis 规则；受约束 many-to-many | field schema；disposition 语义 | ISO 15289 + conformance-testing methodology 研究后 |
+| Verification Obligation | GENERIC CORE (framework-defined) | No | Indirect（ISO 15288 verification scope/trace tasks；ISO 29148 method/criteria relations） | 对象存在；typed-basis 规则；受约束 many-to-many | formation/cardinality；field schema；disposition 语义 | ISO 15289 + conformance-testing methodology 研究后 |
 | Verification Strategy | GENERIC CORE (source-supported) | Yes（6.4.9.3(a)(4)） | Direct | 概念 + 最小 semantic contract | 完整 VSR schema | ISO-G07 |
-| Verification Basis Element role | framework-defined union role | No（构造于 ISO 概念之上） | Direct（3.36；6.4.9.1–.2） | typed union {Requirement \| Specified Characteristic \| Applicable Constraint} | class schema、subtypes、cardinality | ISO 15289 / 29148 |
+| Verification Basis Element role | framework-defined union role | No（构造于 ISO 概念之上） | Direct（ISO 15288, 3.36/6.4.9.1–.2；ISO 29148, 5.2.4/6.5.2.1） | typed union {Requirement \| Specified Characteristic \| Applicable Constraint} | class schema、subtypes、cardinality | ISO 15289 |
+| Requirement Set | POST-v0.2 REVIEWED DELTA — GENERIC CORE aggregate/view | Yes（ISO 29148, 5.2.6） | Direct | separate set-quality assessment | executable representation/cardinality | ISO 15289 |
+| Verification Criterion | POST-v0.2 REVIEWED DELTA — GENERIC CORE concept | Yes（ISO 29148, 6.5.2.2） | Direct with conformance/modal boundary | relation-bearing concept between obligation/action/result | entity vs value/relation；cardinality | ISO-G07B/REQ-G02 |
 | Verification Action / Procedure | source-supported | Yes（6.4.9.3(b)(1)） | Direct | 概念 | item-level 判据 | Phase 4 + item standards |
 | Observation / Result | framework semantics over source concept | Partial | Direct（6.4.9.3(b)–(c)） | 与 Evidence 的 role 区分 | record schema | Phase 4 |
-| Evidence | GENERIC CORE | Yes（5.10；6.4.9） | Direct | role 语义；mayConstituteOrSupport 关系 | physical artifact schema | ISO-G07 |
-| Claim / Argument | GENERIC CORE | Conceptual support（5.10） | Direct | 与 Evidence 的关系 | claim ontology | Phase 5 |
+| Evidence | GENERIC CORE | Yes（ISO 15288, 5.10/6.4.9） | Direct | broad role semantics；distinct from Result and Evidence Item | physical artifact/admission schema | ISO-G07B / ASC-G02 |
+| Evidence Item | POST-v0.2 REVIEWED DELTA — GENERIC CORE | Yes（ISO 15026-2, 5.3.2 record） | Direct record; framework characterization | artefact + applicability + uncertainty + assumptions | identity/cardinality/admission workflow | ISO 15289/15026-1 |
+| Claim / Argument | GENERIC CORE; POST-v0.2 reviewed refinement | Claim dependency-open；Argument direct（ISO 15026-2, 5.3.3/5.3.5） | Direct/Dependency open | recursive support, inference/evidence-reference alternatives | full Claim ontology；argument-quality assessment | ISO 15026-1 / ASC-G03 |
+| Supported Claim / Inference / Context / Undeveloped Argument | POST-v0.2 REVIEWED DELTA — GENERIC CORE structure | Yes（ISO 15026-2, 3.1.4/3.1.7/5.3.1/5.3.4–5.3.5） | Direct | recursive assurance-case abstract structure | identity/reuse/cardinality/validity rules | ISO 15026-1 |
+| Narrative Introduction / Assurance Case Report | POST-v0.2 REVIEWED DELTA — information-item/view | Yes（ISO 15026-2, 3.1.2/5.2/5.3.6） | Direct | report/index view distinct from whole Assurance Case | snapshot/version/assembly rules | ISO 15289 / ASC-G04 |
 | Configuration / Baseline | source-native | Yes（3.8；6.3.5） | Direct | 强制依赖 | — | — |
 | Change / ImpactAssessment | framework-defined | No | Indirect（6.3.5 re-verification） | V10 chain | selection algorithm | ISO-G05 successor |
 | Decision / Composite Gate | framework-defined | No | Guidance（ISO 24748-1 4.3/Clause 5） | assessment + optional review + authority decision + state/baseline event 分离 | waiver/reopen/authority/state model | ISO-G06 successor |
@@ -588,4 +597,68 @@ Framework 的稳定主干是 `Verification Basis Element {Requirement | Specifie
 
 1. 任何对象进入 Phase 4 executable schema 前，其 annex 行的 Schema gate 必须满足并更新为 `schema-ready`；
 2. 新增 promotion 必须先在本 annex 登记（含来源属性与通用侧依据），再进入 terminology / templates / map；
-3. 本 annex 是 framework-defined 对象 provenance 的唯一权威；其他文件引用不重定义（见 ARCHITECTURE.md definition-ownership 规则）。
+3. gap matrix 只能把 `CLAUSE STUDY REVIEWED` 来源写入 Established clause basis；候选来源保留独立 scope/status，不能因登记或取得全文而关闭 gap；
+4. stable object reference 必须等待 versioned registry；candidate prefixes 不构成稳定标识承诺。
+5. 本 annex 是 framework-defined 对象 provenance 的唯一权威；其他文件引用不重定义（见 ARCHITECTURE.md definition-ownership 规则）。
+
+## 29. Post-baseline research annex — ISO 29148 and ISO 15026-2
+
+### 29.1 Scope
+
+This annex records the effect of the first post-v0.2 normative round. It does not convert the five-source report into a seven-source re-consolidation and does not reopen its Generic/Aviation, Composite Gate or V0–V12 decisions.
+
+| Added source | Role | Baseline effect |
+|---|---|---|
+| ISO/IEC/IEEE 29148:2018 | Reviewed requirements-engineering clause study | Reviewed support for Requirement/Set, method/criteria traceability and BRS/StRS/SyRS/SRS views; 15288 version mapping open |
+| ISO/IEC/IEEE 15026-2:2022 | Reviewed assurance-case structure clause study | Reviewed four-field Evidence Item and assurance structure; 15026-1:2019/2025 dependencies open |
+
+### 29.2 Refined architecture
+
+```text
+Need / Goal / Objective
+  → controlled Requirement
+      + Condition / Constraint / Rationale / Source
+  → typed Verification Basis Element
+  → framework-defined Verification Obligation
+  → Method / Action + Criteria
+  → Result / Artefact
+  → framework characterization constrained by ISO/IEC/IEEE 15026-2:2022, 5.3.2
+      {applicability, uncertainty, assumptions}
+  → Evidence Item
+      [may exist independently; unused/orphan is a framework review status]
+  → later referenced by leaf Argument or used through recursive Inference
+  → Supported Claim
+  → Assurance Case {Main, Evidence, Report}
+  → Sufficiency Assessment
+  → independent Authority Decision / Composite Gate
+```
+
+The arrows spanning Requirement/Basis to Verification Obligation and Result/Artefact to Evidence Item remain framework-defined bridges. ISO/IEC/IEEE 15026-2:2022, 5.3.2 supplies the source-native four-field Evidence Item record, not a characterization/admission workflow. Framework characterization and the source-native 5.3.5 Argument use are separate: an Evidence Item can exist independently, but supports no specific Claim until referenced by a leaf Argument. A Requirement is not a Claim; a Result is not automatically Evidence; a trace link is not an Argument; structural completeness is not Claim truth, sufficiency or acceptance.
+
+### 29.3 Promotion delta
+
+| Decision | Result |
+|---|---|
+| Verification Basis Element | Retained as Requirement / Specified Characteristic / Applicable Constraint typed role |
+| Verification Obligation | Retained as framework-defined Generic Core; formation/cardinality gap remains |
+| Requirement Set | Promoted as conceptual aggregate/view with separate set-quality assessment |
+| Evidence Item | Source-native four-field record adopted; characterization/admission is framework-defined and source-constrained; Argument use is later and source-native |
+| Supported Claim / Inference / Context | Promoted into Generic Core assurance structure |
+| Assurance Case Report / Narrative Introduction | Promoted as report/index information view, distinct from the whole case |
+| Universal sufficiency threshold / authority | Rejected as a conclusion from these sources |
+| Executable information schema | Remains open |
+
+### 29.4 Gap effect and dependencies
+
+ISO-G07 remains open: `ISO-G07A` is a partially supported conceptual requirements/assurance-case slice, `ISO-G07B` keeps executable schema/cardinality/state/serialization open, and `ISO-G07C` keeps ISO 15289 interoperability open. The 15289:2019 source is acquired but unstudied. ISO 15026-1:2025 is the current dependency for the undated Clause 2 reference and Clause 3 imported terms; ISO 15026-1:2019 is the explicit dated Claim-type dependency in 5.3.3. Both source studies and the 2019→2025 delta remain open. ISO 29148's 15288:2015→2023 mapping is also open.
+
+Detailed decisions are recorded in:
+
+- [Requirements-to-Assurance Crosswalk](requirements_to_assurance_crosswalk.md)
+- [Object Promotion and Disposition Register](object_promotion_disposition_register_29148_15026_2.md)
+- [Gap Migration Report](gap_migration_report_29148_15026_2.md)
+- [Repository Impact Plan](repository_impact_plan_29148_15026_2.md)
+
+### 29.5 Readiness statement
+
+**POST-v0.2 CONCEPTUAL RESEARCH DELTA INDEPENDENTLY REVIEWED WITH OPEN DEPENDENCIES.** The conceptual architecture is accepted for the post-v0.2 candidate baseline. No executable schema, stable cross-repository identifiers, universal evidence-sufficiency threshold, assurance acceptance, certification conclusion or framework validation is claimed.

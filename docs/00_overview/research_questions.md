@@ -2,9 +2,9 @@
 title: Research Questions
 status: baseline
 version: 0.3
-baseline: v0.1
+baseline: v0.2
 owner: research
-last_updated: 2026-08-17
+last_updated: 2026-08-19
 dependencies:
   - research_scope.md
 ---
