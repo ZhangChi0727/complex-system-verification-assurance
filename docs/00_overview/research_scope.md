@@ -1,10 +1,10 @@
 ---
 title: Research Scope
 status: baseline
-version: 0.4
+version: 0.5
 baseline: v0.1
 owner: research
-last_updated: 2026-08-17
+last_updated: 2026-08-19
 dependencies: []
 ---
 
@@ -41,6 +41,8 @@ dependencies: []
 - **LLM 服务可靠性与性能验证** — planned：概率性、弱 oracle，检验 sufficiency、evidence/argument 与 coverage 定义边界。
 
 实例定位与实例 × 框架元素锻炼矩阵见 `docs/08_validation/`。实例相关标准（如符合性测试方法论）按抽象原则进入 generic layer，不作为单一实例的专属资产。
+
+**方法论与实例彻底解耦**：本仓库的通用验证方法论细化至 implementation framework 层级（信息模型、metamodel、平台参考架构、评价判据）；实例执行在独立外部仓库进行（首个：ARINC 615A 符合性验证实例仓库），必须引用本仓库稳定对象 ID 而非重定义。解耦契约与创新主张/工作边界见 `innovation_statement.md`。
 
 ## Out of scope for v0.1
 

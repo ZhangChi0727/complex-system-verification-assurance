@@ -1,10 +1,10 @@
 ---
 title: Standards Research Target Baseline
 status: reviewed
-version: 0.8
+version: 0.9
 baseline: v0.1
 owner: research
-last_updated: 2026-08-17
+last_updated: 2026-08-19
 dependencies:
   - README.md
 ---
@@ -19,7 +19,7 @@ dependencies:
 
 | Layer role | 允许影响 | 禁止 | 现有成员 |
 |---|---|---|---|
-| Generic methodological source | Generic Core / extension points（经五级分类与条款定位纪律） | — | ISO 15288、24748-1/2、15289、29148、15026-2、ISO/IEC 9646 / ITU-T X.290、24748-8 |
+| Generic methodological source | Generic Core / extension points（经五级分类与条款定位纪律） | — | ISO 15288、24748-1/2、15289、29148、15026 系列（-1/-2/-3/-4）、29119 核心部分（-1/-3/-4）、ISO/IEC 9646 / ITU-T X.290、24748-6/8、IEEE 1012、24641、15939、16326 |
 | Domain assurance profile | Domain Profile；其概念进入 generic 只能走抽象阶梯 | 直接写入 generic 规则 | ARP4754B、ARP4761A、DO-178C/254/297、DO-331/332/333、INCOSE/NASA handbook（实践对照） |
 | Instance standard | 实例 Verification Basis 与验证依据（`docs/08_validation/`） | 进入 generic 层或充当方法论来源 | ARINC 615A、DO-160、ARINC 429/664/661/653 |
 | Execution technology | 平台研究原型的实现选型 | 定义框架语义或信息模型 | ETSI TTCN-3、SysML/SysML v2、具体工具 |
@@ -31,6 +31,15 @@ dependencies:
 3. 跨层流动只走抽象阶梯（见 `../00_overview/research_scope.md`），概念晋级登记于 five-source consolidation §28 annex；
 4. 每份研究笔记必须声明来源的 layer role，结论不得越层主张；评审按 CONTRIBUTING 触点清单核查。
 
+## List freeze
+
+**自本版本（0.9）起，实例无关（generic-layer）标准研究列表冻结。** 冻结范围与规则：
+
+1. 冻结对象：Level A 中 layer role 为 generic methodological source / execution technology 的全部行（含上表成员清单）；
+2. 新增 generic-layer 来源的唯一通道是 five-source consolidation §25 gap-priority 矩阵重评分，且必须记录新增理由（gap 相关性 × 新信息量 × 领域权威 ÷ 研究成本）；
+3. 不属于冻结范围、按需求门槛触发（不视为违反冻结）：domain-profile 层来源（如 UAV/功能安全域需要时再评估 IEC 61508、ISO 26262 等）；instance-standard 层来源（由实例仓库需求驱动）；execution-technology 选型（由平台原型启动触发）；
+4. 本轮冻结前已完成一致性核对：`standard_notes/iso_24748_1.md` §13 follow-up register 中的 IEEE 1012、24641、24748-6、15939、16326 已全部同步入列；15026 系列其余部分与 29119 核心部分作为同类 companions 补齐。
+
 | Level | Standard ID | Title | Version / Revision | Organization | Research role | Availability | Study status | Notes |
 |---|---|---|---|---|---|---|---|---|
 | A | ISO/IEC/IEEE 15288 | *Systems and software engineering — System life cycle processes* | Second edition, 2023-05 | ISO/IEC/IEEE | Generic lifecycle/process, V&V and assurance foundation | Local licensed source — not committed | Reviewed; conceptual-baseline source | Source role frozen by five-source consolidation；see `standard_notes/iso_15288.md` |
@@ -40,10 +49,17 @@ dependencies:
 | A | ISO/IEC/IEEE 24748-8 | Title/edition to be verified before study | Referenced by ISO 24748-1:2024 | ISO/IEC/IEEE | Technical reviews and audits supporting decision gates | Full text not committed | Backlog; medium priority | Use to refine review/gate semantics after 24748-2 |
 | A | ISO/IEC/IEEE 29148 | Title/metadata to be verified before study | 2018 referenced by ISO 15288:2023 | ISO/IEC/IEEE | Requirements engineering, requirement characteristics, and needs-to-requirements transformation | Cross-reference identified in ISO 15288; full text not committed | Backlog; not started | Study after ISO 24748-1, ARP4754B, and ARP4761A first round; complements ISO 15289 |
 | A | ISO/IEC/IEEE 15026-2 | *Systems and software engineering — Systems and software assurance — Part 2: Assurance case*（title/edition to be verified before study） | Edition 待核对 | ISO/IEC/IEEE | Assurance case 内容与结构规范；Claim/Argument/Evidence 的对象级依据候选 | Full text not committed | Backlog; medium-high | Phase 5 / RQ4 直接输入；与 ISO 15289 之后的批次协调；layer role: generic methodological source |
+| A | ISO/IEC/IEEE 15026 series (Parts 1, 3, 4) | *Systems and software assurance* 系列其余部分（titles/editions to be verified before study） | Editions 待核对 | ISO/IEC/IEEE | Part 1 概念与词汇；Part 3 system integrity levels——criticality-scaled assurance intensity 抽象的候选通用依据；Part 4 生命周期中的 assurance | Full text not committed | Backlog; medium | 与 15026-2 同批协调；Part 3 关联 assurance-intensity 抽象阶梯（FDAL 抽象的 generic 依据候选）；layer role: generic methodological source |
+| A | ISO/IEC/IEEE 29119 series (Parts 1, 3, 4) | *Software and systems engineering — Software testing* 核心部分（titles/editions to be verified before study） | Editions 待核对 | ISO/IEC/IEEE | 通用软件测试传统：Part 1 概念与词汇；Part 3 测试文档——Case/Procedure/Result 信息项的候选通用依据；Part 4 测试设计技术——Verification Technique taxonomy 候选依据 | Full text not committed | Backlog; medium | 与 9646/X.290（conformance 传统）并行的 general-testing 传统；与 29119-11（已单列）区分；layer role: generic methodological source |
+| A | IEEE 1012 | *IEEE Standard for System, Software, and Hardware Verification and Validation*（title/edition to be verified before study） | Edition 待核对 | IEEE | V&V 过程与 integrity-level 依赖的 rigor；V0–V12 与 assurance-intensity 抽象的候选通用依据 | Metadata/full-text availability to be verified | Backlog; medium-high | 同步自 `standard_notes/iso_24748_1.md` §13 follow-up register；layer role: generic methodological source |
+| A | ISO/IEC/IEEE 24641 | *Systems and software engineering — Methods and tools for model-based systems engineering*（title/edition to be verified before study） | Edition 待核对 | ISO/IEC/IEEE | MBSE 方法与工具语境；Phase 8 / ISO-G08 的方法论输入 | Full text not committed | Backlog; medium | 同步自 24748-1 note follow-up register；layer role: generic methodological source |
+| A | ISO/IEC/IEEE 24748-6 | Title/edition to be verified before study | Referenced by ISO 24748-1:2024 | ISO/IEC/IEEE | System/software integration 的生命周期应用指导 | Full text not committed | Backlog; medium | 同步自 24748-1 note follow-up register；scope to verify；layer role: generic methodological source |
+| A | ISO/IEC/IEEE 15939 | *Systems and software engineering — Measurement process*（title/edition to be verified before study） | Edition 待核对 | ISO/IEC/IEEE | 测量过程与测量信息；evidence metrics 与 success criteria 的候选输入 | Full text not committed | Backlog; low-medium | 同步自 24748-1 note follow-up register；layer role: generic methodological source |
 | A | ISO/IEC/IEEE 29119-11 | *Software and systems engineering — Software testing — Part 11: Testing of AI-based systems*（Technical Report；title/edition to be verified） | TR，edition 待核对 | ISO/IEC/IEEE | AI 系统测试方法参考；第三实例（LLM 服务）的未来依据 | Availability to be verified | Backlog; not started | 实例启动前再研究，现阶段仅登记；layer role: instance-adjacent guidance，进入 generic 须经抽象阶梯 |
 | A | ISO/IEC 9646 series / ITU-T X.290 series | *Conformance testing methodology and framework*（title/part list to be verified before study；X.290–X.296 对应系列） | 9646-1:1994 起，edition 待核对 | ISO/IEC / ITU-T | Generic conformance-testing methodology：test purpose、abstract test suite、PICS/PIXIT、verdict semantics；按抽象原则进入 generic layer，不作为单一实例专属来源 | Full text not committed | **High priority; not started** | First instance（ARINC 615A 协议符合性验证）前置依赖；与 ISO 15289 一并纳入下一轮 gap 评分；候选支撑 Oracle（ISO-G04）与 Case/Procedure schema（ISO-G07）的通用层对象依据；layer role: generic methodological source |
 | A | ETSI ES 201 873 series (TTCN-3) | *Methods for Testing and Specification (MTS) — The Testing and Test Control Notation version 3*（title/edition to be verified before study） | TBD | ETSI | 测试规范与执行技术；平台研究原型的候选执行技术 | Open availability to be verified | Backlog; medium-high priority | layer role: **execution technology**——不定义框架语义/信息模型；方法论概念进入 generic 须经 9646/X.290 类 generic source，见 layering policy 规则 2 |
 | A | INCOSE Systems Engineering Handbook | TBD | TBD | INCOSE | Systems engineering practice context | Metadata / secondary-source only | Not started | Edition and access TBD |
+| A | ISO/IEC/IEEE 16326 | *Systems and software engineering — Life cycle processes — Project management*（title/edition to be verified before study） | Edition 待核对 | ISO/IEC/IEEE | 项目管理应用与规划信息；低相关辅助来源 | Full text not committed | Backlog; low | 同步自 24748-1 note follow-up register；layer role: generic methodological source |
 | A | NASA Systems Engineering Handbook | TBD | TBD | NASA | Public engineering guidance and comparison source | Public availability to be verified | Not started | Exact edition TBD |
 | B | SAE ARP4754B / EUROCAE ED-79B | *Guidelines for Development of Civil Aircraft and Systems* / paired EUROCAE document | ARP4754B, 2023-12; ED-79B details not independently studied | SAE / EUROCAE | Civil-aircraft Development Assurance profile/governance | Official SAE source available internally — not committed | Reviewed; aviation conceptual-baseline source | Recommended practice, not regulation；source role frozen；see `standard_notes/sae_arp4754b.md` |
 | B | SAE ARP4754A / EUROCAE ED-79A | TBD | Historical revision | SAE / EUROCAE | Historical/project baseline comparison | Metadata / secondary-source only | Not started | Include only when needed |

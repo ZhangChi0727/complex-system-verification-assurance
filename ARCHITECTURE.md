@@ -1,10 +1,10 @@
 ---
 title: Repository and Knowledge Architecture
 status: baseline
-version: 0.2
+version: 0.3
 baseline: v0.1
 owner: research
-last_updated: 2026-08-17
+last_updated: 2026-08-19
 dependencies: []
 ---
 
@@ -51,6 +51,7 @@ Automation Rule
 - `references/`：合法 bibliographic metadata、检索策略、阅读记录和不可公开资料的定位说明。
 - `tools/`：未来的一致性、覆盖、影响分析、模型校验和文档生成工具。
 - `examples/`：脱敏、最小可复现和端到端研究实例。
+- `HANDOFF/`：仓库当前进度与下一步计划的交接快照；不是事实源，事实源仍为 `docs/`、`models/`、`data/`、`domains/`。
 - `publications/`：论文和教程的发布视图，不是独立事实源。
 - `archive/`：superseded baseline 或 legacy transformation material；不能替代 Git history。
 

@@ -1,10 +1,10 @@
 ---
 title: Normative Foundation Workspace
 status: working
-version: 0.8
+version: 0.9
 baseline: v0.1
 owner: research
-last_updated: 2026-08-17
+last_updated: 2026-08-19
 dependencies:
   - ../00_overview/research_scope.md
 ---
@@ -39,3 +39,4 @@ Framework Rule
 - external informal review: [ISO 24748-2 / SAE ARP4754B review](reviews/ISO-24748-2--SAE-ARP4754B-External-Informal-Review.md) 的 2 项 Major 与 4 项 Minor findings 已关闭；Test Readiness Review/V6、Result/Evidence、Appendix A provenance 和 certification-credit dimensionality 已按较低 ontology strength 修正。
 - readiness: `CONDITIONALLY READY FOR v0.2 CONCEPTUAL BASELINE`；不宣称 executable schema、item-level completeness、certification acceptance 或 framework validation；
 - next research round: 定位变更触发 §25 gap-priority 重评分；按当前评分预期采用**双轨**——ISO/IEC/IEEE 15288:2023 之后的 **ISO/IEC/IEEE 15289 全量条款精读**（ISO-G07 主线）与 **ISO/IEC 9646 / ITU-T X.290 概念切片 targeted review**（first-instance 前置，候选支撑 ISO-G04 与 Case/Procedure schema）并行；ISO 29148 与 ISO 15026-2 排后批；TTCN-3 待平台原型启动前；DO-178C、DO-254、DO-297 维持 deferred。新来源纳入与跨层结论受 standards_baseline layering policy 约束。
+- standards list freeze: 实例无关（generic-layer）研究列表自 standards_baseline 0.9 起冻结；IEEE 1012、24641、24748-6、15939、16326 已同步入列，15026 系列其余部分与 29119 核心部分补齐；新增只走 §25 重评分并记录理由。
