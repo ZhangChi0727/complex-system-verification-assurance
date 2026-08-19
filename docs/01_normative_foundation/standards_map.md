@@ -2,9 +2,9 @@
 title: Cross-Standard Research Map
 status: reviewed
 version: 0.12
-baseline: v0.1
+baseline: v0.2
 owner: research
-last_updated: 2026-08-17
+last_updated: 2026-08-19
 dependencies:
   - standards_baseline.md
   - consolidation/five_source_consistency_gap_review.md

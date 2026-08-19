@@ -2,9 +2,9 @@
 title: SAE ARP4754B Standards Research Note
 status: reviewed
 version: 0.2
-baseline: candidate
+baseline: v0.2
 owner: research
-last_updated: 2026-08-16
+last_updated: 2026-08-19
 source:
   standard: SAE ARP4754B
   revision: B

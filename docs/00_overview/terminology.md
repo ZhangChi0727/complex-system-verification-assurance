@@ -2,9 +2,9 @@
 title: Working Terminology Baseline
 status: reviewed
 version: 0.8
-baseline: v0.1
+baseline: v0.2
 owner: research
-last_updated: 2026-08-16
+last_updated: 2026-08-19
 dependencies:
   - research_scope.md
 ---

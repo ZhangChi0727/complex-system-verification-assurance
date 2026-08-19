@@ -2,9 +2,9 @@
 title: Research Roadmap
 status: baseline
 version: 0.6
-baseline: v0.1
+baseline: v0.2
 owner: research
-last_updated: 2026-08-17
+last_updated: 2026-08-19
 dependencies:
   - research_scope.md
   - research_questions.md

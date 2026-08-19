@@ -2,9 +2,9 @@
 title: Complex System Verification Assurance Framework
 status: baseline
 version: 0.2
-baseline: v0.1
+baseline: v0.2
 owner: research
-last_updated: 2026-08-17
+last_updated: 2026-08-19
 dependencies: []
 ---
 
@@ -48,11 +48,11 @@ MBSE → Automation → Domain Applications
 ## Current baseline
 
 ```text
-Current Research Baseline: v0.1
-Status: Foundation / Research Infrastructure
+Current Research Baseline: v0.2
+Status: Conceptual Normative-Foundation Baseline
 ```
 
-v0.1 冻结研究对象、边界、架构和路线，不代表 Verification 方法论已经完成，也不声称已经通过 ISO/IEC/IEEE 15288、ARP4754B、ARP4761A、DO-178C、DO-254 或 DO-297 的系统校核。
+[`research-baseline/v0.2`](docs/00_overview/research_baseline_v0.2.md) 冻结五源 normative foundation、V0–V12 conceptual ontology、generic/profile 边界及 PR #6 的实例定位和 meta-risk governance。它不是完整方法论产品基线，不代表 executable architecture、certification acceptance 或 framework validation 已建立。后续标准研究和治理变更均作为 post-v0.2 增量管理。
 
 ## Repository map
 

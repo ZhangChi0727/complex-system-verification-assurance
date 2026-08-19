@@ -2,9 +2,9 @@
 title: Five-Source Cross-Standard Consistency & Gap Review
 status: reviewed
 version: 0.3
-baseline: v0.1
+baseline: v0.2
 owner: research
-last_updated: 2026-08-17
+last_updated: 2026-08-19
 dependencies:
   - ../standard_notes/iso_15288.md
   - ../standard_notes/iso_24748_1.md

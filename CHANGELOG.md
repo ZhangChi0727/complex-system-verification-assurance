@@ -21,6 +21,21 @@
 
 v0.1 establishes research infrastructure and does not claim completion or normative validation of the proposed Verification Assurance Framework.
 
+## v0.2 — Five-Source Conceptual Normative-Foundation Baseline
+
+### Frozen
+
+- Five-source research set: ISO/IEC/IEEE 15288:2023, ISO/IEC/IEEE 24748-1:2024, ISO/IEC/IEEE 24748-2:2024, SAE ARP4754B and SAE ARP4761A.
+- V0–V12 conceptual process-view ontology and Generic Core / Extension Point / Civil Aviation Profile boundary.
+- Verification Basis, framework-defined Verification Obligation, Result/Evidence/Argument/Claim separation, change-impact and Composite Gate conceptual semantics.
+- PR #6 instance repositioning and meta-risk governance: DCAS as knowledge source and ARINC 615A/UAV/LLM scenarios as planned validation instances.
+
+### Boundary
+
+- The authoritative record is `docs/00_overview/research_baseline_v0.2.md` and annotated tag `research-baseline/v0.2`.
+- v0.2 is a conceptual normative-foundation baseline, not a complete methodology product, executable architecture, certification-ready package or validated framework.
+- ISO 29148/15026-2 research, innovation/HANDOFF governance and later source-control changes are post-v0.2 increments.
+
 ## Unreleased
 
 ### Research
