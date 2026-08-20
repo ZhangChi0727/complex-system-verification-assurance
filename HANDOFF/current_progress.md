@@ -1,7 +1,7 @@
 ---
 title: Current Progress
 status: working
-version: 0.7
+version: 0.8
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-20
@@ -18,7 +18,7 @@ dependencies:
 - **PR #9 reviewed head:** `3359927286a39411ccb0e5f6dd34883702eb3ece`
 - **PR #9 merge commit / synchronized main:** `658e3cfcee1d66147c6cbf2d048fc1d46a846f14`
 - **Superseded PRs:** PR #7 and PR #8 are closed as superseded; neither was merged directly
-- **Repository topology:** `main` is the target baseline; this governance increment uses one temporary PR branch that must be deleted after merge
+- **Repository topology:** `main` is the sole persistent remote branch; review branches are temporary governance artifacts and are deleted after merge
 - **Repository maturity:** `Normative-foundation research late stage / architecture OPEN-CANDIDATE`
 
 ## Established baseline
@@ -41,6 +41,7 @@ v0.2 是由 ISO 15288、ISO 24748-1/2、ARP4754B、ARP4761A 形成的 five-sourc
 - `CLAUSE STUDY REVIEWED; OPEN DEPENDENCIES`：ISO/IEC/IEEE 29148:2018（15288:2015→2023 mapping open）、ISO/IEC/IEEE 15026-2:2022（15026-1:2025 Clause 2/3 dependency 与 Claim/assurance/uncertainty targeted compatibility review open）；
 - `DATED-REFERENCE PROVENANCE ONLY; NO STANDALONE STUDY PLANNED`：ISO/IEC/IEEE 15026-1:2019，仅忠实记录 15026-2:2022, 5.3.3 的 Claim type 及相关 uncertainty 说明来源；
 - `PLANNED; NOT STARTED`：ISO/IEC 9646 / ITU-T X.290 targeted study；
+- `METADATA VERIFIED; SOURCE NOT ACQUIRED; CLAUSE STUDY PENDING`：ISO/IEC/IEEE 12207:2026；
 - `METADATA VERIFIED; CLAUSE STUDY PENDING`：ISO/IEC/IEEE 24748-4:2026、24748-6:2023；
 - `METADATA VERIFIED; CLAUSE STUDY PENDING; 12207:2017→2026 COMPATIBILITY OPEN`：ISO/IEC/IEEE 24748-3:2020；
 - `METADATA VERIFIED; CLAUSE STUDY PENDING; OVERLAP REVIEW REQUIRED`：ISO/IEC/IEEE 24748-5:2017；

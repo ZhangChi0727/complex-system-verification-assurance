@@ -1,7 +1,7 @@
 ---
 title: Research Roadmap
 status: baseline
-version: 0.8
+version: 0.9
 baseline: v0.2
 owner: research
 last_updated: 2026-08-20
@@ -70,11 +70,13 @@ Phase 3 之后、进入 architecture freeze 前必须满足：
 
 满足该 gate 后只能把成熟度推进到 `REVIEWED-PROVISIONAL`；不得从 `OPEN-CANDIDATE` 直接跳到 `CONTROLLED-BASELINE`。
 
+This gate does not block Phase 4–7 working research; it controls promotion to `REVIEWED-PROVISIONAL` and any architecture, schema, metamodel or automation freeze.
+
 ## Phase 4 — Verification Information Architecture
 
 定义 candidate entities、字段、关系、状态、ownership、traceability 和 configuration semantics。
 
-入口条件已由五源 conceptual consolidation 满足。29148/15026-2 已解析 conceptual item/view taxonomy 与 assurance-case recursive structure，但 executable schema、cardinality 和 15289 interoperability 仍开放。先研究 ISO 15289，再以 15026-1:2025 精化当前 assurance vocabulary，并在连接 2025 Claim 与 15026-2:2022, 5.3.3 前完成限定兼容性检查；不得从现有 YAML 字段倒推 ontology。
+五源 conceptual consolidation 已满足 working-level conceptual information-architecture exploration 的入口，但未满足 architecture/schema freeze。ISO 15289、15026、29119、12207、24748 及其他相关来源的条款研究和 impact disposition 仍需形成该 freeze gate 的输入；在 gate 通过前，entities、fields、relations、states 和 cardinalities 只能保持 candidate/working 状态，executable schema 不得冻结。29148/15026-2 已解析 conceptual item/view taxonomy 与 assurance-case recursive structure，但 executable schema、cardinality 和 15289 interoperability 仍开放。先研究 ISO 15289，再以 15026-1:2025 精化当前 assurance vocabulary，并在连接 2025 Claim 与 15026-2:2022, 5.3.3 前完成限定兼容性检查；不得从现有 YAML 字段倒推 ontology。
 
 ## Phase 5 — Coverage & Evidence Architecture
 

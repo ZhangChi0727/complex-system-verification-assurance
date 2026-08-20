@@ -1,7 +1,7 @@
 ---
 title: Normative Gap Matrix
 status: reviewed
-version: 1.5
+version: 1.6
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-20
@@ -39,8 +39,8 @@ dependencies:
 | ISO-G08 | MBSE/model evidence | ISO 15288, Annex D; 24748-1, Annex A.10; ARP4761A, Appendix N | 24641; IEEE 1012; literature | PLANNED SOURCES IDENTIFIED | No generic tool qualification/admissibility regime. | KEEP OPEN | Open |
 | LC-G01 | Gate ontology | ISO 24748-1, 4.3/Cl.5/6.2.6 | 24748-8:2019 defence-domain profile candidate; formal revision watch | PARTIAL SOURCE COVERAGE | Assessment, optional review, authority decision and event remain separate; defence review/audit rules require cross-domain abstraction and cannot be generalized directly. | RESOLVED GENERICALLY | Resolved |
 | LC-G02 | Review taxonomy | ISO 24748-1, 6.4/Annexes C,F | 24748-8:2019 defence-domain profile candidate; formal revision watch | SOURCE ACQUISITION OPEN | Method/lifecycle review and decision remain distinct; the FDIS is not a published basis and will not be studied. | RESOLVED GENERICALLY | Resolved |
-| LC-G03 | Process-view provenance | ISO 15288, 5.8; 24748-1, Annex D | 15289; 24748-3 software-lifecycle application; 24748-10 iteration/re-entry; registry design | PARTIAL SOURCE COVERAGE | Framework orchestration remains labelled; candidate impacts are deferred pending clause study. | RESOLVED GENERICALLY | Resolved |
-| LC-G04 | Process-instantiation evidence schema | 24748-1, 6.2.2–6.2.8; 24748-2, 6.4/6.7.4.1/6.8 | 15289; 16326; 24748-3/-4/-5/-6 lifecycle/planning/integration information-item candidates | SOURCE ACQUISITION OPEN | Record concept retained; schema/approval/cardinality and source overlap remain open. | PARTIALLY RESOLVED | Open |
+| LC-G03 | Process-view provenance | ISO 15288, 5.8; 24748-1, Annex D | 15289; ISO/IEC/IEEE 12207:2026 software-lifecycle process/view foundation; 24748-3 software-lifecycle application; 24748-10 iteration/re-entry; registry design | PARTIAL SOURCE COVERAGE | Framework orchestration remains labelled; 12207:2017→2026 mapping and all candidate impacts are deferred pending clause study. | RESOLVED GENERICALLY | Resolved |
+| LC-G04 | Process-instantiation evidence schema | 24748-1, 6.2.2–6.2.8; 24748-2, 6.4/6.7.4.1/6.8 | 15289; 16326; ISO/IEC/IEEE 12207:2026 software-process instantiation candidate; 24748-3/-4/-5/-6 lifecycle/planning/integration information-item candidates | SOURCE ACQUISITION OPEN | Record concept retained; schema/approval/cardinality and source overlap remain open. 12207 is not treated as a complete information-item content definition; that interface remains dependent on 15289. | PARTIALLY RESOLVED | Open |
 | ARP-G01 | Assurance applicability/rigor | ARP4754B, 5.2/5.6.4/App. A; ARP4761A, 3.9/App. P | IEEE 1012; 15026-3; item profiles | PLANNED SOURCES IDENTIFIED | Generic hook plus aviation rigor; no universal scale. | PARTIALLY RESOLVED FOR AVIATION | Open |
 | ARP-G02 | Cross-level verification credit | ARP4754B, 4.6.1/5.5.4/5.5.6 | DO-178C/DO-254/DO-297 | PLANNED SOURCES IDENTIFIED | Aviation credit separate from prior-evidence applicability. | RESOLVED FOR AVIATION PROFILE | Resolved |
 | ARP-G03 | Unintended-behavior assurance | ARP4754B, 4.6.4/5.5.5.3/App. A; ARP4761A, Cl.4 | DO-178C/DO-254 | PLANNED SOURCES IDENTIFIED | Item criteria open. | KEEP OPEN | Open |

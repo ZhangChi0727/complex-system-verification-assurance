@@ -1,7 +1,7 @@
 ---
 title: Controlled Candidate-Source Baseline
 status: reviewed
-version: 1.3
+version: 1.4
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-20
@@ -38,6 +38,7 @@ dependencies:
 | ISO/IEC/IEEE 15288:2023 | International Standard | *System life cycle processes* | Ed. 2 / 2023-05 | ISO/IEC/IEEE | Published | 15288:2015 | Local licensed source; not committed | Generic methodological source | v0.2 foundation | CLAUSE STUDY REVIEWED |
 | ISO/IEC/IEEE 24748-1:2024 | International Standard | *Life cycle management — Part 1* | Ed. 2 / 2024-03 | ISO/IEC/IEEE | Published | 24748-1:2018 | Local licensed source; not committed | Generic methodological source | v0.2 foundation | CLAUSE STUDY REVIEWED |
 | ISO/IEC/IEEE 24748-2:2024 | International Standard | *Life cycle management — Part 2* | Ed. 2 / 2024-03 | ISO/IEC/IEEE | Published | 24748-2:2018 | Local licensed source; not committed | Generic methodological source | v0.2 foundation | CLAUSE STUDY REVIEWED |
+| ISO/IEC/IEEE 12207:2026 | International Standard | *Software life cycle processes* | Ed. 2 / 2026-04 | ISO/IEC/IEEE | Published | ISO/IEC/IEEE 12207:2017 | Not acquired | Generic methodological source | software-lifecycle foundation / 15026-4 software view / 24748-3 compatibility | METADATA VERIFIED; SOURCE NOT ACQUIRED; CLAUSE STUDY PENDING |
 | ISO/IEC/IEEE 24748-3:2020 | International Standard | *Life cycle management — Part 3: Guidelines for the application of ISO/IEC/IEEE 12207 (software life cycle processes)* | Ed. 1 / 2020-10 | ISO/IEC/IEEE | Published | Replaces ISO/IEC TR 24748-3:2011; applies ISO/IEC/IEEE 12207:2017 | Not acquired | Generic methodological source | 12207 software-lifecycle application / 15026-4 software view | METADATA VERIFIED; CLAUSE STUDY PENDING; 12207:2017→2026 COMPATIBILITY OPEN |
 | ISO/IEC/IEEE 24748-4:2026 | International Standard | *Life cycle management — Part 4: Systems engineering management planning* | Ed. 2 / 2026-02 | ISO/IEC/IEEE | Published | ISO/IEC/IEEE 24748-4:2016 | Not acquired | Generic methodological source | systems engineering planning / SEMP / V0 and governance information items | METADATA VERIFIED; CLAUSE STUDY PENDING |
 | ISO/IEC/IEEE 24748-5:2017 | International Standard | *Life cycle management — Part 5: Software development planning* | Ed. 1 / 2017-06 | ISO/IEC/IEEE | Published; confirmed 2022 | — | Not acquired | Generic methodological source | software development planning and planning information items / 12207-15289-16326 overlap | METADATA VERIFIED; CLAUSE STUDY PENDING; OVERLAP REVIEW REQUIRED |

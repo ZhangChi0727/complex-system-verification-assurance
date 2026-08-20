@@ -1,7 +1,7 @@
 ---
 title: Architecture Impact Register
 status: working
-version: 0.1
+version: 0.2
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-20
@@ -39,6 +39,7 @@ dependencies:
 | ISO/IEC/IEEE 24748-2:2024 | CLAUSE STUDY REVIEWED | Strategy integration, process instantiation and current V10/V6/V12 inputs | Historical reviewed supporting refinement | CONFIRM — historical v0.2 checkpoint | `../standard_notes/iso_24748_2_targeted_review.md`; `../reviews/ISO-24748-2--SAE-ARP4754B-External-Informal-Review.md` | REVIEWED | No — preserve historical checkpoint | Later lifecycle/software/agility sources remain unstudied |
 | SAE ARP4754B:2023 | CLAUSE STUDY REVIEWED | Civil-aviation governance/profile extensions to V0–V12 | Historical aviation-profile extension already represented in v0.2 | EXTEND — historical aviation-profile checkpoint | `../standard_notes/sae_arp4754b.md`; `five_source_consistency_gap_review.md` | REVIEWED | No — profile boundary retained | Item-level objectives and certification authority remain outside current basis |
 | SAE ARP4761A:2023 | CLAUSE STUDY REVIEWED | Safety Assessment Process View and aviation inputs to V10–V12 | Historical aviation-profile extension already represented in v0.2 | EXTEND — historical aviation-profile checkpoint | `../standard_notes/sae_arp4761a.md`; `five_source_consistency_gap_review.md` | REVIEWED | No — profile boundary retained | Generic safety/assurance sufficiency and authority remain open |
+| ISO/IEC/IEEE 12207:2026 | METADATA VERIFIED; SOURCE NOT ACQUIRED; CLAUSE STUDY PENDING | Software-lifecycle foundation; 15026-4 software view; 24748-3 compatibility | Potential software-process/orchestration impact only | DEFERRED — pending clause study | Metadata only; no clause locator | NOT STARTED | Undetermined | 12207:2017→2026 process-location and semantic mapping remain unstudied |
 | ISO/IEC/IEEE 24748-3:2020 | METADATA VERIFIED; CLAUSE STUDY PENDING; 12207:2017→2026 COMPATIBILITY OPEN | LC-G03/LC-G04; software-lifecycle and ISO-G07 candidate dimensions | Potential software-process application and information-item impact only | DEFERRED — pending clause study | Metadata only; no clause locator | NOT STARTED | Undetermined | Requires 12207:2026 foundation and targeted compatibility review |
 | ISO/IEC/IEEE 24748-4:2026 | METADATA VERIFIED; CLAUSE STUDY PENDING | V0; planning/governance information items; LC-G04/ISO-G07C | Potential SEMP/planning information-item impact only | DEFERRED — pending clause study | Metadata only; no clause locator | NOT STARTED | Undetermined | Must be studied before final architecture synthesis; overlap with 15289/16326 open |
 | ISO/IEC/IEEE 24748-5:2017 | METADATA VERIFIED; CLAUSE STUDY PENDING; OVERLAP REVIEW REQUIRED | Software planning information items; LC-G04/ISO-G07C | Potential software-plan and information-item impact only | DEFERRED — pending overlap and clause study | Metadata only; no clause locator | NOT STARTED | Undetermined | 12207/15289/16326 overlap unresolved |
