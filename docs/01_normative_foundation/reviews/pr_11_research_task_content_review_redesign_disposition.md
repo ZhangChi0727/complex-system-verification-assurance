@@ -1,12 +1,14 @@
 ---
 title: PR #11 Research-Task Content Review and Redesign Disposition
-status: correction-applied-rereview-pending
-version: 0.2
+status: approved
+version: 0.3
 reviewed_pr: 11
 reviewed_head: 7562ca34f33b47934c0a8970899ae69cbd94c7fe
 correction_head: a021d868b37b4aa29143359cd2f260412dfd664d
 followup_head: f862ccc5b70be148e7dba83102b4aea117cd4438
-rereview_status: final-rereview-pending
+final_review_head: 0f36b39f2ed00ab863c2fef3c9ce56cc28149d3b
+rereview_status: approved
+review_result: APPROVED
 review_date: 2026-08-21
 owner: research
 last_updated: 2026-08-21
@@ -14,7 +16,7 @@ last_updated: 2026-08-21
 
 # PR #11 Research-Task Content Review and Redesign Disposition
 
-This record preserves the new content-review finding set separately from the earlier PR #11 inventory/governance review. The external verdict was `REQUEST CHANGES`; PR #11 must remain Draft until these corrections receive independent re-review.
+This record preserves the new content-review finding set separately from the earlier PR #11 inventory/governance review. The historical external verdict was `REQUEST CHANGES`, with release conditioned on correction and independent re-review. Those release conditions were satisfied and verified at head `0f36b39f2ed00ab863c2fef3c9ce56cc28149d3b`; the final disposition is `APPROVED`.
 
 ## Finding disposition
 
@@ -31,14 +33,14 @@ This record preserves the new content-review finding set separately from the ear
 
 ## Final re-review finding disposition
 
-The final re-review examined correction head `a021d868b37b4aa29143359cd2f260412dfd664d`. It verified CR-F01–CR-F08 and raised the following distinct follow-up findings; these corrections require final independent re-review before PR #11 can be made Ready.
+The final re-review examined correction head `a021d868b37b4aa29143359cd2f260412dfd664d`. It verified CR-F01–CR-F08 and raised the following distinct follow-up findings. Follow-up correction `f862ccc5b70be148e7dba83102b4aea117cd4438` resolved them, and final review at `0f36b39f2ed00ab863c2fef3c9ce56cc28149d3b` verified every disposition.
 
 | Finding | Required correction | Local disposition |
 |---|---|---|
-| RR-F01 | Correct Task 013 Annex A from normative to informative and add an informative-force audit | CORRECTED; FINAL REREVIEW PENDING |
-| RR-F02 | Align Task 005/013 two-stage extraction, historical-semantic, promotion and architecture gates | CORRECTED; FINAL REREVIEW PENDING |
-| RR-A01 | Align the complete architecture disposition vocabulary and migration controls | CORRECTED; FINAL REREVIEW PENDING |
-| RR-A02 | Synchronize PR #11 remote description with the correction history and final re-review state | CORRECTED; FINAL REREVIEW PENDING |
+| RR-F01 | Correct Task 013 Annex A from normative to informative and add an informative-force audit | CORRECTED; FINAL REREVIEW VERIFIED |
+| RR-F02 | Align Task 005/013 two-stage extraction, historical-semantic, promotion and architecture gates | CORRECTED; FINAL REREVIEW VERIFIED |
+| RR-A01 | Align the complete architecture disposition vocabulary and migration controls | CORRECTED; FINAL REREVIEW VERIFIED |
+| RR-A02 | Synchronize PR #11 remote description with the correction history and final re-review state | CORRECTED; FINAL REREVIEW VERIFIED |
 
 ## Controlled source decisions applied
 
@@ -53,4 +55,4 @@ No new clause study, established clause basis, gap closure, V0–V12 disposition
 
 ## Re-review scope
 
-The final independent reviewer should verify the Task 013 Annex A informative-force classification, Task 005/013 two-stage gates, controlled disposition vocabulary, protected gap/register outcomes and synchronized PR description. Approval of this follow-up record is required before PR #11 is made Ready.
+Final independent review verified the Task 013 Annex A informative-force classification, Task 005/013 two-stage gates, controlled disposition vocabulary, protected gap/register outcomes and synchronized PR description. The historical `REQUEST CHANGES` release conditions are closed; PR #11 is approved to become Ready and enter the governed merge process.
