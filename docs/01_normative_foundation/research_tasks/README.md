@@ -1,0 +1,105 @@
+---
+title: Normative Research Task Register
+status: working
+version: 0.3
+baseline: post-v0.2
+owner: research
+last_updated: 2026-08-20
+dependencies:
+  - ../standards_baseline.md
+  - ../normative_gap_matrix.md
+  - ../consolidation/architecture_impact_register.md
+  - ../../../HANDOFF/next_plan.md
+  - historical/README.md
+---
+
+# Normative Research Task Register
+
+本目录把 Controlled Candidate-Source Baseline 中尚有研究义务的来源转化为逐项任务说明。任务登记不表示条款研究已经开始，也不提升 `Availability`、`Study status`、gap 状态或 architecture-impact disposition。
+
+## Inclusion boundary
+
+纳入：待条款研究、待 targeted compatibility、待 overlap review 或受控 revision watch 的来源。排除：已经完成且无本轮独立任务的 five-source/29148/15026-2 clause studies、15026-1:2019 dated provenance、`TRIGGER NOT MET`、instance-controlled sources 和尚未完成 ADR selection 的 execution technologies。
+
+ISO/IEC/IEEE 29148:2018 仅保留一个 15288:2015→2023 targeted mapping closure 任务，不重做全文研究。ISO/IEC/IEEE 15026-2:2022 的开放兼容性问题并入 15026-1:2025 任务，不另建重复 clause study。
+
+## Common execution protocol
+
+每项任务都必须：
+
+1. 在任何条款提取前核验 canonical ID、edition/date、页数、完整性与 SHA-256；PDF 不得提交；
+2. 区分 normative/informative、`shall`/`should`/`may`、definition、note/example 与 framework interpretation；
+3. 使用 `Standard → Interpretation → Framework implication → Research proposal` 四层分离；
+4. 对相关 gap 只更新 candidate scope，除非 clause study 已完成独立复核；
+5. 在 Architecture Impact Register 中给出 `CONFIRM/EXTEND/MODIFY/SPLIT/MERGE/NO-IMPACT/DEFERRED`，其中前三类不兼容处置必须附迁移说明；
+6. 保持 V0–V12 为 `OPEN-CANDIDATE`；条款研究和 working information-model exploration 不得冻结 schema、metamodel、state machine 或 automation interface；
+7. 形成独立评审包并在通过前停止状态提升。
+
+## Task specification contract
+
+当前 `001–021` 均为 `version: 0.2` 的 agent-executable work order。每份任务在自身文件中提供来源门禁、研究包、提取记录、映射要求、仓库交付物、禁止性主张和 Definition of Done；执行者不得只依赖本登记表的摘要。
+
+一份任务说明与其受控标准原文交给新的 agent 时，agent 仍应先读取说明中列出的 repository dependencies，以获取当前 gap、术语和架构状态；但不得要求未记录的口头上下文才能理解任务。任务说明中的目标文件名是默认交付路径，如仓库结构在执行前已发生受控变化，agent 应记录等价迁移而不是创建重复文件。
+
+统一状态流为：
+
+```text
+PLANNED / SOURCE GATE
+        ↓
+CLAUSE STUDY IN PROGRESS
+        ↓
+REVIEW PENDING
+        ↓
+REVIEWED or CORRECTION REQUIRED
+```
+
+`SOURCE ACQUIRED`、metadata verification、报告初稿或内部自检都不能单独产生 `REVIEWED` 状态。任务完成必须同时满足该任务自身的 Definition of Done、仓库一致性检查和独立评审 disposition。
+
+## Ordered task set
+
+| Order | Source/work package | Task document | Local source observation | Start control |
+|---|---|---|---|---|
+| 01 | ISO/IEC/IEEE 15289:2019 | [Task 01](001_iso_iec_ieee_15289_2019.md) | Verified baseline source file present | Current research stop |
+| 02 | ISO/IEC 9646 / ITU-T X.290 | [Task 02](002_iso_iec_9646_itu_t_x290_series.md) | No matching PDF in current inventory | Metadata/selection and acquisition first |
+| 03 | ISO/IEC/IEEE 15026-1:2025 | [Task 03](003_iso_iec_ieee_15026_1_2025.md) | Verified baseline source file present | After/alongside 15289 as dependency permits |
+| 04 | ISO/IEC/IEEE 15026-4:2021 | [Task 04](004_iso_iec_ieee_15026_4_2021.md) | No matching PDF in current inventory | Acquire published edition first |
+| 05 | ISO/IEC/IEEE 12207:2026 | [Task 05](005_iso_iec_ieee_12207_2026.md) | No matching PDF in current inventory | Acquire before 24748-3 |
+| 06 | ISO/IEC/IEEE 29119-1:2022 | [Task 06](006_iso_iec_ieee_29119_1_2022.md) | Acquired source file verified | Part 1 concepts first |
+| 07 | ISO/IEC/IEEE 29119-2:2021 | [Task 07](007_iso_iec_ieee_29119_2_2021.md) | Acquired source file verified | Part 1 concepts first |
+| 08 | ISO/IEC/IEEE 29119-3:2021 | [Task 08](008_iso_iec_ieee_29119_3_2021.md) | Acquired source file verified | Coordinate 15289 and Part 2 |
+| 09 | ISO/IEC/IEEE 29119-4:2021 | [Task 09](009_iso_iec_ieee_29119_4_2021.md) | Acquired source file verified | Part 1 concepts first |
+| 10 | IEEE 1012-2024 | [Task 10](010_ieee_1012_2024.md) | Acquired source file verified | Coordinate 15026-3 |
+| 11 | ISO/IEC/IEEE 15026-3:2023 | [Task 11](011_iso_iec_ieee_15026_3_2023.md) | Acquired source file verified | Coordinate IEEE 1012 |
+| 12 | ISO/IEC/IEEE 24748-4:2026 | [Task 12](012_iso_iec_ieee_24748_4_2026.md) | No matching PDF in current inventory | Required before final synthesis |
+| 13 | ISO/IEC/IEEE 24748-3:2020 | [Task 13](013_iso_iec_ieee_24748_3_2020.md) | No matching PDF in current inventory | After 12207:2026 foundation |
+| 14 | ISO/IEC/IEEE 24748-5:2017 | [Task 14](014_iso_iec_ieee_24748_5_2017.md) | No matching PDF in current inventory | Overlap review first |
+| 15 | ISO/IEC/IEEE 24748-6:2023 | [Task 15](015_iso_iec_ieee_24748_6_2023.md) | No matching PDF in current inventory | Coordinate 15289 |
+| 16 | ISO/IEC/IEEE 24748-10:2026 | [Task 16](016_iso_iec_ieee_24748_10_2026.md) | No matching PDF in current inventory | Required before freeze gate |
+| 17 | ISO/IEC/IEEE 24748-8 | [Task 17](017_iso_iec_ieee_24748_8_revision_watch.md) | No matching PDF in current inventory | Revision watch only |
+| 18 | ISO/IEC/IEEE 24641:2023 | [Task 18](018_iso_iec_ieee_24641_2023.md) | No matching PDF in current inventory | ISO-G08 priority trigger |
+| 19 | ISO/IEC/IEEE 15939:2017 | [Task 19](019_iso_iec_ieee_15939_2017.md) | No matching PDF in current inventory | Evidence-metrics trigger |
+| 20 | ISO/IEC/IEEE 16326:2019 | [Task 20](020_iso_iec_ieee_16326_2019.md) | No matching PDF in current inventory | Project-information overlap trigger |
+| 21 | ISO/IEC/IEEE 29148:2018 targeted mapping | [Task 21](021_iso_iec_ieee_29148_2018_mapping_closure.md) | Reviewed local source present | Mapping closure only |
+
+## Historical task archive
+
+Completed or superseded pre-v0.2 task specifications use stable `H###` identifiers, `status: superseded`, `version: 1.0` and `body_format: preserved-original`. They retain research provenance and are not part of the current 001–021 execution queue.
+
+| ID | Historical task | Controlled outcome |
+|---|---|---|
+| H001 | [ISO/IEC/IEEE 15288:2023 clause research](historical/h001_iso_iec_ieee_15288_2023_clause_research.md) | Reviewed standard note and v0.2 foundation |
+| H002 | [ISO/IEC/IEEE 24748-1:2024 clause research](historical/h002_iso_iec_ieee_24748_1_2024_clause_research.md) | Reviewed standard note and lifecycle/process-view basis |
+| H003 | [ISO/IEC/IEEE 24748-1:2024 clean-source correction](historical/h003_iso_iec_ieee_24748_1_2024_source_baseline_correction.md) | Clean-source provenance correction completed |
+| H004 | [ISO/IEC/IEEE 24748-2:2024 + SAE ARP4754B research round](historical/h004_iso_iec_ieee_24748_2_2024_sae_arp4754b_research_round.md) | Reviewed supporting source and aviation-profile contribution |
+| H005 | [Five-source consistency and gap review](historical/h005_five_source_consistency_gap_review.md) | v0.2 historical conceptual checkpoint |
+| H006 | [SAE ARP4761A:2023 safety-assurance research](historical/h006_sae_arp4761a_2023_safety_assurance_research.md) | Reviewed aviation safety-assessment profile contribution |
+
+The user-supplied [PR #4 ARP4761A external review](../reviews/pr_4_arp4761a_external_review.md) is classified as a historical review record rather than a task specification.
+
+## Explicitly deferred or excluded
+
+- ISO/IEC TR 29119-11:2020: `TRIGGER NOT MET`;
+- RTCA DO-178C / DO-254 / DO-297: `TRIGGER NOT MET` and no current source registration by document;
+- ARINC 615A and instance standards: instance-controlled, not generic research tasks;
+- ETSI TTCN-3 / SysML / tools: local TTCN-3 source parts are acquired, but ADR/selection is not started and SysML/tool sources are not selected; TTCN-3 must not be conflated with the ISO 9646/X.290 conformance-methodology task;
+- ISO/IEC/IEEE 15026-1:2019: dated-reference provenance only, no standalone study.

@@ -47,6 +47,13 @@ v0.1 establishes research infrastructure and does not claim completion or normat
 - Reclassified ISO/IEC/IEEE 24748-8:2019 as a defence-domain profile candidate under formal-revision watch; its FDIS is not a published normative basis.
 - Made no clause-level, established-basis, gap-closure, schema, state-machine or certification-readiness claim.
 
+### Research task planning
+
+- Added one controlled task specification per actionable standard/work package in the candidate-source baseline, preserving dependency order and independent-review gates.
+- Upgraded all 21 current task specifications to agent-executable `version: 0.2` work orders with source gates, complete-inventory rules, standard-specific research packages, extraction records, required mappings, repository deliverables, report structures, independent-review packets, no-overclaim controls and auditable definitions of done.
+- Recorded locally verified source files for ISO/IEC/IEEE 15026-3:2023, the ISO/IEC/IEEE 29119-1/-2/-3/-4 set and IEEE 1012-2024 as acquired licensed sources without starting clause study; recorded acquired TTCN-3 parts separately from the still-unselected SysML/tool aggregate.
+- Normalized six user-supplied pre-v0.2 work orders into a versioned historical-task archive and restored the PR #4 ARP4761A external review to the reviews workspace without changing its original verdict.
+
 ### Consolidated integration
 
 - Closed and externally confirmed re-review findings F-01/F-02 by aligning all current gap references to the authoritative matrix (`REQ-G01` identity/lifecycle schema, `REQ-G02` criterion placement/cardinality, `ISO-G07C` 15289 interoperability) and normalizing the acquired-source/pending-study status.

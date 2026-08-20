@@ -1,7 +1,7 @@
 ---
 title: Next Plan
 status: working
-version: 0.4
+version: 0.5
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-20
@@ -9,6 +9,7 @@ dependencies:
   - README.md
   - current_progress.md
   - ../docs/01_normative_foundation/standards_baseline.md
+  - ../docs/01_normative_foundation/research_tasks/README.md
 ---
 
 # Next Plan
@@ -18,6 +19,8 @@ dependencies:
 ## Current research stop
 
 **ISO/IEC/IEEE 15289:2019** 仍是当前第一停点：开展 information-item clause study，推进 ISO-G07/ISO-G07C。候选源扩充不表示 24748 新分册研究已经开始。
+
+每个 work package 的完整 agent-executable `version: 0.2` 工作单见 `docs/01_normative_foundation/research_tasks/`；执行时必须从 Task 01 开始，遵循任务内的来源门禁、完整条款清单、证据提取、映射、仓库交付与独立评审要求，并在相应独立评审完成前保持 V0–V12、信息模型、schema、metamodel 和 automation interface 为 working/open 状态。
 
 ## Dependency-driven research queue
 

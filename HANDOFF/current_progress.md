@@ -1,7 +1,7 @@
 ---
 title: Current Progress
 status: working
-version: 0.8
+version: 0.9
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-20
@@ -33,11 +33,12 @@ v0.2 是由 ISO 15288、ISO 24748-1/2、ARP4754B、ARP4761A 形成的 five-sourc
 - 外部实例引用目前使用受控临时映射。`VOB-` / `VSR-` / `COV-` 只是 candidate prefixes，stable object registry 尚未建立；
 - 受控实例反馈允许进入 Framework Change Proposal 流程，但不得直接重定义框架对象。
 - 本轮只调整 V0–V12 开放治理、architecture-impact disposition 和 24748 candidate-source planning；没有形成新增条款结论、established basis、gap closure、schema 或 certification-readiness claim。
+- post-merge 研究准备已建立逐项 Normative Research Task Register；`001–021` 已统一为 agent-executable `version: 0.2` 工作单，逐项内嵌来源门禁、条款清单、标准专属研究包、提取记录、映射/仓库交付、评审包和 Definition of Done。任务说明只控制后续执行，不表示任何新 clause study 已开始或完成。
 
 ## Source state
 
 - `CLAUSE STUDY REVIEWED`：five-source v0.2 sources；
-- `SOURCE ACQUIRED; CLAUSE STUDY PENDING`：ISO/IEC/IEEE 15289:2019、ISO/IEC/IEEE 15026-1:2025；
+- `SOURCE ACQUIRED; CLAUSE STUDY PENDING`：ISO/IEC/IEEE 15289:2019、ISO/IEC/IEEE 15026-1:2025、15026-3:2023、29119-1:2022、29119-2:2021、29119-3:2021、29119-4:2021、IEEE 1012-2024；
 - `CLAUSE STUDY REVIEWED; OPEN DEPENDENCIES`：ISO/IEC/IEEE 29148:2018（15288:2015→2023 mapping open）、ISO/IEC/IEEE 15026-2:2022（15026-1:2025 Clause 2/3 dependency 与 Claim/assurance/uncertainty targeted compatibility review open）；
 - `DATED-REFERENCE PROVENANCE ONLY; NO STANDALONE STUDY PLANNED`：ISO/IEC/IEEE 15026-1:2019，仅忠实记录 15026-2:2022, 5.3.3 的 Claim type 及相关 uncertainty 说明来源；
 - `PLANNED; NOT STARTED`：ISO/IEC 9646 / ITU-T X.290 targeted study；
@@ -47,6 +48,7 @@ v0.2 是由 ISO 15288、ISO 24748-1/2、ARP4754B、ARP4761A 形成的 five-sourc
 - `METADATA VERIFIED; CLAUSE STUDY PENDING; OVERLAP REVIEW REQUIRED`：ISO/IEC/IEEE 24748-5:2017；
 - `METADATA VERIFIED; CLAUSE STUDY PENDING; REQUIRED BEFORE ARCHITECTURE FREEZE`：ISO/IEC/IEEE 24748-10:2026；
 - `METADATA VERIFIED; FORMAL REVISION WATCH; CLAUSE STUDY DEFERRED`：ISO/IEC/IEEE 24748-8:2019（defence-domain profile candidate；FDIS 不作为规范依据）；
+- `PARTIAL SOURCE ACQUISITION; SELECTION NOT STARTED`：ETSI TTCN-3 local source parts 已取得；SysML/tool sources 尚未选定，不能提前形成 platform ADR；
 - 后续候选源与官方元数据状态见 `docs/01_normative_foundation/standards_baseline.md`。
 
 ## Open work
