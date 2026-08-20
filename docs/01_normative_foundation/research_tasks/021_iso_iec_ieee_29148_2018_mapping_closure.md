@@ -1,10 +1,15 @@
 ---
 title: ISO/IEC/IEEE 29148:2018 to 15288:2023 Mapping Closure Task
 status: planned
-version: 0.3
+version: 0.4
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-20
+last_updated: 2026-08-21
+task_type: mapping-closure
+research_questions: [RQ1, RQ3, RQ7]
+innovation_candidates: [INN-T2, INN-I1]
+contribution_modes: [support, qualify, falsify, no-evidence]
+source_population: bounded-dependencies
 dependencies:
   - README.md
   - ../standard_notes/iso_iec_ieee_29148_2018_clause_study.md
@@ -46,6 +51,26 @@ Create `../consolidation/iso_29148_2018_to_iso_15288_2023_targeted_mapping.md`; 
 
 Do not rewrite source-native 2015 citations, redo the full 29148 study, close unrelated REQ/ISO gaps or silently change established semantics.
 
+## Research contribution contract
+
+This bounded mapping task answers RQ1/RQ3/RQ7 only for the reviewed 29148 study's actual 15288:2015 dependencies. It shall test the framework chain `Requirement/Set → Verification Basis → Specified Characteristic/Constraint → Verification Criterion → Verification Obligation` while separating standard-direct relations from framework synthesis.
+
+## Candidate falsification tests
+
+Test `INN-T2/I1` against every controlled historical/current locator pair. An equivalent chain or machine-readable model must be source-supported; same headings and inferred counterparts are not equivalence evidence.
+
+## Negative findings and non-answers
+
+Without the 15288:2015 source, every semantic mapping row remains `NOT DETERMINED` and the task cannot reach final DoD. Do not reopen the reviewed 29148 clause study or replace old locators.
+
+## Generalization rights
+
+Only reviewed mapping corrections may affect `Generic`; edition-specific provenance remains `Extension`; unresolved rows are `No adoption`.
+
+## Synthesis handoff dataset
+
+Emit the common record plus `repository_occurrence`, `2015_locator`, `2023_counterpart`, `relation`, `effect`, `framework_chain_role`, `direct_or_synthesized` and `review_disposition`.
+
 ## Detailed execution specification
 
 ### Execution outcome and strict scope
@@ -56,7 +81,7 @@ Produce a complete, independently reviewed mapping for every ISO/IEC/IEEE 15288:
 
 Reconfirm the 29148 source path, 104-page extent and SHA-256; confirm the reviewed 29148 study/review packet is unchanged; use the controlled ISO 15288:2023 source/study. Record the starting commit and enumerate every 2015 citation or semantic dependency in the 29148 study, maps, gap matrix, terminology and architecture artifacts.
 
-Before execution, recheck the Edition 3 revision status and the queue priority. If a replacement has been formally published, stop and issue a retarget decision that determines whether this task still closes provenance for the reviewed 2018 study or whether a separate new-edition task takes precedence. Never use DIS text or silently transform this task into a new full clause study.
+Before execution, recheck the Edition 3 revision status and the queue priority. The controlled ISO/IEC/IEEE 15288:2015 text is a hard source gate: without it, enumerate the population but mark semantic mappings `NOT DETERMINED` and do not claim mapping completion. If a replacement has been formally published, stop and issue a retarget decision that determines whether this task still closes provenance for the reviewed 2018 study or whether a separate new-edition task takes precedence. Never use DIS text or silently transform this task into a new full clause study.
 
 ### Mapping population
 

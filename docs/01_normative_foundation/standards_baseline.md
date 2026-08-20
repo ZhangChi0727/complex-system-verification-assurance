@@ -1,10 +1,10 @@
 ---
 title: Controlled Candidate-Source Baseline
 status: reviewed
-version: 1.7
+version: 1.8
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-20
+last_updated: 2026-08-21
 dependencies:
   - README.md
   - normative_gap_matrix.md
@@ -44,7 +44,7 @@ Draft、CD、DIS、FDIS 只用于 publication/revision metadata watch，不构�
 | ISO/IEC/IEEE 15288:2023 | International Standard | *System life cycle processes* | Ed. 2 / 2023-05 | ISO/IEC/IEEE | Published | 15288:2015 | Local licensed source; not committed | Generic methodological source | v0.2 foundation | CLAUSE STUDY REVIEWED |
 | ISO/IEC/IEEE 24748-1:2024 | International Standard | *Life cycle management — Part 1* | Ed. 2 / 2024-03 | ISO/IEC/IEEE | Published | 24748-1:2018 | Local licensed source; not committed | Generic methodological source | v0.2 foundation | CLAUSE STUDY REVIEWED |
 | ISO/IEC/IEEE 24748-2:2024 | International Standard | *Life cycle management — Part 2* | Ed. 2 / 2024-03 | ISO/IEC/IEEE | Published | 24748-2:2018 | Local licensed source; not committed | Generic methodological source | v0.2 foundation | CLAUSE STUDY REVIEWED |
-| ISO/IEC/IEEE 12207:2026 | International Standard | *Software life cycle processes* | Ed. 2 / 2026-04 | ISO/IEC/IEEE | Published | ISO/IEC/IEEE 12207:2017 | Not acquired | Generic methodological source | software-lifecycle foundation / 15026-4 software view / 24748-3 compatibility | METADATA VERIFIED; SOURCE NOT ACQUIRED; CLAUSE STUDY PENDING |
+| ISO/IEC/IEEE 12207:2026 | International Standard | *Software life cycle processes* | Ed. 2 / 2026-04 | ISO/IEC/IEEE | Published | ISO/IEC/IEEE 12207:2017 | Local licensed source; not committed | Generic methodological source | software-lifecycle foundation / 15026-4 software view / 24748-3 compatibility | SOURCE ACQUIRED; CLAUSE STUDY PENDING; 2017 HISTORICAL DEPENDENCY OPEN |
 | ISO/IEC/IEEE 24748-3:2020 | International Standard | *Life cycle management — Part 3: Guidelines for the application of ISO/IEC/IEEE 12207 (software life cycle processes)* | Ed. 1 / 2020-10 | ISO/IEC/IEEE | Published | Replaces ISO/IEC TR 24748-3:2011; applies ISO/IEC/IEEE 12207:2017 | Local licensed source; not committed | Generic methodological source | 12207 software-lifecycle application / 15026-4 software view | SOURCE ACQUIRED; CLAUSE STUDY PENDING; 12207:2017→2026 COMPATIBILITY OPEN |
 | ISO/IEC/IEEE 24748-4:2026 | International Standard | *Life cycle management — Part 4: Systems engineering management planning* | Ed. 2 / 2026-02 | ISO/IEC/IEEE | Published | ISO/IEC/IEEE 24748-4:2016 | Local licensed source; not committed | Generic methodological source | systems engineering planning / SEMP / V0 and governance information items | SOURCE ACQUIRED; CLAUSE STUDY PENDING |
 | ISO/IEC/IEEE 24748-5:2017 | International Standard | *Life cycle management — Part 5: Software development planning* | Ed. 1 / 2017-06 | ISO/IEC/IEEE | Published; confirmed 2022 | Normatively cites the then-FDIS text of ISO/IEC/IEEE 12207:2017 | Local licensed source; not committed | Generic methodological source | software development planning and planning information items / 12207-15289-16326 overlap | SOURCE ACQUIRED; CLAUSE STUDY PENDING; OVERLAP/VERSION REVIEW REQUIRED |
@@ -62,14 +62,12 @@ Draft、CD、DIS、FDIS 只用于 publication/revision metadata watch，不构�
 | ISO/IEC/IEEE 29119-3:2021 | International Standard | *Software testing — Part 3: Test documentation* | Ed. 2 / 2021-10 | ISO/IEC/IEEE | Published | 29119-3:2013 | Local licensed source; not committed | Generic methodological source | test information items | SOURCE ACQUIRED; CLAUSE STUDY PENDING |
 | ISO/IEC/IEEE 29119-4:2021 | International Standard | *Software testing — Part 4: Test techniques* | Ed. 2 / 2021-10 | ISO/IEC/IEEE | Published | 29119-4:2015 | Local licensed source; not committed | Generic methodological source | technique taxonomy | SOURCE ACQUIRED; CLAUSE STUDY PENDING |
 | ISO/IEC TR 29119-11:2020 | Technical Report | *Software testing — Part 11: Guidelines on the testing of AI-based systems* | Ed. 1 / 2020-11 | ISO/IEC | Published; review closed | — | Not acquired | Instance-adjacent guidance | LLM-service instance | METADATA VERIFIED; TRIGGER NOT MET |
-| ISO/IEC 9646-1:1994 | International Standard | *Conformance testing methodology and framework — Part 1: General concepts* | Ed. 2 / 1994 | ISO/IEC | Published historical basis | Paired with ITU-T X.290 family; exact equivalence/selection to be controlled | Local licensed source; not committed | Generic methodological source | ISO-G04 / conformance boundary | SOURCE ACQUIRED; PART SELECTION OPEN |
-| ISO/IEC 9646-2:1994 | International Standard | *Conformance testing methodology and framework — Part 2: Abstract test suite specification* | Ed. 2 / 1994 | ISO/IEC | Published historical basis | Paired X.291-series relation to be controlled | Local licensed source; not committed | Generic methodological source | test-suite specification | SOURCE ACQUIRED; PART SELECTION OPEN |
-| ISO/IEC 9646-3 / ITU-T X.292 | Standard / Recommendation | *Tree and Tabular Combined Notation / paired methodology source* | exact edition selection pending | ISO/IEC / ITU-T | Selection pending | Methodology–notation boundary source | Not acquired | Generic methodology / notation context candidate | methodology–notation–execution boundary | SOURCE NOT ACQUIRED; SELECTION OPEN |
-| ISO/IEC 9646-4:1994 | International Standard | *Conformance testing methodology and framework — Part 4: Test realization* | Ed. 2 / 1994 | ISO/IEC | Published historical basis | Paired X.293-series relation to be controlled | Local licensed source; not committed | Generic methodological source | test realization | SOURCE ACQUIRED; PART SELECTION OPEN |
-| ISO/IEC 9646-5:1994 | International Standard | *Conformance testing methodology and framework — Part 5: Requirements on test laboratories and clients* | Ed. 2 / 1994 | ISO/IEC | Published historical basis | Paired X.294-series relation to be controlled | Local licensed source; not committed | Generic methodological source | roles/responsibilities | SOURCE ACQUIRED; PART SELECTION OPEN |
-| ISO/IEC 9646-6:1994 | International Standard | *Conformance testing methodology and framework — Part 6: Protocol profile test specification* | Ed. 2 / 1994 | ISO/IEC | Published historical basis | Protocol-profile specialization | Local licensed source; not committed | Generic methodological source with profile-limited conclusions | protocol-profile test specification | SOURCE ACQUIRED; PART SELECTION OPEN |
-| ISO/IEC 9646-7:1995 | International Standard | *Conformance testing methodology and framework — Part 7: Implementation Conformance Statements* | Ed. 1 / 1995 | ISO/IEC | Published historical basis | Paired ITU-T X.296 relation to be controlled | Local licensed source; not committed | Generic methodological source | capability/applicability/conformance claims | SOURCE ACQUIRED; PART SELECTION OPEN |
-| ITU-T X.290-series paired Recommendations | Recommendations | *OSI conformance testing methodology and framework* | selection pending by Recommendation | ITU-T | Metadata/selection pending | Paired with ISO/IEC 9646 parts | Not acquired as a controlled set | Generic methodological source | equivalence and locator control | PARTIAL SOURCE ACQUISITION; PART SELECTION/REMAINING ACQUISITION OPEN |
+| ISO/IEC 9646-1:1994 | International Standard | *Conformance testing methodology and framework — Part 1: General concepts* | Ed. 2 / 1994 | ISO/IEC | Published historical basis | Bibliographically related to ITU-T X.290; textual identity not presumed | Local licensed source; not committed | Generic methodological source | ISO-G04 / conformance boundary | SOURCE ACQUIRED; INCLUDED IN TASK 002 |
+| ISO/IEC 9646-2:1994 | International Standard | *Conformance testing methodology and framework — Part 2: Abstract test suite specification* | Ed. 2 / 1994 | ISO/IEC | Published historical basis | Bibliographically related to ITU-T X.291; textual identity not presumed | Local licensed source; not committed | Generic methodological source | test-suite specification | SOURCE ACQUIRED; INCLUDED IN TASK 002 |
+| ISO/IEC 9646-4:1994 | International Standard | *Conformance testing methodology and framework — Part 4: Test realization* | Ed. 2 / 1994 | ISO/IEC | Published historical basis | Bibliographically related to ITU-T X.293; textual identity not presumed | Local licensed source; not committed | Generic methodological source | test realization | SOURCE ACQUIRED; INCLUDED IN TASK 002 |
+| ISO/IEC 9646-5:1994 | International Standard | *Conformance testing methodology and framework — Part 5: Requirements on test laboratories and clients* | Ed. 2 / 1994 | ISO/IEC | Published historical basis | Bibliographically related to ITU-T X.294; textual identity not presumed | Local licensed source; not committed | Generic methodological source | roles/responsibilities | SOURCE ACQUIRED; INCLUDED IN TASK 002 |
+| ISO/IEC 9646-6:1994 | International Standard | *Conformance testing methodology and framework — Part 6: Protocol profile test specification* | Ed. 2 / 1994 | ISO/IEC | Published historical basis | Protocol-profile specialization | Local licensed source; not committed | Generic methodological source with profile-limited conclusions | protocol-profile test specification | SOURCE ACQUIRED; INCLUDED IN TASK 002 |
+| ISO/IEC 9646-7:1995 | International Standard | *Conformance testing methodology and framework — Part 7: Implementation Conformance Statements* | Ed. 1 / 1995 | ISO/IEC | Published historical basis | Bibliographically related to ITU-T X.296; textual identity not presumed | Local licensed source; not committed | Generic methodological source | capability/applicability/conformance claims | SOURCE ACQUIRED; INCLUDED IN TASK 002 |
 | IEEE 1012-2024 | IEEE Standard | *IEEE Standard for System, Software, and Hardware Verification and Validation* | Approved 2024 / published 2025-08 | IEEE | Active Standard | IEEE 1012-2016 | Local licensed source; not committed | Generic methodological source | V&V rigor / integrity levels | SOURCE ACQUIRED; CLAUSE STUDY PENDING |
 | ISO/IEC/IEEE 24641:2023 | International Standard | *Methods and tools for model-based systems and software engineering* | Ed. 1 / 2023-05 | ISO/IEC/IEEE | Published | Uses 15288:2023 and 12207:2017 process semantics | Local licensed source; not committed | Generic methodological source | ISO-G08 / MBSE | SOURCE ACQUIRED; CLAUSE STUDY PENDING; 12207 MAPPING PROVISIONAL |
 | ISO/IEC/IEEE 15939:2017 | International Standard | *Systems and software engineering — Measurement process* | Printed edition 2017-04; catalogue publication 2017-05 | ISO/IEC/IEEE | Current published basis; Edition 2 DIS under development | ISO/IEC 15939:2007; aligned with 15288:2015 | Local licensed source; not committed | Generic methodological source | evidence metrics | SOURCE ACQUIRED; CLAUSE STUDY PENDING; FORMAL REVISION WATCH; 15288:2015→2023 MAPPING OPEN |
@@ -87,6 +85,7 @@ Physical PDF page count is recorded for local identity control and can differ fr
 | Canonical source | Controlled local file | Physical pages | SHA-256 |
 |---|---|---:|---|
 | ISO/IEC/IEEE 15288:2023 | `references/PDF/15288-2023.pdf` | 128 | `917FC68D65C71D16AF10AAF9BD3C2E66B3DAD0AD25052FA7F771C2445C4345E7` |
+| ISO/IEC/IEEE 12207:2026 | `references/PDF/12207-2026.pdf` | 154 | `44307AEF01DE13E08C2C6326267C94450CEE423EBC64D6DD9C21704B46B2B7F9` |
 | ISO/IEC/IEEE 15026-4:2021 | `references/PDF/15026-4-2021.pdf` | 48 | `07B206A483612EC06253BFA315F60A580FA3C07617019F14D462E7EEC3A1AE57` |
 | ISO/IEC/IEEE 24748-3:2020 | `references/PDF/24748-3-2020.pdf` | 76 | `55D115E328972FEE0C0D30E98E49773718FC6078337E4F902DFD0263751C6B4F` |
 | ISO/IEC/IEEE 24748-4:2026 | `references/PDF/24748-4-2026.pdf` | 64 | `DFF6297870D3D2695C880E64658321A2310E722EB6FB5C4EA453697529CEFBC8` |
@@ -114,6 +113,23 @@ Metadata was last verified on `2026-08-20`. Official pages control publication s
 | ISO/IEC/IEEE 29148:2018 | Edition 3 DIS under development | https://www.iso.org/standard/94091.html | Recheck before Task 021 starts | If replacement is published first, decide whether the targeted mapping closes against the reviewed 2018 study or is superseded by a separate new-edition task | DIS shall not reopen or replace the reviewed 2018 clause study |
 | ISO/IEC/IEEE 15939:2017 | Edition 2 DIS under development | https://www.iso.org/standard/95100.html | Recheck before Task 019 starts and before review | If replacement is published before extraction, stop the old-edition task and issue a retarget decision | DIS clauses shall not be used as normative basis |
 | ISO/IEC/IEEE 24748-8:2019 | Edition 2 FDIS under development | https://www.iso.org/standard/75405.html and https://www.iso.org/standard/91563.html | Continue Task 017 metadata-only checks | Create a new clause-study task only after formal publication, acquisition decision and trigger confirmation | FDIS shall not be acquired or analysed for normative conclusions |
+
+## Controlled historical dependency sources
+
+These editions are not current framework bases or standalone research targets. They are required only to authenticate source-native references and bounded mappings. Mapping protocol: first enumerate the old locator/concept from the citing standard; then confirm its semantics from the historical source; only then map to the current edition. Matching titles never establish equivalence. When the historical text is unavailable, every semantic relation is `NOT DETERMINED` and the mapping portion of the dependent task cannot reach final DoD.
+
+| Historical source | Dependency population | Availability | Controlled status |
+|---|---|---|---|
+| ISO/IEC/IEEE 12207:2017 | Tasks 004/005/013/014/015/018/020 source-native dependencies | Not acquired | HISTORICAL DEPENDENCY SOURCE NOT ACQUIRED; MAPPINGS NOT DETERMINED |
+| ISO/IEC/IEEE 15288:2015 | Tasks 004/019/020/021 source-native dependencies | Not acquired | HISTORICAL DEPENDENCY SOURCE NOT ACQUIRED; MAPPINGS NOT DETERMINED |
+| ISO/IEC/IEEE 24748-4:2016 | Task 020 exact planning-ownership comparison | Not acquired; strongly recommended | HISTORICAL DEPENDENCY SOURCE NOT ACQUIRED; OWNERSHIP ROWS NOT DETERMINED |
+
+## Excluded/deferred methodology scope decisions
+
+| Source | Decision | Re-entry trigger |
+|---|---|---|
+| ISO/IEC 9646-3 | `OUT OF SCOPE — TEST NOTATION / EXECUTION TECHNOLOGY`; not required for Task 002 | TTCN/ATS serialization, TTCN platform ADR or executable conformance-suite work |
+| ITU-T X.290 series | Bibliographic relationships only; not a clause source and no paired-equivalence/acquisition gate | A future task explicitly requiring ITU-specific text or cross-publisher comparison |
 
 ## Historical / dated-reference provenance
 
