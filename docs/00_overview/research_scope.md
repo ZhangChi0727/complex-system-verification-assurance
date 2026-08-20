@@ -1,10 +1,10 @@
 ---
 title: Research Scope
 status: baseline
-version: 0.5
+version: 0.6
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-19
+last_updated: 2026-08-20
 dependencies: []
 ---
 
@@ -76,4 +76,11 @@ Domain Profile 实践 / 条款（保留 source provenance）
 
 ## v0.2 conceptual-baseline boundary
 
-五源 consolidation 的 verdict 是 `CONDITIONALLY READY FOR v0.2 CONCEPTUAL BASELINE`。这允许冻结稳定 terminology、V0–V12 ontology、Generic/Profile boundary、evidence/change/gate semantics 与受控 open gaps；不允许宣称 executable schema、统一 coverage/sufficiency algorithm、item-level assurance completeness、certification acceptance 或 framework validation 已完成。
+五源 consolidation 的 verdict 是 `CONDITIONALLY READY FOR v0.2 CONCEPTUAL BASELINE`。v0.2 保存经过评审的概念检查点、稳定 V-ID、Generic/Profile boundary、evidence/change/gate semantics 和受控 open gaps；其历史 tag、来源定位与当时审阅结论保持不变。现行架构成熟度为 `OPEN-CANDIDATE`：V0–V12 的名称与 mixed-ontology 分类是当前工作基线，不关闭后续规范来源对元素语义、边界、拓扑、信息项、角色、权威、迭代/重新进入或门禁组成的受控影响。
+
+本仓库当前明确不声明：
+
+- planned normative-source cohort 已完成研究或综合处置；
+- 已通过 architecture freeze 并达到 `CONTROLLED-BASELINE`；
+- 已形成认证机构接受准则或 certification readiness；
+- executable schema、cardinality、state machine 或自动化规则已经冻结。

@@ -1,10 +1,10 @@
 ---
 title: Research Roadmap
 status: baseline
-version: 0.7
+version: 0.9
 baseline: v0.2
 owner: research
-last_updated: 2026-08-19
+last_updated: 2026-08-20
 dependencies:
   - research_scope.md
   - research_questions.md
@@ -18,9 +18,9 @@ dependencies:
 
 ## Phase 1 — Normative Foundation
 
-系统研究 ISO/IEC/IEEE 15288、ISO/IEC/IEEE 24748、INCOSE、NASA Systems Engineering Handbook、SAE ARP4754B、SAE ARP4761A、RTCA DO-178C、DO-254、DO-297、generic conformance-testing methodology 来源（ISO/IEC 9646 / ITU-T X.290 系列、ETSI TTCN-3）及适用补充标准。仅在合法取得全文和准确定位后形成规范性结论。
+系统研究 ISO/IEC/IEEE 15288、ISO/IEC/IEEE 24748、INCOSE、NASA Systems Engineering Handbook、SAE ARP4754B、SAE ARP4761A、RTCA DO-178C、DO-254、DO-297、generic conformance-testing methodology 来源（ISO/IEC 9646 / ITU-T X.290 系列、ETSI TTCN-3）及适用补充标准。planned normative-source cohort 还包括 ISO/IEC/IEEE 15289:2019、15026-1:2025、15026-4:2021、12207:2026、29119-1/-2/-3/-4、IEEE 1012:2024、15026-3:2023 与 24748-3/-4/-5/-6/-10。仅在合法取得全文和准确定位后形成规范性结论；24748-8 保持 defence-domain profile/revision-watch 边界。
 
-第一轮 five-source consolidation 已由 `research-baseline/v0.2` 固化。post-v0.2 来源采用 Controlled Candidate-Source Baseline：候选登记、资料取得、条款研究和评审是不同状态，未研究来源不能关闭 gap。ISO/IEC/IEEE 29148:2018 与 15026-2:2022 的 clause studies 已通过独立评审，建立 Requirement/Basis→Obligation→Result 与 Evidence Item→Argument→Supported Claim/Inference 的受控接口；其中 evidence characterization 是受 15026-2, 5.3.2 约束的 framework-defined relation。下一序列为 ISO 15289 → ISO 9646/X.290 → 15026-1:2025 clause study + targeted Claim/assurance/uncertainty compatibility review → 29119-2/3/4 → IEEE 1012/15026-3；不开展 15026-1:2019 独立研究或 2019→2025 全文 delta，随后才进入 executable schema、versioned object registry、platform reference architecture 与 external-instance integration。
+第一轮 five-source consolidation 已由 `research-baseline/v0.2` 保存为 historical conceptual checkpoint。post-v0.2 来源采用 Controlled Candidate-Source Baseline：候选登记、资料取得、条款研究和评审是不同状态，未研究来源不能关闭 gap。ISO/IEC/IEEE 29148:2018 与 15026-2:2022 的 clause studies 已通过独立评审，建立 Requirement/Basis→Obligation→Result 与 Evidence Item→Argument→Supported Claim/Inference 的受控接口；其中 evidence characterization 是受 15026-2, 5.3.2 约束的 framework-defined relation。后续按依赖驱动队列推进，并为每个来源登记 architecture-impact disposition；不开展 15026-1:2019 独立研究或 2019→2025 全文 delta。详细优先级见 `HANDOFF/next_plan.md`。
 
 ## Phase 2 — Normative Gap Analysis
 
@@ -56,13 +56,27 @@ V12 Verification Closure
 
 ISO/IEC/IEEE 15288:2023 的 5.7–5.8 与 ISO/IEC/IEEE 24748-1:2024 Clause 5、Annex A/D/E 支持迭代、递归、并发和跨过程 view；ISO/IEC/IEEE 24748-2:2024 进一步澄清策略整合、多次调用和 gate cadence；SAE ARP4754B, 6.3–6.4 支持 V10 的 aviation modification/credit specialization，ARP4761A, 3.1、Appendices D–F/P 支持 Safety Reassessment、safety-evidence aggregation 和 completion inputs。
 
-五源 consolidation 已冻结 V0–V12 名称和 ontology：V0–V5/V7 是 activity/information design，V8 是 evaluation/decision，V9–V10 是 cross-process orchestration，V11 是 assurance assessment，V6/V12 是 framework-defined Composite Gates。Coverage/Sufficiency 的 generic interfaces 已稳定，但 domain taxonomies/criteria、closure authority/state 与 V10 selection rules仍 open。
+五源 consolidation 形成了 V0–V12 的 reviewed conceptual checkpoint：V-ID 稳定用于追踪和影响分析；V0–V5/V7 的 activity/information design、V8 的 evaluation/decision、V9–V10 的 cross-process orchestration、V11 的 assurance assessment 及 V6/V12 的 framework-defined Composite Gate 是当前 mixed-ontology 工作基线。架构成熟度为 `OPEN-CANDIDATE`；元素语义、边界、拓扑、iteration/re-entry、信息项、角色、权威和 gate composition 可由后续规范研究通过受控 impact disposition 修订。
+
+## Architecture synthesis and controlled-freeze gate
+
+Phase 3 之后、进入 architecture freeze 前必须满足：
+
+- planned normative-source cohort 已完成 clause-level study，或具有明确且经评审的 `DEFERRED` disposition；
+- 每项来源已在 Architecture Impact Register 中完成 `CONFIRM`、`EXTEND`、`MODIFY`、`SPLIT`、`MERGE`、`NO-IMPACT` 或 `DEFERRED` 处置；
+- 架构冲突、兼容/迁移影响和 residual gaps 已登记；
+- 独立 cross-source architecture synthesis review 已完成；
+- ISO/IEC/IEEE 24748-10:2026 已研究并处置其 iteration、re-entry、tailoring 与 dynamic-environment 候选影响。
+
+满足该 gate 后只能把成熟度推进到 `REVIEWED-PROVISIONAL`；不得从 `OPEN-CANDIDATE` 直接跳到 `CONTROLLED-BASELINE`。
+
+This gate does not block Phase 4–7 working research; it controls promotion to `REVIEWED-PROVISIONAL` and any architecture, schema, metamodel or automation freeze.
 
 ## Phase 4 — Verification Information Architecture
 
 定义 candidate entities、字段、关系、状态、ownership、traceability 和 configuration semantics。
 
-入口条件已由五源 conceptual consolidation 满足。29148/15026-2 已解析 conceptual item/view taxonomy 与 assurance-case recursive structure，但 executable schema、cardinality 和 15289 interoperability 仍开放。先研究 ISO 15289，再以 15026-1:2025 精化当前 assurance vocabulary，并在连接 2025 Claim 与 15026-2:2022, 5.3.3 前完成限定兼容性检查；不得从现有 YAML 字段倒推 ontology。
+五源 conceptual consolidation 已满足 working-level conceptual information-architecture exploration 的入口，但未满足 architecture/schema freeze。ISO 15289、15026、29119、12207、24748 及其他相关来源的条款研究和 impact disposition 仍需形成该 freeze gate 的输入；在 gate 通过前，entities、fields、relations、states 和 cardinalities 只能保持 candidate/working 状态，executable schema 不得冻结。29148/15026-2 已解析 conceptual item/view taxonomy 与 assurance-case recursive structure，但 executable schema、cardinality 和 15289 interoperability 仍开放。先研究 ISO 15289，再以 15026-1:2025 精化当前 assurance vocabulary，并在连接 2025 Claim 与 15026-2:2022, 5.3.3 前完成限定兼容性检查；不得从现有 YAML 字段倒推 ontology。
 
 ## Phase 5 — Coverage & Evidence Architecture
 
