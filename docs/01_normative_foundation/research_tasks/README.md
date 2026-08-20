@@ -31,7 +31,7 @@ ISO/IEC/IEEE 29148:2018 仅保留一个 15288:2015→2023 targeted mapping closu
 2. 区分 normative/informative、`shall`/`should`/`may`、definition、note/example 与 framework interpretation；
 3. 使用 `Standard → Interpretation → Framework implication → Research proposal` 四层分离；
 4. 对相关 gap 只更新 candidate scope，除非 clause study 已完成独立复核；
-5. 在 Architecture Impact Register 中给出 `CONFIRM/EXTEND/MODIFY/SPLIT/MERGE/NO-IMPACT/DEFERRED`，其中前三类不兼容处置必须附迁移说明；
+5. 在 Architecture Impact Register 中使用 `CONFIRM/EXTEND/MODIFY/SPLIT/MERGE/DEPRECATE/NO-IMPACT/DEFERRED` 受控词汇，并满足本文件下述 locator、兼容性与迁移控制；
 6. 保持 V0–V12 为 `OPEN-CANDIDATE`；条款研究和 working information-model exploration 不得冻结 schema、metamodel、state machine 或 automation interface；
 7. 形成独立评审包并在通过前停止状态提升。
 
@@ -45,6 +45,8 @@ ISO/IEC/IEEE 29148:2018 仅保留一个 15288:2015→2023 targeted mapping closu
 
 1. 较早任务只产生该来源的 `source-native dependency inventory`、`provisional crosswalk` 和 `downstream closure questions`；这些输出可供后续任务使用，但不能宣称最终跨源等价、ownership 或 architecture disposition；
 2. 只有相关来源均完成条款研究和独立评审后，指定的后续 owner 或 architecture synthesis 才能产生 final cross-source disposition。每个 final matrix 只允许一个 owner；较早任务的 Definition of Done 不得依赖尚未完成的后续来源。
+
+Task 005/013 按该规则分层：Task 013 的 24748-3 source-native extraction 可立即开始；12207:2017 语义确认等待受控历史原文；24748-3 current-baseline mapping、promotion 或 architecture disposition 等待 Task 005 独立评审；任何 V0–V12 freeze 仍等待 Task 022 和单独的 architecture-synthesis gate。
 
 Task 001 是当前研究第一停点，但不是全局串行冻结。其评审前，15289 相关状态提升、ISO-G07C closure、信息模型冻结及依赖“已评审 15289 结论”的 final mapping/promotion 保持阻塞；无依赖的 metadata verification、source acquisition、source inventory 和 working/candidate research 可以继续。所有 V0–V12、schema、metamodel、state machine 和 automation interface 始终保持 working/open，直至各自独立门禁满足。
 
@@ -69,6 +71,8 @@ Task 001 是当前研究第一停点，但不是全局串行冻结。其评审�
 | `confidence_review` | evidence quality, unresolved item and independent-review disposition |
 
 Task 022 consumes only these reviewed records. Narrative conclusions without the record set cannot close an RQ, candidate test, gap or architecture impact.
+
+Architecture-impact disposition 的受控词汇为 `CONFIRM / EXTEND / MODIFY / SPLIT / MERGE / DEPRECATE / NO-IMPACT / DEFERRED`。`MODIFY`、`SPLIT`、`MERGE`、`DEPRECATE` 必须记录 before/after 语义、compatibility 和 migration；`EXTEND` 必须证明与既有 V-element 的兼容性；`CONFIRM` 与 `NO-IMPACT` 必须给出已评审 locator 和理由；`DEFERRED` 只表示证据、依赖或评审不足，不是架构结论。具体登记与成熟度门禁以 `../consolidation/architecture_impact_register.md` 为准。
 
 一份任务说明与其受控标准原文交给新的 agent 时，agent 仍应先读取说明中列出的 repository dependencies，以获取当前 gap、术语和架构状态；但不得要求未记录的口头上下文才能理解任务。任务说明中的目标文件名是默认交付路径，如仓库结构在执行前已发生受控变化，agent 应记录等价迁移而不是创建重复文件。
 

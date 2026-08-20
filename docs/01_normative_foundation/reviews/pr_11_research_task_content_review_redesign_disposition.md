@@ -1,9 +1,11 @@
 ---
 title: PR #11 Research-Task Content Review and Redesign Disposition
 status: correction-applied-rereview-pending
-version: 0.1
+version: 0.2
 reviewed_pr: 11
 reviewed_head: 7562ca34f33b47934c0a8970899ae69cbd94c7fe
+correction_head: a021d868b37b4aa29143359cd2f260412dfd664d
+rereview_status: follow-up-correction-required
 review_date: 2026-08-21
 owner: research
 last_updated: 2026-08-21
@@ -17,14 +19,25 @@ This record preserves the new content-review finding set separately from the ear
 
 | Finding | Required correction | Local disposition |
 |---|---|---|
-| CR-F01 | Add auditable RQ and innovation-candidate contribution design to Tasks 001–021 | CORRECTED LOCALLY; REREVIEW PENDING |
-| CR-F02 | Add cross-standard synthesis and innovation-falsification Task 022 | CORRECTED LOCALLY; REREVIEW PENDING |
-| CR-F03 | Replace current-edition 29119 `test condition` core with the `test model` chain | CORRECTED LOCALLY; REREVIEW PENDING |
-| CR-F04 | Control unavailable historical editions and prohibit reverse inference | CORRECTED LOCALLY; REREVIEW PENDING |
-| CR-F05 | Pre-register candidate Architecture Impact for every planned task | CORRECTED LOCALLY; REREVIEW PENDING |
-| CR-F06 | Separate standards silence from novelty establishment | CORRECTED LOCALLY; REREVIEW PENDING |
-| CR-F07 | Define a common mergeable evidence-record contract | CORRECTED LOCALLY; REREVIEW PENDING |
-| CR-F08 | Exclude metadata-watch Task 017 from clause-study completion rate | CORRECTED LOCALLY; REREVIEW PENDING |
+| CR-F01 | Add auditable RQ and innovation-candidate contribution design to Tasks 001–021 | CORRECTED AND PUSHED; REREVIEW VERIFIED |
+| CR-F02 | Add cross-standard synthesis and innovation-falsification Task 022 | CORRECTED AND PUSHED; REREVIEW VERIFIED |
+| CR-F03 | Replace current-edition 29119 `test condition` core with the `test model` chain | CORRECTED AND PUSHED; REREVIEW VERIFIED |
+| CR-F04 | Control unavailable historical editions and prohibit reverse inference | CORRECTED AND PUSHED; REREVIEW VERIFIED |
+| CR-F05 | Pre-register candidate Architecture Impact for every planned task | CORRECTED AND PUSHED; REREVIEW VERIFIED |
+| CR-F06 | Separate standards silence from novelty establishment | CORRECTED AND PUSHED; REREVIEW VERIFIED |
+| CR-F07 | Define a common mergeable evidence-record contract | CORRECTED AND PUSHED; REREVIEW VERIFIED |
+| CR-F08 | Exclude metadata-watch Task 017 from clause-study completion rate | CORRECTED AND PUSHED; REREVIEW VERIFIED |
+
+## Final re-review finding disposition
+
+The final re-review examined correction head `a021d868b37b4aa29143359cd2f260412dfd664d`. It verified CR-F01–CR-F08 and raised the following distinct follow-up findings; these corrections require final independent re-review before PR #11 can be made Ready.
+
+| Finding | Required correction | Local disposition |
+|---|---|---|
+| RR-F01 | Correct Task 013 Annex A from normative to informative and add an informative-force audit | CORRECTED LOCALLY; FINAL REREVIEW PENDING |
+| RR-F02 | Align Task 005/013 two-stage extraction, historical-semantic, promotion and architecture gates | CORRECTED LOCALLY; FINAL REREVIEW PENDING |
+| RR-A01 | Align the complete architecture disposition vocabulary and migration controls | CORRECTED LOCALLY; FINAL REREVIEW PENDING |
+| RR-A02 | Synchronize PR #11 remote description with the correction history and final re-review state | REMOTE METADATA UPDATE PENDING; FINAL REREVIEW PENDING |
 
 ## Controlled source decisions applied
 
@@ -39,4 +52,4 @@ No new clause study, established clause basis, gap closure, V0–V12 disposition
 
 ## Re-review scope
 
-The independent reviewer should sample the 29119 chain, historical-source gates, Task 002 population decision, Task 022 non-overclaim boundary, RQ/candidate coverage, Architecture Impact pre-registration and the common data contract. Approval of this record is required before PR #11 is made Ready.
+The final independent reviewer should verify the Task 013 Annex A informative-force classification, Task 005/013 two-stage gates, controlled disposition vocabulary, protected gap/register outcomes and synchronized PR description. Approval of this follow-up record is required before PR #11 is made Ready.

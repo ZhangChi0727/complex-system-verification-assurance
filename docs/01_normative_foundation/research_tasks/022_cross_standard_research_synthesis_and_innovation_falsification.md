@@ -117,7 +117,7 @@ Produce a terminology alignment matrix, normative-force/layer matrix, conflict m
 
 ## Architecture Impact gate
 
-After synthesis, propose for each affected V-ID/gap one of `CONFIRM`, `EXTEND`, `MODIFY`, `SPLIT`, `MERGE`, `DEPRECATE` or `NO-IMPACT`. Until independent review, retain the register status `DEFERRED`. `MODIFY/SPLIT/MERGE/DEPRECATE` requires before/after semantics, affected artifacts, compatibility rule, migration steps and rollback/review conditions.
+The controlled vocabulary is `CONFIRM / EXTEND / MODIFY / SPLIT / MERGE / DEPRECATE / NO-IMPACT / DEFERRED`. After synthesis, propose a substantive disposition for each affected V-ID/gap only where reviewed evidence supports it; otherwise retain `DEFERRED`, which is not an architecture conclusion. `MODIFY/SPLIT/MERGE/DEPRECATE` requires before/after semantics, affected artifacts, compatibility rule, migration steps and rollback/review conditions; `EXTEND` requires compatibility with existing V-elements; `CONFIRM/NO-IMPACT` requires a reviewed locator and rationale.
 
 Task 022 may submit proposals but may not directly freeze V0–V12, executable schema, metamodel, state machine or automation contract. Architecture maturity can advance only through the separately reviewed roadmap gate.
 

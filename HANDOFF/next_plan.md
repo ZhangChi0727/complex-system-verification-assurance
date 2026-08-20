@@ -34,7 +34,7 @@ dependencies:
 | ISO/IEC/IEEE 29119-1/-2/-3/-4 | Part 1 concepts inform Parts 2/3/4 process, documentation and technique studies | Testing/conformance/coverage impacts and dispositions |
 | IEEE 1012:2024 + ISO/IEC/IEEE 15026-3:2023 | Task 010 produces IEEE source-native rigor; Task 011 depends on it and solely owns final non-equivalence matrix | Reviewed rigor/intensity findings and unique final comparison |
 | ISO/IEC/IEEE 24748-4:2026 | Source acquired; reviewed 15289 required only for final information mapping; must precede synthesis | SEMP/V0 study plus provisional overlap register |
-| ISO/IEC/IEEE 24748-3:2020 | Source acquired; Task 05 owns 12207:2017→2026 foundation before final compatibility | Source-native guidance plus bounded version map |
+| ISO/IEC/IEEE 24748-3:2020 | Source-native extraction may start; 2017 semantic confirmation waits for the controlled historical source; current-baseline mapping/promotion waits for Task 05 independent review | Source-native guidance, informative Annex A force audit and bounded version map; architecture freeze remains with Task 022 plus the separate synthesis gate |
 | ISO/IEC/IEEE 24748-5:2017 | Source acquired; Task 12 context; 16326 rows provisional | Software-planning findings; final ownership closes in Task 20 |
 | ISO/IEC/IEEE 24748-6:2023 | Source acquired; reviewed 15288 context; 12207 mapping remains provisional until Task 05 | Integration findings and bounded dependency inventory |
 | ISO/IEC/IEEE 24748-10:2026 | Source acquired; reviewed 15288/24748-1 context; no Task 05 hard dependency; required before freeze | Systems-engineering agility taxonomy and topology stress test |

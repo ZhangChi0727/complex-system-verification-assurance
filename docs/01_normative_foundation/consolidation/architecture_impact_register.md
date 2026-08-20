@@ -20,16 +20,18 @@ dependencies:
 
 ## Controlled dispositions
 
+The controlled vocabulary is `CONFIRM / EXTEND / MODIFY / SPLIT / MERGE / DEPRECATE / NO-IMPACT / DEFERRED`; no synonymous or implicit disposition may bypass the controls below.
+
 | Disposition | Meaning | Additional control |
 |---|---|---|
-| `CONFIRM` | Reviewed evidence confirms the current architecture checkpoint. | Record the reviewed clause locator and affected dimensions. |
+| `CONFIRM` | Reviewed evidence confirms the current architecture checkpoint. | Record the reviewed clause locator, affected dimensions and confirmation rationale. |
 | `EXTEND` | Add an attribute, relation or controlled extension point without replacing existing semantics. | Record compatibility with current V-elements. |
-| `MODIFY` | Change an existing element's semantics or boundary. | Compatibility and migration statement required. |
-| `SPLIT` | Split an existing element or responsibility. | Stable-ID history and migration statement required. |
-| `MERGE` | Merge duplicated elements or responsibilities. | Stable-ID history and migration statement required. |
-| `DEPRECATE` | Retire a candidate element or relation shown to be unsupported, duplicated or incompatible. | Stable-ID history, replacement/compatibility and migration statement required. |
-| `NO-IMPACT` | Reviewed findings do not affect V0–V12. | Record why the source remains relevant. |
-| `DEFERRED` | Evidence, dependency or review is insufficient for disposition. | No architecture conclusion is permitted. |
+| `MODIFY` | Change an existing element's semantics or boundary. | Before/after semantics, compatibility and migration statement required. |
+| `SPLIT` | Split an existing element or responsibility. | Before/after semantics, stable-ID history, compatibility and migration statement required. |
+| `MERGE` | Merge duplicated elements or responsibilities. | Before/after semantics, stable-ID history, compatibility and migration statement required. |
+| `DEPRECATE` | Retire a candidate element or relation shown to be unsupported, duplicated or incompatible. | Before/after semantics, stable-ID history, replacement/compatibility and migration statement required. |
+| `NO-IMPACT` | Reviewed findings do not affect V0–V12. | Record the reviewed clause locator and rationale for no architecture effect. |
+| `DEFERRED` | Evidence, dependency or review is insufficient for disposition. | This is not an architecture conclusion; no architecture effect may be inferred. |
 
 ## Impact register
 
@@ -81,7 +83,10 @@ Pre-registration creates a common disposition entry point but no architecture co
 
 - Stable V-identifiers do not make current semantics immutable.
 - A source may affect multiple V-elements or dimensions, but every impact must retain source and review provenance.
-- `MODIFY`, `SPLIT` and `MERGE` require a migration note before approval; silent reinterpretation of a stable V-ID is prohibited.
+- `MODIFY`, `SPLIT`, `MERGE` and `DEPRECATE` require before/after semantics, compatibility analysis and a migration note before approval; silent reinterpretation or retirement of a stable V-ID is prohibited.
+- `EXTEND` requires an explicit compatibility statement for every affected existing V-element.
+- `CONFIRM` and `NO-IMPACT` require a reviewed locator and a disposition rationale; source metadata or silence is insufficient.
+- `DEFERRED` records insufficient evidence, dependency or review and is never an architecture conclusion.
 - Five-source rows record historical reviewed impact only and do not reopen or rewrite v0.2 conclusions.
 - Candidate rows must remain `DEFERRED` until clause study and independent review support another disposition.
 - Architecture maturity can move from `OPEN-CANDIDATE` to `REVIEWED-PROVISIONAL` only through the roadmap's architecture-synthesis gate.
