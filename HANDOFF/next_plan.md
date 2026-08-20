@@ -1,7 +1,7 @@
 ---
 title: Next Plan
 status: working
-version: 0.5
+version: 0.6
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-20
@@ -20,24 +20,24 @@ dependencies:
 
 **ISO/IEC/IEEE 15289:2019** 仍是当前第一停点：开展 information-item clause study，推进 ISO-G07/ISO-G07C。候选源扩充不表示 24748 新分册研究已经开始。
 
-每个 work package 的完整 agent-executable `version: 0.2` 工作单见 `docs/01_normative_foundation/research_tasks/`；执行时必须从 Task 01 开始，遵循任务内的来源门禁、完整条款清单、证据提取、映射、仓库交付与独立评审要求，并在相应独立评审完成前保持 V0–V12、信息模型、schema、metamodel 和 automation interface 为 working/open 状态。
+每个 work package 的完整 agent-executable 工作单见 `docs/01_normative_foundation/research_tasks/`。Task 001 是第一优先研究停点，但不是全局串行锁：未依赖其 reviewed conclusions 的 metadata verification、source acquisition、inventory 与 working/candidate research 可以并行；依赖 15289 的 final mapping/promotion、ISO-G07C closure 和信息模型冻结必须等待 Task 001 独立评审。所有 V0–V12、schema、metamodel、state machine 和 automation interface 在各自门禁前保持 working/open。
 
 ## Dependency-driven research queue
 
 | Work package | Dependency / ordering control | Required output |
 |---|---|---|
 | ISO/IEC/IEEE 15289:2019 | Current stop; source acquired | Clause study, interoperability mapping and architecture-impact disposition |
-| ISO/IEC 9646 / ITU-T X.290 | Prioritize against ISO-G04 and first-instance needs | Targeted conformance-testing study and impact disposition |
+| ISO/IEC 9646 / ITU-T X.290 | Parts 1/2/4/5/6/7 acquired; Part 3/X.292 and paired-Recommendation selection open | Complete part register/acquisition before final targeted-study disposition |
 | ISO/IEC/IEEE 15026-1:2025 | Current source acquired; retain 2019 only as dated provenance | Clause study plus targeted Claim/assurance/uncertainty compatibility review; no full-edition delta |
-| ISO/IEC/IEEE 15026-4:2021 | Coordinate with the 15026-1:2025 vocabulary baseline | Assurance-lifecycle findings and software-view dependency map |
+| ISO/IEC/IEEE 15026-4:2021 | Source acquired; coordinate with Part 1:2025; downstream Part 3/12207 rows provisional | Assurance-lifecycle source-native findings and downstream closure questions |
 | ISO/IEC/IEEE 12207:2026 | Foundation before 24748-3; coordinate with 15026-4 software view | Software-lifecycle clause study and 2017→2026 dependency context |
 | ISO/IEC/IEEE 29119-1/-2/-3/-4 | Part 1 concepts inform Parts 2/3/4 process, documentation and technique studies | Testing/conformance/coverage impacts and dispositions |
 | IEEE 1012:2024 + ISO/IEC/IEEE 15026-3:2023 | Coordinate V&V rigor and assurance-intensity questions | Rigor/intensity findings and impact dispositions |
-| ISO/IEC/IEEE 24748-4:2026 | Must precede final architecture synthesis | SEMP/V0/planning information-item study and overlap disposition |
-| ISO/IEC/IEEE 24748-3:2020 | Start after the 12207:2026 foundation; retain 12207:2017→2026 compatibility as explicit work | Software-lifecycle application impact disposition |
-| ISO/IEC/IEEE 24748-5:2017 | Perform 12207/15289/16326 overlap review before promotion decisions | Software-planning information-item impact disposition |
-| ISO/IEC/IEEE 24748-6:2023 | Coordinate with 15289 and integration information-item scope | Integration impact disposition |
-| ISO/IEC/IEEE 24748-10:2026 | Required before architecture freeze | Iteration/re-entry/tailoring/dynamic-environment impact disposition; no reduction of evidence or gate obligations |
+| ISO/IEC/IEEE 24748-4:2026 | Source acquired; reviewed 15289 required only for final information mapping; must precede synthesis | SEMP/V0 study plus provisional overlap register |
+| ISO/IEC/IEEE 24748-3:2020 | Source acquired; Task 05 owns 12207:2017→2026 foundation before final compatibility | Source-native guidance plus bounded version map |
+| ISO/IEC/IEEE 24748-5:2017 | Source acquired; Task 12 context; 16326 rows provisional | Software-planning findings; final ownership closes in Task 20 |
+| ISO/IEC/IEEE 24748-6:2023 | Source acquired; reviewed 15288 context; 12207 mapping remains provisional until Task 05 | Integration findings and bounded dependency inventory |
+| ISO/IEC/IEEE 24748-10:2026 | Source acquired; reviewed 15288/24748-1 context; no Task 05 hard dependency; required before freeze | Systems-engineering agility taxonomy and topology stress test |
 | ISO/IEC/IEEE 24748-8 | Wait for the formally published replacement; retain defence-domain profile boundary | Revision-watch decision, then optional cross-domain abstraction study; do not study the FDIS |
 | Architecture synthesis / controlled-freeze gate | Planned cohort studied or explicitly deferred; all impacts disposed; conflicts/migrations/gaps reviewed independently | At most `REVIEWED-PROVISIONAL`; no direct jump to `CONTROLLED-BASELINE` |
 | Executable information schema | Architecture synthesis gate and relevant schema dependencies satisfied | Executable schema candidate |

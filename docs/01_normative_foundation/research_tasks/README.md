@@ -1,7 +1,7 @@
 ---
 title: Normative Research Task Register
 status: working
-version: 0.3
+version: 0.4
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-20
@@ -27,13 +27,24 @@ ISO/IEC/IEEE 29148:2018 仅保留一个 15288:2015→2023 targeted mapping closu
 
 每项任务都必须：
 
-1. 在任何条款提取前核验 canonical ID、edition/date、页数、完整性与 SHA-256；PDF 不得提交；
+1. 在任何条款提取前核验 canonical ID、edition/date、页数、语言、完整性与 SHA-256；只记录合法取得状态和受控相对文件名，PDF 不得提交；
 2. 区分 normative/informative、`shall`/`should`/`may`、definition、note/example 与 framework interpretation；
 3. 使用 `Standard → Interpretation → Framework implication → Research proposal` 四层分离；
 4. 对相关 gap 只更新 candidate scope，除非 clause study 已完成独立复核；
 5. 在 Architecture Impact Register 中给出 `CONFIRM/EXTEND/MODIFY/SPLIT/MERGE/NO-IMPACT/DEFERRED`，其中前三类不兼容处置必须附迁移说明；
 6. 保持 V0–V12 为 `OPEN-CANDIDATE`；条款研究和 working information-model exploration 不得冻结 schema、metamodel、state machine 或 automation interface；
 7. 形成独立评审包并在通过前停止状态提升。
+
+来源与评审隐私控制适用于全部任务：不得提交 PDF、截图、OCR dump、提取全文或大段逐字内容；不得记录许可主体、账号、订单、下载时间、水印、内部 URL 或用户绝对路径。评审者使用自己合法取得且版本/指纹匹配的原文核验 locator；review packet 只包含短释义、定位符和结论，不得重构标准正文。CD/DIS/FDIS 仅用于 metadata/revision watch，不能成为 normative basis。
+
+## Two-stage dependency and closure rule
+
+研究依赖采用两阶段闭合，避免前向或循环依赖：
+
+1. 较早任务只产生该来源的 `source-native dependency inventory`、`provisional crosswalk` 和 `downstream closure questions`；这些输出可供后续任务使用，但不能宣称最终跨源等价、ownership 或 architecture disposition；
+2. 只有相关来源均完成条款研究和独立评审后，指定的后续 owner 或 architecture synthesis 才能产生 final cross-source disposition。每个 final matrix 只允许一个 owner；较早任务的 Definition of Done 不得依赖尚未完成的后续来源。
+
+Task 001 是当前研究第一停点，但不是全局串行冻结。其评审前，15289 相关状态提升、ISO-G07C closure、信息模型冻结及依赖“已评审 15289 结论”的 final mapping/promotion 保持阻塞；无依赖的 metadata verification、source acquisition、source inventory 和 working/candidate research 可以继续。所有 V0–V12、schema、metamodel、state machine 和 automation interface 始终保持 working/open，直至各自独立门禁满足。
 
 ## Task specification contract
 
@@ -60,9 +71,9 @@ REVIEWED or CORRECTION REQUIRED
 | Order | Source/work package | Task document | Local source observation | Start control |
 |---|---|---|---|---|
 | 01 | ISO/IEC/IEEE 15289:2019 | [Task 01](001_iso_iec_ieee_15289_2019.md) | Verified baseline source file present | Current research stop |
-| 02 | ISO/IEC 9646 / ITU-T X.290 | [Task 02](002_iso_iec_9646_itu_t_x290_series.md) | No matching PDF in current inventory | Metadata/selection and acquisition first |
+| 02 | ISO/IEC 9646 / ITU-T X.290 | [Task 02](002_iso_iec_9646_itu_t_x290_series.md) | Parts 1/2/4/5/6/7 acquired; Part 3 and paired-Recommendation selection open | Partial acquisition; selection/remaining acquisition first |
 | 03 | ISO/IEC/IEEE 15026-1:2025 | [Task 03](003_iso_iec_ieee_15026_1_2025.md) | Verified baseline source file present | After/alongside 15289 as dependency permits |
-| 04 | ISO/IEC/IEEE 15026-4:2021 | [Task 04](004_iso_iec_ieee_15026_4_2021.md) | No matching PDF in current inventory | Acquire published edition first |
+| 04 | ISO/IEC/IEEE 15026-4:2021 | [Task 04](004_iso_iec_ieee_15026_4_2021.md) | Acquired published source verified | Part 1 vocabulary; provisional downstream dependencies only |
 | 05 | ISO/IEC/IEEE 12207:2026 | [Task 05](005_iso_iec_ieee_12207_2026.md) | No matching PDF in current inventory | Acquire before 24748-3 |
 | 06 | ISO/IEC/IEEE 29119-1:2022 | [Task 06](006_iso_iec_ieee_29119_1_2022.md) | Acquired source file verified | Part 1 concepts first |
 | 07 | ISO/IEC/IEEE 29119-2:2021 | [Task 07](007_iso_iec_ieee_29119_2_2021.md) | Acquired source file verified | Part 1 concepts first |
@@ -70,15 +81,15 @@ REVIEWED or CORRECTION REQUIRED
 | 09 | ISO/IEC/IEEE 29119-4:2021 | [Task 09](009_iso_iec_ieee_29119_4_2021.md) | Acquired source file verified | Part 1 concepts first |
 | 10 | IEEE 1012-2024 | [Task 10](010_ieee_1012_2024.md) | Acquired source file verified | Coordinate 15026-3 |
 | 11 | ISO/IEC/IEEE 15026-3:2023 | [Task 11](011_iso_iec_ieee_15026_3_2023.md) | Acquired source file verified | Coordinate IEEE 1012 |
-| 12 | ISO/IEC/IEEE 24748-4:2026 | [Task 12](012_iso_iec_ieee_24748_4_2026.md) | No matching PDF in current inventory | Required before final synthesis |
-| 13 | ISO/IEC/IEEE 24748-3:2020 | [Task 13](013_iso_iec_ieee_24748_3_2020.md) | No matching PDF in current inventory | After 12207:2026 foundation |
-| 14 | ISO/IEC/IEEE 24748-5:2017 | [Task 14](014_iso_iec_ieee_24748_5_2017.md) | No matching PDF in current inventory | Overlap review first |
-| 15 | ISO/IEC/IEEE 24748-6:2023 | [Task 15](015_iso_iec_ieee_24748_6_2023.md) | No matching PDF in current inventory | Coordinate 15289 |
-| 16 | ISO/IEC/IEEE 24748-10:2026 | [Task 16](016_iso_iec_ieee_24748_10_2026.md) | No matching PDF in current inventory | Required before freeze gate |
+| 12 | ISO/IEC/IEEE 24748-4:2026 | [Task 12](012_iso_iec_ieee_24748_4_2026.md) | Acquired published source verified | Required before final synthesis; overlap provisional |
+| 13 | ISO/IEC/IEEE 24748-3:2020 | [Task 13](013_iso_iec_ieee_24748_3_2020.md) | Acquired published source verified | 12207:2017→2026 compatibility depends on Task 05 |
+| 14 | ISO/IEC/IEEE 24748-5:2017 | [Task 14](014_iso_iec_ieee_24748_5_2017.md) | Acquired published source verified | Task 12 context; overlap provisional until Task 20 |
+| 15 | ISO/IEC/IEEE 24748-6:2023 | [Task 15](015_iso_iec_ieee_24748_6_2023.md) | Acquired published source verified | 15288 context; 12207 mapping provisional until Task 05 |
+| 16 | ISO/IEC/IEEE 24748-10:2026 | [Task 16](016_iso_iec_ieee_24748_10_2026.md) | Acquired published source verified | 15288/24748-1 context; required before freeze gate |
 | 17 | ISO/IEC/IEEE 24748-8 | [Task 17](017_iso_iec_ieee_24748_8_revision_watch.md) | No matching PDF in current inventory | Revision watch only |
-| 18 | ISO/IEC/IEEE 24641:2023 | [Task 18](018_iso_iec_ieee_24641_2023.md) | No matching PDF in current inventory | ISO-G08 priority trigger |
-| 19 | ISO/IEC/IEEE 15939:2017 | [Task 19](019_iso_iec_ieee_15939_2017.md) | No matching PDF in current inventory | Evidence-metrics trigger |
-| 20 | ISO/IEC/IEEE 16326:2019 | [Task 20](020_iso_iec_ieee_16326_2019.md) | No matching PDF in current inventory | Project-information overlap trigger |
+| 18 | ISO/IEC/IEEE 24641:2023 | [Task 18](018_iso_iec_ieee_24641_2023.md) | Acquired published source verified | 15288 context; software mapping provisional until Task 05 |
+| 19 | ISO/IEC/IEEE 15939:2017 | [Task 19](019_iso_iec_ieee_15939_2017.md) | Acquired published source verified | Revision recheck and 15288 mapping required |
+| 20 | ISO/IEC/IEEE 16326:2019 | [Task 20](020_iso_iec_ieee_16326_2019.md) | Acquired published source verified | Final planning-overlap closure owner after Tasks 12/14 |
 | 21 | ISO/IEC/IEEE 29148:2018 targeted mapping | [Task 21](021_iso_iec_ieee_29148_2018_mapping_closure.md) | Reviewed local source present | Mapping closure only |
 
 ## Historical task archive

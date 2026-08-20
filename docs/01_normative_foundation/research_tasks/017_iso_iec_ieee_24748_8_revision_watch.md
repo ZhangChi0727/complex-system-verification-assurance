@@ -19,6 +19,7 @@ dependencies:
 | Order / priority | 17 / revision watch, not current clause study |
 | Baseline status | `METADATA VERIFIED; FORMAL REVISION WATCH; CLAUSE STUDY DEFERRED` |
 | Source | No matching PDF in current inventory; 2019 remains the published edition, while the replacement FDIS is not a normative basis |
+| Revision control | Current published basis: 2019; Edition 2 FDIS under development; metadata last verified `2026-08-20` at https://www.iso.org/standard/75405.html and https://www.iso.org/standard/91563.html; FDIS text prohibited as normative evidence |
 | Layer / trigger | Domain assurance/application profile / defence review and audit abstraction |
 | Initial impact | `DEFERRED — await published replacement and source decision` |
 

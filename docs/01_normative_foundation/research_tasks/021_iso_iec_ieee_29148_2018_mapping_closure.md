@@ -20,6 +20,7 @@ dependencies:
 | Order / priority | 21 / targeted residual dependency |
 | Baseline status | `CLAUSE STUDY REVIEWED; 15288:2015→2023 VERSION MAPPING OPEN` |
 | Source | `references/PDF/29148-2018.pdf`; 104 pages; SHA-256 `E8FB679F758AA078B290FB1849E288996D059968D5911ABD0E96A75C0539E6C8` |
+| Revision control | Current published basis: 2018; Edition 3 DIS under development; official metadata last verified `2026-08-20` at https://www.iso.org/standard/94091.html; recheck before execution; DIS text prohibited; a published replacement requires an explicit retarget/priority decision |
 | Layer / trigger | Generic methodological source / requirement-process dependency closure |
 | Initial impact | `DEFERRED — targeted mapping review pending`; existing clause study remains reviewed |
 

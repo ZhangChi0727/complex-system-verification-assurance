@@ -18,10 +18,24 @@ dependencies:
 | Field | Value |
 |---|---|
 | Order / priority | 02 / targeted conformance-methodology study |
-| Baseline status | `PLANNED; METADATA PENDING` |
-| Source | No matching ISO 9646/X.290 PDF in current inventory; canonical part selection and acquisition required |
+| Baseline status | `PARTIAL SOURCE ACQUISITION; PART SELECTION/REMAINING ACQUISITION OPEN` |
+| Source | Parts 1/2/4/5/6/7 acquired and fingerprinted; Part 3 / X.292 and the controlled paired-Recommendation set remain open |
 | Layer / trigger | Generic methodological source / ISO-G04 and conformance instance |
-| Initial impact | `DEFERRED — metadata, selection and source acquisition pending` |
+| Initial impact | `DEFERRED — part selection and remaining acquisition pending` |
+
+### Controlled local source inventory
+
+| Part | Canonical local file | Physical pages | SHA-256 | Control status |
+|---|---|---:|---|---|
+| ISO/IEC 9646-1:1994 | `references/PDF/9646-1-1994.pdf` | 56 | `A879A40A00F2B4086A3D1D4E68497D0008F24D5D6C43A531B13112CFE5E92F65` | Acquired; selection open |
+| ISO/IEC 9646-2:1994 | `references/PDF/9646-2-1994.pdf` | 40 | `B16937B8DAAFB45A9B2DCFBD73F2F00B20B39714B6D8E192AC1C0EFD3DA2333` | Acquired; selection open |
+| ISO/IEC 9646-3 / ITU-T X.292 | — | — | — | Not acquired; include/context/exclude decision required |
+| ISO/IEC 9646-4:1994 | `references/PDF/9646-4-1994.pdf` | 20 | `4177D2EEA43675C0F1AA6ADA450573DCC9B1E484800E3D13402B2240C80CDED7` | Acquired; selection open |
+| ISO/IEC 9646-5:1994 | `references/PDF/9646-5-1994.pdf` | 44 | `A09BB65A2AD43C22F9E95D336BEC777D9BBCF7F26D324AA2FA6220755AAD2490` | Acquired; selection open |
+| ISO/IEC 9646-6:1994 | `references/PDF/9646-6-1994.pdf` | 24 | `9B14CD1BF9E9FF5872B387FBFBF7E8CDAE7CE60EFFC9192C73157C584800B3ED` | Acquired; protocol-profile specialization |
+| ISO/IEC 9646-7:1995 | `references/PDF/9646-7-1995.pdf` | 68 | `AC28B93C3670C9EC6932785E8F73457645F652DC27D92C46DA7D49320D9CCB35` | Acquired; selection open |
+
+The work package remains partial until Part 3/X.292 and paired-Recommendation selection are controlled; acquisition of six ISO parts does not authorize a completed study.
 
 ## Objective
 

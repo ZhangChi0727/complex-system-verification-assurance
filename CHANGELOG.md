@@ -51,6 +51,7 @@ v0.1 establishes research infrastructure and does not claim completion or normat
 
 - Added one controlled task specification per actionable standard/work package in the candidate-source baseline, preserving dependency order and independent-review gates.
 - Upgraded all 21 current task specifications to agent-executable `version: 0.2` work orders with source gates, complete-inventory rules, standard-specific research packages, extraction records, required mappings, repository deliverables, report structures, independent-review packets, no-overclaim controls and auditable definitions of done.
+- Reconciled the PR #11 controlled local source inventory: registered newly verified licensed sources and canonical fingerprints, kept ISO/IEC/IEEE 12207:2026 not acquired, recorded ISO/IEC 9646 as partial acquisition, added formal revision watches and strengthened sanitized-provenance/copyright controls. No clause study, gap closure or architecture promotion resulted from acquisition.
 - Recorded locally verified source files for ISO/IEC/IEEE 15026-3:2023, the ISO/IEC/IEEE 29119-1/-2/-3/-4 set and IEEE 1012-2024 as acquired licensed sources without starting clause study; recorded acquired TTCN-3 parts separately from the still-unselected SysML/tool aggregate.
 - Normalized six user-supplied pre-v0.2 work orders into a versioned historical-task archive and restored the PR #4 ARP4761A external review to the reviews workspace without changing its original verdict.
 
