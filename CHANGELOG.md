@@ -47,6 +47,21 @@ v0.1 establishes research infrastructure and does not claim completion or normat
 - Reclassified ISO/IEC/IEEE 24748-8:2019 as a defence-domain profile candidate under formal-revision watch; its FDIS is not a published normative basis.
 - Made no clause-level, established-basis, gap-closure, schema, state-machine or certification-readiness claim.
 
+### Research task planning
+
+- Redesigned PR #11 tasks 001–021 as `version: 0.4` research contracts with explicit RQ ownership, innovation-candidate falsification, negative findings, generalization rights and a mergeable evidence-record schema; added Task 022 for cross-standard synthesis without treating standards silence as novelty.
+- Corrected the ISO 29119 second-edition chain to `test basis → test model → test design technique → test coverage item → test case/procedure/result`, retaining `test condition` only as historical collision metadata.
+- Selected ISO/IEC 9646 Parts 1/2/4/5/6/7 as the complete Task 002 population, excluded Part 3 and ITU-T text from the present clause study, and removed paired-equivalence/acquisition gates without claiming textual identity.
+- Registered the acquired 154-page ISO/IEC/IEEE 12207:2026 source and the unavailable 12207:2017, 15288:2015 and 24748-4:2016 historical dependency sources; affected semantic mapping rows remain `NOT DETERMINED` and no current established basis was changed.
+- Pre-registered DEFERRED Architecture Impact entries for Tasks 001–022 and added candidate task/RQ ownership links to the gap matrix without changing protected established basis, disposition or gap status.
+- Added one controlled task specification per actionable standard/work package in the candidate-source baseline, preserving dependency order and independent-review gates.
+- Upgraded all 21 current task specifications to agent-executable `version: 0.2` work orders with source gates, complete-inventory rules, standard-specific research packages, extraction records, required mappings, repository deliverables, report structures, independent-review packets, no-overclaim controls and auditable definitions of done.
+- Reconciled the earlier PR #11 controlled local source inventory at its reviewed head; the subsequent content-review correction above supersedes its former 12207-not-acquired and 9646-partial status statements. No clause study, gap closure or architecture promotion resulted from acquisition.
+- Repaired PR #11 task dependency and scope controls: replaced the Task 001 global lock with dependency-scoped promotion gates, introduced provisional/downstream closure ownership, assigned the IEEE 1012↔15026-3 final matrix to Task 011 and planning-ownership closure to Task 020, corrected Task 016 to the 15288/24748-1 context, and added required old-edition, annex and standard-specific coverage controls. No research conclusion or architecture freeze was performed.
+- Addressed PR #11 final re-review precision findings by classifying ISO/IEC/IEEE 24748-3:2020 Annex A as informative, requiring a complete informative-force audit, separating source-native extraction from historical-semantic and current-baseline promotion gates, and aligning the full architecture-impact disposition vocabulary including `DEPRECATE`. Protected gap and preregistered architecture outcomes remain unchanged; final independent re-review passed at head `0f36b39f2ed00ab863c2fef3c9ce56cc28149d3b`.
+- Recorded locally verified source files for ISO/IEC/IEEE 15026-3:2023, the ISO/IEC/IEEE 29119-1/-2/-3/-4 set and IEEE 1012-2024 as acquired licensed sources without starting clause study; recorded acquired TTCN-3 parts separately from the still-unselected SysML/tool aggregate.
+- Normalized six user-supplied pre-v0.2 work orders into a versioned historical-task archive and restored the PR #4 ARP4761A external review to the reviews workspace without changing its original verdict.
+
 ### Consolidated integration
 
 - Closed and externally confirmed re-review findings F-01/F-02 by aligning all current gap references to the authoritative matrix (`REQ-G01` identity/lifecycle schema, `REQ-G02` criterion placement/cardinality, `ISO-G07C` 15289 interoperability) and normalizing the acquired-source/pending-study status.

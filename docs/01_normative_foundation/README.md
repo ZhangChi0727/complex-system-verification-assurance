@@ -1,13 +1,14 @@
 ---
 title: Normative Foundation Workspace
 status: working
-version: 0.12
+version: 0.15
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-20
+last_updated: 2026-08-21
 dependencies:
   - ../00_overview/research_scope.md
   - consolidation/architecture_impact_register.md
+  - research_tasks/README.md
 ---
 
 # Normative Foundation Workspace
@@ -38,8 +39,9 @@ Framework Rule
 - lifecycle-management supporting review: [ISO/IEC/IEEE 24748-2:2024](standard_notes/iso_24748_2_targeted_review.md) found a minor framework delta and introduced no new requirements。
 - aviation safety-assurance study: [SAE ARP4754B](standard_notes/sae_arp4754b.md) development-assurance slice 与 [SAE ARP4761A](standard_notes/sae_arp4761a.md) safety-assessment slice 已完成；两者通过 Safety Requirement provenance、FDAL/IDAL、typed independence 和 multi-source evidence 连接，但不合并过程本体。
 - requirements-to-assurance research: [ISO/IEC/IEEE 29148:2018](standard_notes/iso_iec_ieee_29148_2018_clause_study.md) 与 [ISO/IEC/IEEE 15026-2:2022](standard_notes/iso_iec_ieee_15026_2_2022_clause_study.md) 条款研究已通过独立评审；[crosswalk](consolidation/requirements_to_assurance_crosswalk.md) 将 Requirement/Basis→Obligation→Result 链与 Evidence Item→Argument→Supported Claim/Inference 链连接，并把 Result/Artefact→Evidence Item 明确为受 5.3.2 约束的 framework-defined characterization。ISO 15289、15026-1:2025 targeted compatibility 与 29148→15288 版本映射仍开放；15026-1:2019 仅保留为 15026-2 明示 dated-reference provenance。
-- architecture governance: [Architecture Impact Register](consolidation/architecture_impact_register.md) 控制后续来源对 V0–V12 的 `CONFIRM/EXTEND/MODIFY/SPLIT/MERGE/NO-IMPACT/DEFERRED` 处置；metadata 或 source acquisition 不构成架构结论；
-- software-lifecycle candidate foundation: ISO/IEC/IEEE 12207:2026 以 `METADATA VERIFIED; SOURCE NOT ACQUIRED; CLAUSE STUDY PENDING` 登记，用于 15026-4 software view 与 24748-3 compatibility 的后续研究；尚未形成条款结论或 established basis；
+- architecture governance: [Architecture Impact Register](consolidation/architecture_impact_register.md) 控制后续来源对 V0–V12 的 `CONFIRM/EXTEND/MODIFY/SPLIT/MERGE/DEPRECATE/NO-IMPACT/DEFERRED` 处置；001–022 已预登记且全部未研究项保持 `DEFERRED`；
+- research task control: [Normative Research Task Register](research_tasks/README.md) 的 001–021 为 agent-executable `version: 0.4` 任务说明，加入 RQ/innovation falsification、negative findings、generalization rights 和统一 evidence-record contract；Task 022 负责跨标准综合但不替代 novelty search；任务登记不表示 clause study 已开始；
+- software-lifecycle candidate foundation: ISO/IEC/IEEE 12207:2026 的 154 页受控本地原文已取得并保持 ignored，状态为 `SOURCE ACQUIRED; CLAUSE STUDY PENDING`；12207:2017 历史依赖未取得，相关映射只能为 `NOT DETERMINED`，尚未形成条款结论或 established basis；
 - planned 24748 candidates: Parts 3、4、5、6、10 仅作为 generic methodological candidate sources 登记；Part 8:2019 仅作为 defence-domain profile candidate 并保持 formal-revision watch。它们未进入 established clause basis，未改变任何 gap 持续状态；
 - external informal review: [ISO 24748-2 / SAE ARP4754B review](reviews/ISO-24748-2--SAE-ARP4754B-External-Informal-Review.md) 的 2 项 Major 与 4 项 Minor findings 已关闭；Test Readiness Review/V6、Result/Evidence、Appendix A provenance 和 certification-credit dimensionality 已按较低 ontology strength 修正。
 - readiness: `CONDITIONALLY READY FOR v0.2 CONCEPTUAL BASELINE`；不宣称 executable schema、item-level completeness、certification acceptance 或 framework validation；

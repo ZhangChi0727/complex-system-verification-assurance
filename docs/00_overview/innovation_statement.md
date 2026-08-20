@@ -1,10 +1,10 @@
 ---
 title: Candidate Contribution Register and Work Boundary
 status: working
-version: 0.2
+version: 0.3
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-19
+last_updated: 2026-08-21
 dependencies:
   - research_scope.md
   - research_questions.md
@@ -15,6 +15,12 @@ dependencies:
 # Candidate Contribution Register and Work Boundary
 
 本文件控制候选研究贡献，不把 gap 当作 novelty proof。标准没有在已研究切片中给出某对象，仅能触发更广的 source search；只有相关检索达到 `SOURCE SEARCH COMPLETE`、强反例检验未推翻主张且验证完成后，才可形成强原创性表述。
+
+## Candidate-test ownership and novelty boundary
+
+Tasks 001–021 may return only `SUPPORT`、`QUALIFY`、`FALSIFY` or `NO EVIDENCE` for their assigned candidates. Task 022 reconciles those records as `SUPPORTED`、`QUALIFIED`、`FALSIFIED` or `OPEN` and produces follow-on search questions. Neither a source task nor Task 022 may set `novelty established`.
+
+`Standards silence ≠ novelty`：标准未规定某对象或算法只形成 `innovation-space observation`。强新颖性结论必须由单独、可复核的同行评议文献、专利及工业方案检索与 falsification review 支持，并说明检索总体、时间边界、查询式、排除规则、竞争机制和残余不确定性。来源数量不能替代证据质量，跨标准综合也不能替代该检索。
 
 允许值：`claim_type` = thesis / architecture / mechanism / implementation；`novelty_status` = hypothesis / candidate / not established；`validation_status` = conceptual / planned / in progress / supported / falsified。
 
@@ -42,10 +48,10 @@ dependencies:
 | INN-M1 | 风险与影响驱动的 re-verification selection 方法 | mechanism | hypothesis | planned | 更广标准/文献已规定等价 selection 方法，或实例评价不能优于透明基线 | ISO-G05; IEEE 1012 / change-impact literature search | 不声称“标准只要求重验、不定义选择”；这是待检索假设 |
 | INN-M2 | waiver/deviation/reopen/authority/scope state 的 Closure 状态模型 | mechanism | hypothesis | planned | 既有 lifecycle/change-control 标准已定义等价模型，或状态模型不能稳定处理实例 | ISO-G06; 24748-8/16326 candidates | 不把审批或基线状态本身主张为原创 |
 | INN-M3 | population + criterion + evidence + disposition 的可计算 coverage 模型 | mechanism | hypothesis | conceptual | 既有 coverage metamodel 等价，或跨实例无法保持可比且可扩展 | ISO-G02B; 29119/item-profile candidates | 不主张任何 universal percentage 或 completion rule |
-| INN-M4 | 将 expected-result 正确性依据建模为受控 Oracle 候选对象 | mechanism | hypothesis | planned | 9646/X.290、testing literature 或其他来源已有等价对象与控制语义，或实例无独立对象需求 | ISO-G04; 9646/X.290 / 29119 search | 不把 expected result 自动重标为 Oracle |
+| INN-M4 | 将 expected-result 正确性依据建模为受控 Oracle 候选对象 | mechanism | hypothesis | planned | ISO/IEC 9646、testing literature 或其他来源已有等价对象与控制语义，或实例无独立对象需求 | ISO-G04; ISO/IEC 9646 / 29119 search | 不把 expected result 自动重标为 Oracle |
 | INN-M5 | 模型/工具输出承担 Evidence role 的通用可采性条件 | mechanism | hypothesis | planned | MBSE/V&V 文献已有等价通用规则，或跨领域评价失败 | ISO-G08; 24641 / assurance literature | 不声称工具输出天然是 Evidence |
 | INN-I1 | 机器可读 verification metamodel 与非产品化研究原型 | implementation | hypothesis | planned | 既有开源/研究平台提供等价模型和评价能力，或原型无法支持审计查询 | Phase 8/9 | 不把工程实现本身自动等同学术创新 |
-| INN-I2 | conformance-testing 与 lifecycle-assurance 传统之间的受控映射模型 | implementation | not established | planned | 9646/X.290、29119、15026 或既有研究已经给出等价统一模型 | ISO-G04/G07; source search pending | 新颖性未建立；不预设 PICS/test purpose/verdict 映射为原创 |
+| INN-I2 | conformance-testing 与 lifecycle-assurance 传统之间的受控映射模型 | implementation | not established | planned | ISO/IEC 9646、29119、15026 或既有研究已经给出等价统一模型 | ISO-G04/G07; source search pending | 新颖性未建立；不预设 PICS/test purpose/verdict 映射为原创 |
 
 ## Methodology–instance decoupling contract
 

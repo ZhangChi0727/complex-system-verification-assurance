@@ -58,3 +58,23 @@ dependencies:
 | ASC-G04 | Assurance-case report/snapshot/version | ISO 15026-2, 3.1.2/5.2/5.3.6 report and narrative structure | ISO 15289; registry design | PARTIAL SOURCE COVERAGE | Conceptual report/index structure is reviewed; assembly, baseline, version and interoperability rules remain open. | NEW — KEEP OPEN | Open |
 
 持续状态允许 `Open`、`Research Proposal`、`Partially Supported`、`Resolved`、`Closed as parent`。每行必须保持 established basis、candidate scope 与 framework interpretation 的边界。
+
+## Planned research-task coverage overlay
+
+This overlay adds task ownership and RQ links only. It does not modify the established basis, source-search status, disposition or status in the controlled matrix above. Task 022 reconciles reviewed outputs and cannot close a gap solely from standard silence.
+
+| Gap family | Candidate tasks | RQ / synthesis owner |
+|---|---|---|
+| ISO-G01 / ARP-G01 / SAF-G03 | 010, 011 | RQ2/RQ3/RQ4/RQ5/RQ8; Task 022 |
+| ISO-G02A/B | 006, 007, 009, 019 | RQ3/RQ4/RQ6/RQ7; Task 022 |
+| ISO-G03A/B / SAF-G05 | 003, 004, 005, 009, 010, 011, 019 | RQ4/RQ5; Task 022 |
+| ISO-G04 | 002, 005, 006, 009 | RQ3/RQ5/RQ8; Task 022 |
+| ISO-G05 / SAF-G06 | 004, 005, 007, 010, 013, 015, 016 | RQ2/RQ3/RQ5/RQ8; Task 022 |
+| ISO-G06 | 005, 007, 012, 020 | RQ2/RQ5/RQ7; Task 022 |
+| ISO-G07/A/B/C / ASC-G02/G04 | 001, 002, 003, 005, 006, 008, 012–015, 018, 020, 021 | RQ1/RQ3/RQ5/RQ7/RQ8; Task 022 |
+| ISO-G08 | 005, 010, 018 | RQ3/RQ5/RQ7/RQ8; Task 022 |
+| LC-G01/G02 | 017 metadata watch only; future clause-study task required | no current RQ evidence; Task 022 retains open/deferred boundary |
+| LC-G03/G04 | 001, 004, 005, 007, 012–016, 020 | RQ1/RQ2/RQ3/RQ5/RQ7/RQ8; Task 022 |
+| SAF-G01/G02/G04 | 001, 003, 004, 005, 008, 018 | RQ1/RQ4/RQ5/RQ7/RQ8; Task 022 |
+| REQ-G01/G02 | 001, 005, 006, 008, 021 | RQ1/RQ3/RQ7; Task 022 |
+| ASC-G01/G03 | 003, 004, 011 | RQ4/RQ5; Task 022 |
