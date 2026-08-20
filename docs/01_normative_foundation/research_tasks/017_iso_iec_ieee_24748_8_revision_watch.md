@@ -1,10 +1,15 @@
 ---
 title: ISO/IEC/IEEE 24748-8 Revision-Watch Task
 status: planned
-version: 0.3
+version: 0.4
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-20
+last_updated: 2026-08-21
+task_type: metadata-watch
+research_questions: []
+innovation_candidates: [INN-A3, INN-M2]
+contribution_modes: [no-evidence]
+source_population: metadata-only
 dependencies:
   - README.md
   - ../standards_baseline.md
@@ -39,6 +44,26 @@ Maintain an accurate publication/replacement watch and define the gate for a fut
 ## Stop conditions
 
 Do not acquire or analyze the FDIS for normative conclusions, generalize defence authority/gate rules, or start clause extraction under this watch task.
+
+## Research contribution contract
+
+This metadata-watch task does not answer an RQ and contributes no clause evidence. It only maintains publication state and the trigger for a future separately numbered defence-profile clause study.
+
+## Candidate falsification tests
+
+No innovation candidate may receive `SUPPORT`, `QUALIFY` or `FALSIFY` from this task. `INN-A3/M2` are future search targets only; every watch-cycle outcome is `NO EVIDENCE` for content claims.
+
+## Negative findings and non-answers
+
+Metadata, FDIS existence and publication timing say nothing about review/audit semantics, authority, closure or novelty. Do not inspect draft clauses.
+
+## Generalization rights
+
+All outputs are governance `No adoption`. A future published-source task must independently establish `Profile` findings before any abstraction.
+
+## Synthesis handoff dataset
+
+Emit only `catalogue_locator`, `access_date`, `publication_state`, `replacement_relation`, `source_acquisition_decision`, `trigger_disposition` and `content_evidence=none`.
 
 ## Detailed execution specification
 

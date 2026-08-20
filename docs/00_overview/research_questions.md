@@ -1,17 +1,20 @@
 ---
 title: Research Questions
 status: baseline
-version: 0.3
+version: 0.4
 baseline: v0.2
 owner: research
-last_updated: 2026-08-19
+last_updated: 2026-08-21
 dependencies:
   - research_scope.md
+  - ../01_normative_foundation/research_tasks/README.md
 ---
 
 # Research Questions
 
 以下问题在 v0.1 全部保持 `Open`，本基线不提前给出答案。
+
+当前 standards-research task ownership、至少双来源族覆盖和反证路径见 [Normative Research Task Register](../01_normative_foundation/research_tasks/README.md#rq-and-innovation-candidate-coverage)。该链接只分配研究责任，不构成 RQ 答案或关闭证据；Task 022 负责把独立评审后的记录综合为 answer drafts。
 
 ## RQ1 — Normative foundation
 

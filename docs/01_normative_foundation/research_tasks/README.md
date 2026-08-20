@@ -1,10 +1,10 @@
 ---
 title: Normative Research Task Register
 status: working
-version: 0.5
+version: 0.6
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-20
+last_updated: 2026-08-21
 dependencies:
   - ../standards_baseline.md
   - ../normative_gap_matrix.md
@@ -35,6 +35,8 @@ ISO/IEC/IEEE 29148:2018 仅保留一个 15288:2015→2023 targeted mapping closu
 6. 保持 V0–V12 为 `OPEN-CANDIDATE`；条款研究和 working information-model exploration 不得冻结 schema、metamodel、state machine 或 automation interface；
 7. 形成独立评审包并在通过前停止状态提升。
 
+每条标准证据对创新候选只允许 `SUPPORT`、`QUALIFY`、`FALSIFY` 或 `NO EVIDENCE`。`NO EVIDENCE` 只表示该来源没有回答，不表示研究贡献新颖。标准研究可形成规范缺口、竞争解释和后续检索问题，但不能替代同行评议文献、专利与工业方案的新颖性检索。
+
 来源与评审隐私控制适用于全部任务：不得提交 PDF、截图、OCR dump、提取全文或大段逐字内容；不得记录许可主体、账号、订单、下载时间、水印、内部 URL 或用户绝对路径。评审者使用自己合法取得且版本/指纹匹配的原文核验 locator；review packet 只包含短释义、定位符和结论，不得重构标准正文。CD/DIS/FDIS 仅用于 metadata/revision watch，不能成为 normative basis。
 
 ## Two-stage dependency and closure rule
@@ -46,9 +48,27 @@ ISO/IEC/IEEE 29148:2018 仅保留一个 15288:2015→2023 targeted mapping closu
 
 Task 001 是当前研究第一停点，但不是全局串行冻结。其评审前，15289 相关状态提升、ISO-G07C closure、信息模型冻结及依赖“已评审 15289 结论”的 final mapping/promotion 保持阻塞；无依赖的 metadata verification、source acquisition、source inventory 和 working/candidate research 可以继续。所有 V0–V12、schema、metamodel、state machine 和 automation interface 始终保持 working/open，直至各自独立门禁满足。
 
-## Task specification contract
+## Research contribution and data contract
 
-当前 `001–021` 均为 `version: 0.3` 的 agent-executable work order。每份任务在自身文件中提供来源门禁、研究包、提取记录、映射要求、`downstream_closure`、仓库交付物、禁止性主张和 Definition of Done；执行者不得只依赖本登记表的摘要。
+当前 `001–021` 均为 `version: 0.4` 的 agent-executable work order；Task 022 是独立的 `cross-standard-synthesis` 工作单。每份任务必须含 `task_type`、`research_questions`、`innovation_candidates`、`contribution_modes`、`source_population`，并在正文中落实 Research contribution contract、Candidate falsification tests、Negative findings and non-answers、Generalization rights、Synthesis handoff dataset。执行者不得只依赖本登记表摘要。
+
+所有 clause-study/mapping note 的可合并最小记录如下；字段为空时写 `none/not determined`，不得删列：
+
+| Field | Required content |
+|---|---|
+| `source_locator` | clause/table/figure/annex + physical PDF page |
+| `source_class` | normative requirement / recommendation / informative / example |
+| `proposition` | faithful short paraphrase; no substantial quotation |
+| `object_relation` | source-native object and relation |
+| `rq_contribution` | RQ identifier and exact sub-question |
+| `candidate_test` | candidate ID + SUPPORT/QUALIFY/FALSIFY/NO EVIDENCE + rationale |
+| `framework_mapping` | V-ID/gap/concept + relation type; interpretation kept separate |
+| `layer` | Generic/Extension/Profile/Practice/No adoption |
+| `unsupported_inference` | inference explicitly prohibited by the evidence |
+| `version_dependency` | source-native locator, current counterpart and relation |
+| `confidence_review` | evidence quality, unresolved item and independent-review disposition |
+
+Task 022 consumes only these reviewed records. Narrative conclusions without the record set cannot close an RQ, candidate test, gap or architecture impact.
 
 一份任务说明与其受控标准原文交给新的 agent 时，agent 仍应先读取说明中列出的 repository dependencies，以获取当前 gap、术语和架构状态；但不得要求未记录的口头上下文才能理解任务。任务说明中的目标文件名是默认交付路径，如仓库结构在执行前已发生受控变化，agent 应记录等价迁移而不是创建重复文件。
 
@@ -66,15 +86,48 @@ REVIEWED or CORRECTION REQUIRED
 
 `SOURCE ACQUIRED`、metadata verification、报告初稿或内部自检都不能单独产生 `REVIEWED` 状态。任务完成必须同时满足该任务自身的 Definition of Done、仓库一致性检查和独立评审 disposition。
 
+## RQ and innovation-candidate coverage
+
+| Task | RQ coverage | Innovation candidates / falsification path |
+|---|---|---|
+| 001 | RQ1, RQ5, RQ7 | INN-T2/T3/I1; 15289 direct mechanism or schema non-answer |
+| 002 | RQ3, RQ5, RQ8 | INN-T2/T3/M4/I2; 9646 conformance chain and Oracle alternative |
+| 003 | RQ4, RQ5 | INN-T1/T3; 15026 vocabulary/reasoning/evidence mechanism |
+| 004 | RQ2, RQ4, RQ5 | INN-T1/T3/M1; lifecycle assurance/re-assurance alternative |
+| 005 | RQ1–RQ5, RQ7 | INN-T1/T2/T3/A1/M1/M2/M4/I2; current software-lifecycle countermechanisms |
+| 006 | RQ3, RQ5, RQ7 | INN-T2/M3/M4/I2; current test-model ontology |
+| 007 | RQ2, RQ3, RQ5 | INN-A1/M1/M2; process/re-entry/closure alternatives |
+| 008 | RQ5, RQ7 | INN-T3/I1; information-item and schema alternative |
+| 009 | RQ3, RQ4, RQ6 | INN-M3/M4/A3; techniques, coverage and reusable-pattern counterexamples |
+| 010 | RQ2–RQ5, RQ8 | INN-T1/A1/M1/A3; sufficient-evidence and integrity/task mechanism |
+| 011 | RQ3, RQ4, RQ5 | INN-T1/A1; level claim/determination/approval mechanism |
+| 012 | RQ2, RQ3, RQ5 | INN-A1/M1/M2; planning input versus selection/closure alternative |
+| 013 | RQ2, RQ3, RQ5 | INN-A1/M1/I2; application/tailoring alternative |
+| 014 | RQ2, RQ3, RQ5, RQ7 | INN-A1/I1; software-planning/process/content alternative |
+| 015 | RQ2, RQ3, RQ5 | INN-A1/M1/M3; integration/change/coverage alternative |
+| 016 | RQ2, RQ8 | INN-A1/M1/A3; linear-topology counterexamples |
+| 017 | metadata only | future INN-A3/M2; no clause/candidate disposition permitted |
+| 018 | RQ3, RQ5, RQ7, RQ8 | INN-T3/M5/I1; model/tool admissibility alternatives |
+| 019 | RQ3, RQ4, RQ5 | INN-T1/T3/M3; measurement-quality versus sufficiency alternative |
+| 020 | RQ2, RQ5, RQ7 | INN-A1/M2; project-control versus closure-machine alternative |
+| 021 | RQ1, RQ3, RQ7 | INN-T2/I1; historical/current requirements-chain alternative |
+| 022 | RQ1–RQ8 | INN-T1–INN-I2; cross-source conflict/silence ledger plus independent novelty-search questions |
+
+RQ1–RQ8 each have at least two source families and an explicit countermechanism or non-equivalence path. Source count does not establish evidence quality; Task 022 must register any weak, single-family or unresolved coverage as a research gap.
+
+## Progress reporting
+
+Progress denominators are separate and shall never be collapsed: `clause-study` (19 planned source studies), `mapping-closure` (Task 021), `metadata-watch` (Task 017) and `cross-standard-synthesis` (Task 022). A watch cycle is not a completed clause study. If 24748-8 is formally replaced/acquired, create a new numbered clause-study task rather than converting Task 017.
+
 ## Ordered task set
 
 | Order | Source/work package | Task document | Local source observation | Start control |
 |---|---|---|---|---|
 | 01 | ISO/IEC/IEEE 15289:2019 | [Task 01](001_iso_iec_ieee_15289_2019.md) | Verified baseline source file present | Current research stop |
-| 02 | ISO/IEC 9646 / ITU-T X.290 | [Task 02](002_iso_iec_9646_itu_t_x290_series.md) | Parts 1/2/4/5/6/7 acquired; Part 3 and paired-Recommendation selection open | Partial acquisition; selection/remaining acquisition first |
+| 02 | ISO/IEC 9646 Parts 1/2/4/5/6/7 | [Task 02](002_iso_iec_9646_series.md) | Complete controlled ISO source population acquired | Part 3/ITU excluded; clause study may start |
 | 03 | ISO/IEC/IEEE 15026-1:2025 | [Task 03](003_iso_iec_ieee_15026_1_2025.md) | Verified baseline source file present | After/alongside 15289 as dependency permits |
 | 04 | ISO/IEC/IEEE 15026-4:2021 | [Task 04](004_iso_iec_ieee_15026_4_2021.md) | Acquired published source verified | Part 1 vocabulary; provisional downstream dependencies only |
-| 05 | ISO/IEC/IEEE 12207:2026 | [Task 05](005_iso_iec_ieee_12207_2026.md) | No matching PDF in current inventory | Acquire before 24748-3 |
+| 05 | ISO/IEC/IEEE 12207:2026 | [Task 05](005_iso_iec_ieee_12207_2026.md) | Acquired: 154 pages; controlled fingerprint | Source-native study may start; historical 2017 map remains blocked |
 | 06 | ISO/IEC/IEEE 29119-1:2022 | [Task 06](006_iso_iec_ieee_29119_1_2022.md) | Acquired source file verified | Part 1 concepts first |
 | 07 | ISO/IEC/IEEE 29119-2:2021 | [Task 07](007_iso_iec_ieee_29119_2_2021.md) | Acquired source file verified | Part 1 concepts first |
 | 08 | ISO/IEC/IEEE 29119-3:2021 | [Task 08](008_iso_iec_ieee_29119_3_2021.md) | Acquired source file verified | Coordinate 15289 and Part 2 |
@@ -91,6 +144,7 @@ REVIEWED or CORRECTION REQUIRED
 | 19 | ISO/IEC/IEEE 15939:2017 | [Task 19](019_iso_iec_ieee_15939_2017.md) | Acquired published source verified | Revision recheck and 15288 mapping required |
 | 20 | ISO/IEC/IEEE 16326:2019 | [Task 20](020_iso_iec_ieee_16326_2019.md) | Acquired published source verified | Final planning-overlap closure owner after Tasks 12/14 |
 | 21 | ISO/IEC/IEEE 29148:2018 targeted mapping | [Task 21](021_iso_iec_ieee_29148_2018_mapping_closure.md) | Reviewed local source present | Mapping closure only |
+| 22 | Cross-standard synthesis and innovation falsification | [Task 22](022_cross_standard_research_synthesis_and_innovation_falsification.md) | Consumes reviewed Task 001–021 datasets | Runs after relevant research packages; does not replace novelty search |
 
 ## Historical task archive
 
@@ -112,5 +166,6 @@ The user-supplied [PR #4 ARP4761A external review](../reviews/pr_4_arp4761a_exte
 - ISO/IEC TR 29119-11:2020: `TRIGGER NOT MET`;
 - RTCA DO-178C / DO-254 / DO-297: `TRIGGER NOT MET` and no current source registration by document;
 - ARINC 615A and instance standards: instance-controlled, not generic research tasks;
-- ETSI TTCN-3 / SysML / tools: local TTCN-3 source parts are acquired, but ADR/selection is not started and SysML/tool sources are not selected; TTCN-3 must not be conflated with the ISO 9646/X.290 conformance-methodology task;
+- ISO/IEC 9646-3 and ITU-T X.29x clause study: excluded from Task 002; Part 3 re-enters only for a TTCN/ATS-serialization or executable-suite ADR, while ITU numbers remain bibliographic relationships without text-equivalence claims;
+- ETSI TTCN-3 / SysML / tools: local TTCN-3 source parts are acquired, but ADR/selection is not started and SysML/tool sources are not selected; TTCN-3 must not be conflated with the ISO 9646 conformance-methodology task;
 - ISO/IEC/IEEE 15026-1:2019: dated-reference provenance only, no standalone study.
