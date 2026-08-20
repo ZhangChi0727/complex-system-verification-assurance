@@ -1,10 +1,10 @@
 ---
 title: DBSE Verification Workflow Workspace
 status: working
-version: 0.8
+version: 0.9
 baseline: v0.1
 owner: research
-last_updated: 2026-08-16
+last_updated: 2026-08-20
 dependencies:
   - ../01_normative_foundation/README.md
   - ../02_verification_framework/README.md
@@ -14,7 +14,7 @@ dependencies:
 
 v0.2 conceptual baseline 包含 `V0` 至 `V12`，详见 [five-source consolidation](../01_normative_foundation/consolidation/five_source_consistency_gap_review.md) 与 [research roadmap](../00_overview/roadmap.md)。ISO/IEC/IEEE 15288:2023 的 5.7–5.8 支持迭代、递归和并发应用过程；ISO/IEC/IEEE 24748-1:2024 Clause 5、Annex A、D 和 E 进一步说明 stage ≠ process、过程可跨阶段调用，以及 process view 不定义新的源标准任务。
 
-因此 V0–V12 冻结为 **Verification Assurance Process View / cross-process orchestration architecture**：编号仅用于稳定标识和覆盖分析，不表示 lifecycle stage、强制时间顺序或瀑布模型。每个 V-element 必须声明自身本体和源任务映射：
+因此 V0–V12 当前构成 **reviewed conceptual checkpoint / controlled open candidate architecture**：V-ID 用于稳定标识、历史追溯和覆盖分析，不表示 lifecycle stage、强制时间顺序或瀑布模型。现有 mixed-ontology 分类是当前工作基线；每个 V-element 必须声明自身本体和源任务映射：
 
 - `Activity / information design`：V0–V5、V7；
 - `Evaluation / decision`：V8；
@@ -56,7 +56,7 @@ ARP4761A 对稳定 V-ID 的影响限定为 profile extension：V0–V3 接收 sa
 
 每个 view element 未来统一描述：Element ID、Ontology、Purpose、Normative Basis、Source Process/Activity/Task Mapping、Inputs、Entry Criteria、Roles/Decision Authority、Process/Assessment、Decision Rules、Outputs、Required Records、Traceability、Independence、Configuration Control、Exit Criteria、Iteration/Re-entry Rules。
 
-V10 与 V11 的 conceptual contracts 已冻结：
+V10 与 V11 采用以下当前受控概念契约；后续规范研究可以通过 Architecture Impact Register 中经评审的 impact disposition 修订，任何不兼容修改必须附迁移说明：
 
 ```text
 V10: Change → Impact Scope → affected basis/claims/assumptions/configuration
@@ -72,4 +72,4 @@ V6/V12 共用 Composite Gate ontology：Assessment + optional Review + Authority
 
 项目实例应使用 [Lifecycle / Process Tailoring and Instantiation Record](../../templates/lifecycle_process_instantiation_record.md) 记录适用标准、development approach、阶段/条件/gates、过程选择及理由。模板是 research draft，不是 ISO 24748-1 规定的信息项 schema。
 
-**Status:** Five-source conceptual consolidation completed。V0–V12 labels/ontology、V10 chain、V11 interface、V6/V12 Composite Gate architecture 与 generic/profile boundary 已冻结；domain coverage/sufficiency criteria、closure authority/state、information-item schema 和 item-level objectives 仍不冻结。下一 normative priority 是 ISO/IEC/IEEE 15289。
+**Status:** Five-source conceptual consolidation completed。`Architecture maturity: OPEN-CANDIDATE`。V-ID 稳定，labels/mixed-ontology、V10 chain、V11 interface、V6/V12 framework-defined Composite Gate 候选与 generic/profile boundary 构成当前 reviewed conceptual checkpoint；元素语义/边界/顺序、entry/exit criteria、information-item assignments、roles/authority、iteration/re-entry、gate composition、domain coverage/sufficiency criteria、closure state、schema 和 item-level objectives 均保持受控开放。下一 normative priority 仍是 ISO/IEC/IEEE 15289；影响处置记录在 [Architecture Impact Register](../01_normative_foundation/consolidation/architecture_impact_register.md)。

@@ -1,10 +1,10 @@
 ---
 title: Repository and Knowledge Architecture
 status: baseline
-version: 0.3
+version: 0.4
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-19
+last_updated: 2026-08-20
 dependencies: []
 ---
 
@@ -70,6 +70,27 @@ Concrete Project Practice
 ```
 
 如果把 DCAS 替换成汽车 EPS、无人机或其他复杂系统后某规则仍然成立，它原则上属于 Generic Framework；依赖 IDU、IMA/GPM、ARINC 总线、告警抑制或具体组织流程的内容进入 Domain Profile 或 Concrete Project Practice。
+
+## Architecture maturity and controlled openness
+
+**V0–V12 is a controlled open candidate architecture.** Stable V-identifiers are retained for traceability and impact analysis. The current element names and ontology classifications form a reviewed conceptual checkpoint, while element semantics, boundaries, ordering, entry/exit criteria, information-item assignments, roles, decision authority, iteration/re-entry rules and assurance-gate composition remain subject to controlled revision until the planned normative-source cohort has completed clause-level study, independent review and architecture-impact disposition.
+
+**V0–V12 是受控开放的候选架构。** V 编号为保持可追溯性和影响分析连续性而稳定保留。当前元素名称及本体分类构成经过评审的概念检查点；但元素语义、边界、顺序、进入/退出条件、信息项分配、角色、决策权威、迭代/重新进入规则及保证门禁组成，在计划规范来源完成条款研究、独立复核和架构影响处置前均可通过受控变更修订。
+
+`research-baseline/v0.2` 是真实且不可改写的 historical conceptual checkpoint，不是关闭未来 normative-source impact 的最终架构冻结。当前分层如下：
+
+- **稳定保留：** `V0`–`V12` 标识、历史来源定位、既有评审记录和变更追溯；
+- **当前概念检查点：** 元素名称、mixed-ontology 分类、V10/V11 当前契约、V6/V12 composite-gate 假设；
+- **保持开放：** 元素语义和边界、执行拓扑与顺序、迭代/回退、entry/exit criteria、信息项、角色和权威、状态机、schema 与门禁充分性规则。
+
+| Architecture maturity | Meaning |
+|---|---|
+| `OPEN-CANDIDATE` | Planned standards research can still modify architecture semantics, boundaries or topology; current repository state. |
+| `REVIEWED-PROVISIONAL` | The planned source cohort is substantially studied and synthesized, while controlled instance feedback remains admissible. |
+| `CONTROLLED-BASELINE` | Architecture objects and gates have passed a formal freeze review; later changes require impact analysis and migration. |
+| `VALIDATED-BASELINE` | At least one controlled instance has completed end-to-end validation and implementation feedback has been disposed. |
+
+Every later clause study must record an architecture-impact disposition in `docs/01_normative_foundation/consolidation/architecture_impact_register.md`. Allowed dispositions are `CONFIRM`, `EXTEND`, `MODIFY`, `SPLIT`, `MERGE`, `NO-IMPACT` and `DEFERRED`. A `MODIFY`, `SPLIT` or `MERGE` disposition requires an explicit compatibility/migration note and may not silently rewrite the historical meaning of a stable V-ID.
 
 ## Document status taxonomy
 

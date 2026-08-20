@@ -1,10 +1,10 @@
 ---
 title: Complex System Verification Assurance Framework
 status: baseline
-version: 0.3
+version: 0.4
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-19
+last_updated: 2026-08-20
 dependencies: []
 ---
 
@@ -50,10 +50,10 @@ MBSE → Automation → Domain Applications
 ```text
 Current Research Baseline: v0.2
 Status: Conceptual Normative-Foundation Baseline
-Repository maturity: Normative-foundation research late stage / conceptual architecture early stage
+Repository maturity: Normative-foundation research late stage / architecture OPEN-CANDIDATE
 ```
 
-[`research-baseline/v0.2`](docs/00_overview/research_baseline_v0.2.md) 冻结五源 normative foundation、V0–V12 conceptual ontology、generic/profile 边界及 PR #6 的实例定位和 meta-risk governance。它不是完整方法论产品基线，不代表 executable architecture、certification acceptance 或 framework validation 已建立。后续标准研究和治理变更均作为 post-v0.2 增量管理。
+[`research-baseline/v0.2`](docs/00_overview/research_baseline_v0.2.md) 保存五源 normative foundation、V0–V12 reviewed conceptual checkpoint、generic/profile 边界及 PR #6 实例定位和 meta-risk governance 的历史状态；稳定 V-ID 用于持续追踪。现行 V0–V12 语义、边界和拓扑仍由 `OPEN-CANDIDATE` 治理，不代表 executable architecture、certification acceptance 或 framework validation 已建立。后续标准研究和治理变更均作为 post-v0.2 增量管理。
 
 ## Repository map
 

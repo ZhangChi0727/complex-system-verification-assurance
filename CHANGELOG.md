@@ -38,6 +38,14 @@ v0.1 establishes research infrastructure and does not claim completion or normat
 
 ## Unreleased
 
+### Architecture governance
+
+- Clarified V0–V12 as a controlled open candidate architecture while retaining stable V-identifiers and v0.2 historical provenance.
+- Added architecture-impact disposition governance and the Architecture Impact Register; metadata/source availability cannot create architecture conclusions.
+- Expanded planned ISO/IEC/IEEE 24748 coverage with Parts 3, 4, 5 and 10 while retaining Parts 1, 2 and 6.
+- Reclassified ISO/IEC/IEEE 24748-8:2019 as a defence-domain profile candidate under formal-revision watch; its FDIS is not a published normative basis.
+- Made no clause-level, established-basis, gap-closure, schema, state-machine or certification-readiness claim.
+
 ### Consolidated integration
 
 - Closed and externally confirmed re-review findings F-01/F-02 by aligning all current gap references to the authoritative matrix (`REQ-G01` identity/lifecycle schema, `REQ-G02` criterion placement/cardinality, `ISO-G07C` 15289 interoperability) and normalizing the acquired-source/pending-study status.

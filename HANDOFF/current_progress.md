@@ -1,10 +1,10 @@
 ---
 title: Current Progress
 status: working
-version: 0.6
+version: 0.7
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-19
+last_updated: 2026-08-20
 dependencies:
   - README.md
   - ../docs/00_overview/research_baseline_v0.2.md
@@ -18,8 +18,8 @@ dependencies:
 - **PR #9 reviewed head:** `3359927286a39411ccb0e5f6dd34883702eb3ece`
 - **PR #9 merge commit / synchronized main:** `658e3cfcee1d66147c6cbf2d048fc1d46a846f14`
 - **Superseded PRs:** PR #7 and PR #8 are closed as superseded; neither was merged directly
-- **Repository topology:** temporary integration/source branches are deleted; the only remote branch is `main`
-- **Repository maturity:** `Normative-foundation research late stage / conceptual architecture early stage`
+- **Repository topology:** `main` is the target baseline; this governance increment uses one temporary PR branch that must be deleted after merge
+- **Repository maturity:** `Normative-foundation research late stage / architecture OPEN-CANDIDATE`
 
 ## Established baseline
 
@@ -32,6 +32,7 @@ v0.2 是由 ISO 15288、ISO 24748-1/2、ARP4754B、ARP4761A 形成的 five-sourc
 - candidate contribution register 把 gap、novelty hypothesis 与 validated contribution 分开；
 - 外部实例引用目前使用受控临时映射。`VOB-` / `VSR-` / `COV-` 只是 candidate prefixes，stable object registry 尚未建立；
 - 受控实例反馈允许进入 Framework Change Proposal 流程，但不得直接重定义框架对象。
+- 本轮只调整 V0–V12 开放治理、architecture-impact disposition 和 24748 candidate-source planning；没有形成新增条款结论、established basis、gap closure、schema 或 certification-readiness claim。
 
 ## Source state
 
@@ -40,6 +41,11 @@ v0.2 是由 ISO 15288、ISO 24748-1/2、ARP4754B、ARP4761A 形成的 five-sourc
 - `CLAUSE STUDY REVIEWED; OPEN DEPENDENCIES`：ISO/IEC/IEEE 29148:2018（15288:2015→2023 mapping open）、ISO/IEC/IEEE 15026-2:2022（15026-1:2025 Clause 2/3 dependency 与 Claim/assurance/uncertainty targeted compatibility review open）；
 - `DATED-REFERENCE PROVENANCE ONLY; NO STANDALONE STUDY PLANNED`：ISO/IEC/IEEE 15026-1:2019，仅忠实记录 15026-2:2022, 5.3.3 的 Claim type 及相关 uncertainty 说明来源；
 - `PLANNED; NOT STARTED`：ISO/IEC 9646 / ITU-T X.290 targeted study；
+- `METADATA VERIFIED; CLAUSE STUDY PENDING`：ISO/IEC/IEEE 24748-4:2026、24748-6:2023；
+- `METADATA VERIFIED; CLAUSE STUDY PENDING; 12207:2017→2026 COMPATIBILITY OPEN`：ISO/IEC/IEEE 24748-3:2020；
+- `METADATA VERIFIED; CLAUSE STUDY PENDING; OVERLAP REVIEW REQUIRED`：ISO/IEC/IEEE 24748-5:2017；
+- `METADATA VERIFIED; CLAUSE STUDY PENDING; REQUIRED BEFORE ARCHITECTURE FREEZE`：ISO/IEC/IEEE 24748-10:2026；
+- `METADATA VERIFIED; FORMAL REVISION WATCH; CLAUSE STUDY DEFERRED`：ISO/IEC/IEEE 24748-8:2019（defence-domain profile candidate；FDIS 不作为规范依据）；
 - 后续候选源与官方元数据状态见 `docs/01_normative_foundation/standards_baseline.md`。
 
 ## Open work
