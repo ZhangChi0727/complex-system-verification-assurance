@@ -51,11 +51,11 @@ dependencies:
 
 ## 实例与标准的关系
 
-实例相关标准按抽象原则处理（见 research_scope 抽象阶梯）：符合性测试方法论（ISO/IEC 9646 / ITU-T X.290 系列、ETSI TTCN-3）作为 **generic-layer 方法论来源**研究并向上抽象，不作为 ARINC 615A 专属资产；ARINC 615A 本体保持 Level E 实例标准。详见 `../01_normative_foundation/standards_baseline.md`。
+实例相关标准按抽象原则处理（见 research_scope 抽象阶梯）：当前符合性测试方法论条款总体为 ISO/IEC 9646 Parts 1/2/4/5/6/7；ITU-T X.29x 只保留 bibliographic relationship，ETSI TTCN-3 属 execution technology。方法论候选经评审后向上抽象，不作为 ARINC 615A 专属资产；ARINC 615A 本体保持 Level E 实例标准。详见 `../01_normative_foundation/standards_baseline.md`。
 
 ## Methodology–instance decoupling
 
-本仓库只维护**实例策略**（定位、锻炼矩阵、验收判据与评价协议）；**实例执行在外部独立仓库**进行（首个：ARINC 615A 协议符合性验证实例仓库，全面基于本仓库方法论与平台框架）。PICS→Verification Basis、test purpose→Verification Case、verdict→Oracle/Result 的**映射方法论**属 generic 研究，在 `01_normative_foundation` 的 9646/X.290 概念切片中完成；实例专属工件（实际 PICS、测试套）只存在于外部实例仓库。解耦契约见 `../00_overview/innovation_statement.md`。
+本仓库只维护**实例策略**（定位、锻炼矩阵、验收判据与评价协议）；**实例执行在外部独立仓库**进行（首个：ARINC 615A 协议符合性验证实例仓库，全面基于本仓库方法论与平台框架）。PICS→Verification Basis、test purpose→Verification Case、verdict→Oracle/Result 的**映射方法论**属候选 generic 研究，在 `01_normative_foundation` 的 ISO/IEC 9646 概念切片中检验；实例专属工件（实际 PICS、测试套）只存在于外部实例仓库。解耦契约见 `../00_overview/innovation_statement.md`。
 
 ## Status
 

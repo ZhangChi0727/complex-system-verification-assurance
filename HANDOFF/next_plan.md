@@ -1,10 +1,10 @@
 ---
 title: Next Plan
 status: working
-version: 0.7
+version: 0.8
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-20
+last_updated: 2026-08-21
 dependencies:
   - README.md
   - current_progress.md
@@ -27,10 +27,10 @@ dependencies:
 | Work package | Dependency / ordering control | Required output |
 |---|---|---|
 | ISO/IEC/IEEE 15289:2019 | Current stop; source acquired | Clause study, interoperability mapping and architecture-impact disposition |
-| ISO/IEC 9646 / ITU-T X.290 | Parts 1/2/4/5/6/7 acquired; Part 3/X.292 and paired-Recommendation selection open | Complete part register/acquisition before final targeted-study disposition |
+| ISO/IEC 9646 | Parts 1/2/4/5/6/7 are the complete controlled population; Part 3/ITU excluded by scope decision | Clause study of capability/applicability→test purpose→ATS/ETS→result/verdict/report/claim |
 | ISO/IEC/IEEE 15026-1:2025 | Current source acquired; retain 2019 only as dated provenance | Clause study plus targeted Claim/assurance/uncertainty compatibility review; no full-edition delta |
 | ISO/IEC/IEEE 15026-4:2021 | Source acquired; coordinate with Part 1:2025; downstream Part 3/12207 rows provisional | Assurance-lifecycle source-native findings and downstream closure questions |
-| ISO/IEC/IEEE 12207:2026 | Foundation before 24748-3; coordinate with 15026-4 software view | Software-lifecycle clause study and 2017→2026 dependency context |
+| ISO/IEC/IEEE 12207:2026 | 154-page source acquired; source-native study may begin; 2017 historical source absent | Current software-lifecycle clause study; historical mapping rows remain `NOT DETERMINED` |
 | ISO/IEC/IEEE 29119-1/-2/-3/-4 | Part 1 concepts inform Parts 2/3/4 process, documentation and technique studies | Testing/conformance/coverage impacts and dispositions |
 | IEEE 1012:2024 + ISO/IEC/IEEE 15026-3:2023 | Task 010 produces IEEE source-native rigor; Task 011 depends on it and solely owns final non-equivalence matrix | Reviewed rigor/intensity findings and unique final comparison |
 | ISO/IEC/IEEE 24748-4:2026 | Source acquired; reviewed 15289 required only for final information mapping; must precede synthesis | SEMP/V0 study plus provisional overlap register |
@@ -42,6 +42,7 @@ dependencies:
 | ISO/IEC/IEEE 24641:2023 | Source acquired; reviewed 15288 context; 12207 software rows provisional until Task 05 | Plan/Build/Support/Perform matrix and ISO-G08 disposition |
 | ISO/IEC/IEEE 15939:2017 | Source acquired; revision recheck and bounded 15288:2015→2023 mapping | Measurement/evidence-metric disposition without universal thresholds |
 | ISO/IEC/IEEE 16326:2019 | Source acquired; after Tasks 001/005/012/014; sole final planning-ownership owner | Final 24748-4/24748-5/16326 ownership and project-information disposition |
+| Task 022 cross-standard synthesis | Consume independently reviewed Task 001–021 datasets; retain missing/provisional populations | RQ1–RQ8 answer drafts, innovation falsification ledger, conflict/term/ownership matrices and architecture proposals |
 | Architecture synthesis / controlled-freeze gate | Planned cohort studied or explicitly deferred; all impacts disposed; conflicts/migrations/gaps reviewed independently | At most `REVIEWED-PROVISIONAL`; no direct jump to `CONTROLLED-BASELINE` |
 | Executable information schema | Architecture synthesis gate and relevant schema dependencies satisfied | Executable schema candidate |
 | Versioned object registry | Stable identity/version/compatibility rules available | Controlled registry and migration rules |
@@ -50,7 +51,7 @@ dependencies:
 
 ISO 29148:2018 与 ISO 15026-2:2022 的现有研究已完成独立评审修正；它们不会因评审完成而关闭上述依赖。ISO/IEC/IEEE 15026-1:2019 不再是独立 clause-study 对象或待研究标准。
 
-所有 cross-source 工作遵守两阶段规则：较早任务交付 source-native inventory、provisional crosswalk 和 downstream closure questions；只有相关来源均完成独立评审后，由任务中唯一指定的 later owner 或 architecture synthesis 形成 final disposition。任何 early-task Definition of Done 都不得等待未声明或后续来源的最终结论。
+所有 cross-source 工作遵守两阶段规则：较早任务交付 source-native inventory、provisional crosswalk 和 downstream closure questions；缺少 12207:2017、15288:2015 或 24748-4:2016 时不得从现行版倒推，受影响行写 `NOT DETERMINED`。只有相关来源均完成独立评审后，由唯一指定的 later owner 或 Task 022/architecture synthesis 形成 final disposition。Task 022 不能替代 literature/patent/practice novelty search。
 
 ## Triggered work
 
