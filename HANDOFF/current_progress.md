@@ -33,7 +33,7 @@ v0.2 是由 ISO 15288、ISO 24748-1/2、ARP4754B、ARP4761A 形成的 five-sourc
 - 外部实例引用目前使用受控临时映射。`VOB-` / `VSR-` / `COV-` 只是 candidate prefixes，stable object registry 尚未建立；
 - 受控实例反馈允许进入 Framework Change Proposal 流程，但不得直接重定义框架对象。
 - 本轮只调整 V0–V12 开放治理、architecture-impact disposition 和 24748 candidate-source planning；没有形成新增条款结论、established basis、gap closure、schema 或 certification-readiness claim。
-- PR #11 内容复审的四个 correction commits 已推送，远端 correction head 为 `a021d868b37b4aa29143359cd2f260412dfd664d`；CR-F01–CR-F08 已经复审验证。最终复审另提出 RR-F01/RR-F02/RR-A01/RR-A02，当前按 follow-up correction 处理并等待最终独立复审，PR #11 必须保持 Draft。任务说明只控制后续执行，不表示任何新 clause study 已开始或完成。
+- PR #11 内容复审的四个 correction commits 已推送，correction head `a021d868b37b4aa29143359cd2f260412dfd664d` 上的 CR-F01–CR-F08 已经复审验证；最终复审提出的 RR-F01/RR-F02/RR-A01/RR-A02 已由 follow-up correction `f862ccc5b70be148e7dba83102b4aea117cd4438` 修正并推送，PR 描述也已同步。当前等待最终独立复审，PR #11 必须保持 Draft。任务说明只控制后续执行，不表示任何新 clause study 已开始或完成。
 
 ## Source state
 

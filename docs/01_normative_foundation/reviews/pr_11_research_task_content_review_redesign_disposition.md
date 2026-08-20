@@ -5,7 +5,8 @@ version: 0.2
 reviewed_pr: 11
 reviewed_head: 7562ca34f33b47934c0a8970899ae69cbd94c7fe
 correction_head: a021d868b37b4aa29143359cd2f260412dfd664d
-rereview_status: follow-up-correction-required
+followup_head: f862ccc5b70be148e7dba83102b4aea117cd4438
+rereview_status: final-rereview-pending
 review_date: 2026-08-21
 owner: research
 last_updated: 2026-08-21
@@ -34,10 +35,10 @@ The final re-review examined correction head `a021d868b37b4aa29143359cd2f260412d
 
 | Finding | Required correction | Local disposition |
 |---|---|---|
-| RR-F01 | Correct Task 013 Annex A from normative to informative and add an informative-force audit | CORRECTED LOCALLY; FINAL REREVIEW PENDING |
-| RR-F02 | Align Task 005/013 two-stage extraction, historical-semantic, promotion and architecture gates | CORRECTED LOCALLY; FINAL REREVIEW PENDING |
-| RR-A01 | Align the complete architecture disposition vocabulary and migration controls | CORRECTED LOCALLY; FINAL REREVIEW PENDING |
-| RR-A02 | Synchronize PR #11 remote description with the correction history and final re-review state | REMOTE METADATA UPDATE PENDING; FINAL REREVIEW PENDING |
+| RR-F01 | Correct Task 013 Annex A from normative to informative and add an informative-force audit | CORRECTED; FINAL REREVIEW PENDING |
+| RR-F02 | Align Task 005/013 two-stage extraction, historical-semantic, promotion and architecture gates | CORRECTED; FINAL REREVIEW PENDING |
+| RR-A01 | Align the complete architecture disposition vocabulary and migration controls | CORRECTED; FINAL REREVIEW PENDING |
+| RR-A02 | Synchronize PR #11 remote description with the correction history and final re-review state | CORRECTED; FINAL REREVIEW PENDING |
 
 ## Controlled source decisions applied
 
