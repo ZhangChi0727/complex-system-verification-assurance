@@ -1,7 +1,7 @@
 ---
 title: PR #11 Comprehensive Review and Correction Work Order
 status: working
-version: 1.0
+version: 1.1
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-20
@@ -14,7 +14,7 @@ dependencies:
 
 # PR #11 全面复审与修正工作单
 
-> **Execution note:** 本文件保留外部评审在复审 head 上的原始判断。修正执行以本地实际核验为准：ISO/IEC 9646-7:1995 已在受控本地目录发现并核验，因此 correction 将把 Part 7 记为已取得，剩余 Part 3 / X.292 与 paired-recommendation selection 继续开放；该差异不改变 Task 002 仍为 partial acquisition 的评审结论。
+> **Execution note:** 本文件保留外部评审在复审 head 上的原始判断。修正执行以本地实际核验为准：ISO/IEC 9646-7:1995 已在受控本地目录发现并核验，因此 correction 将把 Part 7 记为已取得，剩余 Part 3 / X.292 与 paired-recommendation selection 继续开放；Part 2 的复算 SHA-256 为 64 位 `B16937B8DAAAFB45A9B2DCFBD73F2F00B20B39714B6D8E192AC1C0EFD3DA2333`，评审表原值少一个 `A`，作为原始评审记录不机械改写。上述差异不改变 Task 002 仍为 partial acquisition 的评审结论。
 
 ## 1. 文档控制
 
@@ -342,6 +342,24 @@ Part 1 明确把 certification 排除在 ISO 9646 范围之外；该结论应成
 只有在 F-01 至 F-09 全部关闭、上述验收完成并经过新的外部内容复审后，PR #11 才可转为 Ready。
 
 当前没有 GitHub checks，因此本地验证记录和外部复审是合并前的必要证据。最终通过后使用普通 merge commit，保留原始任务提交和 correction commits；合并后删除临时 PR 分支。不得在本轮修正中启动 Task 001 条款研究或把任何来源提升为 `CLAUSE STUDY REVIEWED`。
+
+## 10.1 修正执行记录
+
+本节记录对原评审意见的本地处置，不改变第 1 节 `REQUEST CHANGES` 的原始评审结论；所有 finding 均需新的外部复审确认后才能视为 externally closed。
+
+| Finding | Local disposition | External state |
+|---|---|---|
+| F-01 | Acquired/not-acquired/partial 状态、canonical filenames、页数和 SHA-256 已按实际库存统一；12207 保持未取得；9646 Part 7 经本地核验为已取得，Part 3/paired selection 仍开放 | CORRECTED; REREVIEW PENDING |
+| F-02 | Task 001 全局锁改为 15289-dependent promotion/freeze gate；无依赖 working research 可继续 | CORRECTED; REREVIEW PENDING |
+| F-03 | 全部任务增加 `downstream_closure`；早期 provisional、后期唯一 final owner 规则已建立 | CORRECTED; REREVIEW PENDING |
+| F-04 | Task 016 删除 Task 005 硬依赖，改用 reviewed 15288/24748-1 context，并覆盖八项 Clause 5 strategic aspects | CORRECTED; REREVIEW PENDING |
+| F-05 | Tasks 013/014/015/018/019/020 增加 source-native old-edition provenance 与 bounded current-baseline mapping | CORRECTED; REREVIEW PENDING |
+| F-06 | Task 012 明确 Annex A normative、Annex B/C informative，并完整覆盖 Clauses 4–6 | CORRECTED; REREVIEW PENDING |
+| F-07 | baseline 与 Tasks 001/004/017/019/021 增加统一 formal revision-watch controls | CORRECTED; REREVIEW PENDING |
+| F-08 | Task 002 登记 Parts 1/2/4/5/6/7，Part 3/X.292 selection open；加入 certification exclusion 与 Part 6 profile boundary | CORRECTED; REREVIEW PENDING |
+| F-09 | baseline/register 增加 sanitized provenance、copyright 与 reviewer-source rules；PDF 保持 ignored/untracked | CORRECTED; REREVIEW PENDING |
+
+第一笔普通 correction commit 为 `9a6cb1e`（source inventory reconciliation）。依赖与范围修正使用第二笔普通 commit；没有 amend、rebase 或 force-push。PR 在外部复审前继续保持 Draft。
 
 ## 11. 官方元数据参考
 

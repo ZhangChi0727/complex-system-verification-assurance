@@ -1,13 +1,15 @@
 ---
 title: ISO/IEC/IEEE 24748-8 Revision-Watch Task
 status: planned
-version: 0.2
+version: 0.3
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-20
 dependencies:
   - README.md
   - ../standards_baseline.md
+downstream_closure:
+  - "A new separately numbered clause-study task after formal replacement publication and acquisition decision"
 ---
 
 # ISO/IEC/IEEE 24748-8 Revision-Watch Task

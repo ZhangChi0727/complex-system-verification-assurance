@@ -1,7 +1,7 @@
 ---
 title: Normative Research Task Register
 status: working
-version: 0.4
+version: 0.5
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-20
@@ -48,7 +48,7 @@ Task 001 是当前研究第一停点，但不是全局串行冻结。其评审�
 
 ## Task specification contract
 
-当前 `001–021` 均为 `version: 0.2` 的 agent-executable work order。每份任务在自身文件中提供来源门禁、研究包、提取记录、映射要求、仓库交付物、禁止性主张和 Definition of Done；执行者不得只依赖本登记表的摘要。
+当前 `001–021` 均为 `version: 0.3` 的 agent-executable work order。每份任务在自身文件中提供来源门禁、研究包、提取记录、映射要求、`downstream_closure`、仓库交付物、禁止性主张和 Definition of Done；执行者不得只依赖本登记表的摘要。
 
 一份任务说明与其受控标准原文交给新的 agent 时，agent 仍应先读取说明中列出的 repository dependencies，以获取当前 gap、术语和架构状态；但不得要求未记录的口头上下文才能理解任务。任务说明中的目标文件名是默认交付路径，如仓库结构在执行前已发生受控变化，agent 应记录等价迁移而不是创建重复文件。
 

@@ -1,7 +1,7 @@
 ---
 title: ISO/IEC/IEEE 29148:2018 to 15288:2023 Mapping Closure Task
 status: planned
-version: 0.2
+version: 0.3
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-20
@@ -9,6 +9,10 @@ dependencies:
   - README.md
   - ../standard_notes/iso_iec_ieee_29148_2018_clause_study.md
   - ../reviews/iso_29148_15026_2_independent_review_packet.md
+  - ../standard_notes/iso_15288.md
+downstream_closure:
+  - "Task 021: targeted mapping closure after execution-time revision/priority recheck"
+  - "Architecture synthesis: requirements-engineering dependency disposition"
 ---
 
 # ISO/IEC/IEEE 29148:2018 to 15288:2023 Mapping Closure Task
@@ -18,7 +22,7 @@ dependencies:
 | Field | Value |
 |---|---|
 | Order / priority | 21 / targeted residual dependency |
-| Baseline status | `CLAUSE STUDY REVIEWED; 15288:2015→2023 VERSION MAPPING OPEN` |
+| Baseline status | `CLAUSE STUDY REVIEWED; 15288:2015→2023 VERSION MAPPING OPEN; FORMAL REVISION WATCH` |
 | Source | `references/PDF/29148-2018.pdf`; 104 pages; SHA-256 `E8FB679F758AA078B290FB1849E288996D059968D5911ABD0E96A75C0539E6C8` |
 | Revision control | Current published basis: 2018; Edition 3 DIS under development; official metadata last verified `2026-08-20` at https://www.iso.org/standard/94091.html; recheck before execution; DIS text prohibited; a published replacement requires an explicit retarget/priority decision |
 | Layer / trigger | Generic methodological source / requirement-process dependency closure |
@@ -51,6 +55,8 @@ Produce a complete, independently reviewed mapping for every ISO/IEC/IEEE 15288:
 ### Source and baseline gate
 
 Reconfirm the 29148 source path, 104-page extent and SHA-256; confirm the reviewed 29148 study/review packet is unchanged; use the controlled ISO 15288:2023 source/study. Record the starting commit and enumerate every 2015 citation or semantic dependency in the 29148 study, maps, gap matrix, terminology and architecture artifacts.
+
+Before execution, recheck the Edition 3 revision status and the queue priority. If a replacement has been formally published, stop and issue a retarget decision that determines whether this task still closes provenance for the reviewed 2018 study or whether a separate new-edition task takes precedence. Never use DIS text or silently transform this task into a new full clause study.
 
 ### Mapping population
 
@@ -100,4 +106,4 @@ The review packet shall prove population completeness, sample every relation cla
 
 ### Definition of done
 
-Done requires a reconciled 100% mapping population; exact 2015 and 2023 locators for every determinable row; explicit unresolved rows; all actions applied or justified; synchronized repository statuses; clean link/diff/provenance scans; and independent review approval. The existing 29148 study remains reviewed throughout unless a mapped change explicitly requires a controlled correction.
+Done requires an execution-time revision/priority decision; a reconciled 100% mapping population; exact 2015 and 2023 locators for every determinable row; explicit unresolved rows; all actions applied or justified; synchronized repository statuses; clean link/diff/provenance scans; and independent review approval. The existing 29148 study remains reviewed throughout unless a mapped change explicitly requires a controlled correction.

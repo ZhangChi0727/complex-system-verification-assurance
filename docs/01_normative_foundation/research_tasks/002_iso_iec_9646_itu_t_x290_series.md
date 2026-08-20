@@ -1,7 +1,7 @@
 ---
 title: ISO/IEC 9646 and ITU-T X.290 Series Scoping Research Task
 status: planned
-version: 0.2
+version: 0.3
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-20
@@ -9,6 +9,9 @@ dependencies:
   - README.md
   - ../standards_baseline.md
   - ../normative_gap_matrix.md
+downstream_closure:
+  - "Task 002: final targeted disposition only after part selection and required acquisition"
+  - "Architecture synthesis: ISO-G04 promotion decision after independent review"
 ---
 
 # ISO/IEC 9646 and ITU-T X.290 Series Scoping Research Task
@@ -28,7 +31,7 @@ dependencies:
 | Part | Canonical local file | Physical pages | SHA-256 | Control status |
 |---|---|---:|---|---|
 | ISO/IEC 9646-1:1994 | `references/PDF/9646-1-1994.pdf` | 56 | `A879A40A00F2B4086A3D1D4E68497D0008F24D5D6C43A531B13112CFE5E92F65` | Acquired; selection open |
-| ISO/IEC 9646-2:1994 | `references/PDF/9646-2-1994.pdf` | 40 | `B16937B8DAAFB45A9B2DCFBD73F2F00B20B39714B6D8E192AC1C0EFD3DA2333` | Acquired; selection open |
+| ISO/IEC 9646-2:1994 | `references/PDF/9646-2-1994.pdf` | 40 | `B16937B8DAAAFB45A9B2DCFBD73F2F00B20B39714B6D8E192AC1C0EFD3DA2333` | Acquired; selection open |
 | ISO/IEC 9646-3 / ITU-T X.292 | — | — | — | Not acquired; include/context/exclude decision required |
 | ISO/IEC 9646-4:1994 | `references/PDF/9646-4-1994.pdf` | 20 | `4177D2EEA43675C0F1AA6ADA450573DCC9B1E484800E3D13402B2240C80CDED7` | Acquired; selection open |
 | ISO/IEC 9646-5:1994 | `references/PDF/9646-5-1994.pdf` | 44 | `A09BB65A2AD43C22F9E95D336BEC777D9BBCF7F26D324AA2FA6220755AAD2490` | Acquired; selection open |
@@ -71,6 +74,8 @@ Using official catalogues, build a part-level register with canonical identifier
 
 Do not treat ETSI TTCN-3, a vendor tutorial, a catalogue abstract or a later tool language as the normative methodology source. If the authoritative selected texts cannot be acquired, finish the register, update the blocker and stop before clause conclusions.
 
+Part 3 / X.292 must receive an explicit `include`, `context` or `exclude` decision because it controls the historical TTCN representation boundary; its role cannot be omitted merely because modern TTCN-3 is treated as execution technology. Part 7 / X.296 controls Implementation Conformance Statements, capability/applicability declarations and conformance-claim scope and is mandatory to the selected research population. The acquired ISO/IEC 9646-7 source satisfies the local-source side, while the paired-Recommendation decision remains open.
+
 ### Phase B — source control
 
 For each included source record local path, canonical title, edition/date, page count, SHA-256, completeness, language and official status. Inspect normative references and annex status. Licensed texts remain outside Git. Conflicting ISO and ITU editions must be treated as separate sources unless formal equivalence is established.
@@ -87,6 +92,8 @@ Analyse the selected clauses for:
 6. parameterization, selection, applicability and capability declarations;
 7. test campaign/reporting, traceability and conformance claim limits;
 8. separation between methodology, notation and execution technology.
+
+The Part 1 scope statement excluding certification from ISO/IEC 9646 shall be a mandatory row in the claim-boundary table. Part 6 is a protocol-profile specialization and shall not be promoted directly into Generic Core; any abstraction must pass the profile-to-generic ladder and independent review.
 
 ### Evidence extraction template
 
@@ -110,7 +117,7 @@ Create `../standard_notes/iso_iec_9646_itu_t_x290_targeted_study.md`; update the
 
 ### Required disposition
 
-The final report must choose and justify one of: `Oracle unsupported`, `Oracle partially supported as a framework abstraction`, `Oracle requires modification/split`, or `DEFERRED`. It must also identify whether conformance-testing concepts are generic methodological candidates or a protocol-testing profile. Any `EXTEND/MODIFY/SPLIT/MERGE` disposition requires migration notes.
+The final report must choose and justify one of: `Oracle unsupported`, `Oracle partially supported as a framework abstraction`, `Oracle requires modification/split`, or `DEFERRED`. It must also identify whether conformance-testing concepts are generic methodological candidates or a protocol-testing profile. The claim-boundary conclusion shall state explicitly that ISO/IEC 9646 excludes certification from scope. Any `EXTEND/MODIFY/SPLIT/MERGE` disposition requires migration notes.
 
 ### No-overclaim rules
 
@@ -126,4 +133,4 @@ The review packet shall reconcile every selected/excluded part, every primary cl
 
 ### Definition of done
 
-Done requires an authoritative part register, controlled sources for every studied part, clause inventories with exclusion rationales, all five mappings/tests above, locator-backed conclusions, synchronized repository statuses, successful Markdown/link/diff checks and an independent review disposition. A metadata-only outcome is valid only if clearly recorded as blocked and contains no clause-derived claim.
+Done requires an authoritative part register; an explicit Part 3/X.292 decision; controlled Part 7/X.296 capability/claim coverage; controlled sources for every included part; clause inventories with exclusion rationales; the Part 1 certification-exclusion check; a profile-limited Part 6 disposition; all five mappings/tests above; locator-backed conclusions; synchronized repository statuses; successful Markdown/link/diff checks; and an independent review disposition. Until these conditions are met the task remains partial/blocked; a metadata-only outcome contains no clause-derived claim.

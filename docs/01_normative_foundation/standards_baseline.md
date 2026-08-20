@@ -1,7 +1,7 @@
 ---
 title: Controlled Candidate-Source Baseline
 status: reviewed
-version: 1.6
+version: 1.7
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-20
@@ -79,6 +79,29 @@ Draft、CD、DIS、FDIS 只用于 publication/revision metadata watch，不构�
 | RTCA DO-178C / DO-254 / DO-297 / supplements | Domain standards / supplements | metadata pending by document | metadata pending | RTCA / EUROCAE | metadata pending | metadata pending | Not acquired | Domain assurance profile | UAV/item-level scope | METADATA PENDING; TRIGGER NOT MET |
 | ARINC 615A and applicable instance standards | Instance standards | metadata pending by instance | metadata pending | applicable issuers | metadata pending | metadata pending | Not acquired | Instance standard | external instance | INSTANCE-CONTROLLED; METADATA PENDING |
 | ETSI TTCN-3 / SysML / SysML v2 / tools | Specifications / technologies | metadata pending by selection | metadata pending | applicable issuers | metadata pending | — | Partial local licensed sources; ETSI TTCN-3 parts present and not committed; SysML/tool sources not selected | Execution technology | platform ADR | PARTIAL SOURCE ACQUISITION; SELECTION NOT STARTED |
+
+## PR #11 reconciled local-source fingerprints
+
+Physical PDF page count is recorded for local identity control and can differ from the ISO catalogue's content-page count. All paths are repository-relative, ignored and not committed.
+
+| Canonical source | Controlled local file | Physical pages | SHA-256 |
+|---|---|---:|---|
+| ISO/IEC/IEEE 15288:2023 | `references/PDF/15288-2023.pdf` | 128 | `917FC68D65C71D16AF10AAF9BD3C2E66B3DAD0AD25052FA7F771C2445C4345E7` |
+| ISO/IEC/IEEE 15026-4:2021 | `references/PDF/15026-4-2021.pdf` | 48 | `07B206A483612EC06253BFA315F60A580FA3C07617019F14D462E7EEC3A1AE57` |
+| ISO/IEC/IEEE 24748-3:2020 | `references/PDF/24748-3-2020.pdf` | 76 | `55D115E328972FEE0C0D30E98E49773718FC6078337E4F902DFD0263751C6B4F` |
+| ISO/IEC/IEEE 24748-4:2026 | `references/PDF/24748-4-2026.pdf` | 64 | `DFF6297870D3D2695C880E64658321A2310E722EB6FB5C4EA453697529CEFBC8` |
+| ISO/IEC/IEEE 24748-5:2017 | `references/PDF/24748-5-2017.pdf` | 48 | `4E35BB795B95B6CBE0D118F00E309C82D7D4EE62EBAAA0A6773491A3A8D06DA4` |
+| ISO/IEC/IEEE 24748-6:2023 | `references/PDF/24748-6-2023.pdf` | 56 | `D809A681300BCC52EB940D91C1FF88DBDEDD8C4736CB0E6AA5DD5FAF959C5B3A` |
+| ISO/IEC/IEEE 24748-10:2026 | `references/PDF/24748-10-2026.pdf` | 30 | `065C10C29EFDCD4AB90D19B62F34CA8D205C510B7D91AC2C8FE5AA48826424C0` |
+| ISO/IEC/IEEE 24641:2023 | `references/PDF/24641-2023.pdf` | 98 | `2AF9ADDB7FE6731DEF01A31A0BBA0B13D81C505F4BDE7AE5FA136258CB180F83` |
+| ISO/IEC/IEEE 15939:2017 | `references/PDF/15939-2017.pdf` | 49 | `7DE2D709B59F6314966FD0106DAE937AB70E44681694DD77CB6A18AA7DB18A8C` |
+| ISO/IEC/IEEE 16326:2019 | `references/PDF/16326-2019.pdf` | 42 | `98823F1F7CAF5E85AC324E8461DEF031CD6751EA260161A55520020D85F5DFB3` |
+| ISO/IEC 9646-1:1994 | `references/PDF/9646-1-1994.pdf` | 56 | `A879A40A00F2B4086A3D1D4E68497D0008F24D5D6C43A531B13112CFE5E92F65` |
+| ISO/IEC 9646-2:1994 | `references/PDF/9646-2-1994.pdf` | 40 | `B16937B8DAAAFB45A9B2DCFBD73F2F00B20B39714B6D8E192AC1C0EFD3DA2333` |
+| ISO/IEC 9646-4:1994 | `references/PDF/9646-4-1994.pdf` | 20 | `4177D2EEA43675C0F1AA6ADA450573DCC9B1E484800E3D13402B2240C80CDED7` |
+| ISO/IEC 9646-5:1994 | `references/PDF/9646-5-1994.pdf` | 44 | `A09BB65A2AD43C22F9E95D336BEC777D9BBCF7F26D324AA2FA6220755AAD2490` |
+| ISO/IEC 9646-6:1994 | `references/PDF/9646-6-1994.pdf` | 24 | `9B14CD1BF9E9FF5872B387FBFBF7E8CDAE7CE60EFFC9192C73157C584800B3ED` |
+| ISO/IEC 9646-7:1995 | `references/PDF/9646-7-1995.pdf` | 68 | `AC28B93C3670C9EC6932785E8F73457645F652DC27D92C46DA7D49320D9CCB35` |
 
 ## Formal revision-watch register
 

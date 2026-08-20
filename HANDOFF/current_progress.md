@@ -1,7 +1,7 @@
 ---
 title: Current Progress
 status: working
-version: 0.10
+version: 0.11
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-20
@@ -33,14 +33,14 @@ v0.2 是由 ISO 15288、ISO 24748-1/2、ARP4754B、ARP4761A 形成的 five-sourc
 - 外部实例引用目前使用受控临时映射。`VOB-` / `VSR-` / `COV-` 只是 candidate prefixes，stable object registry 尚未建立；
 - 受控实例反馈允许进入 Framework Change Proposal 流程，但不得直接重定义框架对象。
 - 本轮只调整 V0–V12 开放治理、architecture-impact disposition 和 24748 candidate-source planning；没有形成新增条款结论、established basis、gap closure、schema 或 certification-readiness claim。
-- post-merge 研究准备已建立逐项 Normative Research Task Register；`001–021` 已统一为 agent-executable `version: 0.2` 工作单，逐项内嵌来源门禁、条款清单、标准专属研究包、提取记录、映射/仓库交付、评审包和 Definition of Done。任务说明只控制后续执行，不表示任何新 clause study 已开始或完成。
+- post-merge 研究准备已建立逐项 Normative Research Task Register；`001–021` 已统一为 agent-executable `version: 0.3` 工作单，逐项内嵌来源门禁、条款清单、标准专属研究包、提取记录、provisional/final closure owner、映射/仓库交付、评审包和 Definition of Done。任务说明只控制后续执行，不表示任何新 clause study 已开始或完成。
 
 ## Source state
 
 - `CLAUSE STUDY REVIEWED`：five-source v0.2 sources；
-- `SOURCE ACQUIRED; CLAUSE STUDY PENDING`：ISO/IEC/IEEE 15289:2019、ISO/IEC/IEEE 15026-1:2025、15026-3:2023、29119-1:2022、29119-2:2021、29119-3:2021、29119-4:2021、IEEE 1012-2024；
+- `SOURCE ACQUIRED; CLAUSE STUDY PENDING`：ISO/IEC/IEEE 15289:2019（formal revision watch）、ISO/IEC/IEEE 15026-1:2025、15026-3:2023、29119-1:2022、29119-2:2021、29119-3:2021、29119-4:2021、IEEE 1012-2024；
 - `SOURCE ACQUIRED; CLAUSE STUDY PENDING`（含相应 version/overlap/revision qualifiers）：ISO/IEC/IEEE 15026-4:2021、24748-3:2020、24748-4:2026、24748-5:2017、24748-6:2023、24748-10:2026、24641:2023、15939:2017、16326:2019；source acquisition 不构成 clause conclusion 或 status promotion；
-- `CLAUSE STUDY REVIEWED; OPEN DEPENDENCIES`：ISO/IEC/IEEE 29148:2018（15288:2015→2023 mapping open）、ISO/IEC/IEEE 15026-2:2022（15026-1:2025 Clause 2/3 dependency 与 Claim/assurance/uncertainty targeted compatibility review open）；
+- `CLAUSE STUDY REVIEWED; OPEN DEPENDENCIES`：ISO/IEC/IEEE 29148:2018（15288:2015→2023 mapping open；formal revision watch）、ISO/IEC/IEEE 15026-2:2022（15026-1:2025 Clause 2/3 dependency 与 Claim/assurance/uncertainty targeted compatibility review open）；
 - `DATED-REFERENCE PROVENANCE ONLY; NO STANDALONE STUDY PLANNED`：ISO/IEC/IEEE 15026-1:2019，仅忠实记录 15026-2:2022, 5.3.3 的 Claim type 及相关 uncertainty 说明来源；
 - `PARTIAL SOURCE ACQUISITION; PART SELECTION/REMAINING ACQUISITION OPEN`：ISO/IEC 9646 Parts 1/2/4/5/6/7 已取得；Part 3 / X.292 和 paired-Recommendation selection 仍开放，Task 002 尚不能完成；
 - `METADATA VERIFIED; SOURCE NOT ACQUIRED; CLAUSE STUDY PENDING`：ISO/IEC/IEEE 12207:2026；
