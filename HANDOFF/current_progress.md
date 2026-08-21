@@ -1,7 +1,7 @@
 ---
 title: Current Progress
 status: working
-version: 0.12
+version: 0.13
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-21
@@ -47,6 +47,7 @@ v0.2 是由 ISO 15288、ISO 24748-1/2、ARP4754B、ARP4761A 形成的 five-sourc
 - `HISTORICAL DEPENDENCY SOURCE NOT ACQUIRED; MAPPINGS NOT DETERMINED`：ISO/IEC/IEEE 12207:2017、15288:2015 和建议用于 Task 020 的 24748-4:2016；它们不进入 current established basis；
 - `METADATA VERIFIED; FORMAL REVISION WATCH; CLAUSE STUDY DEFERRED`：ISO/IEC/IEEE 24748-8:2019（defence-domain profile candidate；FDIS 不作为规范依据）；
 - `PARTIAL SOURCE ACQUISITION; SELECTION NOT STARTED`：ETSI TTCN-3 local source parts 已取得；SysML/tool sources 尚未选定，不能提前形成 platform ADR；
+- `NOTE DRAFTED; INTERNAL REVIEW PENDING`（practice-comparison reference register）：NASA/SP-2016-6105 Rev2 与 INCOSE-TP-2003-002-04（SEH 4e）——非 clause-study 源，不进入 established clause basis、gap closure 或 Task 022 clause dataset；INCOSE 的 15288:2015 verbatim 内容与 NASA 的 NPR-attributed 内容按 second-hand 边界处理；INCOSE 5th-edition 与 NASA 新版状态在独立评审前复核；
 - 后续候选源与官方元数据状态见 `docs/01_normative_foundation/standards_baseline.md`。
 
 ## Open work

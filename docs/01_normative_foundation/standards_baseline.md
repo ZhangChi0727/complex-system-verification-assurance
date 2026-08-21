@@ -1,7 +1,7 @@
 ---
 title: Controlled Candidate-Source Baseline
 status: reviewed
-version: 1.8
+version: 1.9
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-21
@@ -101,6 +101,29 @@ Physical PDF page count is recorded for local identity control and can differ fr
 | ISO/IEC 9646-5:1994 | `references/PDF/9646-5-1994.pdf` | 44 | `A09BB65A2AD43C22F9E95D336BEC777D9BBCF7F26D324AA2FA6220755AAD2490` |
 | ISO/IEC 9646-6:1994 | `references/PDF/9646-6-1994.pdf` | 24 | `9B14CD1BF9E9FF5872B387FBFBF7E8CDAE7CE60EFFC9192C73157C584800B3ED` |
 | ISO/IEC 9646-7:1995 | `references/PDF/9646-7-1995.pdf` | 68 | `AC28B93C3670C9EC6932785E8F73457645F652DC27D92C46DA7D49320D9CCB35` |
+
+## Practice-comparison reference register
+
+实践对照参考不是 clause-study 候选源，不属于上文四种 primary layer role，也不触发 gap closure、established clause basis、Architecture Impact 处置或 Task 022 clause dataset。其允许作用限定为：
+
+1. 任务条款研究可在 `confidence_review` / rationale 中引用其带 locator 的实践佐证（`PRACTICE EVIDENCE`），但不产生 12 字段 clause record；
+2. 为已评审的跨标准调和（术语、gate、V&V 对象层）与新任务的候选设计提供对照样本与置信度加强；
+3. 为 Task 022 综合提供 context 材料，不作为 clause 证据集。
+
+特殊边界：
+
+- INCOSE SEH 4e 含 ISO/IEC/IEEE 15288:2015 verbatim purpose 语句，属 second-hand 出版载体；不得据此重建未获取的 15288:2015 历史依赖语义（controlled historical dependency 规则不受本登记影响）；
+- NASA SEH 中归于 NPR 7123.1 / 7120.5 / 8705.4 的要求级内容（`NPR-ATTRIBUTED`）不得当作直接规范证据；NPR 本体不在研究范围。
+
+| Canonical ID | Document type | Title | Edition / date | Issuer | Publication status | Availability | Reference role | Note status |
+|---|---|---|---|---|---|---|---|---|
+| INCOSE-TP-2003-002-04 | Handbook (Wiley) | *Systems Engineering Handbook: A Guide for System Life Cycle Processes and Activities* | 4th ed. / 2015 | INCOSE | Published; 5th-edition status recheck required before independent review | Local licensed copy; not committed | Practice-comparison reference (15288-elaborating character) | NOTE DRAFTED; INTERNAL REVIEW PENDING |
+| NASA/SP-2016-6105 Rev2 | Handbook (U.S. Government work) | *NASA Systems Engineering Handbook* | Rev. 2 / 2016 | NASA | Published; informal revision recheck before independent review | Local copy; not committed | Practice-comparison reference | NOTE DRAFTED; INTERNAL REVIEW PENDING |
+
+| Canonical reference | Controlled local file | Physical pages | SHA-256 |
+|---|---|---:|---|
+| INCOSE-TP-2003-002-04 | `references/PDF/INCOSE Systems Engineering Handbook 4e 2015 07.pdf` | 305 | `0FA5290D49AD6B6A6B8BF55F1BFF0005C661F0E4ACADC6D0965D7BCF552A849B` |
+| NASA/SP-2016-6105 Rev2 | `references/PDF/nasa_systems_engineering_handbook_0.pdf` | 297 | `8EEB4887A4DC57A23049DA7DD2ED556833CF98E214B240468D987873164FF688` |
 
 ## Formal revision-watch register
 
