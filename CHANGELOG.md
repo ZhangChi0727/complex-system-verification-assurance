@@ -38,6 +38,11 @@ v0.1 establishes research infrastructure and does not claim completion or normat
 
 ## Unreleased
 
+### Practice-comparison reference governance
+
+- Registered NASA/SP-2016-6105 Rev2 and INCOSE-TP-2003-002-04 (SEH 4e) in a new practice-comparison reference register within the Controlled Candidate-Source Baseline: bounded practice-evidence role with local fingerprints, no clause-study candidacy, no gap-closure/established-basis/architecture-impact rights and no Task 022 clause-dataset contribution; second-hand boundaries recorded for INCOSE's 15288:2015 verbatim content and NASA's NPR-attributed statements.
+- Added the two drafted practice-comparison research notes (internal review pending): NASA SEH covering V&V object-level reconciliation support, verification completion dual criteria, RVM/V&V-plan information-item samples, TRR/V6 third-source confirmation and abstraction-ladder inputs; INCOSE SEH covering the verification-action five-tuple, V&V action duality with Correctness/Acceptable predicates, similarity credit criteria, decision-gate semantics, the Appendix E information-item dictionary and model VV&A reinforcement.
+
 ### Architecture governance
 
 - Clarified V0–V12 as a controlled open candidate architecture while retaining stable V-identifiers and v0.2 historical provenance.

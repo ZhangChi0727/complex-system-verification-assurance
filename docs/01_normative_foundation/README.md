@@ -1,7 +1,7 @@
 ---
 title: Normative Foundation Workspace
 status: working
-version: 0.15
+version: 0.16
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-21
@@ -44,6 +44,7 @@ Framework Rule
 - software-lifecycle candidate foundation: ISO/IEC/IEEE 12207:2026 的 154 页受控本地原文已取得并保持 ignored，状态为 `SOURCE ACQUIRED; CLAUSE STUDY PENDING`；12207:2017 历史依赖未取得，相关映射只能为 `NOT DETERMINED`，尚未形成条款结论或 established basis；
 - planned 24748 candidates: Parts 3、4、5、6、10 仅作为 generic methodological candidate sources 登记；Part 8:2019 仅作为 defence-domain profile candidate 并保持 formal-revision watch。它们未进入 established clause basis，未改变任何 gap 持续状态；
 - external informal review: [ISO 24748-2 / SAE ARP4754B review](reviews/ISO-24748-2--SAE-ARP4754B-External-Informal-Review.md) 的 2 项 Major 与 4 项 Minor findings 已关闭；Test Readiness Review/V6、Result/Evidence、Appendix A provenance 和 certification-credit dimensionality 已按较低 ontology strength 修正。
+- practice-comparison references: [NASA SEH Rev2](standard_notes/nasa_se_handbook.md) 与 [INCOSE SEH 4e](standard_notes/incose_se_handbook.md) 研究笔记已起草并登记于 Controlled Candidate-Source Baseline 的 practice-comparison reference register（note status: internal review pending）。两者不是 clause-study 源：不进入 established clause basis、不关闭 gap、不产生 clause record、不充当 Task 022 clause dataset；INCOSE 内含的 15288:2015 verbatim 内容与 NASA 的 NPR-attributed 内容均按 second-hand 边界处理。
 - readiness: `CONDITIONALLY READY FOR v0.2 CONCEPTUAL BASELINE`；不宣称 executable schema、item-level completeness、certification acceptance 或 framework validation；
 - next research round: 当前停点保持 ISO 15289；其余来源按依赖驱动队列推进，并在 architecture synthesis/freeze 前完成规定的 impact dispositions。具体依赖和后续 schema/registry/platform 顺序见 `../../HANDOFF/next_plan.md`。
 - source governance: `standards_baseline.md` 是 **Controlled Candidate-Source Baseline**，冻结变更流程而非来源全集。新来源关联 open gap、登记 layer/trigger/status 并经评审；未完成 clause study 的候选不得关闭 gap。
