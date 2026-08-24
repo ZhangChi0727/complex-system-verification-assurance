@@ -21,7 +21,7 @@ dependencies:
 - **Repository topology:** `main` is the sole persistent remote branch; review branches are temporary governance artifacts and are deleted after merge
 - **Repository maturity:** `Normative-foundation research late stage / architecture OPEN-CANDIDATE`
 - **Latest synchronized main:** `9adc3c7bd1a9938dfa5e3dc7519fd67c65a3ea47` (PR #12 merge)
-- **Current review branch:** `codex/research-task-specification-v0.6`; Draft PR #13 publication pending at this working-state commit
+- **Current review branch / Draft PR:** `codex/research-task-specification-v0.6`; PR #13 is OPEN / Draft / CLEAN at content commit `c461f77b4eca6d86dcdde400cdf21d3be0ca1bbf`
 
 ## Established baseline
 
