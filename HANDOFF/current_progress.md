@@ -1,7 +1,7 @@
 ---
 title: Current Progress
 status: working
-version: 0.15
+version: 0.16
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-24
@@ -21,7 +21,7 @@ dependencies:
 - **Repository topology:** `main` is the sole persistent remote branch; review branches are temporary governance artifacts and are deleted after merge
 - **Repository maturity:** `Normative-foundation research late stage / architecture OPEN-CANDIDATE`
 - **Latest synchronized main:** `9adc3c7bd1a9938dfa5e3dc7519fd67c65a3ea47` (PR #12 merge)
-- **Current review branch / Draft PR:** `codex/research-task-specification-v0.6`; PR #13 remains OPEN / Draft. The correction diff closed F-01–F-04 and the field-propagation part of F-05. Content review at `052b3bae028658a5c2733d6304f0417213fed868` then requested F-06–F-09 corrections. Those bounded corrections are now prepared and await lightweight rereview; the PR must not be marked Ready or merged.
+- **Current review branch / merge gate:** `codex/research-task-specification-v0.6`; PR #13 content review is complete. F-06–F-09 and A-01/A-02 passed final lightweight rereview at `7a004836edc08d26d24b8ba93078e0305208aac0` with disposition `APPROVED FOR MERGE`; PR #13 may be merged using an ordinary merge commit.
 
 ## Established baseline
 

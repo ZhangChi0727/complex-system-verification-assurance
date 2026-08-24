@@ -1,7 +1,7 @@
 ---
 title: PR #13 Research Task Specification v0.6 Review Handoff
-status: correction-rereview
-version: 0.3
+status: approved
+version: 0.4
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-24
@@ -40,14 +40,22 @@ The correction diff for F-01–F-04 passed and F-05 field propagation passed. Fu
 
 | Finding | Corrected scope | Disposition |
 |---|---|---|
-| F-06 | Task 022 legacy reviewed-evidence intake | `CORRECTED; LIGHTWEIGHT REREVIEW PENDING` — seven established-basis sources are enumerated with authoritative artifacts and reviewed commits; a provenance-only 18-field adapter, `not-determined`/quarantine handling, closure ownership, population reconciliation and independent normalization-review gate are mandatory |
-| F-07 | RQ6 wording and direct/supporting source roles | `CORRECTED; LIGHTWEIGHT REREVIEW PENDING` — Task 009 is the direct Verification Technique source; Task 018 is a supporting pattern-engineering/reuse-governance source; the second direct technique source remains a residual gap |
-| F-08 | RQ8 empirical answer responsibility | `CORRECTED; LIGHTWEIGHT REREVIEW PENDING` — Tasks 002/010/016/018 emit criteria, stressors, observations and failure conditions only; Task 022 emits an `OPEN` validation-readiness handoff whose closure belongs to the three controlled instance evaluations |
-| F-09 | Task 009 technique semantics | `CORRECTED; LIGHTWEIGHT REREVIEW PENDING` — both chains now express test design technique as the derivation relation between test model and coverage item; any later technique-selection/instantiation object must be explicitly framework-defined |
+| F-06 | Task 022 legacy reviewed-evidence intake | `CLOSED; LIGHTWEIGHT REREVIEW PASSED` — seven established-basis sources are enumerated with authoritative artifacts and reviewed commits; a provenance-only 18-field adapter, `not-determined`/quarantine handling, closure ownership, population reconciliation and independent normalization-review gate are mandatory |
+| F-07 | RQ6 wording and direct/supporting source roles | `CLOSED; LIGHTWEIGHT REREVIEW PASSED` — Task 009 is the direct Verification Technique source; Task 018 is a supporting pattern-engineering/reuse-governance source; the second direct technique source remains a residual gap |
+| F-08 | RQ8 empirical answer responsibility | `CLOSED; LIGHTWEIGHT REREVIEW PASSED` — Tasks 002/010/016/018 emit criteria, stressors, observations and failure conditions only; Task 022 emits an `OPEN` validation-readiness handoff whose closure belongs to the three controlled instance evaluations |
+| F-09 | Task 009 technique semantics | `CLOSED; LIGHTWEIGHT REREVIEW PASSED` — both chains now express test design technique as the derivation relation between test model and coverage item; any later technique-selection/instantiation object must be explicitly framework-defined |
 
 Accepted non-blocking improvements are also applied: Task 001 names Annexes A and B as informative, and Task 021 is titled `Targeted Mapping Closure Task Specification`.
 
-The requested next action is a lightweight rereview limited to F-06–F-09 and these two wording improvements. The PR must remain Draft until that disposition is recorded.
+## Final lightweight rereview at `7a004836edc08d26d24b8ba93078e0305208aac0`
+
+- Disposition: `APPROVED FOR MERGE`.
+- F-06–F-09: `CLOSED; LIGHTWEIGHT REREVIEW PASSED`.
+- A-01/A-02: passed.
+- New blocking findings: none.
+- Merge method: ordinary merge commit; no squash, rebase or force-push.
+
+The content-review gate is complete. PR #13 may enter the merge gate without another task-content review.
 
 ## Change population
 
