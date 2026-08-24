@@ -1,10 +1,10 @@
 ---
 title: Next Plan
 status: working
-version: 0.9
+version: 1.0
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-24
+last_updated: 2026-08-25
 dependencies:
   - README.md
   - current_progress.md
@@ -22,7 +22,13 @@ dependencies:
 
 每个 work package 的完整 agent-executable 工作单见 `docs/01_normative_foundation/research_tasks/`。Task 001 是第一优先研究停点，但不是全局串行锁：未依赖其 reviewed conclusions 的 metadata verification、source acquisition、inventory 与 working/candidate research 可以并行；依赖 15289 的 final mapping/promotion、ISO-G07C closure 和信息模型冻结必须等待 Task 001 独立评审。所有 V0–V12、schema、metamodel、state machine 和 automation interface 在各自门禁前保持 working/open。
 
-Task 001-022 已形成 `version: 0.6` review candidate：每项 source task 依据对应标准原文的目录和研究边界配置 Research orientation、完整 inventory 后的 hypothesis reconciliation、标准专用 research packages、公共 evidence contract、自包含 note 与 independent-review gate。该 planning update 不开始任何 clause study；PR #13 评审通过前，v0.6 仅是 candidate work-order baseline。
+Task 001-022 已由 PR #13 合并为 `version: 0.6` work-order baseline：每项 source task 依据对应标准原文的目录和研究边界配置 Research orientation、完整 inventory 后的 hypothesis reconciliation、标准专用 research packages、公共 evidence contract、自包含 note 与 independent-review gate。该 work-order baseline 不表示任何 clause study 已开始。
+
+## Parallel governance step after this PR
+
+If the Candidate GVS Core/cross-repository contract PR is independently approved and merged, the next governance action is a separate ARINC PR #9 Profile migration, Framework binding and compatibility-review work order. It must bind to the immutable method merge SHA and preserve `RB-2026-001-v4.2.1` as legacy history. This governance path does not begin a standard study and does not satisfy the object-registry, executable-schema or architecture-freeze gates.
+
+ISO/IEC/IEEE 15289:2019 remains the first research stop regardless of this parallel governance work.
 
 ## Dependency-driven research queue
 
@@ -49,7 +55,7 @@ Task 001-022 已形成 `version: 0.6` review candidate：每项 source task 依�
 | Executable information schema | Architecture synthesis gate and relevant schema dependencies satisfied | Executable schema candidate |
 | Versioned object registry | Stable identity/version/compatibility rules available | Controlled registry and migration rules |
 | Platform reference architecture | Information model sufficiently stable | Replaceable technology decisions |
-| External-instance integration | Registry mappings and framework-change governance available | Controlled instance feedback and cross-instance validation |
+| External-instance integration | First apply temporary contract/mapping and immutable version binding; stable registry remains gated | ARINC PR #9 compatibility migration/review after method PR merge; controlled findings only |
 
 ISO 29148:2018 与 ISO 15026-2:2022 的现有研究已完成独立评审修正；它们不会因评审完成而关闭上述依赖。ISO/IEC/IEEE 15026-1:2019 不再是独立 clause-study 对象或待研究标准。
 
@@ -59,7 +65,7 @@ ISO 29148:2018 与 ISO 15026-2:2022 的现有研究已完成独立评审修正�
 
 | Trigger | Work |
 |---|---|
-| platform prototype ADR | TTCN-3 / modelling technology selection |
+| optional realization ADR | TTCN-3 / modelling technology selection after information-model gates |
 | UAV item-level scope | DO-178C / DO-254 / DO-297 and applicable supplements |
 | LLM-service instance | AI testing guidance current-source assessment |
 

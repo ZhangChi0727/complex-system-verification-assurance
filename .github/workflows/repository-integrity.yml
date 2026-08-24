@@ -1,0 +1,21 @@
+name: Repository integrity
+
+on:
+  push:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  governance-integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Run repository-governance integrity checks
+        run: python scripts/check_repository_integrity.py

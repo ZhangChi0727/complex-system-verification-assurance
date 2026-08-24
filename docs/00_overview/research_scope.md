@@ -4,7 +4,7 @@ status: baseline
 version: 0.7
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-24
+last_updated: 2026-08-25
 dependencies: []
 ---
 

@@ -1,10 +1,10 @@
 ---
 title: Current Progress
 status: working
-version: 0.16
+version: 0.17
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-24
+last_updated: 2026-08-25
 dependencies:
   - README.md
   - ../docs/00_overview/research_baseline_v0.2.md
@@ -13,15 +13,15 @@ dependencies:
 # Current Progress
 
 - **Snapshot source:** `research-baseline/v0.2`
-- **Integration status:** PR #11 and PR #12 are merged; PR #13 prepares the research-task specification v0.6 review candidate
+- **Integration status:** PR #11, PR #12 and PR #13 are merged; PR #14 is the Candidate GVS Core / cross-repository governance review increment
 - **Integrated research head before this final review commit:** `40018f996c746034092a7add81d1ba5f2d21349c`
 - **PR #9 reviewed head:** `3359927286a39411ccb0e5f6dd34883702eb3ece`
 - **PR #9 merge commit / synchronized main:** `658e3cfcee1d66147c6cbf2d048fc1d46a846f14`
 - **Superseded PRs:** PR #7 and PR #8 are closed as superseded; neither was merged directly
 - **Repository topology:** `main` is the sole persistent remote branch; review branches are temporary governance artifacts and are deleted after merge
 - **Repository maturity:** `Normative-foundation research late stage / architecture OPEN-CANDIDATE`
-- **Latest synchronized main:** `9adc3c7bd1a9938dfa5e3dc7519fd67c65a3ea47` (PR #12 merge)
-- **Current review branch / merge gate:** `codex/research-task-specification-v0.6`; PR #13 content review is complete. F-06–F-09 and A-01/A-02 passed final lightweight rereview at `7a004836edc08d26d24b8ba93078e0305208aac0` with disposition `APPROVED FOR MERGE`; PR #13 may be merged using an ordinary merge commit.
+- **Latest synchronized main:** `196cfc2426a841a4adb9c9159660253896b0257c` (PR #13 ordinary merge commit)
+- **Current review branch / external review stop:** `codex/gvs-core-cross-repository-contract`; PR #14 defines the Candidate GVS Core working position and temporary cross-repository instance governance, then stops at Draft external review.
 
 ## Established baseline
 
@@ -35,7 +35,13 @@ v0.2 是由 ISO 15288、ISO 24748-1/2、ARP4754B、ARP4761A 形成的 five-sourc
 - 外部实例引用目前使用受控临时映射。`VOB-` / `VSR-` / `COV-` 只是 candidate prefixes，stable object registry 尚未建立；
 - 受控实例反馈允许进入 Framework Change Proposal 流程，但不得直接重定义框架对象。
 - 本轮只调整 V0–V12 开放治理、architecture-impact disposition 和 24748 candidate-source planning；没有形成新增条款结论、established basis、gap closure、schema 或 certification-readiness claim。
-- PR #11 已通过最终复审并由普通 merge commit `e17e231147a1896b8323c1056b19ab68892fae94` 合并；PR #12 由 merge commit `9adc3c7bd1a9938dfa5e3dc7519fd67c65a3ea47` 登记 practice-comparison references。当前 PR #13 只优化研究任务说明，不表示任何新 clause study 已开始或完成。
+- PR #11、PR #12 与 PR #13 均已通过普通 merge commit 合并；PR #13 merge commit 为 `196cfc2426a841a4adb9c9159660253896b0257c`。本 PR 只增加 research-position/cross-repository governance，不表示任何 clause study 已开始或完成。
+
+## Candidate GVS Core and external-instance state
+
+权威工作定义见 [Candidate GVS Core Working Definition](../docs/02_verification_framework/generic_verification_suite_core.md)；当前只形成 Candidate GVS Core、Capability Packages 和 Core/Profile/Binding/Configuration 的 working research position，成熟度仍为 `OPEN-CANDIDATE`。
+
+ARINC repository `https://github.com/ZhangChi0727/arinc-615a-conformance` 的 active external identity 为 commit `0ce96f701159fd4156d5e5e9889360f53977a61b` / baseline `RB-2026-001-v4.2.1`，分类为 `PRE-FRAMEWORK LEGACY INSTANCE BASELINE`，compatibility 为 `NOT-DETERMINED`。Draft PR #9 / `RB-2026-001-v4.3` 仅是 `UNMERGED MIGRATION CANDIDATE`，不属于 active baseline，也不由本仓库修改或批准。事实定义以 [Framework Validation Workspace](../docs/08_validation/README.md) 链接的 contract/registry/mapping/protocol 为准。
 
 ## Source state
 
@@ -56,4 +62,4 @@ v0.2 是由 ISO 15288、ISO 24748-1/2、ARP4754B、ARP4761A 形成的 five-sourc
 
 ISO-G07 information-item schema、ISO-G04 Oracle、ISO-G02B coverage、ISO-G03B sufficiency、ISO-G05 selection、ISO-G06 closure 与 ISO-G08 model evidence 继续保持可见。当前第一研究停点仍是 **ISO/IEC/IEEE 15289:2019 条款级研究**；source-native 12207:2026、9646 与其他不依赖 15289 reviewed conclusion 的工作可按 v0.6 契约并行。Task 022 消费独立评审后的任务数据集；在其综合和独立评审前，不冻结 V0–V12、schema、metamodel、automation contract 或创新性声明。
 
-Executable metamodel/schema、versioned object registry、platform implementation 和 ARINC 615A/UAV/LLM instance results 均未建立。仓库不声称 certification-ready、evidence sufficiency solved 或 framework validated。
+Executable metamodel/schema、versioned object registry、frozen platform implementation 和 ARINC 615A/UAV/LLM instance results 均未建立；Candidate GVS Core 不是现成软件。仓库不声称 certification-ready、evidence sufficiency solved 或 framework validated。

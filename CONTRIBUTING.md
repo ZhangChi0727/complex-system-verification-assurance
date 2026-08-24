@@ -1,3 +1,16 @@
+---
+title: Contributing and Change Governance
+status: working
+version: 0.2
+baseline: post-v0.2
+owner: research
+last_updated: 2026-08-25
+dependencies:
+  - docs/00_overview/research_scope.md
+  - docs/00_overview/innovation_statement.md
+  - docs/08_validation/cross_repository_instance_contract.md
+---
+
 # Contributing
 
 本仓库即使处于个人研究阶段，也按可审计研究资产管理变更。
@@ -38,7 +51,7 @@ DCAS-specific 内容不能直接进入 generic `docs/`。先判断其属于 Gene
 1. `standards_baseline.md`——来源行、研究角色与优先级；
 2. `standard_notes/` 研究笔记——条款定位与五级分类；
 3. `standards_map.md`——concern 行、五列切片与 coverage note；
-4. `normative_gap_matrix.md`——gap 新增/disposition/状态迁移（含"创新输入"性质迁移）；
+4. `normative_gap_matrix.md`——gap 新增/disposition/状态迁移（含“创新输入”性质迁移）；
 5. consolidation report §28 annex——若产生新 promotion，先登记后扩散；
 6. `terminology.md`——引用 annex 行，不重定义；
 7. `templates/`——candidate 字段标注，不升级为 generic schema；
@@ -47,11 +60,18 @@ DCAS-specific 内容不能直接进入 generic `docs/`。先判断其属于 Gene
 
 候选来源必须与 established clause basis 分栏管理。只有完成条款研究和评审的来源可进入 established basis；未研究来源只能使用受控 source-search 状态，不得关闭 gap 或证明 novelty。新增来源须更新 Controlled Candidate-Source Baseline 的版本、状态、availability、layer role 与 trigger。
 
-外部实例在 versioned object registry 建立前只能维护受控临时映射；`VOB-`、`VSR-`、`COV-` 等是 candidate prefixes，不是稳定 ID。实例 finding 反馈必须形成 Framework Change Proposal，经跨实例相关性、依据、评审与 §28 登记后才能改变 framework definition。
+## Cross-repository change rules
+
+- 外部实例在 versioned object registry 建立前只能使用 [temporary controlled mappings](docs/08_validation/instance_registry.md)；candidate prefixes 不是稳定 ID。
+- 每次映射变更必须记录不可变 instance baseline/commit、Candidate GVS Core definition context、mapping status、review status 和 migration impact。PR/Issue 超链接只用于导航，不能替代受控身份。
+- 实例仓库不得复制、静默重定义或通过实现 API 反向控制 Candidate GVS Core；Profile、Binding、Configuration、工具和原始证据仍归实例仓库。
+- external finding 只有形成 Framework Change Proposal，并完成 cross-instance relevance、normative basis/research rationale、独立评审及 eligible registration 后，才能影响 canonical definition。
+- compatibility 与 Framework Change Proposal 必须独立评审；单一实例不能建立 Generic generalization rights 或关闭 RQ8。
+- 跨仓库变更遵守 [three-way handshake](docs/08_validation/cross_repository_instance_contract.md#paired-draft-pr-and-three-way-handshake)，不得在一个 PR 中同时改写方法与实例仓库历史。
 
 ## Change quality
 
-- 使用稳定 ID 和统一 YAML metadata；
+- 使用受控 ID 和统一 YAML metadata；candidate/temporary identity 不得称为 stable；
 - 保持链接可解析，Markdown 无明显格式错误；
 - 不提交 credentials、内部网址、proprietary interfaces、screenshots 或原始内部培训材料；
-- 自动化必须等待信息模型稳定。
+- Framework semantic automation 必须等待信息模型稳定；repository-governance integrity checking 可独立运行，但不得实现 Framework Rules。

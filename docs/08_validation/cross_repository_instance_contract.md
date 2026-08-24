@@ -4,7 +4,7 @@ status: working
 version: 0.1
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-24
+last_updated: 2026-08-25
 dependencies:
   - ../02_verification_framework/generic_verification_suite_core.md
   - instance_registry.md

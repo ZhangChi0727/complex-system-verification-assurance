@@ -1,3 +1,15 @@
+---
+title: Changelog
+status: working
+version: 0.1
+baseline: post-v0.2
+owner: research
+last_updated: 2026-08-25
+dependencies:
+  - README.md
+  - HANDOFF/current_progress.md
+---
+
 # Changelog
 
 ## v0.1 — Research Foundation Baseline
@@ -38,6 +50,15 @@ v0.1 establishes research infrastructure and does not claim completion or normat
 
 ## Unreleased
 
+### Candidate GVS Core and cross-repository governance
+
+- Positioned the Candidate Generic Verification Suite Core as the principal engineering research outcome, delivered through composable Verification Capability Packages; a complete suite additionally requires Verification Profile, Product Binding and Project Configuration.
+- Made machine-readable/executable realization optional and retained SysML/API/schema/metamodel roles as open, gated choices.
+- Added the cross-repository instance contract, temporary instance register, ARINC mapping register and ARINC evaluation protocol; recorded active `RB-2026-001-v4.2.1` as a pre-framework legacy baseline with `NOT-DETERMINED` compatibility and PR #9 only as an unmerged migration candidate.
+- Corrected PICS/applicability/basis, Test Purpose, Oracle/Verdict and raw-record/Evidence boundaries without starting ISO/IEC 9646 research.
+- Added a standard-library repository-governance integrity checker and CI workflow; it performs no Framework semantic automation.
+- Non-claims: no new clause study, established-basis or gap change, object promotion, V0–V12 maturity change, schema/API/metamodel freeze, stable registry, instance validation, compatibility approval, certification acceptance or novelty conclusion.
+
 ### Practice-comparison reference governance
 
 - Registered NASA/SP-2016-6105 Rev2 and INCOSE-TP-2003-002-04 (SEH 4e) in a new practice-comparison reference register within the Controlled Candidate-Source Baseline: bounded practice-evidence role with local fingerprints, no clause-study candidacy, no gap-closure/established-basis/architecture-impact rights and no Task 022 clause-dataset contribution; second-hand boundaries recorded for INCOSE's 15288:2015 verbatim content and NASA's NPR-attributed statements.
@@ -56,7 +77,7 @@ v0.1 establishes research infrastructure and does not claim completion or normat
 
 - Redesigned Tasks 001-022 as `version: 0.6` research-task specifications: unified standard-number titles; expanded RQ/innovation statements instead of ID-only references; added the three overview anchors, target-source-specific research entry, falsifiable preliminary hypotheses, evidence hierarchy, durable downstream-note contract and repository consistency gates. Each source task was checked against its controlled local PDF structure; Task 017 remains metadata-only and Task 022 remains synthesis-only.
 - Added a direct practice-source boundary for Task 001 based on the INCOSE and NASA handbook originals: handbook structures may seed self-contained hypotheses but do not depend on the pending-review handbook notes, create target-standard clause records, close gaps, determine Architecture Impact or count as votes.
-- Closed the correction-diff review of PR #13 F-01–F-04 and the field-propagation portion of F-05. Subsequent content review corrected F-06–F-09: Task 022 now has a provenance-only adapter and independent-review gate for all seven legacy reviewed sources; RQ6 distinguishes Task 009 direct technique evidence from Task 018 supporting pattern governance and keeps a second direct source open; RQ8 standards work is limited to empirical-validation readiness and remains owned by the three instances; and Task 009 represents technique as a derivation relation. Task 001 now states Annexes A/B are informative, and Task 021 is explicitly a targeted mapping-closure task. PR #13 remains Draft pending limited rereview.
+- Closed the correction-diff review of PR #13 F-01–F-04 and the field-propagation portion of F-05. Subsequent content review corrected F-06–F-09: Task 022 now has a provenance-only adapter and independent-review gate for all seven legacy reviewed sources; RQ6 distinguishes Task 009 direct technique evidence from Task 018 supporting pattern governance and keeps a second direct source open; RQ8 standards work is limited to empirical-validation readiness and remains owned by the three instances; and Task 009 represents technique as a derivation relation. Task 001 now states Annexes A/B are informative, and Task 021 is explicitly a targeted mapping-closure task. PR #13 final rereview passed and it merged by ordinary merge commit `196cfc2426a841a4adb9c9159660253896b0257c`.
 
 - Redesigned PR #11 tasks 001–021 as `version: 0.4` research contracts with explicit RQ ownership, innovation-candidate falsification, negative findings, generalization rights and a mergeable evidence-record schema; added Task 022 for cross-standard synthesis without treating standards silence as novelty.
 - Corrected the ISO 29119 second-edition object chain to `test basis → test model → test coverage item → test case → test procedure`; test design technique is recorded as a derivation method/relation, while `test condition` remains edition-transition/collision metadata rather than a fixed current layer.

@@ -4,7 +4,7 @@ status: working
 version: 0.4
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-24
+last_updated: 2026-08-25
 dependencies:
   - ../00_overview/research_scope.md
   - ../00_overview/research_questions.md

@@ -4,7 +4,7 @@ status: working
 version: 0.2
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-24
+last_updated: 2026-08-25
 dependencies:
   - ../00_overview/research_scope.md
   - ../01_normative_foundation/README.md
