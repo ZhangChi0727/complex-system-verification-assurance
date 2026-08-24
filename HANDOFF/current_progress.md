@@ -1,10 +1,10 @@
 ---
 title: Current Progress
 status: working
-version: 0.13
+version: 0.14
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-21
+last_updated: 2026-08-24
 dependencies:
   - README.md
   - ../docs/00_overview/research_baseline_v0.2.md
@@ -13,13 +13,15 @@ dependencies:
 # Current Progress
 
 - **Snapshot source:** `research-baseline/v0.2`
-- **Integration status:** PR #9 is merged; external re-review findings F-01/F-02 are externally confirmed and closed
+- **Integration status:** PR #11 and PR #12 are merged; PR #13 prepares the research-task specification v0.6 review candidate
 - **Integrated research head before this final review commit:** `40018f996c746034092a7add81d1ba5f2d21349c`
 - **PR #9 reviewed head:** `3359927286a39411ccb0e5f6dd34883702eb3ece`
 - **PR #9 merge commit / synchronized main:** `658e3cfcee1d66147c6cbf2d048fc1d46a846f14`
 - **Superseded PRs:** PR #7 and PR #8 are closed as superseded; neither was merged directly
 - **Repository topology:** `main` is the sole persistent remote branch; review branches are temporary governance artifacts and are deleted after merge
 - **Repository maturity:** `Normative-foundation research late stage / architecture OPEN-CANDIDATE`
+- **Latest synchronized main:** `9adc3c7bd1a9938dfa5e3dc7519fd67c65a3ea47` (PR #12 merge)
+- **Current review branch:** `codex/research-task-specification-v0.6`; Draft PR #13 publication pending at this working-state commit
 
 ## Established baseline
 
@@ -33,7 +35,7 @@ v0.2 是由 ISO 15288、ISO 24748-1/2、ARP4754B、ARP4761A 形成的 five-sourc
 - 外部实例引用目前使用受控临时映射。`VOB-` / `VSR-` / `COV-` 只是 candidate prefixes，stable object registry 尚未建立；
 - 受控实例反馈允许进入 Framework Change Proposal 流程，但不得直接重定义框架对象。
 - 本轮只调整 V0–V12 开放治理、architecture-impact disposition 和 24748 candidate-source planning；没有形成新增条款结论、established basis、gap closure、schema 或 certification-readiness claim。
-- PR #11 内容复审的四个 correction commits 已推送，correction head `a021d868b37b4aa29143359cd2f260412dfd664d` 上的 CR-F01–CR-F08 已经复审验证；最终复审提出的 RR-F01/RR-F02/RR-A01/RR-A02 已由 follow-up correction `f862ccc5b70be148e7dba83102b4aea117cd4438` 修正并推送，且已在 head `0f36b39f2ed00ab863c2fef3c9ce56cc28149d3b` 完成最终复审。PR 可转为 Ready，并进入治理批准及普通 merge-commit 合并。任务说明只控制后续执行，不表示任何新 clause study 已开始或完成。
+- PR #11 已通过最终复审并由普通 merge commit `e17e231147a1896b8323c1056b19ab68892fae94` 合并；PR #12 由 merge commit `9adc3c7bd1a9938dfa5e3dc7519fd67c65a3ea47` 登记 practice-comparison references。当前 PR #13 只优化研究任务说明，不表示任何新 clause study 已开始或完成。
 
 ## Source state
 
@@ -52,6 +54,6 @@ v0.2 是由 ISO 15288、ISO 24748-1/2、ARP4754B、ARP4761A 形成的 five-sourc
 
 ## Open work
 
-ISO-G07 information-item schema、ISO-G04 Oracle、ISO-G02B coverage、ISO-G03B sufficiency、ISO-G05 selection、ISO-G06 closure 与 ISO-G08 model evidence 继续保持可见。当前第一研究停点仍是 **ISO/IEC/IEEE 15289:2019 条款级研究**；source-native 12207:2026、9646 与其他不依赖 15289 reviewed conclusion 的工作可按 v0.4 契约并行。Task 022 消费独立评审后的任务数据集；在其综合和独立评审前，不冻结 V0–V12、schema、metamodel、automation contract 或创新性声明。
+ISO-G07 information-item schema、ISO-G04 Oracle、ISO-G02B coverage、ISO-G03B sufficiency、ISO-G05 selection、ISO-G06 closure 与 ISO-G08 model evidence 继续保持可见。当前第一研究停点仍是 **ISO/IEC/IEEE 15289:2019 条款级研究**；source-native 12207:2026、9646 与其他不依赖 15289 reviewed conclusion 的工作可按 v0.6 契约并行。Task 022 消费独立评审后的任务数据集；在其综合和独立评审前，不冻结 V0–V12、schema、metamodel、automation contract 或创新性声明。
 
 Executable metamodel/schema、versioned object registry、platform implementation 和 ARINC 615A/UAV/LLM instance results 均未建立。仓库不声称 certification-ready、evidence sufficiency solved 或 framework validated。

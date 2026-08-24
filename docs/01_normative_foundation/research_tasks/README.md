@@ -1,10 +1,10 @@
 ---
 title: Normative Research Task Register
 status: working
-version: 0.6
+version: 0.7
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-21
+last_updated: 2026-08-24
 dependencies:
   - ../standards_baseline.md
   - ../normative_gap_matrix.md
@@ -39,6 +39,19 @@ ISO/IEC/IEEE 29148:2018 仅保留一个 15288:2015→2023 targeted mapping closu
 
 来源与评审隐私控制适用于全部任务：不得提交 PDF、截图、OCR dump、提取全文或大段逐字内容；不得记录许可主体、账号、订单、下载时间、水印、内部 URL 或用户绝对路径。评审者使用自己合法取得且版本/指纹匹配的原文核验 locator；review packet 只包含短释义、定位符和结论，不得重构标准正文。CD/DIS/FDIS 仅用于 metadata/revision watch，不能成为 normative basis。
 
+## Research-orientation and durable-record contract
+
+所有 Task 001-022 均使用 `version: 0.6` 的详细研究任务格式。每份任务在执行条款工作前必须：
+
+1. 读取 `research_questions.md`、`innovation_statement.md` 与 `research_scope.md` 三个研究锚点，并在 Research orientation 中展开本任务实际承担的 RQ 子问题、候选贡献实质、falsification condition 与 non-claim；只列 ID 不构成有效研究方向；
+2. 根据对应标准原文的实际目录、scope、conformance、terms、main clauses 和 annex force 建立 source-specific research entry 与 mandatory research packages，不得机械复制其他标准的研究包；
+3. 保留 `Standard wins over current framework hypothesis`、`Standards silence != novelty` 和 `Standard evidence -> interpretation -> framework implication -> proposal`；
+4. 在完整 inventory 后、实质提取前扩展 Preliminary mapping hypotheses，并在最终报告中逐行给出 `CONFIRMED/QUALIFIED/CORRECTED/FALSIFIED/NOT ADDRESSED`；
+5. 将 independently reviewed note 设计为下游耐久接口：下游任务消费 locator、faithful paraphrase、source class、object/relation、limitation 与 review disposition，不重新进行相同全文研究；独立 source review 仍须使用合法取得且指纹匹配的原文；
+6. 将 practice-comparison source 限定为 hypothesis seed/counterexample/context；它不生成目标标准 clause record、不关闭 gap、不决定 Architecture Impact、不得作为来源投票。
+
+Task 017 是 metadata/revision-watch 例外，不产生 RQ 或 candidate disposition；Task 022 是 synthesis 例外，不解释新标准原文，只消费 independently reviewed datasets。
+
 ## Two-stage dependency and closure rule
 
 研究依赖采用两阶段闭合，避免前向或循环依赖：
@@ -52,7 +65,7 @@ Task 001 是当前研究第一停点，但不是全局串行冻结。其评审�
 
 ## Research contribution and data contract
 
-当前 `001–021` 均为 `version: 0.4` 的 agent-executable work order；Task 022 是独立的 `cross-standard-synthesis` 工作单。每份任务必须含 `task_type`、`research_questions`、`innovation_candidates`、`contribution_modes`、`source_population`，并在正文中落实 Research contribution contract、Candidate falsification tests、Negative findings and non-answers、Generalization rights、Synthesis handoff dataset。执行者不得只依赖本登记表摘要。
+当前 `001–021` 均为 `version: 0.6` 的 agent-executable work order；Task 022 是同版本的独立 `cross-standard-synthesis` 工作单。每份任务必须含 `task_type`、`research_questions`、`innovation_candidates`、`contribution_modes`、`source_population`，并在正文中落实 Research orientation、Preliminary mapping hypotheses、Research contribution contract、Candidate falsification tests、Negative findings and non-answers、Generalization rights、Synthesis handoff dataset、durable-handoff controls 和 repository consistency checks。执行者不得只依赖本登记表摘要。
 
 所有 clause-study/mapping note 的可合并最小记录如下；字段为空时写 `none/not determined`，不得删列：
 

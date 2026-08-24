@@ -54,6 +54,9 @@ v0.1 establishes research infrastructure and does not claim completion or normat
 
 ### Research task planning
 
+- Redesigned Tasks 001-022 as `version: 0.6` research-task specifications: unified standard-number titles; expanded RQ/innovation statements instead of ID-only references; added the three overview anchors, target-source-specific research entry, falsifiable preliminary hypotheses, evidence hierarchy, durable downstream-note contract and repository consistency gates. Each source task was checked against its controlled local PDF structure; Task 017 remains metadata-only and Task 022 remains synthesis-only.
+- Added a direct practice-source boundary for Task 001 based on the INCOSE and NASA handbook originals: handbook structures may seed self-contained hypotheses but do not depend on the pending-review handbook notes, create target-standard clause records, close gaps, determine Architecture Impact or count as votes.
+
 - Redesigned PR #11 tasks 001–021 as `version: 0.4` research contracts with explicit RQ ownership, innovation-candidate falsification, negative findings, generalization rights and a mergeable evidence-record schema; added Task 022 for cross-standard synthesis without treating standards silence as novelty.
 - Corrected the ISO 29119 second-edition chain to `test basis → test model → test design technique → test coverage item → test case/procedure/result`, retaining `test condition` only as historical collision metadata.
 - Selected ISO/IEC 9646 Parts 1/2/4/5/6/7 as the complete Task 002 population, excluded Part 3 and ITU-T text from the present clause study, and removed paired-equivalence/acquisition gates without claiming textual identity.

@@ -1,10 +1,10 @@
 ---
 title: Next Plan
 status: working
-version: 0.8
+version: 0.9
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-21
+last_updated: 2026-08-24
 dependencies:
   - README.md
   - current_progress.md
@@ -21,6 +21,8 @@ dependencies:
 **ISO/IEC/IEEE 15289:2019** 仍是当前第一停点：开展 information-item clause study，推进 ISO-G07/ISO-G07C。候选源扩充不表示 24748 新分册研究已经开始。
 
 每个 work package 的完整 agent-executable 工作单见 `docs/01_normative_foundation/research_tasks/`。Task 001 是第一优先研究停点，但不是全局串行锁：未依赖其 reviewed conclusions 的 metadata verification、source acquisition、inventory 与 working/candidate research 可以并行；依赖 15289 的 final mapping/promotion、ISO-G07C closure 和信息模型冻结必须等待 Task 001 独立评审。所有 V0–V12、schema、metamodel、state machine 和 automation interface 在各自门禁前保持 working/open。
+
+Task 001-022 已形成 `version: 0.6` review candidate：每项 source task 依据对应标准原文的目录和研究边界配置 Research orientation、完整 inventory 后的 hypothesis reconciliation、标准专用 research packages、公共 evidence contract、自包含 note 与 independent-review gate。该 planning update 不开始任何 clause study；PR #13 评审通过前，v0.6 仅是 candidate work-order baseline。
 
 ## Dependency-driven research queue
 
