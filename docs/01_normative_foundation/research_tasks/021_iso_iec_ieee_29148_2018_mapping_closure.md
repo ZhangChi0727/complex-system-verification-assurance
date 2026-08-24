@@ -38,56 +38,47 @@ downstream_closure:
 
 ## Research orientation
 
-执行本任务前必须先读取本节与 frontmatter dependencies，并带着明确的研究问题、候选反证路径和来源边界进入原文。任务不是一般性总结，也不是为当前框架寻找支持。
+执行本任务前必须读取本节与 frontmatter dependencies，并把工作边界固定为 `mapping-closure`。本任务不重新进入 29148 全文研究；它只消费已独立评审的 29148 note/review packet、仓库中实际使用的 15288:2015 dependency occurrences，以及受控 15288:2015/2023 locator pair population。
 
 ### Task purpose and research attitude
 
-只关闭 reviewed 29148:2018 研究实际使用的 15288:2015 -> 2023 provenance/compatibility mapping，不重做 29148 全文研究或完整版本 delta。
+只关闭 reviewed 29148:2018 研究实际使用的 15288:2015 -> 2023 provenance/compatibility mapping，不重做 29148 clause inventory，也不进行 15288 两版全文 delta。`Standard wins over current framework hypothesis` 仍适用：若受控 locator pair 显示语义变化，必须修正依赖结论；无法确定的行保持 `NOT DETERMINED`。
 
-本任务服务于 `research_scope.md` 的三层目标：产品无关 Verification Methodology -> Model-Based Verification Architecture -> 非产品化 Verification Platform 研究原型。标准明确规定的内容形成构建约束；标准没有回答的内容形成 gap 或 innovation-space observation。`Standard wins over current framework hypothesis`；标准沉默不得由 agent 补齐，也不得作为 novelty proof。
+### Source-specific mapping entry
 
-### Source-specific research entry
+29148:2018 的 source-native findings 已由既有 reviewed note 固定。本任务的 analysis population 是仓库内每个 15288:2015 明示 locator、术语、paraphrased outcome/task 或隐含语义依赖；每个 occurrence 与受控 15288:2015/2023 counterpart 建立一条 mapping row。不得扩大为未被既有研究使用的完整 29148 或完整 15288 edition population。
 
-29148:2018 原文目录显示 requirements concepts、requirements construct/attributes、iteration/recursion、processes、verification/validation activities、management、information items/outlines/content；本任务只消费既有 reviewed study 中实际依赖这些内容的受控 population。
+### Research questions carried by this mapping
 
-该结构说明研究入口，不构成条款结论。Agent 必须在 source gate 后建立完整 inventory，并允许实际条款内容修正本说明中的初始假设。
+- **RQ1**：只检查既有 requirements-engineering normative basis 是否因 dependency version mapping 而被确认、限定或修正。
+- **RQ3**：只检查 Requirement/Set、Verification Basis/Characteristic/Constraint/Criterion 链中受版本依赖影响的选择输入关系。
+- **RQ7**：只检查受控映射是否改变机器可解释关系的 provenance 或 compatibility；不据此设计 schema。
 
-### Research questions carried by this task
+### Innovation candidates under mapping test
 
-- **RQ1**: 复杂系统 Verification 的规范性基础是什么？ 本任务只回答与本来源及其受控 scope 直接相关的子问题；完整答案由 Task 022 综合。
-- **RQ3**: 如何系统确定 Level + Method + Technique + Environment + Oracle + Coverage + Evidence？ 本任务只回答与本来源及其受控 scope 直接相关的子问题；完整答案由 Task 022 综合。
-- **RQ7**: DBSE Verification Workflow 如何形成机器可解释、可查询和可检查的 MBSE information model？ 本任务只回答与本来源及其受控 scope 直接相关的子问题；完整答案由 Task 022 综合。
+- **INN-T2**：只针对 mapping population 中实际出现的 typed basis/criterion/obligation relations 检查等价、变化或不可判定；相同标题不构成等价。
+- **INN-I1**：只记录版本映射对现有机器可读关系假设的影响；本任务不寻找新的 executable metamodel。
 
-### Innovation candidates under test
+### Mapping evidence hierarchy
 
-- **INN-T2** — typed Verification Basis -> Verification Obligation -> Strategy 的框架中间对象链。Falsification condition: 既有 standards/research 已定义等价 obligation 对象、typed basis 与生命周期关系。Non-claim: 不声称标准普遍从 requirement 直接跳到 test。执行时必须比较 purpose、objects、relations、lifecycle、authority 和 applicability，而不是只比较标签。
-- **INN-I1** — 机器可读 verification metamodel 与非产品化研究原型。Falsification condition: 既有开源或研究平台提供等价模型和评价能力，或原型无法支持审计查询。Non-claim: 不把工程实现本身自动等同学术创新。执行时必须比较 purpose、objects、relations、lifecycle、authority 和 applicability，而不是只比较标签。
+1. controlled ISO/IEC/IEEE 15288:2015 source locator and faithful source-native proposition;
+2. reviewed ISO/IEC/IEEE 15288:2023 clause record and controlled source locator;
+3. independently reviewed 29148:2018 note/review packet and its exact repository occurrence;
+4. current framework interpretation and migration proposal.
 
-Tasks 001-021 只能返回 `SUPPORT / QUALIFY / FALSIFY / NO EVIDENCE`；Task 022 只能综合为 `SUPPORTED / QUALIFIED / FALSIFIED / OPEN`。任何任务都不能设置 `novelty established`。
+缺少第 1 层时可以冻结 occurrence population，但 semantic relation 必须为 `not-determined`。既有 reviewed 29148 note 是 population source，不是重新研究 29148 的授权。
 
-### Evidence hierarchy
+### Durable mapping interface
 
-1. target-source normative provisions;
-2. target-source informative material;
-3. independently reviewed repository research on other normative sources;
-4. directly checked practice-comparison sources;
-5. framework hypotheses and research proposals.
+输出是自包含的 mapping report：每行保存 repository occurrence、历史 locator、当前 counterpart、typed relation、effect、action 与 review disposition。后续任务消费该报告，不重新研究 29148 全文；独立评审只核验受控 mapping population 与 locator pairs。
 
-低层级证据可以提出问题、比较维度或反例，但不得覆盖或替代高层级证据。Informative material 不得转成 requirement；reviewed note 不替代本任务原文研究；practice source 不生成 target-source clause record；framework hypothesis 不决定标准应当说什么。来源数量不能替代证据质量，禁止来源投票。
+### Core mapping principles
 
-### Durable research interface
-
-本任务产生的 reviewed note 是下游研究的耐久接口。执行者必须研究完整受控原文，独立评审者必须使用自己合法取得且指纹匹配的原文核验关键 locator；评审通过后，下游任务应只消费 note 中的 locator + faithful paraphrase + source class + object/relation + limitation + review disposition，而不重新进行同一标准的全文研究。研究笔记不得以“见原文”代替命题，也不取代正式标准。
-
-### Core research principles
-
-1. `Standard evidence -> interpretation -> framework implication -> proposal` 四层分离；
-2. 先记录 source-native objects/relations/conditions，再映射 VAF；
-3. 冲突、反例、ambiguity 和 `NO EVIDENCE IN THE REVIEWED SOURCE POPULATION` 必须可见；
-4. standard silence 不证明 novelty，也不授权任意设计；
-5. 只进行 locator-backed 的最小仓库变更；
-6. V0-V12 保持 `OPEN-CANDIDATE`，不得在 source task 中冻结 schema、metamodel、state machine 或 automation interface。
-
+1. `Historical provenance -> current counterpart -> compatibility effect -> repository action` 四层分离；
+2. 保留 source-native 2015 locator，不机械替换为 2023；
+3. 标题相同不证明语义等价；
+4. population 外内容不得借本任务进入架构；
+5. unresolved rows 保持显式 closure owner。
 
 ## Objective
 
@@ -101,7 +92,7 @@ Close only the controlled 15288:2015→2023 dependency mapping used by the revie
 
 ## Preliminary mapping hypotheses
 
-以下是进入原文前的可证伪假设，不是预期答案。Stage 1 完成完整 clause/annex inventory 后、实质提取前，agent 必须补充 `agent-derived from inventory` 行。最终报告不得删除任何假设；每行必须给出 `CONFIRMED / QUALIFIED / CORRECTED / FALSIFIED / NOT ADDRESSED`、locator、理由和影响。
+以下是 mapping hypotheses，不是条款研究答案。先冻结 reviewed 29148 artifacts 中 15288:2015 dependency occurrences 的完整 population，再于 semantic mapping 前补充 `agent-derived from population` 行；最终报告逐行给出 `CONFIRMED / QUALIFIED / CORRECTED / FALSIFIED / NOT ADDRESSED`、locator pair、理由与 effect。
 
 | ID | Preliminary hypothesis | Basis type | Required test | Prohibited inference |
 |---|---|---|---|---|
@@ -155,19 +146,19 @@ Before execution, recheck the Edition 3 revision status and the queue priority. 
 
 The mapping population includes explicit clause/table/definition citations, inherited process names, paraphrased 2015 outcomes/tasks, terminology relations and any repository conclusion whose validity depends on 2015 semantics. Each occurrence receives a stable row identifier; no dependency may be silently excluded.
 
-### Mapping record
+### Mapping record extension
+
+Every row first implements the README common schema with `record_type: mapping-evidence`. Use `source_locator` for the controlled historical/current locator pair and `version_dependency` for its typed relation. Add only these mapping-specific fields:
 
 | Field | Required content |
 |---|---|
-| Row ID | stable mapping identifier |
-| Repository location | file/section or line anchor |
-| 29148 locator | clause/page using or citing 15288:2015 |
-| 2015 dependency | exact cited locator/concept as source-native provenance |
-| 2023 counterpart | exact locator/concept or `none/not determined` |
-| Relation | direct, moved/renamed, semantically changed, removed, split/merged, unclear |
-| Effect | no impact, wording qualification, mapping correction, architecture impact |
-| Action | exact file change or explicit no-change rationale |
-| Confidence/review | evidence quality and reviewer disposition |
+| `mapping_row_id` | stable mapping identifier |
+| `repository_occurrence` | file/section or stable anchor using the 2015 dependency |
+| `historical_locator` | exact 2015 locator/concept retained as source-native provenance |
+| `current_locator` | exact 2023 counterpart or `not-determined` |
+| `mapping_relation` | `direct` / `moved-renamed` / `semantically-changed` / `removed` / `split-merged` / `unclear` |
+| `effect` | `no-impact` / `wording-qualification` / `mapping-correction` / `architecture-impact` |
+| `action` | exact file change or explicit no-change rationale |
 
 ### Required analysis packages
 
@@ -199,27 +190,32 @@ The review packet shall prove population completeness, sample every relation cla
 
 ### Common evidence record and durable-handoff controls
 
-Every proposition used in a repository conclusion shall use the README common data contract. No column may be removed; use `none/not determined` where needed:
+Every mapping proposition used in a repository conclusion shall use the authoritative README common schema. No field may be removed; use `not-applicable` or `not-determined` where appropriate:
 
 | Field | Required content |
 |---|---|
-| `source_locator` | exact clause/table/figure/annex plus physical PDF page |
-| `source_class` | normative requirement / recommendation / permission / definition / informative / note / example / annex guidance |
+| `record_type` | `clause-evidence` / `mapping-evidence`; this task emits `mapping-evidence` |
+| `source_locator` | controlled historical/current clause/table/definition locator pair plus physical PDF pages |
+| `source_class` | `normative` / `informative` |
+| `source_kind` | `requirement` / `recommendation` / `permission` / `definition` / `descriptive` / `note` / `example` / `annex-guidance` |
+| `modality` | `shall` / `should` / `may` / `descriptive` / `not-applicable` |
 | `proposition` | faithful short paraphrase; no substantial quotation |
 | `object_relation` | source-native object and relation |
+| `conditions_applicability` | applicability, tailoring, lifecycle, conformance and stated conditions |
 | `rq_contribution` | RQ ID and exact task sub-question |
-| `candidate_test` | candidate ID + controlled disposition + rationale |
+| `candidate_test` | candidate ID + `SUPPORT` / `QUALIFY` / `FALSIFY` / `NO EVIDENCE` + rationale |
 | `framework_mapping` | V-ID/gap/concept + typed relation; interpretation separate |
-| `layer` | Generic / Extension / Profile / Practice / No adoption |
+| `layer` | `Generic` / `Extension` / `Profile` / `Practice` / `No adoption` |
 | `unsupported_inference` | inference explicitly prohibited by the evidence |
 | `version_dependency` | source-native locator, current counterpart and relation |
+| `hypothesis_disposition` | hypothesis ID + `CONFIRMED` / `QUALIFIED` / `CORRECTED` / `FALSIFIED` / `NOT ADDRESSED` + rationale |
+| `destination` | note/table/gap/register location receiving the conclusion |
+| `downstream_closure_owner` | task/gate owning any provisional or unresolved cross-source closure |
 | `confidence_review` | evidence quality, ambiguity and independent-review disposition |
-
-Each source task shall additionally retain modality, conditions/applicability, hypothesis ID/disposition, destination and downstream closure owner where relevant. Practice-comparison prompts never enter the normative clause dataset.
 
 ### Hypothesis reconciliation and self-contained report rule
 
-After the inventory, extend and freeze the working hypothesis ledger. After extraction and required mappings, dispose every preliminary and inventory-derived row. The note must define key terminology and carry enough locator-backed paraphrase and classification that a downstream task can consume reviewed conclusions without reopening the source. Independent source review still requires a legally obtained, fingerprint-matching original.
+After freezing and reconciling the controlled dependency-occurrence population, extend the mapping hypothesis ledger and dispose every row after mapping. The report must preserve both locators, source-native provenance, typed relation, effect and review status so downstream work can consume it without reopening the 29148 clause study.
 
 ### Repository consistency checks
 

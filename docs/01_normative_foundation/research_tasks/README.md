@@ -44,13 +44,13 @@ ISO/IEC/IEEE 29148:2018 仅保留一个 15288:2015→2023 targeted mapping closu
 所有 Task 001-022 均使用 `version: 0.6` 的详细研究任务格式。每份任务在执行条款工作前必须：
 
 1. 读取 `research_questions.md`、`innovation_statement.md` 与 `research_scope.md` 三个研究锚点，并在 Research orientation 中展开本任务实际承担的 RQ 子问题、候选贡献实质、falsification condition 与 non-claim；只列 ID 不构成有效研究方向；
-2. 根据对应标准原文的实际目录、scope、conformance、terms、main clauses 和 annex force 建立 source-specific research entry 与 mandatory research packages，不得机械复制其他标准的研究包；
+2. 对 `clause-study`，根据对应标准原文的实际目录、scope、conformance、terms、main clauses 和 annex force 建立 source-specific research entry 与 mandatory research packages；对 `metadata-watch`、`mapping-closure` 和 `cross-standard-synthesis`，分别按官方 catalogue population、受控 mapping population 或 independently reviewed input population 建立类型专用入口，不得机械复制 clause-study 研究包；
 3. 保留 `Standard wins over current framework hypothesis`、`Standards silence != novelty` 和 `Standard evidence -> interpretation -> framework implication -> proposal`；
-4. 在完整 inventory 后、实质提取前扩展 Preliminary mapping hypotheses，并在最终报告中逐行给出 `CONFIRMED/QUALIFIED/CORRECTED/FALSIFIED/NOT ADDRESSED`；
+4. 在类型专用 population freeze 后、实质分析前扩展 Preliminary mapping hypotheses，并在最终报告中逐行给出 `CONFIRMED/QUALIFIED/CORRECTED/FALSIFIED/NOT ADDRESSED`；
 5. 将 independently reviewed note 设计为下游耐久接口：下游任务消费 locator、faithful paraphrase、source class、object/relation、limitation 与 review disposition，不重新进行相同全文研究；独立 source review 仍须使用合法取得且指纹匹配的原文；
 6. 将 practice-comparison source 限定为 hypothesis seed/counterexample/context；它不生成目标标准 clause record、不关闭 gap、不决定 Architecture Impact、不得作为来源投票。
 
-Task 017 是 metadata/revision-watch 例外，不产生 RQ 或 candidate disposition；Task 022 是 synthesis 例外，不解释新标准原文，只消费 independently reviewed datasets。
+Task 017 是 metadata/revision-watch 例外，不产生 RQ 或 candidate disposition，并只生成 `metadata-watch` 记录；Task 021 是 mapping-closure 例外，只处理受控依赖 population，不重做 29148 全文研究；Task 022 是 synthesis 例外，不解释新标准原文，只校验并消费 independently reviewed common records，再生成 `synthesis-disposition` 记录。
 
 ## Two-stage dependency and closure rule
 
@@ -67,22 +67,28 @@ Task 001 是当前研究第一停点，但不是全局串行冻结。其评审�
 
 当前 `001–021` 均为 `version: 0.6` 的 agent-executable work order；Task 022 是同版本的独立 `cross-standard-synthesis` 工作单。每份任务必须含 `task_type`、`research_questions`、`innovation_candidates`、`contribution_modes`、`source_population`，并在正文中落实 Research orientation、Preliminary mapping hypotheses、Research contribution contract、Candidate falsification tests、Negative findings and non-answers、Generalization rights、Synthesis handoff dataset、durable-handoff controls 和 repository consistency checks。执行者不得只依赖本登记表摘要。
 
-所有 clause-study/mapping note 的可合并最小记录如下；字段为空时写 `none/not determined`，不得删列：
+以下是 clause-study 与 mapping-closure 的唯一权威 common evidence-record schema。Task 001–016、018–021 的每条可合并证据记录以及 Task 022 input validator 必须使用完全相同的字段名与枚举；字段不适用或尚未确定时写 `not-applicable` 或 `not-determined`，不得删列。Task 017 的 `metadata-watch` 与 Task 022 的 `synthesis-disposition` 使用各自工作单中明确的专用 schema，不得伪造 clause record。
 
 | Field | Required content |
 |---|---|
-| `source_locator` | clause/table/figure/annex + physical PDF page |
-| `source_class` | normative requirement / recommendation / informative / example |
+| `record_type` | `clause-evidence` / `mapping-evidence` |
+| `source_locator` | exact clause/table/figure/annex identifier + physical PDF page; mapping records may carry a controlled locator pair |
+| `source_class` | `normative` / `informative` |
+| `source_kind` | `requirement` / `recommendation` / `permission` / `definition` / `descriptive` / `note` / `example` / `annex-guidance` |
+| `modality` | `shall` / `should` / `may` / `descriptive` / `not-applicable` |
 | `proposition` | faithful short paraphrase; no substantial quotation |
 | `object_relation` | source-native object and relation |
+| `conditions_applicability` | applicability, tailoring, lifecycle, conformance and stated conditions |
 | `rq_contribution` | RQ identifier and exact sub-question |
-| `candidate_test` | candidate ID + SUPPORT/QUALIFY/FALSIFY/NO EVIDENCE + rationale |
+| `candidate_test` | candidate ID + `SUPPORT` / `QUALIFY` / `FALSIFY` / `NO EVIDENCE` + rationale |
 | `framework_mapping` | V-ID/gap/concept + relation type; interpretation kept separate |
-| `layer` | Generic/Extension/Profile/Practice/No adoption |
+| `layer` | `Generic` / `Extension` / `Profile` / `Practice` / `No adoption` |
 | `unsupported_inference` | inference explicitly prohibited by the evidence |
 | `version_dependency` | source-native locator, current counterpart and relation |
-| `confidence_review` | evidence quality, unresolved item and independent-review disposition |
-
+| `hypothesis_disposition` | hypothesis ID + `CONFIRMED` / `QUALIFIED` / `CORRECTED` / `FALSIFIED` / `NOT ADDRESSED` + rationale |
+| `destination` | note/table/gap/register location receiving the conclusion |
+| `downstream_closure_owner` | task/gate owning any provisional or unresolved cross-source closure |
+| `confidence_review` | evidence quality, ambiguity and independent-review disposition |
 Task 022 consumes only these reviewed records. Narrative conclusions without the record set cannot close an RQ, candidate test, gap or architecture impact.
 
 Architecture-impact disposition 的受控词汇为 `CONFIRM / EXTEND / MODIFY / SPLIT / MERGE / DEPRECATE / NO-IMPACT / DEFERRED`。`MODIFY`、`SPLIT`、`MERGE`、`DEPRECATE` 必须记录 before/after 语义、compatibility 和 migration；`EXTEND` 必须证明与既有 V-element 的兼容性；`CONFIRM` 与 `NO-IMPACT` 必须给出已评审 locator 和理由；`DEFERRED` 只表示证据、依赖或评审不足，不是架构结论。具体登记与成熟度门禁以 `../consolidation/architecture_impact_register.md` 为准。
@@ -124,7 +130,7 @@ REVIEWED or CORRECTION REQUIRED
 | 015 | RQ2, RQ3, RQ5 | INN-A1/M1/M3; integration/change/coverage alternative |
 | 016 | RQ2, RQ8 | INN-A1/M1/A3; linear-topology counterexamples |
 | 017 | metadata only | future INN-A3/M2; no clause/candidate disposition permitted |
-| 018 | RQ3, RQ5, RQ7, RQ8 | INN-T3/M5/I1; model/tool admissibility alternatives |
+| 018 | RQ3, RQ5, RQ6, RQ7, RQ8 | INN-T3/M5/I1; model/tool admissibility and reusable model/method/tool-extension pattern alternatives |
 | 019 | RQ3, RQ4, RQ5 | INN-T1/T3/M3; measurement-quality versus sufficiency alternative |
 | 020 | RQ2, RQ5, RQ7 | INN-A1/M2; project-control versus closure-machine alternative |
 | 021 | RQ1, RQ3, RQ7 | INN-T2/I1; historical/current requirements-chain alternative |

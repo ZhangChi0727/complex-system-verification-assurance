@@ -1,7 +1,7 @@
 ---
 title: PR #13 Research Task Specification v0.6 Review Handoff
-status: draft-review
-version: 0.1
+status: correction-rereview
+version: 0.2
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-24
@@ -21,6 +21,20 @@ dependencies:
 Verify that Tasks 001-022 are sufficiently self-contained and source-specific to guide a new agent from a controlled standard source to a detailed, reviewable research record and bounded repository update.
 
 This review concerns research-task design. It does not review or promote any new standard conclusion.
+
+## External review correction at `e090f3045edabdc816ef7ae230c5a1f2704f2fd7`
+
+The first complete external review returned `REQUEST CHANGES` with five blocking precision findings. This correction keeps PR #13 Draft and changes no standard-study result, gap disposition, standards baseline or Architecture Impact entry.
+
+| Finding | Corrected scope | Disposition |
+|---|---|---|
+| F-01 | Task 006 current 29119-1:2022 chain and Tasks 006–009 collision sweep | `CORRECTED; LIGHTWEIGHT REREVIEW PENDING` — current chain is `test basis → test model → test coverage items → test cases → test procedures`; `test condition` is edition-transition/collision metadata only, including the bounded 3.111 Note 3 observation |
+| F-02 | Tasks 017/021/022 task-type semantics | `CORRECTED; LIGHTWEIGHT REREVIEW PENDING` — dedicated metadata-watch, mapping-closure and reviewed-input synthesis orientation, population gate, hypothesis reconciliation and record subtype |
+| F-03 | Task 004 15026-4:2021 population | `CORRECTED; LIGHTWEIGHT REREVIEW PENDING` — controlled source has Clauses 1–7, Bibliography and IEEE notices; `No annex population in the controlled 2021 source` |
+| F-04 | README, Tasks 001–021 and Task 022 validator | `CORRECTED; LIGHTWEIGHT REREVIEW PENDING` — one authoritative common schema separates `source_class`, `source_kind` and `modality`, retains applicability/hypothesis/destination/closure fields, and excludes specialized metadata/synthesis records |
+| F-05 | Task 018 and README RQ coverage | `CORRECTED; LIGHTWEIGHT REREVIEW PENDING` — RQ6 now has the independent ISO/IEC/IEEE 24641:2023 Clause 6.5 knowledge-reuse/pattern family alongside Task 009 |
+
+The requested next action is a correction-diff-only rereview. The PR must remain Draft until that disposition is recorded.
 
 ## Change population
 
@@ -53,7 +67,7 @@ Every task now includes:
 6. `Standard wins over current framework hypothesis`;
 7. falsifiable preliminary mapping hypotheses;
 8. post-inventory hypothesis extension and reconciliation;
-9. the README common evidence-record contract;
+9. the README authoritative clause/mapping evidence-record schema or the task-type-specific metadata/synthesis subtype;
 10. a durable downstream-note interface;
 11. source-review and independent-review separation;
 12. copyright/privacy and whole-repository consistency gates.
@@ -89,7 +103,10 @@ The PR shall not:
 - 22/22 task files use `version: 0.6`;
 - 22/22 contain one Research orientation;
 - 22/22 contain one Preliminary mapping hypotheses section;
-- 22/22 contain the common evidence/durable-handoff controls;
+- 19 clause-study tasks use the authoritative common clause/mapping schema; Task 021 uses the same fields/enums as `mapping-evidence`; Tasks 017/022 use explicit `metadata-watch` and `synthesis-disposition` subtypes;
+- README, 19 clause-study tasks, Task 021 and Task 022 validator agree on all 18 common field names/enums;
+- Tasks 017/021/022 clause-template leakage scans passed;
+- Tasks 006–009 current-chain/collision scan passed; Task 004 no-annex audit and Task 018 Clause 6.5/RQ6 propagation passed;
 - title/frontmatter/H1 agreement passed;
 - three-anchor dependency checks passed;
 - minimum hypothesis-population checks passed;

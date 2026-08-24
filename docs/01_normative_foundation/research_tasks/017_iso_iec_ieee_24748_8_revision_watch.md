@@ -8,7 +8,7 @@ last_updated: 2026-08-24
 task_type: metadata-watch
 research_questions: []
 innovation_candidates: [INN-A3, INN-M2]
-contribution_modes: [no-evidence]
+contribution_modes: [metadata-only]
 source_population: metadata-only
 dependencies:
   - README.md
@@ -35,54 +35,41 @@ downstream_closure:
 
 ## Research orientation
 
-执行本任务前必须先读取本节与 frontmatter dependencies，并带着明确的研究问题、候选反证路径和来源边界进入原文。任务不是一般性总结，也不是为当前框架寻找支持。
+执行本任务前必须先读取本节与 frontmatter dependencies，并把工作边界固定为 `metadata-watch`。本任务不进入标准正文、不形成 clause finding，也不处置 RQ、innovation candidate 或 Architecture Impact。
 
 ### Task purpose and research attitude
 
-仅执行正式出版状态、source acquisition 和 retarget trigger 的受控监视；在合法取得正式原文前不进行 clause study、candidate disposition 或 Architecture Impact。
+仅监视正式出版状态、replacement relation、source-acquisition decision 与 retarget trigger。官方 catalogue metadata 可以控制研究入口，但不能替代条款证据。当前框架假设不得改变 catalogue 事实；未取得正文不构成内容沉默或 novelty evidence。
 
-本任务服务于 `research_scope.md` 的三层目标：产品无关 Verification Methodology -> Model-Based Verification Architecture -> 非产品化 Verification Platform 研究原型。标准明确规定的内容形成构建约束；标准没有回答的内容形成 gap 或 innovation-space observation。`Standard wins over current framework hypothesis`；标准沉默不得由 agent 补齐，也不得作为 novelty proof。
+### Source-specific metadata entry
 
-### Source-specific research entry
+当前 PDF inventory 中没有 ISO/IEC/IEEE 24748-8 的受控正式原文。受控 population 由当前已发布 2019 版与 Edition 2 FDIS 的官方 catalogue records、每次 access date、publication/development state 以及仓库 source-gate 状态构成。FDIS 只用于 publication-state watch，禁止下载、引用或解释其条款。
 
-当前 PDF inventory 中没有 ISO/IEC/IEEE 24748-8 正式原文。本任务的 source population 是官方 metadata 与仓库状态，不是标准条款。
+### Research questions and future candidates
 
-该结构说明研究入口，不构成条款结论。Agent 必须在 source gate 后建立完整 inventory，并允许实际条款内容修正本说明中的初始假设。
+- 本任务不回答任何 RQ；任何 RQ contribution 等待正式 replacement、批准取得的原文、单独编号的 clause-study task 与 independent review。
+- `INN-A3` 与 `INN-M2` 只是未来任务的 search targets。本 watch 不返回 `SUPPORT / QUALIFY / FALSIFY / NO EVIDENCE`，因为 metadata 不是内容证据。
 
-### Research questions carried by this task
+### Metadata evidence hierarchy
 
-- 本任务不处置 RQ；它只维护 metadata/source gate。任何 RQ 贡献等待正式原文、独立 clause-study task 和 review。
+1. official ISO/IEC/IEEE catalogue record for the published edition;
+2. official development-stage/replacement catalogue record;
+3. repository standards baseline and prior watch record;
+4. framework research trigger and acquisition proposal.
 
-### Innovation candidates under test
+每个事实必须带 catalogue locator、access date 和 publication state。第三、四层只能解释仓库动作，不能覆盖官方 metadata。不得要求 PDF page、clause locator、normative force 或 source modality。
 
-- **INN-A3** — profile pattern 经受控抽象阶梯进入 generic candidate 的机制。Falsification condition: 已有 profile-extension governance 提供等价 provenance、promotion gate 和跨域验证规则。Non-claim: 不把 criticality 或 model evidence 概念据为原创。本 revision-watch task 不得给出 candidate disposition。
-- **INN-M2** — waiver、deviation、reopen、authority 与 scope state 的 Closure 状态模型。Falsification condition: 既有 lifecycle/change-control 标准已定义等价模型，或该模型不能稳定处理实例。Non-claim: 不把审批或基线状态本身主张为原创。本 revision-watch task 不得给出 candidate disposition。
+### Durable watch interface
 
-Tasks 001-021 只能返回 `SUPPORT / QUALIFY / FALSIFY / NO EVIDENCE`；Task 022 只能综合为 `SUPPORTED / QUALIFIED / FALSIFIED / OPEN`。任何任务都不能设置 `novelty established`。
+每次 watch cycle 生成一条自包含 `metadata-watch` record，使后续 agent 能判定“是否正式发布、是否已取得、是否应新建 clause-study task”，而不依赖聊天历史。记录不得伪装成 common clause-evidence，也不得产生 content conclusion。
 
-### Evidence hierarchy
+### Core watch principles
 
-1. target-source normative provisions;
-2. target-source informative material;
-3. independently reviewed repository research on other normative sources;
-4. directly checked practice-comparison sources;
-5. framework hypotheses and research proposals.
-
-低层级证据可以提出问题、比较维度或反例，但不得覆盖或替代高层级证据。Informative material 不得转成 requirement；reviewed note 不替代本任务原文研究；practice source 不生成 target-source clause record；framework hypothesis 不决定标准应当说什么。来源数量不能替代证据质量，禁止来源投票。
-
-### Durable research interface
-
-本任务产生的 reviewed note 是下游研究的耐久接口。执行者必须研究完整受控原文，独立评审者必须使用自己合法取得且指纹匹配的原文核验关键 locator；评审通过后，下游任务应只消费 note 中的 locator + faithful paraphrase + source class + object/relation + limitation + review disposition，而不重新进行同一标准的全文研究。研究笔记不得以“见原文”代替命题，也不取代正式标准。
-
-### Core research principles
-
-1. `Standard evidence -> interpretation -> framework implication -> proposal` 四层分离；
-2. 先记录 source-native objects/relations/conditions，再映射 VAF；
-3. 冲突、反例、ambiguity 和 `NO EVIDENCE IN THE REVIEWED SOURCE POPULATION` 必须可见；
-4. standard silence 不证明 novelty，也不授权任意设计；
-5. 只进行 locator-backed 的最小仓库变更；
-6. V0-V12 保持 `OPEN-CANDIDATE`，不得在 source task 中冻结 schema、metamodel、state machine 或 automation interface。
-
+1. `Catalogue fact -> repository gate implication -> acquisition/retarget proposal` 三层分离；
+2. FDIS/CD/DIS status 不等于 published normative basis；
+3. metadata absence 不等于标准内容沉默；
+4. 只对实际 publication-state change 更新仓库；
+5. V0–V12、gap 与 Architecture Impact 保持不变，直至未来 clause study 通过独立评审。
 
 ## Objective
 
@@ -90,7 +77,7 @@ Maintain an accurate publication/replacement watch and define the gate for a fut
 
 ## Preliminary mapping hypotheses
 
-以下是进入原文前的可证伪假设，不是预期答案。Stage 1 完成完整 clause/annex inventory 后、实质提取前，agent 必须补充 `agent-derived from inventory` 行。最终报告不得删除任何假设；每行必须给出 `CONFIRMED / QUALIFIED / CORRECTED / FALSIFIED / NOT ADDRESSED`、locator、理由和影响。
+以下是 watch assumptions，不是条款假设。每个 watch cycle 先冻结 official catalogue population，再逐行给出 `CONFIRMED / QUALIFIED / CORRECTED / NOT ADDRESSED`、catalogue locator、access date、理由和 repository-gate effect；不得使用 `FALSIFIED` 表示 innovation disposition。
 
 | ID | Preliminary hypothesis | Basis type | Required test | Prohibited inference |
 |---|---|---|---|---|
@@ -128,7 +115,7 @@ All outputs are governance `No adoption`. A future published-source task must in
 
 ## Synthesis handoff dataset
 
-Emit only `catalogue_locator`, `access_date`, `publication_state`, `replacement_relation`, `source_acquisition_decision`, `trigger_disposition` and `content_evidence=none`.
+Emit only the `metadata-watch` record subtype defined below. It is excluded from the common clause/mapping evidence population and from Task 022 content synthesis.
 
 ## Detailed execution specification
 
@@ -163,29 +150,29 @@ Update the standards baseline watch date/status, add a concise CHANGELOG entry o
 
 Do not state that an FDIS is the published normative basis, that defence gates are generic assurance gates, or that publication metadata supports clause conclusions. Do not use the watch event to close LC-G01/LC-G02 or change V0–V12.
 
-### Common evidence record and durable-handoff controls
+### Metadata-watch record and durable-handoff controls
 
-Every proposition used in a repository conclusion shall use the README common data contract. No column may be removed; use `none/not determined` where needed:
+Each watch event emits exactly one record using this dedicated subtype; do not populate the README clause/mapping schema with artificial `none` values:
 
 | Field | Required content |
 |---|---|
-| `source_locator` | exact clause/table/figure/annex plus physical PDF page |
-| `source_class` | normative requirement / recommendation / permission / definition / informative / note / example / annex guidance |
-| `proposition` | faithful short paraphrase; no substantial quotation |
-| `object_relation` | source-native object and relation |
-| `rq_contribution` | RQ ID and exact task sub-question |
-| `candidate_test` | candidate ID + controlled disposition + rationale |
-| `framework_mapping` | V-ID/gap/concept + typed relation; interpretation separate |
-| `layer` | Generic / Extension / Profile / Practice / No adoption |
-| `unsupported_inference` | inference explicitly prohibited by the evidence |
-| `version_dependency` | source-native locator, current counterpart and relation |
-| `confidence_review` | evidence quality, ambiguity and independent-review disposition |
+| `record_type` | fixed value `metadata-watch` |
+| `catalogue_locator` | stable official catalogue URL or identifier |
+| `access_date` | ISO date of the metadata check |
+| `published_identifier` | current formally published identifier/edition/date |
+| `publication_state` | `CURRENT` / `REPLACED` / `WITHDRAWN` / `AMBIGUOUS` |
+| `development_record` | edition/stage and official locator for any replacement project |
+| `replacement_relation` | relation between current publication and development item |
+| `source_availability` | `NOT ACQUIRED` / `ACQUISITION PROPOSED` / `ACQUIRED` |
+| `trigger_disposition` | `NO CHANGE` / `PUBLISHED REPLACEMENT AVAILABLE` / `STATUS AMBIGUOUS` / `WATCH CLOSED` |
+| `repository_action` | exact baseline/HANDOFF/task action or no-change rationale |
+| `confidence_review` | metadata ambiguity and reviewer disposition |
 
-Each source task shall additionally retain modality, conditions/applicability, hypothesis ID/disposition, destination and downstream closure owner where relevant. Practice-comparison prompts never enter the normative clause dataset.
+No PDF page, clause locator, source class, modality, RQ contribution or candidate disposition is permitted in this subtype.
 
 ### Hypothesis reconciliation and self-contained report rule
 
-After the inventory, extend and freeze the working hypothesis ledger. After extraction and required mappings, dispose every preliminary and inventory-derived row. The note must define key terminology and carry enough locator-backed paraphrase and classification that a downstream task can consume reviewed conclusions without reopening the source. Independent source review still requires a legally obtained, fingerprint-matching original.
+After freezing the official catalogue population, reconcile every watch assumption against the dated metadata snapshot. The record must be self-contained enough for a later agent to reproduce the gate decision from the official catalogue locators and access date; it must not claim to reproduce or interpret source content.
 
 ### Repository consistency checks
 
