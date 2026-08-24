@@ -1,10 +1,10 @@
 ---
 title: Next Plan
 status: working
-version: 0.8
+version: 0.9
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-21
+last_updated: 2026-08-24
 dependencies:
   - README.md
   - current_progress.md
@@ -21,6 +21,8 @@ dependencies:
 **ISO/IEC/IEEE 15289:2019** 仍是当前第一停点：开展 information-item clause study，推进 ISO-G07/ISO-G07C。候选源扩充不表示 24748 新分册研究已经开始。
 
 每个 work package 的完整 agent-executable 工作单见 `docs/01_normative_foundation/research_tasks/`。Task 001 是第一优先研究停点，但不是全局串行锁：未依赖其 reviewed conclusions 的 metadata verification、source acquisition、inventory 与 working/candidate research 可以并行；依赖 15289 的 final mapping/promotion、ISO-G07C closure 和信息模型冻结必须等待 Task 001 独立评审。所有 V0–V12、schema、metamodel、state machine 和 automation interface 在各自门禁前保持 working/open。
+
+Task 001-022 已形成 `version: 0.6` review candidate：每项 source task 依据对应标准原文的目录和研究边界配置 Research orientation、完整 inventory 后的 hypothesis reconciliation、标准专用 research packages、公共 evidence contract、自包含 note 与 independent-review gate。该 planning update 不开始任何 clause study；PR #13 评审通过前，v0.6 仅是 candidate work-order baseline。
 
 ## Dependency-driven research queue
 
@@ -42,7 +44,7 @@ dependencies:
 | ISO/IEC/IEEE 24641:2023 | Source acquired; reviewed 15288 context; 12207 software rows provisional until Task 05 | Plan/Build/Support/Perform matrix and ISO-G08 disposition |
 | ISO/IEC/IEEE 15939:2017 | Source acquired; revision recheck and bounded 15288:2015→2023 mapping | Measurement/evidence-metric disposition without universal thresholds |
 | ISO/IEC/IEEE 16326:2019 | Source acquired; after Tasks 001/005/012/014; sole final planning-ownership owner | Final 24748-4/24748-5/16326 ownership and project-information disposition |
-| Task 022 cross-standard synthesis | Consume independently reviewed Task 001–021 datasets; retain missing/provisional populations | RQ1–RQ8 answer drafts, innovation falsification ledger, conflict/term/ownership matrices and architecture proposals |
+| Task 022 cross-standard synthesis | First normalize and independently review all seven legacy reviewed sources, then consume reviewed Task 001–021 datasets; retain missing/provisional/quarantined populations | RQ1–RQ7 answer drafts, RQ8 `OPEN` validation-readiness/instance handoff, innovation falsification ledger, conflict/term/ownership matrices and architecture proposals |
 | Architecture synthesis / controlled-freeze gate | Planned cohort studied or explicitly deferred; all impacts disposed; conflicts/migrations/gaps reviewed independently | At most `REVIEWED-PROVISIONAL`; no direct jump to `CONTROLLED-BASELINE` |
 | Executable information schema | Architecture synthesis gate and relevant schema dependencies satisfied | Executable schema candidate |
 | Versioned object registry | Stable identity/version/compatibility rules available | Controlled registry and migration rules |

@@ -14,7 +14,7 @@ dependencies:
 
 以下问题在 v0.1 全部保持 `Open`，本基线不提前给出答案。
 
-当前 standards-research task ownership、至少双来源族覆盖和反证路径见 [Normative Research Task Register](../01_normative_foundation/research_tasks/README.md#rq-and-innovation-candidate-coverage)。该链接只分配研究责任，不构成 RQ 答案或关闭证据；Task 022 负责把独立评审后的记录综合为 answer drafts。
+当前 standards-research task ownership、typed source-role coverage、开放缺口和反证路径见 [Normative Research Task Register](../01_normative_foundation/research_tasks/README.md#rq-and-innovation-candidate-coverage)。该链接只分配研究责任，不构成 RQ 答案或关闭证据；Task 022 可把独立评审后的记录综合为 RQ1–RQ7 standards-evidence answer drafts，但对 RQ8 只形成 `OPEN` validation-readiness handoff，最终回答依赖三个实例的受控评价结果。
 
 ## RQ1 — Normative foundation
 
