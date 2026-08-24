@@ -1,7 +1,7 @@
 ---
 title: PR #13 Research Task Specification v0.6 Review Handoff
 status: correction-rereview
-version: 0.2
+version: 0.3
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-24
@@ -28,13 +28,26 @@ The first complete external review returned `REQUEST CHANGES` with five blocking
 
 | Finding | Corrected scope | Disposition |
 |---|---|---|
-| F-01 | Task 006 current 29119-1:2022 chain and Tasks 006–009 collision sweep | `CORRECTED; LIGHTWEIGHT REREVIEW PENDING` — current chain is `test basis → test model → test coverage items → test cases → test procedures`; `test condition` is edition-transition/collision metadata only, including the bounded 3.111 Note 3 observation |
-| F-02 | Tasks 017/021/022 task-type semantics | `CORRECTED; LIGHTWEIGHT REREVIEW PENDING` — dedicated metadata-watch, mapping-closure and reviewed-input synthesis orientation, population gate, hypothesis reconciliation and record subtype |
-| F-03 | Task 004 15026-4:2021 population | `CORRECTED; LIGHTWEIGHT REREVIEW PENDING` — controlled source has Clauses 1–7, Bibliography and IEEE notices; `No annex population in the controlled 2021 source` |
-| F-04 | README, Tasks 001–021 and Task 022 validator | `CORRECTED; LIGHTWEIGHT REREVIEW PENDING` — one authoritative common schema separates `source_class`, `source_kind` and `modality`, retains applicability/hypothesis/destination/closure fields, and excludes specialized metadata/synthesis records |
-| F-05 | Task 018 and README RQ coverage | `CORRECTED; LIGHTWEIGHT REREVIEW PENDING` — RQ6 now has the independent ISO/IEC/IEEE 24641:2023 Clause 6.5 knowledge-reuse/pattern family alongside Task 009 |
+| F-01 | Task 006 current 29119-1:2022 chain and Tasks 006–009 collision sweep | `CLOSED; CORRECTION-DIFF REREVIEW PASSED` — Task 006 correctly treats technique as a derivation relation and `test condition` as edition-transition/collision metadata; the later Task 009 inconsistency is separately tracked as F-09 |
+| F-02 | Tasks 017/021/022 task-type semantics | `CLOSED; CORRECTION-DIFF REREVIEW PASSED` — dedicated metadata-watch, mapping-closure and reviewed-input synthesis contracts passed rereview |
+| F-03 | Task 004 15026-4:2021 population | `CLOSED; CORRECTION-DIFF REREVIEW PASSED` — controlled source has no annex population |
+| F-04 | README, Tasks 001–021 and Task 022 validator | `CLOSED; CORRECTION-DIFF REREVIEW PASSED` — the authoritative 18-field common contract passed rereview |
+| F-05 | Task 018 and README RQ coverage | `CLOSED FOR FIELD PROPAGATION; CONTENT CLASSIFICATION SUPERSEDED BY F-07` — RQ6 was propagated to Task 018, but the claim that it supplies a second direct technique source was rejected in the subsequent content review |
 
-The requested next action is a correction-diff-only rereview. The PR must remain Draft until that disposition is recorded.
+## Content review at `052b3bae028658a5c2733d6304f0417213fed868`
+
+The correction diff for F-01–F-04 passed and F-05 field propagation passed. Further content review returned `REQUEST CHANGES` with four new blocking findings. The present correction is deliberately bounded to those findings and the two accepted non-blocking improvements.
+
+| Finding | Corrected scope | Disposition |
+|---|---|---|
+| F-06 | Task 022 legacy reviewed-evidence intake | `CORRECTED; LIGHTWEIGHT REREVIEW PENDING` — seven established-basis sources are enumerated with authoritative artifacts and reviewed commits; a provenance-only 18-field adapter, `not-determined`/quarantine handling, closure ownership, population reconciliation and independent normalization-review gate are mandatory |
+| F-07 | RQ6 wording and direct/supporting source roles | `CORRECTED; LIGHTWEIGHT REREVIEW PENDING` — Task 009 is the direct Verification Technique source; Task 018 is a supporting pattern-engineering/reuse-governance source; the second direct technique source remains a residual gap |
+| F-08 | RQ8 empirical answer responsibility | `CORRECTED; LIGHTWEIGHT REREVIEW PENDING` — Tasks 002/010/016/018 emit criteria, stressors, observations and failure conditions only; Task 022 emits an `OPEN` validation-readiness handoff whose closure belongs to the three controlled instance evaluations |
+| F-09 | Task 009 technique semantics | `CORRECTED; LIGHTWEIGHT REREVIEW PENDING` — both chains now express test design technique as the derivation relation between test model and coverage item; any later technique-selection/instantiation object must be explicitly framework-defined |
+
+Accepted non-blocking improvements are also applied: Task 001 names Annexes A and B as informative, and Task 021 is titled `Targeted Mapping Closure Task Specification`.
+
+The requested next action is a lightweight rereview limited to F-06–F-09 and these two wording improvements. The PR must remain Draft until that disposition is recorded.
 
 ## Change population
 
@@ -106,7 +119,11 @@ The PR shall not:
 - 19 clause-study tasks use the authoritative common clause/mapping schema; Task 021 uses the same fields/enums as `mapping-evidence`; Tasks 017/022 use explicit `metadata-watch` and `synthesis-disposition` subtypes;
 - README, 19 clause-study tasks, Task 021 and Task 022 validator agree on all 18 common field names/enums;
 - Tasks 017/021/022 clause-template leakage scans passed;
-- Tasks 006–009 current-chain/collision scan passed; Task 004 no-annex audit and Task 018 Clause 6.5/RQ6 propagation passed;
+- Task 006 collision semantics and Task 009 technique-as-relation scans passed after F-09 correction; no unqualified `test model → technique → coverage item` chain remains in Tasks 006–009, README or HANDOFF;
+- Task 004 no-annex audit and Task 001 Annex A/B informative-force checks passed;
+- Task 009/018/README/Task 022 direct-versus-supporting RQ6 source-role checks passed; the second direct source remains open;
+- Tasks 002/010/016/018 and Task 022 RQ8 responsibility checks passed; standards coverage is not represented as empirical validation coverage;
+- Task 022 legacy-source inventory, adapter, missing-field/quarantine, independent-review and population-completeness gates are present;
 - title/frontmatter/H1 agreement passed;
 - three-anchor dependency checks passed;
 - minimum hypothesis-population checks passed;

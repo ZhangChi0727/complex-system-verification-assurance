@@ -68,7 +68,7 @@ ITU-T X.29x numbers are bibliographic relationships only. No ITU acquisition or 
 
 - **RQ3**: 如何系统确定 Level + Method + Technique + Environment + Oracle + Coverage + Evidence？ 本任务只回答与本来源及其受控 scope 直接相关的子问题；完整答案由 Task 022 综合。
 - **RQ5**: Verification Evidence 如何通过可审查的 Assurance Argument 支持 Compliance Claim？ 本任务只回答与本来源及其受控 scope 直接相关的子问题；完整答案由 Task 022 综合。
-- **RQ8**: 如何通过多领域实例验证 framework 的 completeness、traceability、repeatability、scalability 与 reusability？ 本任务只回答与本来源及其受控 scope 直接相关的子问题；完整答案由 Task 022 综合。
+- **RQ8**: 如何通过多领域实例（ARINC 615A 协议符合性验证为 first instance，无人机飞管系统验证与 LLM 服务可靠性与性能验证为后续实例）验证 framework 的 completeness、traceability、repeatability、scalability 与 reusability？ 本任务不回答或关闭 RQ8；它只提取协议符合性实例的 evaluation criteria、stressor/counterexample、可观测项与失败条件，并交给 ARINC 615A 及后续实例评价。
 
 ### Innovation candidates under test
 
@@ -140,7 +140,7 @@ No conformance or certification claim may be inferred from a test verdict alone.
 
 ## Research contribution contract
 
-This task answers RQ3/RQ5/RQ8 for conformance testing by studying Parts 1, 2, 4, 5, 6 and 7 as the complete controlled population. It shall connect capability/applicability declarations, test purposes, abstract/executable means, expected/observed outcomes, verdicts, reports and claims while preserving the boundary between protocol conformance testing and lifecycle assurance.
+This task answers RQ3/RQ5 for conformance testing by studying Parts 1, 2, 4, 5, 6 and 7 as the complete controlled population. For RQ8 it only emits evaluation criteria, protocol-conformance stressors, observable measures and failure conditions for the later ARINC 615A instance; it cannot substitute for empirical results. It shall connect capability/applicability declarations, test purposes, abstract/executable means, expected/observed outcomes, verdicts, reports and claims while preserving the boundary between protocol conformance testing and lifecycle assurance.
 
 ## Candidate falsification tests
 
@@ -158,7 +158,7 @@ Conformance-method concepts may enter `Extension`; protocol/profile declarations
 
 ## Synthesis handoff dataset
 
-Emit the common record plus `part`, `PICS_ICS_PIXIT_IXIT_role`, `test_purpose`, `ATS_ETS_relation`, `expected_observed_verdict_claim`, `profile_predicate` and `lifecycle_assurance_limit`.
+Emit the common record plus `part`, `PICS_ICS_PIXIT_IXIT_role`, `test_purpose`, `ATS_ETS_relation`, `expected_observed_verdict_claim`, `profile_predicate`, `lifecycle_assurance_limit`, `rq8_evaluation_criterion`, `rq8_stressor`, `rq8_observation`, `rq8_failure_condition` and `empirical_closure_owner`.
 
 ## Detailed execution specification
 

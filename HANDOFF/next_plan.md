@@ -44,7 +44,7 @@ Task 001-022 已形成 `version: 0.6` review candidate：每项 source task 依�
 | ISO/IEC/IEEE 24641:2023 | Source acquired; reviewed 15288 context; 12207 software rows provisional until Task 05 | Plan/Build/Support/Perform matrix and ISO-G08 disposition |
 | ISO/IEC/IEEE 15939:2017 | Source acquired; revision recheck and bounded 15288:2015→2023 mapping | Measurement/evidence-metric disposition without universal thresholds |
 | ISO/IEC/IEEE 16326:2019 | Source acquired; after Tasks 001/005/012/014; sole final planning-ownership owner | Final 24748-4/24748-5/16326 ownership and project-information disposition |
-| Task 022 cross-standard synthesis | Consume independently reviewed Task 001–021 datasets; retain missing/provisional populations | RQ1–RQ8 answer drafts, innovation falsification ledger, conflict/term/ownership matrices and architecture proposals |
+| Task 022 cross-standard synthesis | First normalize and independently review all seven legacy reviewed sources, then consume reviewed Task 001–021 datasets; retain missing/provisional/quarantined populations | RQ1–RQ7 answer drafts, RQ8 `OPEN` validation-readiness/instance handoff, innovation falsification ledger, conflict/term/ownership matrices and architecture proposals |
 | Architecture synthesis / controlled-freeze gate | Planned cohort studied or explicitly deferred; all impacts disposed; conflicts/migrations/gaps reviewed independently | At most `REVIEWED-PROVISIONAL`; no direct jump to `CONTROLLED-BASELINE` |
 | Executable information schema | Architecture synthesis gate and relevant schema dependencies satisfied | Executable schema candidate |
 | Versioned object registry | Stable identity/version/compatibility rules available | Controlled registry and migration rules |

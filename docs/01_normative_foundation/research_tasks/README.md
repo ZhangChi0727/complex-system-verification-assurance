@@ -50,7 +50,7 @@ ISO/IEC/IEEE 29148:2018 仅保留一个 15288:2015→2023 targeted mapping closu
 5. 将 independently reviewed note 设计为下游耐久接口：下游任务消费 locator、faithful paraphrase、source class、object/relation、limitation 与 review disposition，不重新进行相同全文研究；独立 source review 仍须使用合法取得且指纹匹配的原文；
 6. 将 practice-comparison source 限定为 hypothesis seed/counterexample/context；它不生成目标标准 clause record、不关闭 gap、不决定 Architecture Impact、不得作为来源投票。
 
-Task 017 是 metadata/revision-watch 例外，不产生 RQ 或 candidate disposition，并只生成 `metadata-watch` 记录；Task 021 是 mapping-closure 例外，只处理受控依赖 population，不重做 29148 全文研究；Task 022 是 synthesis 例外，不解释新标准原文，只校验并消费 independently reviewed common records，再生成 `synthesis-disposition` 记录。
+Task 017 是 metadata/revision-watch 例外，不产生 RQ 或 candidate disposition，并只生成 `metadata-watch` 记录；Task 021 是 mapping-closure 例外，只处理受控依赖 population，不重做 29148 全文研究；Task 022 是 synthesis 例外，不解释新标准原文：它先把七项既有 reviewed sources 通过独立复核的 legacy adapter 迁移到 common schema，再与 independently reviewed current-task records 一起综合并生成 `synthesis-disposition` 记录。
 
 ## Two-stage dependency and closure rule
 
@@ -89,7 +89,7 @@ Task 001 是当前研究第一停点，但不是全局串行冻结。其评审�
 | `destination` | note/table/gap/register location receiving the conclusion |
 | `downstream_closure_owner` | task/gate owning any provisional or unresolved cross-source closure |
 | `confidence_review` | evidence quality, ambiguity and independent-review disposition |
-Task 022 consumes only these reviewed records. Narrative conclusions without the record set cannot close an RQ, candidate test, gap or architecture impact.
+Task 022 consumes only independently reviewed current-task records or independently re-reviewed normalized-legacy records. Narrative conclusions without the record set cannot close an RQ, candidate test, gap or architecture impact; an established-basis legacy source may not be silently omitted because it predates this schema.
 
 Architecture-impact disposition 的受控词汇为 `CONFIRM / EXTEND / MODIFY / SPLIT / MERGE / DEPRECATE / NO-IMPACT / DEFERRED`。`MODIFY`、`SPLIT`、`MERGE`、`DEPRECATE` 必须记录 before/after 语义、compatibility 和 migration；`EXTEND` 必须证明与既有 V-element 的兼容性；`CONFIRM` 与 `NO-IMPACT` 必须给出已评审 locator 和理由；`DEFERRED` 只表示证据、依赖或评审不足，不是架构结论。具体登记与成熟度门禁以 `../consolidation/architecture_impact_register.md` 为准。
 
@@ -114,7 +114,7 @@ REVIEWED or CORRECTION REQUIRED
 | Task | RQ coverage | Innovation candidates / falsification path |
 |---|---|---|
 | 001 | RQ1, RQ5, RQ7 | INN-T2/T3/I1; 15289 direct mechanism or schema non-answer |
-| 002 | RQ3, RQ5, RQ8 | INN-T2/T3/M4/I2; 9646 conformance chain and Oracle alternative |
+| 002 | RQ3, RQ5; RQ8 evaluation input | INN-T2/T3/M4/I2; 9646 conformance chain, Oracle alternative and ARINC 615A criteria/stressors |
 | 003 | RQ4, RQ5 | INN-T1/T3; 15026 vocabulary/reasoning/evidence mechanism |
 | 004 | RQ2, RQ4, RQ5 | INN-T1/T3/M1; lifecycle assurance/re-assurance alternative |
 | 005 | RQ1–RQ5, RQ7 | INN-T1/T2/T3/A1/M1/M2/M4/I2; current software-lifecycle countermechanisms |
@@ -122,21 +122,21 @@ REVIEWED or CORRECTION REQUIRED
 | 007 | RQ2, RQ3, RQ5 | INN-A1/M1/M2; process/re-entry/closure alternatives |
 | 008 | RQ5, RQ7 | INN-T3/I1; information-item and schema alternative |
 | 009 | RQ3, RQ4, RQ6 | INN-M3/M4/A3; techniques, coverage and reusable-pattern counterexamples |
-| 010 | RQ2–RQ5, RQ8 | INN-T1/A1/M1/A3; sufficient-evidence and integrity/task mechanism |
+| 010 | RQ2–RQ5; RQ8 evaluation input | INN-T1/A1/M1/A3; sufficient-evidence/integrity mechanisms and adaptive/AI pressure-test criteria |
 | 011 | RQ3, RQ4, RQ5 | INN-T1/A1; level claim/determination/approval mechanism |
 | 012 | RQ2, RQ3, RQ5 | INN-A1/M1/M2; planning input versus selection/closure alternative |
 | 013 | RQ2, RQ3, RQ5 | INN-A1/M1/I2; application/tailoring alternative |
 | 014 | RQ2, RQ3, RQ5, RQ7 | INN-A1/I1; software-planning/process/content alternative |
 | 015 | RQ2, RQ3, RQ5 | INN-A1/M1/M3; integration/change/coverage alternative |
-| 016 | RQ2, RQ8 | INN-A1/M1/A3; linear-topology counterexamples |
+| 016 | RQ2; RQ8 evaluation input | INN-A1/M1/A3; linear-topology counterexamples and empirical stress criteria |
 | 017 | metadata only | future INN-A3/M2; no clause/candidate disposition permitted |
-| 018 | RQ3, RQ5, RQ6, RQ7, RQ8 | INN-T3/M5/I1; model/tool admissibility and reusable model/method/tool-extension pattern alternatives |
+| 018 | RQ3, RQ5, RQ7; RQ6 supporting pattern governance; RQ8 evaluation input | INN-T3/M5/I1; model/tool admissibility, pattern expression/reuse governance and empirical criteria |
 | 019 | RQ3, RQ4, RQ5 | INN-T1/T3/M3; measurement-quality versus sufficiency alternative |
 | 020 | RQ2, RQ5, RQ7 | INN-A1/M2; project-control versus closure-machine alternative |
 | 021 | RQ1, RQ3, RQ7 | INN-T2/I1; historical/current requirements-chain alternative |
-| 022 | RQ1–RQ8 | INN-T1–INN-I2; cross-source conflict/silence ledger plus independent novelty-search questions |
+| 022 | RQ1–RQ7 synthesis; RQ8 validation readiness only | INN-T1–INN-I2; legacy/current evidence reconciliation, conflict/silence ledger, empirical handoff and novelty-search questions |
 
-RQ1–RQ8 each have at least two source families and an explicit countermechanism or non-equivalence path. Source count does not establish evidence quality; Task 022 must register any weak, single-family or unresolved coverage as a research gap.
+Source-role coverage is typed rather than counted as votes. RQ1–RQ5 and RQ7 have multiple planned normative source families, subject to clause study and independent review. For RQ6, Task 009 is the direct Verification Technique source; Task 018 is only a supporting pattern-engineering/reuse-governance source, so a second independent direct Verification Technique source remains an explicit residual gap. For RQ8, Tasks 002/010/016/018 provide evaluation criteria, stressors, observations and failure conditions only; the final answer/closure belongs to controlled ARINC 615A, UAV FMS and LLM service evaluations. `Standards source-family coverage ≠ multi-domain validation coverage`. Task 022 must retain weak, single-family, supporting-only and empirical-coverage limitations as `OPEN`.
 
 ## Progress reporting
 

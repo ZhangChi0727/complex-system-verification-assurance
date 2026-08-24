@@ -1,5 +1,5 @@
 ---
-title: ISO/IEC/IEEE 29148:2018 Normative Research Task Specification
+title: ISO/IEC/IEEE 29148:2018 Targeted Mapping Closure Task Specification
 status: planned
 version: 0.6
 baseline: post-v0.2
@@ -23,7 +23,7 @@ downstream_closure:
   - "Architecture synthesis: requirements-engineering dependency disposition"
 ---
 
-# ISO/IEC/IEEE 29148:2018 Normative Research Task Specification
+# ISO/IEC/IEEE 29148:2018 Targeted Mapping Closure Task Specification
 
 ## Control record
 
