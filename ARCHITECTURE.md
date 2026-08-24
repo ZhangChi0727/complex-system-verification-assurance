@@ -1,10 +1,10 @@
 ---
 title: Repository and Knowledge Architecture
 status: baseline
-version: 0.4
+version: 0.5
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-20
+last_updated: 2026-08-24
 dependencies: []
 ---
 
@@ -62,14 +62,20 @@ Automation Rule
 ## Abstraction boundary
 
 ```text
-Generic Framework
-      ↓ instantiates
-Domain Profile
-      ↓ specializes
-Concrete Project Practice
+Complete Verification Suite
+= Candidate Generic Verification Suite Core
++ Verification Profile
++ Product Binding
++ Project Configuration
 ```
 
-如果把 DCAS 替换成汽车 EPS、无人机或其他复杂系统后某规则仍然成立，它原则上属于 Generic Framework；依赖 IDU、IMA/GPM、ARINC 总线、告警抑制或具体组织流程的内容进入 Domain Profile 或 Concrete Project Practice。
+The Candidate GVS Core owns product-independent semantic contracts and Verification Capability Packages. A Verification Profile specializes domain or verification-type policy; a Product Binding maps those contracts to product/protocol/tool assets and concrete Oracle implementations; Project Configuration selects immutable versions, setup and run controls. Capability Packages remain inside the Core and are not a fifth layer or necessarily software.
+
+The method repository controls Candidate GVS Core definitions and the cross-instance evaluation contract. External instance repositories control Profile/Binding/Configuration implementations and raw evidence. They are read-only evidence/finding providers from this repository's perspective and cannot redefine Core semantics without the [cross-repository change path](docs/08_validation/cross_repository_instance_contract.md).
+
+如果把 DCAS 替换成汽车 EPS、无人机或其他复杂系统后某规则仍然成立，它才可能成为 Candidate GVS Core 研究对象；依赖 IDU、IMA/GPM、ARINC 总线、告警抑制、具体产品接口或项目参数的内容进入 Profile、Binding 或 Configuration。该判断仍需 normative/research rationale 与跨实例评价，不能由单一实例直接晋级。
+
+本分层不建立 executable architecture，也不冻结 API、schema、metamodel、serialization、SysML role 或 versioned object registry。
 
 ## Architecture maturity and controlled openness
 
