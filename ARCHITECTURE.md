@@ -1,10 +1,10 @@
 ---
 title: Repository and Knowledge Architecture
 status: baseline
-version: 0.4
+version: 0.5
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-20
+last_updated: 2026-08-25
 dependencies: []
 ---
 
@@ -51,6 +51,7 @@ Automation Rule
 - `references/`：合法 bibliographic metadata、检索策略、阅读记录和不可公开资料的定位说明。
 - `tools/`：未来的一致性、覆盖、影响分析、模型校验和文档生成工具。
 - `examples/`：脱敏、最小可复现和端到端研究实例。
+
 - `HANDOFF/`：仓库当前进度与下一步计划的交接快照；不是事实源，事实源仍为 `docs/`、`models/`、`data/`、`domains/`。
 - `publications/`：论文和教程的发布视图，不是独立事实源。
 - `archive/`：superseded baseline 或 legacy transformation material；不能替代 Git history。
@@ -62,14 +63,20 @@ Automation Rule
 ## Abstraction boundary
 
 ```text
-Generic Framework
-      ↓ instantiates
-Domain Profile
-      ↓ specializes
-Concrete Project Practice
+Complete Verification Suite
+= Candidate Generic Verification Suite Core
++ Verification Profile
++ Product Binding
++ Project Configuration
 ```
 
-如果把 DCAS 替换成汽车 EPS、无人机或其他复杂系统后某规则仍然成立，它原则上属于 Generic Framework；依赖 IDU、IMA/GPM、ARINC 总线、告警抑制或具体组织流程的内容进入 Domain Profile 或 Concrete Project Practice。
+The Candidate GVS Core owns product-independent semantic contracts and Verification Capability Packages. A Verification Profile specializes domain or verification-type policy; a Product Binding maps those contracts to product/protocol/tool assets and concrete Oracle implementations; Project Configuration selects immutable versions, setup and run controls. Capability Packages remain inside the Core and are not a fifth layer or necessarily software.
+
+The method repository controls Candidate GVS Core definitions and the cross-instance evaluation contract. External instance repositories control Profile/Binding/Configuration implementations and raw evidence. They are read-only evidence/finding providers from this repository's perspective and cannot redefine Core semantics without the [cross-repository change path](docs/08_validation/cross_repository_instance_contract.md).
+
+如果把 DCAS 替换成汽车 EPS、无人机或其他复杂系统后某规则仍然成立，它才可能成为 Candidate GVS Core 研究对象；依赖 IDU、IMA/GPM、ARINC 总线、告警抑制、具体产品接口或项目参数的内容进入 Profile、Binding 或 Configuration。该判断仍需 normative/research rationale 与跨实例评价，不能由单一实例直接晋级。
+
+本分层不建立 executable architecture，也不冻结 API、schema、metamodel、serialization、SysML role 或 versioned object registry。
 
 ## Architecture maturity and controlled openness
 
@@ -88,7 +95,13 @@ Concrete Project Practice
 | `OPEN-CANDIDATE` | Planned standards research can still modify architecture semantics, boundaries or topology; current repository state. |
 | `REVIEWED-PROVISIONAL` | The planned source cohort is substantially studied and synthesized, while controlled instance feedback remains admissible. |
 | `CONTROLLED-BASELINE` | Architecture objects and gates have passed a formal freeze review; later changes require impact analysis and migration. |
-| `VALIDATED-BASELINE` | At least one controlled instance has completed end-to-end validation and implementation feedback has been disposed. |
+| `VALIDATED-BASELINE` | ARINC 615A, UAV FMS and LLM service evaluations plus cross-instance synthesis have been independently reviewed; RQ8 closure is separately justified. |
+
+Promotion on this axis is sequential: normative-source reconciliation and Task 022 can support `OPEN-CANDIDATE → REVIEWED-PROVISIONAL`; a formal architecture freeze, version/migration review and controlled change rules are required for `REVIEWED-PROVISIONAL → CONTROLLED-BASELINE`. Instance execution does not itself promote Architecture maturity. `VALIDATED-BASELINE` and RQ8 closure require all three planned instances and independently reviewed cross-instance synthesis.
+
+### Instance evaluation state
+
+Instance evaluation is a separate, orthogonal state dimension. `INSTANCE-EXERCISED` means only that one immutable method-definition context has undergone a bounded evaluation by one controlled instance and that the resulting findings have been reviewed. It may coexist with `OPEN-CANDIDATE`, `REVIEWED-PROVISIONAL` or `CONTROLLED-BASELINE`; it neither changes Architecture maturity nor establishes cross-domain validation. An instance that has not met those conditions remains `NOT-EXERCISED` for the identified method context.
 
 Every later clause study must record an architecture-impact disposition in `docs/01_normative_foundation/consolidation/architecture_impact_register.md`. Allowed dispositions are `CONFIRM`, `EXTEND`, `MODIFY`, `SPLIT`, `MERGE`, `NO-IMPACT` and `DEFERRED`. A `MODIFY`, `SPLIT` or `MERGE` disposition requires an explicit compatibility/migration note and may not silently rewrite the historical meaning of a stable V-ID.
 

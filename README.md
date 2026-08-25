@@ -1,10 +1,10 @@
 ---
 title: Complex System Verification Assurance Framework
 status: baseline
-version: 0.4
+version: 0.5
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-20
+last_updated: 2026-08-25
 dependencies: []
 ---
 
@@ -31,6 +31,8 @@ MBSE → Automation → Domain Applications
 ```
 
 目标是建立一套标准可追溯、过程可执行、证据可审计、规则可检查、模型可实现、领域可复用的复杂系统 Verification Assurance Framework。
+
+本研究的主要工程成果定位为 [Candidate Generic Verification Suite Core (Candidate GVS Core)](docs/02_verification_framework/generic_verification_suite_core.md)：由可组合的 Verification Capability Packages 交付产品无关语义契约，并通过 Verification Profile、Product Binding 与 Project Configuration 形成完整验证套件。machine-readable/executable platform 仅是可选表达、演示或评价载体，不是必须的软件产品。
 
 ## Research objectives
 
@@ -61,13 +63,13 @@ Repository maturity: Normative-foundation research late stage / architecture OPE
 |---|---|---|
 | `docs/00_overview/` | 研究范围、问题、术语、路线与创新主张/边界 | baseline |
 | `docs/01_normative_foundation/` | 标准研究目标、矩阵与 gap workspace | working |
-| `docs/02_verification_framework/` | 产品无关 Verification Assurance Framework | planned |
+| `docs/02_verification_framework/` | Candidate GVS Core、Capability Packages 与产品无关语义契约 | working |
 | `docs/03_dbse_workflow/` | DBSE working lifecycle | planned |
 | `docs/04_information_model/` | Verification information entities and relations | planned |
 | `docs/05_coverage_and_evidence/` | Coverage、Sufficiency、Evidence 与 Argument | planned |
 | `docs/06_pattern_library/` | 通用 Verification Patterns | planned |
 | `docs/07_mbse/` | 机器可读模型与 MBSE realization | planned |
-| `docs/08_validation/` | 验证实例定位与实例 × 框架元素锻炼矩阵 | working |
+| `docs/08_validation/` | 跨仓库实例契约、临时登记、映射、评价协议与 RQ8 实例治理 | working |
 | `domains/` | 领域 profile 与知识源（DCAS）；与 generic methodology 隔离 | working |
 | `models/`, `data/`, `tools/` | 后续模型、结构化数据与自动化 | planned |
 | `references/` | 检索策略、书目和阅读记录 | working |
@@ -89,10 +91,11 @@ Repository maturity: Normative-foundation research late stage / architecture OPE
 ## Expected outputs
 
 1. Research Repository；
-2. 产品无关的 Verification Methodology；
-3. Model-Based Verification Architecture（machine-readable metamodel）；
-4. 非产品化的 Verification Platform 研究原型；
-5. Academic Paper / Thesis 与 Engineering Handbook / Tutorial。
+2. 由 Verification Capability Packages 构成的 Candidate GVS Core（主要工程研究成果）；
+3. Candidate Model-Based Verification Architecture 与可选 machine-readable representation；
+4. 可选的非产品化 executable/demonstration realization 与评价载体；
+5. Verification Profiles、Product Bindings、Project Configurations 的受控实例化契约；
+6. Academic Paper / Thesis 与 Engineering Handbook / Tutorial。
 
 ## Copyright and license
 

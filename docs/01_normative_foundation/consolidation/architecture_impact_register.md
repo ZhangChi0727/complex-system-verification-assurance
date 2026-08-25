@@ -1,15 +1,16 @@
 ---
 title: Architecture Impact Register
 status: working
-version: 0.3
+version: 0.4
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-21
+last_updated: 2026-08-25
 dependencies:
   - ../standards_baseline.md
   - ../normative_gap_matrix.md
   - ../../00_overview/roadmap.md
   - ../../03_dbse_workflow/README.md
+  - ../../08_validation/cross_repository_instance_contract.md
 ---
 
 # Architecture Impact Register
@@ -90,3 +91,11 @@ Pre-registration creates a common disposition entry point but no architecture co
 - Five-source rows record historical reviewed impact only and do not reopen or rewrite v0.2 conclusions.
 - Candidate rows must remain `DEFERRED` until clause study and independent review support another disposition.
 - Architecture maturity can move from `OPEN-CANDIDATE` to `REVIEWED-PROVISIONAL` only through the roadmap's architecture-synthesis gate.
+
+## Non-normative research-governance insight preregistration
+
+This isolated section is not part of the normative source disposition table. It records a governance question without changing any existing source row, V-element semantics, disposition, status or maturity.
+
+| ID | Source class | Affected scope | V0–V12 semantic impact | Disposition | Independent review | Migration | Non-claim |
+|---|---|---|---|---|---|---|---|
+| `GOV-INSIGHT-GVS-INSTANCE-SEPARATION` | research-position/governance insight; non-normative | repository ownership, RQ8, instance migration and future interfaces | `NOT DETERMINED / none approved by this PR` | `DEFERRED — pending normative synthesis and instance evaluation` | pending | ARINC legacy-baseline compatibility review required | does not enter established clause basis, close a gap, prove novelty or promote architecture maturity |

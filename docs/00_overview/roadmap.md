@@ -1,10 +1,10 @@
 ---
 title: Research Roadmap
 status: baseline
-version: 1.0
+version: 1.1
 baseline: v0.2
 owner: research
-last_updated: 2026-08-21
+last_updated: 2026-08-25
 dependencies:
   - research_scope.md
   - research_questions.md
@@ -93,15 +93,17 @@ This gate does not block Phase 4–7 working research; it controls promotion to 
 
 ## Phase 8 — MBSE Metamodel
 
-在 DBSE workflow 和 information model 足够稳定后研究 SysML、SysML v2、schema、graph representation 与 executable constraints。
+在 DBSE workflow 和 information model 足够稳定后研究 SysML、SysML v2、schema、graph representation 与 executable constraints。 SysML/SysML v2 在 Candidate GVS Core 中的最终角色保持开放；它们可作为论文表达或候选 realization，但不由本阶段预先选定为 canonical interface。
 
 ## Phase 9 — Automation
 
-研究 traceability checking、coverage checking、impact analysis、model validation 与 document generation。不得在信息模型稳定前固化工具规则。本阶段产出为**非产品化的 Verification Platform 研究原型**——方法论与模型化架构的执行和演示载体，不进行产品化开发。
+研究 traceability checking、coverage checking、impact analysis、model validation 与 document generation。不得在信息模型稳定前固化工具规则。可选的非产品化 machine-readable/executable realization 可作为 Candidate GVS Core 的表达、演示或评价载体；Candidate GVS Core 的成立不依赖平台产品化或当前直接可执行。
 
 ## Phase 10 — Cross-Domain Validation
 
-以 **ARINC 615A 协议符合性验证**为 first instance，以无人机飞管系统验证与 LLM 服务可靠性与性能验证为后续实例，按实例 × 框架元素锻炼矩阵（`docs/08_validation/`）评价 completeness、traceability、repeatability、scalability、reusability 和 Evidence quality。DCAS 不作为验证实例。
+以 **ARINC 615A 协议符合性验证**为 first controlled legacy-to-framework instance，以无人机飞管系统验证与 LLM 服务可靠性与性能验证为后续实例，按 [cross-repository contract](../08_validation/cross_repository_instance_contract.md)、temporary mapping、compatibility review 和三次握手治理实例演进，并按实例 × 框架元素锻炼矩阵评价 completeness、traceability、repeatability、scalability、reusability 和 Evidence quality。ARINC 只产生第一实例证据；DCAS 不作为验证实例。
+
+`OPEN-CANDIDATE → REVIEWED-PROVISIONAL` is governed by the normative-source/Task 022 synthesis gate. `REVIEWED-PROVISIONAL → CONTROLLED-BASELINE` requires a separate formal freeze, controlled version/change rules and migration review; Task 022 alone cannot make that transition. Instance evaluation is orthogonal: a bounded single-instance result may set that instance to `INSTANCE-EXERCISED` against an immutable method context while Architecture maturity remains `OPEN-CANDIDATE`, `REVIEWED-PROVISIONAL` or `CONTROLLED-BASELINE`. `VALIDATED-BASELINE` and RQ8 closure require all three planned instances and independently reviewed cross-instance synthesis.
 
 ## Phase gates
 

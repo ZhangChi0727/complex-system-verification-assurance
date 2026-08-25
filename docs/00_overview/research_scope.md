@@ -1,10 +1,10 @@
 ---
 title: Research Scope
 status: baseline
-version: 0.6
+version: 0.7
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-20
+last_updated: 2026-08-25
 dependencies: []
 ---
 
@@ -14,7 +14,17 @@ dependencies: []
 
 建立标准可追溯、过程可执行、证据可审计、规则可检查、模型可实现、领域可复用的复杂系统 Verification Assurance Framework。
 
-最终产出为三层递进：**产品无关的 Verification Methodology → 该方法论的 Model-Based Verification Architecture → 非产品化的 Verification Platform 研究原型**。
+主要工程研究成果定位为 **Candidate Generic Verification Suite Core (Candidate GVS Core)**：把产品无关 Verification Methodology、候选 Model-Based Verification Architecture 及其 evaluation contracts 组织为可版本化、可组合的 Verification Capability Packages。machine-readable/executable platform 是可选表达、演示或评价载体，不是必须的软件产品。
+
+```text
+Complete Verification Suite
+= Candidate Generic Verification Suite Core
++ Verification Profile
++ Product Binding
++ Project Configuration
+```
+
+Capability Package 是 Candidate GVS Core 的模块化交付单元，不是并列第五层，也不必是软件 package。Candidate GVS Core 是主要工程成果的 working research position，不表示 novelty 已建立。
 
 对待现有标准的态度：方法论不得与现有标准相矛盾（"标准说了什么"是构建依据）；对标准未覆盖空白的填补是本研究的创新点（"标准没说什么"是创新空间）。二者均登记于 normative foundation，前者形成约束登记，后者形成 gap / 创新清单。
 
@@ -36,13 +46,13 @@ dependencies: []
 
 框架验证（RQ8）采用多领域实例，覆盖方法论的不同应力面：
 
-- **ARINC 615A 协议符合性验证** — first instance：确定性、规范驱动，检验 Verification Basis/Obligation → Case/Procedure → Oracle/verdict → 平台执行链；
+- **ARINC 615A 协议符合性验证** — first instance：确定性、规范驱动，检验 Core/Profile/Binding/Configuration 隔离以及 design–execution 下半链；
 - **无人机飞管系统验证** — planned：安全驱动 rigor，检验 assurance constraints、typed independence、coverage 与 change impact；
 - **LLM 服务可靠性与性能验证** — planned：概率性、弱 oracle，检验 sufficiency、evidence/argument 与 coverage 定义边界。
 
 实例定位与实例 × 框架元素锻炼矩阵见 `docs/08_validation/`。实例相关标准（如符合性测试方法论）按抽象原则进入 generic layer，不作为单一实例的专属资产。
 
-**方法论与实例受控解耦**：本仓库控制 implementation framework 层级的定义，实例在独立仓库执行且不得直接重定义 framework object。versioned object registry 建立前使用受控临时映射；实例 finding 可通过 Framework Change Proposal、跨实例相关性分析、依据评审与 §28 登记反馈到框架。完整契约见 `innovation_statement.md`。
+**强契约、弱实现耦合**：本仓库控制 Candidate GVS Core 的通用语义、关系、extension-point contract、版本/兼容规则与评价协议；实例仓库控制 Profile、Binding、Configuration、执行工具、具体 Oracle 和原始证据。versioned object registry 建立前使用受控临时映射；实例 finding 只能经 Framework Change Proposal、跨实例相关性分析、依据与独立评审后影响 canonical definition。完整规则见 [Cross-Repository Instance Contract](../08_validation/cross_repository_instance_contract.md)。
 
 ## Out of scope for v0.1
 
@@ -51,9 +61,20 @@ dependencies: []
 - 自行定义适航法规或声称框架已获认证机构认可；
 - 完成标准条款研究、正式 normative gap analysis 或 framework validation；
 - 完成 SysML/MBSE implementation 或开发 automation tools；
-- 将验证平台产品化；平台仅作为方法论与模型化架构的研究原型和执行载体；
+- 将 Candidate GVS Core 等同现成软件库，或要求其当前直接可执行；
+- 将验证平台产品化；machine-readable/executable realization 仅作为可选表达、演示或评价载体；
 - 提交受版权限制的标准全文、内部培训材料或 confidential interfaces。
 
+## Complete-suite ownership boundary
+
+| Layer | Controlled responsibility | Excluded from Candidate GVS Core |
+|---|---|---|
+| Candidate GVS Core | product-independent semantic contracts and Capability Packages | domain/product/project-specific choices |
+| Verification Profile | domain or verification-type specialization | concrete product interface and run configuration |
+| Product Binding | product/protocol/tool/Oracle realization mapping | authority to redefine Core semantics |
+| Project Configuration | selected versions, setup, parameters and project controls | reusable Generic/Profile definition |
+
+ARINC 615A is the first controlled **legacy-to-framework migration instance**. Its active pre-framework baseline is evaluated rather than retrospectively relabelled; one instance cannot close RQ8 or establish generalization rights.
 ## Research abstraction boundary
 
 | Layer | Meaning | Example |

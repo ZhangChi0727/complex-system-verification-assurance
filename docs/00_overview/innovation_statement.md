@@ -1,15 +1,17 @@
 ---
 title: Candidate Contribution Register and Work Boundary
 status: working
-version: 0.3
+version: 0.4
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-21
+last_updated: 2026-08-25
 dependencies:
   - research_scope.md
   - research_questions.md
   - ../01_normative_foundation/normative_gap_matrix.md
   - ../01_normative_foundation/consolidation/five_source_consistency_gap_review.md
+  - ../02_verification_framework/generic_verification_suite_core.md
+  - ../08_validation/cross_repository_instance_contract.md
 ---
 
 # Candidate Contribution Register and Work Boundary
@@ -35,6 +37,11 @@ Tasks 001–021 may return only `SUPPORT`、`QUALIFY`、`FALSIFY` or `NO EVIDENC
 
 跨标准调和、Generic/Profile 分层、条款研究和 gap 登记是必要的 related-work 与治理基础，但不是本研究的主要创新主张。
 
+## Candidate GVS Core engineering-outcome position
+
+The [Candidate GVS Core](../02_verification_framework/generic_verification_suite_core.md) is the working principal engineering outcome: composable Verification Capability Packages plus semantic, extension, version, migration and evaluation contracts. This is an integration target for the controlled candidates below, not a new claim that the package set is novel, validated or executable. Standard evidence and instance evidence may only `SUPPORT`、`QUALIFY` or `FALSIFY` relevant candidates under their existing gates.
+
+The cross-repository boundary uses **strong semantic contract / weak implementation coupling**. Canonical Core definitions remain here; external repositories own Profile, Binding, Configuration, implementation and raw evidence. ARINC evidence cannot directly promote an object, close RQ8 or establish Generic rights.
 ## Controlled candidate contributions
 
 | ID | Candidate contribution | claim_type | novelty_status | validation_status | Falsification condition | Source / gap anchor | Non-claim |
@@ -50,14 +57,16 @@ Tasks 001–021 may return only `SUPPORT`、`QUALIFY`、`FALSIFY` or `NO EVIDENC
 | INN-M3 | population + criterion + evidence + disposition 的可计算 coverage 模型 | mechanism | hypothesis | conceptual | 既有 coverage metamodel 等价，或跨实例无法保持可比且可扩展 | ISO-G02B; 29119/item-profile candidates | 不主张任何 universal percentage 或 completion rule |
 | INN-M4 | 将 expected-result 正确性依据建模为受控 Oracle 候选对象 | mechanism | hypothesis | planned | ISO/IEC 9646、testing literature 或其他来源已有等价对象与控制语义，或实例无独立对象需求 | ISO-G04; ISO/IEC 9646 / 29119 search | 不把 expected result 自动重标为 Oracle |
 | INN-M5 | 模型/工具输出承担 Evidence role 的通用可采性条件 | mechanism | hypothesis | planned | MBSE/V&V 文献已有等价通用规则，或跨领域评价失败 | ISO-G08; 24641 / assurance literature | 不声称工具输出天然是 Evidence |
-| INN-I1 | 机器可读 verification metamodel 与非产品化研究原型 | implementation | hypothesis | planned | 既有开源/研究平台提供等价模型和评价能力，或原型无法支持审计查询 | Phase 8/9 | 不把工程实现本身自动等同学术创新 |
+| INN-I1 | Candidate GVS Core 的可选 machine-readable metamodel / executable evaluation realization | implementation | hypothesis | planned | 既有开源/研究平台提供等价模型和评价能力，或原型无法支持审计查询 | Phase 8/9 | 不把工程实现本身自动等同学术创新 |
 | INN-I2 | conformance-testing 与 lifecycle-assurance 传统之间的受控映射模型 | implementation | not established | planned | ISO/IEC 9646、29119、15026 或既有研究已经给出等价统一模型 | ISO-G04/G07; source search pending | 新颖性未建立；不预设 PICS/test purpose/verdict 映射为原创 |
 
 ## Methodology–instance decoupling contract
 
-1. 本仓库控制通用方法论、候选 metamodel、平台参考架构、extension points 与评价协议；实例执行在独立仓库完成；
-2. `VOB-`、`VSR-`、`COV-` 等目前只是 **candidate prefixes**。在 versioned object registry 建立前，外部仓库使用受控临时映射，不得声称稳定 ID；
-3. 稳定引用的最低登记字段为 `ObjectID`、`ObjectVersion`、`DefinitionVersion`、`IntroducedIn`、`SupersededBy`、`Status`、`CanonicalLocator`、`CompatibilityRule`；
-4. 实例不得直接重定义框架对象，但允许受控反馈：`Instance finding → Framework Change Proposal → cross-instance relevance assessment → normative basis / research rationale → review → §28 registration → framework update`；
-5. 实例证据按评价协议回流；在变更获批前，它只支持或反驳候选主张，不修改 canonical definition；
-6. 任何 publication 必须引用本登记的当时版本，并区分 hypothesis、candidate、validated contribution 与 non-claim。
+1. 本仓库控制 Candidate GVS Core 的通用对象职责、关系、extension-point contract、跨实例评价协议及未来兼容规则；实例仓库控制 Verification Profile、Product Binding、Project Configuration、执行工具、具体 Oracle 实现和原始证据；
+2. 强契约首先固定语义、输入/输出、关系、不变量、版本身份、兼容/迁移规则和失败语义，不冻结语言、API、serialization、schema、metamodel 或工具实现；
+3. `VOB-`、`VSR-`、`COV-` 等目前只是 candidate prefixes。versioned object registry 建立前使用受控临时映射；稳定引用最低字段保持 `ObjectID`、`ObjectVersion`、`DefinitionVersion`、`IntroducedIn`、`SupersededBy`、`Status`、`CanonicalLocator`、`CompatibilityRule`；
+4. 实例 finding 反馈链为 `Instance finding → Framework Change Proposal → cross-instance relevance assessment → normative basis / research rationale → review → architecture/object registration when eligible → framework update → instance migration assessment`；
+5. 实例证据只能 `SUPPORT`、`QUALIFY` 或 `FALSIFY` 候选主张。在变更获批前，它不修改 canonical definition；单一 ARINC 实例不能关闭 RQ8；
+6. 通用教程权威属于本方法仓库；实例仓库只能维护实例教程或标明非权威的派生视图；
+7. 受控契约、[temporary instance registry](../08_validation/instance_registry.md)、[ARINC mapping register](../08_validation/arinc_615a_object_mapping_register.md) 与 [evaluation protocol](../08_validation/arinc_615a_instance_evaluation_protocol.md) 是当前治理入口；
+8. 任何 publication 必须引用当时不可变版本，并区分 hypothesis、candidate、validated contribution 与 non-claim。

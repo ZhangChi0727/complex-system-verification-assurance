@@ -1,10 +1,10 @@
 ---
 title: Research Questions
 status: baseline
-version: 0.4
+version: 0.5
 baseline: v0.2
 owner: research
-last_updated: 2026-08-21
+last_updated: 2026-08-25
 dependencies:
   - research_scope.md
   - ../01_normative_foundation/research_tasks/README.md
@@ -57,10 +57,14 @@ Verification Evidence 如何通过可审查的 Assurance Argument 支持 Complia
 
 DBSE Verification Workflow 如何形成机器可解释、可查询和可检查的 MBSE information model？
 
+Machine-readable/executable realization 是 Candidate GVS Core 的候选表达和评价载体；本研究问题不把 Candidate GVS Core 等同于软件产品。
+
 **Status:** Open
 
 ## RQ8 — Framework validation
 
 如何通过多领域实例（ARINC 615A 协议符合性验证为 first instance，无人机飞管系统验证与 LLM 服务可靠性与性能验证为后续实例）验证 framework 的 completeness、traceability、repeatability、scalability 与 reusability？
+
+ARINC first-instance evaluation 由 [ARINC 615A Instance Evaluation Protocol](../08_validation/arinc_615a_instance_evaluation_protocol.md) 控制，只形成部分实例证据；它不能单独关闭 RQ8。
 
 **Status:** Open
