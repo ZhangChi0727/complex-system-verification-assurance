@@ -377,6 +377,11 @@ def main() -> int:
     except subprocess.CalledProcessError:
         errors.append("research-baseline/v0.2 tag unavailable; checkout must include tags")
 
+    if "| `INSTANCE-EXERCISED` |" in architecture:
+        errors.append("INSTANCE-EXERCISED must not be an Architecture maturity table row")
+    if "### Instance evaluation state" not in architecture or "orthogonal state dimension" not in architecture:
+        errors.append("orthogonal instance-evaluation state contract is missing")
+
     if errors:
         print("Repository integrity check: FAIL")
         for error in errors:

@@ -103,7 +103,7 @@ This gate does not block Phase 4–7 working research; it controls promotion to 
 
 以 **ARINC 615A 协议符合性验证**为 first controlled legacy-to-framework instance，以无人机飞管系统验证与 LLM 服务可靠性与性能验证为后续实例，按 [cross-repository contract](../08_validation/cross_repository_instance_contract.md)、temporary mapping、compatibility review 和三次握手治理实例演进，并按实例 × 框架元素锻炼矩阵评价 completeness、traceability、repeatability、scalability、reusability 和 Evidence quality。ARINC 只产生第一实例证据；DCAS 不作为验证实例。
 
-`OPEN-CANDIDATE → REVIEWED-PROVISIONAL` is governed by the normative-source/Task 022 synthesis gate. `REVIEWED-PROVISIONAL → CONTROLLED-BASELINE` requires a separate formal freeze, controlled version/change rules and migration review; Task 022 alone cannot make that transition. A single controlled instance can produce only bounded `INSTANCE-EXERCISED` evidence. `VALIDATED-BASELINE` and RQ8 closure require all three planned instances and independently reviewed cross-instance synthesis.
+`OPEN-CANDIDATE → REVIEWED-PROVISIONAL` is governed by the normative-source/Task 022 synthesis gate. `REVIEWED-PROVISIONAL → CONTROLLED-BASELINE` requires a separate formal freeze, controlled version/change rules and migration review; Task 022 alone cannot make that transition. Instance evaluation is orthogonal: a bounded single-instance result may set that instance to `INSTANCE-EXERCISED` against an immutable method context while Architecture maturity remains `OPEN-CANDIDATE`, `REVIEWED-PROVISIONAL` or `CONTROLLED-BASELINE`. `VALIDATED-BASELINE` and RQ8 closure require all three planned instances and independently reviewed cross-instance synthesis.
 
 ## Phase gates
 

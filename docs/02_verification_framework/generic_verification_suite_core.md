@@ -1,7 +1,7 @@
 ---
 title: Candidate Generic Verification Suite Core Working Definition
 status: working
-version: 0.2
+version: 0.3
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-25
@@ -91,7 +91,7 @@ Current maturity remains `OPEN-CANDIDATE`. Promotion requires, at minimum:
 
 1. **`OPEN-CANDIDATE → REVIEWED-PROVISIONAL`:** completion or reviewed deferral of the planned normative-source cohort; Task 022 legacy/current evidence reconciliation and cross-standard synthesis; reviewed Architecture Impact dispositions; and independent cross-source architecture review.
 2. **`REVIEWED-PROVISIONAL → CONTROLLED-BASELINE`:** an explicit architecture freeze, version/migration review, controlled identity and change rules, and disposition of residual conflicts. Normative synthesis alone cannot perform this promotion.
-3. **Single-instance exercise:** an immutable method definition, reviewed binding and bounded protocol execution may yield `INSTANCE-EXERCISED` evidence for ARINC. It does not advance the general framework to `VALIDATED-BASELINE` or close RQ8.
+3. **Orthogonal instance-evaluation state:** for an identified immutable method context, a reviewed binding and bounded protocol execution may move that instance from `NOT-EXERCISED` to `INSTANCE-EXERCISED`. This is not an Architecture maturity transition and can coexist with `OPEN-CANDIDATE`, `REVIEWED-PROVISIONAL` or `CONTROLLED-BASELINE`.
 4. **`VALIDATED-BASELINE` / RQ8 closure:** controlled ARINC 615A, UAV FMS and LLM service evaluations plus independently reviewed cross-instance synthesis; limitations and counterevidence remain visible.
 5. **Separate realization gates:** executable schema, versioned object registry and automation contracts require their own prerequisites and freeze reviews.
 

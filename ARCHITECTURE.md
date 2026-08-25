@@ -95,10 +95,13 @@ The method repository controls Candidate GVS Core definitions and the cross-inst
 | `OPEN-CANDIDATE` | Planned standards research can still modify architecture semantics, boundaries or topology; current repository state. |
 | `REVIEWED-PROVISIONAL` | The planned source cohort is substantially studied and synthesized, while controlled instance feedback remains admissible. |
 | `CONTROLLED-BASELINE` | Architecture objects and gates have passed a formal freeze review; later changes require impact analysis and migration. |
-| `INSTANCE-EXERCISED` | One controlled instance has produced bounded evaluation evidence against an immutable method definition and its findings have been reviewed; this does not validate the general framework. |
 | `VALIDATED-BASELINE` | ARINC 615A, UAV FMS and LLM service evaluations plus cross-instance synthesis have been independently reviewed; RQ8 closure is separately justified. |
 
-Promotion is sequential: normative-source reconciliation and Task 022 can support `OPEN-CANDIDATE → REVIEWED-PROVISIONAL`; a formal architecture freeze, version/migration review and controlled change rules are required for `REVIEWED-PROVISIONAL → CONTROLLED-BASELINE`. A single instance can produce only `INSTANCE-EXERCISED` evidence. It cannot produce `VALIDATED-BASELINE` or close RQ8.
+Promotion on this axis is sequential: normative-source reconciliation and Task 022 can support `OPEN-CANDIDATE → REVIEWED-PROVISIONAL`; a formal architecture freeze, version/migration review and controlled change rules are required for `REVIEWED-PROVISIONAL → CONTROLLED-BASELINE`. Instance execution does not itself promote Architecture maturity. `VALIDATED-BASELINE` and RQ8 closure require all three planned instances and independently reviewed cross-instance synthesis.
+
+### Instance evaluation state
+
+Instance evaluation is a separate, orthogonal state dimension. `INSTANCE-EXERCISED` means only that one immutable method-definition context has undergone a bounded evaluation by one controlled instance and that the resulting findings have been reviewed. It may coexist with `OPEN-CANDIDATE`, `REVIEWED-PROVISIONAL` or `CONTROLLED-BASELINE`; it neither changes Architecture maturity nor establishes cross-domain validation. An instance that has not met those conditions remains `NOT-EXERCISED` for the identified method context.
 
 Every later clause study must record an architecture-impact disposition in `docs/01_normative_foundation/consolidation/architecture_impact_register.md`. Allowed dispositions are `CONFIRM`, `EXTEND`, `MODIFY`, `SPLIT`, `MERGE`, `NO-IMPACT` and `DEFERRED`. A `MODIFY`, `SPLIT` or `MERGE` disposition requires an explicit compatibility/migration note and may not silently rewrite the historical meaning of a stable V-ID.
 
