@@ -1,7 +1,7 @@
 ---
 title: Current Progress
 status: working
-version: 0.19
+version: 0.20
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-25
@@ -21,7 +21,7 @@ dependencies:
 - **Repository topology:** `main` is the sole persistent remote branch; review branches are temporary governance artifacts and are deleted after merge
 - **Repository maturity:** `Normative-foundation research late stage / architecture OPEN-CANDIDATE`
 - **Latest synchronized main:** `196cfc2426a841a4adb9c9159660253896b0257c` (PR #13 ordinary merge commit)
-- **Current review branch / external review stop:** `codex/gvs-core-cross-repository-contract`; PR #14 remains Draft. Correction commit `77670779adb87c984afa8a68b1e883faf5f788d1` was pushed and lightweight rereview verified F-01–F-04/F-06 closed while identifying RR-F01 under F-05. The orthogonal instance-state correction is awaiting its limited rereview.
+- **Current review branch / merge gate:** `codex/gvs-core-cross-repository-contract`; final limited rereview at `b9bf24c85057f793c2e20b57e38ddcfc72c000dd` verified F-01–F-06 and RR-F01 closed with disposition `APPROVED FOR MERGE`. PR #14 may transition to Ready and merge by ordinary merge commit.
 
 ## Established baseline
 

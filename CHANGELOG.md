@@ -50,9 +50,9 @@ v0.1 establishes research infrastructure and does not claim completion or normat
 
 ## Unreleased
 
-- Recorded PR #14 external `REQUEST CHANGES` at reviewed head `78fe9f222d40758266275547d95e86ed866813b6` and corrected F-01–F-06: separated ARINC release/content and post-release control-state commits; reserved the final method merge SHA as the future definition identity; made mappings directional with one primary relation; aligned missing-identity failure semantics; split architecture promotion/freeze/instance-validation gates; and added bounded scalability plus interface-contract conclusion controls. Lightweight correction-diff rereview remains pending and the PR remains Draft.
+- Recorded PR #14 initial `REQUEST CHANGES` at reviewed head `78fe9f222d40758266275547d95e86ed866813b6` and corrected F-01–F-06: separated ARINC release/content and post-release control-state commits; reserved the final method merge SHA as the future definition identity; made mappings directional with one primary relation; aligned missing-identity failure semantics; split architecture promotion/freeze/instance-validation gates; and added bounded scalability plus interface-contract conclusion controls. The first lightweight rereview verified F-01–F-04/F-06 closed and isolated RR-F01 under F-05.
 
-- RR-F01 correction separates `INSTANCE-EXERCISED` from the Architecture maturity axis: it is an orthogonal per-instance evaluation state that can coexist with `OPEN-CANDIDATE`, `REVIEWED-PROVISIONAL` or `CONTROLLED-BASELINE` and never promotes architecture by itself. F-01–F-04/F-06 are externally verified closed; F-05 awaits only the limited RR-F01 rereview, so PR #14 remains Draft.
+- RR-F01 correction separates `INSTANCE-EXERCISED` from the Architecture maturity axis: it is an orthogonal per-instance evaluation state that can coexist with `OPEN-CANDIDATE`, `REVIEWED-PROVISIONAL` or `CONTROLLED-BASELINE` and never promotes architecture by itself. Final limited rereview at `b9bf24c85057f793c2e20b57e38ddcfc72c000dd` verified RR-F01 and F-05 closed; PR #14 disposition is `APPROVED FOR MERGE`.
 
 ### Candidate GVS Core and cross-repository governance
 
