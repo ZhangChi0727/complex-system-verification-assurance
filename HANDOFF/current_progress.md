@@ -1,7 +1,7 @@
 ---
 title: Current Progress
 status: working
-version: 0.17
+version: 0.18
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-25
@@ -21,7 +21,7 @@ dependencies:
 - **Repository topology:** `main` is the sole persistent remote branch; review branches are temporary governance artifacts and are deleted after merge
 - **Repository maturity:** `Normative-foundation research late stage / architecture OPEN-CANDIDATE`
 - **Latest synchronized main:** `196cfc2426a841a4adb9c9159660253896b0257c` (PR #13 ordinary merge commit)
-- **Current review branch / external review stop:** `codex/gvs-core-cross-repository-contract`; PR #14 defines the Candidate GVS Core working position and temporary cross-repository instance governance, then stops at Draft external review.
+- **Current review branch / external review stop:** `codex/gvs-core-cross-repository-contract`; PR #14 remains Draft after external review at `78fe9f222d40758266275547d95e86ed866813b6` returned `REQUEST CHANGES`. F-01–F-06 are corrected locally by an ordinary correction commit; a correction-diff lightweight rereview is still required.
 
 ## Established baseline
 
@@ -41,7 +41,7 @@ v0.2 是由 ISO 15288、ISO 24748-1/2、ARP4754B、ARP4761A 形成的 five-sourc
 
 权威工作定义见 [Candidate GVS Core Working Definition](../docs/02_verification_framework/generic_verification_suite_core.md)；当前只形成 Candidate GVS Core、Capability Packages 和 Core/Profile/Binding/Configuration 的 working research position，成熟度仍为 `OPEN-CANDIDATE`。
 
-ARINC repository `https://github.com/ZhangChi0727/arinc-615a-conformance` 的 active external identity 为 commit `0ce96f701159fd4156d5e5e9889360f53977a61b` / baseline `RB-2026-001-v4.2.1`，分类为 `PRE-FRAMEWORK LEGACY INSTANCE BASELINE`，compatibility 为 `NOT-DETERMINED`。Draft PR #9 / `RB-2026-001-v4.3` 仅是 `UNMERGED MIGRATION CANDIDATE`，不属于 active baseline，也不由本仓库修改或批准。事实定义以 [Framework Validation Workspace](../docs/08_validation/README.md) 链接的 contract/registry/mapping/protocol 为准。
+ARINC repository `https://github.com/ZhangChi0727/arinc-615a-conformance` 的 active baseline content identity 为 release commit `3299e6dae83424862f75a4c1d09b91b80d9d8b00` / tag `RB-2026-001-v4.2.1`；`0ce96f701159fd4156d5e5e9889360f53977a61b` 仅为 post-release repository control-state snapshot。该基线分类为 `PRE-FRAMEWORK LEGACY INSTANCE BASELINE`，compatibility 为 `NOT-DETERMINED`。方法提交 `196cfc…` 只是 PR #14 authoring base；Candidate method definition identity 在合并前为 `NOT YET ESTABLISHED`，后续 ARINC migration 必须绑定 PR #14 最终 merge SHA。Draft PR #9 / `RB-2026-001-v4.3` 仅是 `UNMERGED MIGRATION CANDIDATE`，不属于 active baseline，也不由本仓库修改或批准。事实定义以 [Framework Validation Workspace](../docs/08_validation/README.md) 链接的 contract/registry/mapping/protocol 为准。
 
 ## Source state
 

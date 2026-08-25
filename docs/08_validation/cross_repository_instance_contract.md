@@ -1,7 +1,7 @@
 ---
 title: Cross-Repository Instance Contract
 status: working
-version: 0.1
+version: 0.2
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-25
@@ -21,10 +21,12 @@ This document is the working research-position contract between the method repos
 
 Current controlled external snapshot:
 
-- method repository base: `196cfc2426a841a4adb9c9159660253896b0257c`;
+- PR #14 authoring base: `196cfc2426a841a4adb9c9159660253896b0257c`; this commit predates this contract and is not a Candidate GVS Core definition identity;
+- Candidate method definition identity: `NOT YET ESTABLISHED — PENDING PR #14 MERGE`; a later instance migration shall bind the final PR #14 merge SHA, not this authoring base or a mutable PR head;
 - ARINC repository: <https://github.com/ZhangChi0727/arinc-615a-conformance>;
-- active external commit: `0ce96f701159fd4156d5e5e9889360f53977a61b`;
-- active external baseline: `RB-2026-001-v4.2.1`;
+- external active baseline release commit: `3299e6dae83424862f75a4c1d09b91b80d9d8b00`;
+- external active baseline tag/ID: `RB-2026-001-v4.2.1`;
+- repository control-state snapshot: `0ce96f701159fd4156d5e5e9889360f53977a61b`, a post-release recording commit and not the baseline content commit;
 - origin: `PRE-FRAMEWORK LEGACY INSTANCE BASELINE`;
 - compatibility: `NOT-DETERMINED`;
 - Draft PR #9 at `53a98447bcfa862f082ce443d69115067d3ff2f1`: `UNMERGED MIGRATION CANDIDATE`, no active semantic authority.
@@ -94,9 +96,17 @@ Allowed candidate relations are:
 
 A relation never implies equivalence unless a later reviewed contract explicitly says so.
 
+Every mapping is directional and shall be read as:
+
+```text
+ARINC object --primary relation--> Framework candidate/role
+```
+
+Each row contains exactly one primary relation. Additional resemblance, uncertainty or supporting semantics belong in the rationale, not in a compound relation cell. In this direction, `instantiates` means that the concrete ARINC object is an instance of a Framework candidate class/role whose object identity is sufficiently established; `specializes` means that an ARINC type narrows a more general Framework type; `indexes` means that an ARINC object is a navigation/index artefact pointing toward Framework-relevant material without becoming that material; and `candidate-correspondence` records a non-equivalent possible correspondence whose object or role semantics remain to be reviewed. In particular, a conceptual union or typed-relation role such as `VerificationBasisElement` is not presumed to be an instantiated class.
+
 ## Binding record and failure semantics
 
-A temporary binding record shall include method commit/definition context, instance active commit/baseline, Profile version, Binding version, Configuration identity, mapping-register version, evaluation-protocol version, review status and migration impact. Missing identity or unavailable evidence yields `NOT-DETERMINED`; semantic mismatch yields `CONFLICT`; partial scope yields `PARTIAL`. No consumer may convert these states into compatibility by default.
+A temporary binding record shall include method commit/definition context, instance baseline release commit/tag, repository control-state snapshot where relevant, Profile version, Binding version, Configuration identity, mapping-register version, evaluation-protocol version, review status and migration impact. For PR #14 the method definition identity remains `NOT YET ESTABLISHED` until merge; no external binding may cite the authoring base or changing PR head as the stable definition context. Missing identity or unavailable evidence yields `NOT-DETERMINED`; `CONFLICT` is reserved for a demonstrated semantic mismatch between identified objects; partial scope yields `PARTIAL`. No consumer may convert these states into compatibility by default.
 
 ## Finding classification
 
@@ -157,7 +167,7 @@ Strong semantic contract and weak implementation coupling allow implementations 
 
 ## Paired Draft PR and three-way handshake
 
-1. **Method-contract handshake:** a method-repository Draft PR defines/reviews the Candidate GVS Core context, temporary mapping rules and evaluation protocol, then merges to an immutable method commit.
+1. **Method-contract handshake:** a method-repository Draft PR defines/reviews the Candidate GVS Core context, temporary mapping rules and evaluation protocol, then merges to an immutable method commit. Only that final merge SHA establishes the method definition identity for a later ARINC migration; the PR authoring base and review heads are provenance, not stable interface versions.
 2. **Instance-migration handshake:** a separate instance-repository Draft PR binds to that immutable method commit, declares Profile/Binding/Configuration versions, applies migration mappings and reports protocol findings. It does not modify the method repository.
 3. **Compatibility-disposition handshake:** a later method-repository review verifies both immutable heads, mapping completeness and evidence-return records, then records `REVIEWED-COMPATIBLE`, `REVIEWED-COMPATIBLE-WITH-QUALIFICATION` or `REVIEWED-INCOMPATIBLE`. Instance migration is assessed again against that disposition.
 

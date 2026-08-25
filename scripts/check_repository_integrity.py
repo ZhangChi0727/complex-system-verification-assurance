@@ -17,7 +17,9 @@ ROOT = Path(__file__).resolve().parents[1]
 REQUIRED_FRONTMATTER = {
     "title", "status", "version", "baseline", "owner", "last_updated", "dependencies"
 }
-ARINC_ACTIVE_COMMIT = "0ce96f701159fd4156d5e5e9889360f53977a61b"
+ARINC_BASELINE_RELEASE_COMMIT = "3299e6dae83424862f75a4c1d09b91b80d9d8b00"
+ARINC_CONTROL_STATE_COMMIT = "0ce96f701159fd4156d5e5e9889360f53977a61b"
+METHOD_AUTHORING_BASE = "196cfc2426a841a4adb9c9159660253896b0257c"
 ARINC_ACTIVE_BASELINE = "RB-2026-001-v4.2.1"
 ARINC_PR9_HEAD = "53a98447bcfa862f082ce443d69115067d3ff2f1"
 V02_TAG_COMMIT = "357ad14ffc4e59abd071cb794912eb949a6ae6cf"
@@ -26,6 +28,7 @@ REQUIRED_DOCUMENTS = [
     "docs/02_verification_framework/generic_verification_suite_core.md",
     "docs/08_validation/cross_repository_instance_contract.md",
     "docs/08_validation/instance_registry.md",
+    "docs/08_validation/pr_14_external_review_disposition.md",
     "docs/08_validation/arinc_615a_object_mapping_register.md",
     "docs/08_validation/arinc_615a_instance_evaluation_protocol.md",
     "scripts/check_repository_integrity.py",
@@ -201,8 +204,11 @@ def main() -> int:
 
     expected_registry = {
         "Temporary mapping key": "`TMP-ARINC615A-01`",
-        "External active commit": f"`{ARINC_ACTIVE_COMMIT}`",
-        "External active baseline ID": f"`{ARINC_ACTIVE_BASELINE}`",
+        "External active baseline release commit": f"`{ARINC_BASELINE_RELEASE_COMMIT}`",
+        "External active baseline tag/ID": f"`{ARINC_ACTIVE_BASELINE}`",
+        "Repository control-state snapshot": f"`{ARINC_CONTROL_STATE_COMMIT}` — post-release recording commit; not the baseline content commit",
+        "PR #14 authoring base": f"`{METHOD_AUTHORING_BASE}` — authoring provenance only; predates the Candidate GVS Core contract",
+        "Candidate method definition identity": "`NOT YET ESTABLISHED — PENDING PR #14 MERGE`",
         "Origin classification": "`PRE-FRAMEWORK LEGACY INSTANCE BASELINE`",
         "Candidate GVS Core binding status": "`NOT YET ESTABLISHED`",
         "Compatibility status": "`NOT-DETERMINED`",
@@ -211,10 +217,10 @@ def main() -> int:
         if registry_rows.get(field) != expected:
             errors.append(f"instance registry: {field} must equal {expected}")
 
-    active_commit = registry_rows.get("External active commit", "").strip("`")
-    if not COMMIT_RE.fullmatch(active_commit):
-        errors.append("instance registry: active commit is not 40 lowercase hexadecimal")
-    for field in ("External active commit", "External active baseline ID"):
+    release_commit = registry_rows.get("External active baseline release commit", "").strip("`")
+    if not COMMIT_RE.fullmatch(release_commit):
+        errors.append("instance registry: baseline release commit is not 40 lowercase hexadecimal")
+    for field in ("External active baseline release commit", "External active baseline tag/ID"):
         value = registry_rows.get(field, "").lower()
         if any(token in value for token in ("main", "latest", "file://", "c:/", "e:/", "c:\\", "e:\\")):
             errors.append(f"instance registry: mutable/local token in {field}")
@@ -259,9 +265,9 @@ def main() -> int:
         if len(cells) != 9 or cells[0] in {"Framework candidate/role", "---"}:
             continue
         seen_pairs.add((cells[0], cells[1]))
-        relations = {part.strip().strip("`") for part in cells[3].split(";")}
-        if not relations <= allowed_relations:
-            errors.append(f"mapping row {cells[0]}/{cells[1]}: invalid relation {sorted(relations)}")
+        relation = cells[3].strip().strip("`")
+        if ";" in cells[3] or relation not in allowed_relations:
+            errors.append(f"mapping row {cells[0]}/{cells[1]}: relation must be one allowed primary value")
         status = cells[4].strip("`")
         if status not in allowed_statuses:
             errors.append(f"mapping row {cells[0]}/{cells[1]}: invalid current status {status}")
@@ -270,6 +276,29 @@ def main() -> int:
                 errors.append(f"mapping row {cells[0]}/{cells[1]}: missing {field_name}")
     for pair in sorted(required_pairs - seen_pairs):
         errors.append(f"mapping register: missing required row {pair}")
+
+    expected_row_semantics = {
+        ("VerificationBasisElement", "applicable CRS item"): ("candidate-correspondence", "CANDIDATE"),
+        ("VerificationObligation", "current ARINC requirement-obligation aspect"): ("no-direct-correspondence", "NOT-DETERMINED"),
+        ("Claim", "PR #9 CEI claim entry candidate"): ("indexes", "NOT-DETERMINED"),
+        ("Configuration", "IUT/setup/procedure identity"): ("instantiates", "CANDIDATE"),
+    }
+    for line in mapping.splitlines():
+        if not line.startswith("|"):
+            continue
+        cells = table_cells(line)
+        if len(cells) != 9:
+            continue
+        key = (cells[0], cells[1])
+        if key in expected_row_semantics:
+            expected_relation, expected_status = expected_row_semantics[key]
+            if cells[3].strip("`") != expected_relation or cells[4].strip("`") != expected_status:
+                errors.append(f"mapping row {key}: required relation/status semantics changed")
+    if ARINC_BASELINE_RELEASE_COMMIT not in mapping or ARINC_CONTROL_STATE_COMMIT not in mapping:
+        errors.append("mapping register: release/control-state identities are not separated")
+    if "ARINC object --primary relation--> Framework candidate/role" not in mapping:
+        errors.append("mapping register: directional relation contract is missing")
+
 
     combined = "\n".join(path.read_text(encoding="utf-8") for path in CONTROLLED_FILES if path.exists())
     forbidden = {
@@ -285,10 +314,17 @@ def main() -> int:
     for line in combined.splitlines():
         if ARINC_PR9_HEAD in line and "UNMERGED" not in line.upper():
             errors.append("PR #9 head appears outside an unmerged-candidate context")
-        if "active external commit" in line.lower():
-            hashes = re.findall(r"[0-9a-f]{40}", line)
-            if hashes and any(value != ARINC_ACTIVE_COMMIT for value in hashes):
-                errors.append("non-controlled ARINC active commit found")
+        hashes = re.findall(r"[0-9a-f]{40}", line)
+        if "baseline release commit" in line.lower() and hashes and ARINC_BASELINE_RELEASE_COMMIT not in hashes:
+            errors.append("non-controlled ARINC baseline release commit found")
+        if "control-state commit `" in line.lower() and hashes and ARINC_CONTROL_STATE_COMMIT not in hashes:
+            errors.append("non-controlled ARINC repository control-state commit found")
+    protocol = (ROOT / "docs/08_validation/arinc_615a_instance_evaluation_protocol.md").read_text(encoding="utf-8")
+    if "| scalability |" not in protocol or "tested ranges only" not in protocol:
+        errors.append("evaluation protocol: bounded scalability dimension is missing")
+    if "specified-binding contract checks satisfied/qualified/not satisfied" not in protocol:
+        errors.append("evaluation protocol: interface conclusion exceeds contract-check scope")
+
 
     tracked = git("ls-files").splitlines()
     prohibited_suffixes = {".pdf", ".patch", ".tmp", ".bak", ".orig", ".swp"}
@@ -351,7 +387,7 @@ def main() -> int:
     print(f"- controlled Markdown files: {len(CONTROLLED_FILES)}")
     print(f"- resolved local links: {checked_links}")
     print(f"- Markdown tables checked: {checked_tables}")
-    print(f"- ARINC active commit: {ARINC_ACTIVE_COMMIT}")
+    print(f"- ARINC baseline release commit: {ARINC_BASELINE_RELEASE_COMMIT}")
     print(f"- ARINC compatibility: NOT-DETERMINED")
     print("- required mapping rows: 18")
     print("- framework semantic automation: not performed")

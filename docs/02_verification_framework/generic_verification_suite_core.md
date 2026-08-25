@@ -1,7 +1,7 @@
 ---
 title: Candidate Generic Verification Suite Core Working Definition
 status: working
-version: 0.1
+version: 0.2
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-25
@@ -89,12 +89,11 @@ The Candidate GVS Core:
 
 Current maturity remains `OPEN-CANDIDATE`. Promotion requires, at minimum:
 
-1. completion or reviewed deferral of the planned normative-source cohort;
-2. Task 022 legacy/current evidence reconciliation and cross-standard synthesis;
-3. reviewed Architecture Impact dispositions and architecture synthesis;
-4. independent content, governance and migration review;
-5. controlled results from ARINC 615A, UAV FMS and LLM service instances, with single-instance evidence insufficient for generalization;
-6. separate gates before executable schema, versioned object registry or automation contracts are frozen.
+1. **`OPEN-CANDIDATE → REVIEWED-PROVISIONAL`:** completion or reviewed deferral of the planned normative-source cohort; Task 022 legacy/current evidence reconciliation and cross-standard synthesis; reviewed Architecture Impact dispositions; and independent cross-source architecture review.
+2. **`REVIEWED-PROVISIONAL → CONTROLLED-BASELINE`:** an explicit architecture freeze, version/migration review, controlled identity and change rules, and disposition of residual conflicts. Normative synthesis alone cannot perform this promotion.
+3. **Single-instance exercise:** an immutable method definition, reviewed binding and bounded protocol execution may yield `INSTANCE-EXERCISED` evidence for ARINC. It does not advance the general framework to `VALIDATED-BASELINE` or close RQ8.
+4. **`VALIDATED-BASELINE` / RQ8 closure:** controlled ARINC 615A, UAV FMS and LLM service evaluations plus independently reviewed cross-instance synthesis; limitations and counterevidence remain visible.
+5. **Separate realization gates:** executable schema, versioned object registry and automation contracts require their own prerequisites and freeze reviews.
 
 The historical `research-baseline/v0.2` checkpoint and current V0–V12 identifiers are preserved. This working position neither changes their semantics nor advances architecture maturity.
 

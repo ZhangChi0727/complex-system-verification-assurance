@@ -1,7 +1,7 @@
 ---
 title: Framework Validation Workspace
 status: working
-version: 0.4
+version: 0.5
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-25
@@ -28,6 +28,7 @@ dependencies:
 - [Temporary Controlled Instance Register](instance_registry.md)
 - [ARINC 615A Temporary Object Mapping Register](arinc_615a_object_mapping_register.md)
 - [ARINC 615A Instance Evaluation Protocol](arinc_615a_instance_evaluation_protocol.md)
+- [PR #14 external review disposition](pr_14_external_review_disposition.md)
 
 ## Validation instances
 
@@ -37,7 +38,9 @@ dependencies:
 | UAV flight-management system verification | safety-driven system verification | Planned | assurance constraints, typed independence, coverage and change impact |
 | LLM service reliability/performance verification | probabilistic, weak-Oracle service verification | Planned | sufficiency, evidence/argument and coverage boundaries |
 
-ARINC active external identity is repository <https://github.com/ZhangChi0727/arinc-615a-conformance>, commit `0ce96f701159fd4156d5e5e9889360f53977a61b`, baseline `RB-2026-001-v4.2.1`. It is a `PRE-FRAMEWORK LEGACY INSTANCE BASELINE`; Candidate GVS Core binding is `NOT YET ESTABLISHED` and compatibility is `NOT-DETERMINED`.
+ARINC active external baseline identity is repository <https://github.com/ZhangChi0727/arinc-615a-conformance>, release commit `3299e6dae83424862f75a4c1d09b91b80d9d8b00` and tag/ID `RB-2026-001-v4.2.1`. Repository commit `0ce96f701159fd4156d5e5e9889360f53977a61b` is the post-release control-state snapshot, not the baseline content commit. The baseline is a `PRE-FRAMEWORK LEGACY INSTANCE BASELINE`; Candidate GVS Core binding is `NOT YET ESTABLISHED` and compatibility is `NOT-DETERMINED`.
+
+Method commit `196cfc2426a841a4adb9c9159660253896b0257c` is only the PR #14 authoring base. Candidate method definition identity remains `NOT YET ESTABLISHED — PENDING PR #14 MERGE`; a later ARINC migration must bind the final merge SHA.
 
 [Draft PR #9](https://github.com/ZhangChi0727/arinc-615a-conformance/pull/9), head `53a98447bcfa862f082ce443d69115067d3ff2f1`, candidate baseline `RB-2026-001-v4.3`, is an `UNMERGED MIGRATION CANDIDATE`. It is not the active baseline and has no active semantic authority. This repository does not modify or approve that PR.
 

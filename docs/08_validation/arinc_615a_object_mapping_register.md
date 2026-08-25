@@ -1,7 +1,7 @@
 ---
 title: ARINC 615A Temporary Object Mapping Register
 status: working
-version: 0.1
+version: 0.2
 baseline: post-v0.2
 owner: research
 last_updated: 2026-08-25
@@ -16,17 +16,19 @@ dependencies:
 
 ## Control boundary
 
-This register is a `temporary controlled mapping`, not a stable registry, equivalence claim or Framework Rule. Source baseline for active rows is external commit `0ce96f701159fd4156d5e5e9889360f53977a61b` / `RB-2026-001-v4.2.1`. Rows mentioning Draft PR #9 use head `53a98447bcfa862f082ce443d69115067d3ff2f1` and are marked **UNMERGED EXTERNAL CANDIDATE — NO ACTIVE SEMANTIC AUTHORITY**.
+This register is a `temporary controlled mapping`, not a stable registry, equivalence claim or Framework Rule. Every `active v4.2.1` row is immutably bound to release commit `3299e6dae83424862f75a4c1d09b91b80d9d8b00` / tag `RB-2026-001-v4.2.1`; post-release repository control-state commit `0ce96f701159fd4156d5e5e9889360f53977a61b` is not the mapped content identity. Rows mentioning Draft PR #9 use head `53a98447bcfa862f082ce443d69115067d3ff2f1` and are marked **UNMERGED EXTERNAL CANDIDATE — NO ACTIVE SEMANTIC AUTHORITY**.
 
 Current statuses are limited to `NOT-DETERMINED`, `CANDIDATE`, `PARTIAL`, `CONFLICT` and `OUT-OF-SCOPE`. No row has passed compatibility review.
+
+Relation direction is fixed as `ARINC object --primary relation--> Framework candidate/role`, even though the table places the Framework column first for navigation. Every row has exactly one primary relation; secondary resemblance or uncertainty is recorded only in rationale and status.
 
 ## Mapping population
 
 | Framework candidate/role | ARINC object | Source baseline | Relation | Mapping status | Rationale | Open dependency | Migration note | Review status |
 |---|---|---|---|---|---|---|---|---|
 | Applicability/Profile Declaration | PICS-like declaration | active v4.2.1 | `realizes` | `CANDIDATE` | declares capability/applicability and affects the applicable CRS population; it is not itself Verification Basis | ISO/IEC 9646 Task 002; profile review | retain declaration separately from basis items | pending |
-| VerificationBasisElement | applicable CRS item | active v4.2.1 | `instantiates` | `CANDIDATE` | an applicable normative item may act as a typed basis element; population aggregation remains explicit | Task 002 and mapping review | preserve CRS locator and applicability provenance | pending |
-| VerificationObligation | current ARINC requirement-obligation aspect | active v4.2.1 | `no-direct-correspondence` | `CONFLICT` | current structure does not expose a controlled object equivalent to the framework candidate | obligation identity/semantics review | do not retrofit a stable ID into the legacy baseline | pending |
+| VerificationBasisElement | applicable CRS item | active v4.2.1 | `candidate-correspondence` | `CANDIDATE` | an applicable normative item may play a typed basis role, but VerificationBasisElement is a conceptual union/typed-relation role rather than a frozen class | Task 002 and mapping review | preserve CRS locator and applicability provenance | pending |
+| VerificationObligation | current ARINC requirement-obligation aspect | active v4.2.1 | `no-direct-correspondence` | `NOT-DETERMINED` | current structure does not expose a controlled identity whose semantics can be compared with the framework candidate; absence is not demonstrated semantic conflict | obligation identity/semantics review | do not retrofit a stable ID into the legacy baseline | pending |
 | VerificationObligation | PR #9 Verification Objective | PR #9 / v4.3 candidate | `candidate-correspondence` | `NOT-DETERMINED` | candidate may address the missing intermediary but its semantics are unmerged and unreviewed | method merge plus instance migration/compatibility review | UNMERGED EXTERNAL CANDIDATE — NO ACTIVE SEMANTIC AUTHORITY | pending |
 | Obligation/Coverage aspect | functional/state/timing and related classifications | active v4.2.1 | `classifies` | `CANDIDATE` | classification may qualify obligation/coverage views without becoming a universal Core level | Task 002 and coverage study | keep T0–T3/Profile taxonomy out of Generic promotion | pending |
 | VerificationStrategy | Test-and-Analysis allocation | active v4.2.1 | `realizes` | `PARTIAL` | allocation covers only a bounded strategy decision subset | strategy criteria and rationale review | retain omitted environment/coverage/evidence decisions | pending |
@@ -37,9 +39,9 @@ Current statuses are limited to `NOT-DETERMINED`, `CANDIDATE`, `PARTIAL`, `CONFL
 | Oracle | discrete/robust timing rule | active v4.2.1 | `implements` | `CANDIDATE` | rule/mechanism evaluates observations against expected constraints | ISO-G04 and Task 002 | version the rule and concrete parameters in Binding/Configuration | pending |
 | Evidence | characterized execution/analysis record | active v4.2.1 | `candidate-correspondence` | `NOT-DETERMINED` | raw records need identity, provenance, applicability and credibility characterization before Evidence role | Evidence admission/credibility study | manifests remain provenance containers, not automatic Evidence | pending |
 | Argument | scoped assurance reasoning | active v4.2.1 | `realizes` | `PARTIAL` | some reasoning may support a scope but full assurance-argument equivalence is not shown | Claim/Argument boundary review | retain explicit inference and limitations | pending |
-| Claim | PR #9 CEI claim entry candidate | PR #9 / v4.3 candidate | `indexes`; `candidate-correspondence` | `NOT-DETERMINED` | CEI is reviewer-facing index candidate and does not automatically equal Claim, Argument or Evidence Architecture | instance migration and 15026-informed review | UNMERGED EXTERNAL CANDIDATE — NO ACTIVE SEMANTIC AUTHORITY | pending |
+| Claim | PR #9 CEI claim entry candidate | PR #9 / v4.3 candidate | `indexes` | `NOT-DETERMINED` | CEI is a reviewer-facing index candidate; possible correspondence remains rationale only and CEI does not automatically equal Claim, Argument or Evidence Architecture | instance migration and 15026-informed review | UNMERGED EXTERNAL CANDIDATE — NO ACTIVE SEMANTIC AUTHORITY | pending |
 | CompositeGate | RG/G gate package | PR #9 / v4.3 candidate | `specializes` | `NOT-DETERMINED` | gate package may specialize assessment/review/decision/state event, but decomposition and authority are unreviewed | CompositeGate compatibility review | UNMERGED EXTERNAL CANDIDATE — NO ACTIVE SEMANTIC AUTHORITY | pending |
-| Configuration | IUT/setup/procedure identity | active v4.2.1 | `specializes` | `CANDIDATE` | instance configuration specializes the candidate configuration role | identity/version contract | separate Binding definitions from run values | pending |
+| Configuration | IUT/setup/procedure identity | active v4.2.1 | `instantiates` | `CANDIDATE` | the concrete instance configuration instantiates the candidate configuration role | identity/version contract | separate Binding definitions from run values | pending |
 | Anomaly/Change/Impact | Problem Closure plus CR/DD | active v4.2.1 | `candidate-correspondence` | `NOT-DETERMINED` | overlap may exist but lifecycle/state/authority equivalence is unknown | change/closure review | preserve legacy states and map transitions explicitly | pending |
 | SufficiencyAssessment | PR #9 OSR/claim-review candidate | PR #9 / v4.3 candidate | `candidate-correspondence` | `NOT-DETERMINED` | review artefact may contribute to sufficiency reasoning but cannot be assumed equivalent | RQ4 semantics and instance review | UNMERGED EXTERNAL CANDIDATE — NO ACTIVE SEMANTIC AUTHORITY | pending |
 

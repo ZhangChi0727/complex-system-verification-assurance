@@ -51,6 +51,7 @@ Automation Rule
 - `references/`：合法 bibliographic metadata、检索策略、阅读记录和不可公开资料的定位说明。
 - `tools/`：未来的一致性、覆盖、影响分析、模型校验和文档生成工具。
 - `examples/`：脱敏、最小可复现和端到端研究实例。
+
 - `HANDOFF/`：仓库当前进度与下一步计划的交接快照；不是事实源，事实源仍为 `docs/`、`models/`、`data/`、`domains/`。
 - `publications/`：论文和教程的发布视图，不是独立事实源。
 - `archive/`：superseded baseline 或 legacy transformation material；不能替代 Git history。
@@ -94,7 +95,10 @@ The method repository controls Candidate GVS Core definitions and the cross-inst
 | `OPEN-CANDIDATE` | Planned standards research can still modify architecture semantics, boundaries or topology; current repository state. |
 | `REVIEWED-PROVISIONAL` | The planned source cohort is substantially studied and synthesized, while controlled instance feedback remains admissible. |
 | `CONTROLLED-BASELINE` | Architecture objects and gates have passed a formal freeze review; later changes require impact analysis and migration. |
-| `VALIDATED-BASELINE` | At least one controlled instance has completed end-to-end validation and implementation feedback has been disposed. |
+| `INSTANCE-EXERCISED` | One controlled instance has produced bounded evaluation evidence against an immutable method definition and its findings have been reviewed; this does not validate the general framework. |
+| `VALIDATED-BASELINE` | ARINC 615A, UAV FMS and LLM service evaluations plus cross-instance synthesis have been independently reviewed; RQ8 closure is separately justified. |
+
+Promotion is sequential: normative-source reconciliation and Task 022 can support `OPEN-CANDIDATE → REVIEWED-PROVISIONAL`; a formal architecture freeze, version/migration review and controlled change rules are required for `REVIEWED-PROVISIONAL → CONTROLLED-BASELINE`. A single instance can produce only `INSTANCE-EXERCISED` evidence. It cannot produce `VALIDATED-BASELINE` or close RQ8.
 
 Every later clause study must record an architecture-impact disposition in `docs/01_normative_foundation/consolidation/architecture_impact_register.md`. Allowed dispositions are `CONFIRM`, `EXTEND`, `MODIFY`, `SPLIT`, `MERGE`, `NO-IMPACT` and `DEFERRED`. A `MODIFY`, `SPLIT` or `MERGE` disposition requires an explicit compatibility/migration note and may not silently rewrite the historical meaning of a stable V-ID.
 

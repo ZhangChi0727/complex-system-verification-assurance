@@ -50,6 +50,8 @@ v0.1 establishes research infrastructure and does not claim completion or normat
 
 ## Unreleased
 
+- Recorded PR #14 external `REQUEST CHANGES` at reviewed head `78fe9f222d40758266275547d95e86ed866813b6` and corrected F-01–F-06: separated ARINC release/content and post-release control-state commits; reserved the final method merge SHA as the future definition identity; made mappings directional with one primary relation; aligned missing-identity failure semantics; split architecture promotion/freeze/instance-validation gates; and added bounded scalability plus interface-contract conclusion controls. Lightweight correction-diff rereview remains pending and the PR remains Draft.
+
 ### Candidate GVS Core and cross-repository governance
 
 - Positioned the Candidate Generic Verification Suite Core as the principal engineering research outcome, delivered through composable Verification Capability Packages; a complete suite additionally requires Verification Profile, Product Binding and Project Configuration.
