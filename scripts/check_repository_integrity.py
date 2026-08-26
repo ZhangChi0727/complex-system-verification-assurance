@@ -88,6 +88,9 @@ ALLOWED_MAPPING_STATUSES = {
     "NOT-DETERMINED", "CANDIDATE", "PARTIAL", "CONFLICT", "OUT-OF-SCOPE",
 }
 EXPECTED_CANDIDATE_DISPOSITION = "REVIEWED-COMPATIBLE-WITH-QUALIFICATION"
+PR15_NUMBER = 15
+PRE_ACTIVATION_COMPATIBILITY = "NOT-DETERMINED"
+POST_ACTIVATION_COMPATIBILITY = EXPECTED_CANDIDATE_DISPOSITION
 
 EXPECTED_SOURCE_ROWS = {
     "R01": ("Applicability/Profile Declaration", "PICS-like declaration", "realizes", "CANDIDATE"),
@@ -380,14 +383,35 @@ def third_handshake_document_errors(
         errors.append("candidate overall disposition differs from the reviewed PR #15 conclusion")
     if "Candidate overall disposition | `REVIEWED-COMPATIBLE`" in disposition:
         errors.append("unqualified REVIEWED-COMPATIBLE is prohibited for this handshake")
-    if "Active formal compatibility before approval/merge | `NOT-DETERMINED`" not in disposition:
-        errors.append("Draft compatibility was promoted before independent review/merge")
+    activation_contract = (
+        ("Pre-activation formal compatibility", PRE_ACTIVATION_COMPATIBILITY),
+        ("Post-activation formal compatibility", POST_ACTIVATION_COMPATIBILITY),
+    )
+    for label, value in activation_contract:
+        if f"{label} | `{value}`" not in disposition:
+            errors.append(f"compatibility activation contract missing: {label}")
+    activation_event = (
+        "Activation event | independent approval of unchanged PR #15 head plus "
+        "ordinary two-parent merge commit"
+    )
+    if activation_event not in disposition:
+        errors.append("compatibility activation event is missing or weakened")
+    if "Compatibility activation | independent approval of the unchanged PR #15 head plus an ordinary two-parent merge commit" not in contract:
+        errors.append("cross-repository contract lacks the compatibility activation event")
+    if "Compatibility pre-activation | `NOT-DETERMINED`" not in registry:
+        errors.append("registry lacks the pre-activation compatibility state")
+    if "Compatibility post-activation | `REVIEWED-COMPATIBLE-WITH-QUALIFICATION`; subject to Q-01–Q-09" not in registry:
+        errors.append("registry lacks the qualified post-activation compatibility state")
     qualification_ids = set(re.findall(r"(?m)^\| (Q-\d{2}) \|", disposition))
     if qualification_ids != {f"Q-{number:02d}" for number in range(1, 10)}:
         errors.append(f"qualification population differs: {sorted(qualification_ids)}")
     if "Project Configuration | `TMP-PC-ARINC615A-01`; `NOT YET ESTABLISHED`" not in registry:
         errors.append("Project Configuration was established without controlled values")
-    if "Evaluation protocol |" not in registry or "`NOT-EXERCISED`" not in registry:
+    expected_evaluation_row = (
+        "Evaluation protocol | [ARINC 615A Instance Evaluation Protocol]"
+        "(arinc_615a_instance_evaluation_protocol.md), version 0.2; `NOT-EXERCISED`"
+    )
+    if expected_evaluation_row not in registry:
         errors.append("instance evaluation state is missing or promoted")
     if "`NOT AVAILABLE — MIGRATION-ONLY REVIEW`" not in evidence:
         errors.append("missing execution manifest was not explicitly recorded")
@@ -396,6 +420,37 @@ def third_handshake_document_errors(
     errors.extend(source_inventory_errors(evidence))
     errors.extend(evidence_identity_errors(evidence))
     return errors
+
+
+def compatibility_for_activation(activated: bool) -> str:
+    return (
+        POST_ACTIVATION_COMPATIBILITY
+        if activated
+        else PRE_ACTIVATION_COMPATIBILITY
+    )
+
+
+def third_handshake_activated() -> bool:
+    """Detect the repository-side half of the reviewed PR #15 activation event."""
+    if os.environ.get("GITHUB_EVENT_NAME") == "pull_request":
+        return False
+    try:
+        merge_commit = git(
+            "log", "--merges", "--fixed-strings",
+            "--grep=Merge pull request #15", "--format=%H", "-n", "1",
+        )
+        if not merge_commit:
+            return False
+        parents = git("rev-list", "--parents", "-n", "1", merge_commit).split()
+        if len(parents) != 3:
+            return False
+        return subprocess.run(
+            ["git", "merge-base", "--is-ancestor", merge_commit, "HEAD"],
+            cwd=ROOT, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+            check=False,
+        ).returncode == 0
+    except subprocess.CalledProcessError:
+        return False
 
 
 def protected_delta_errors() -> list[str]:
@@ -597,7 +652,10 @@ def main() -> int:
     print(f"- MethodDefinitionCommit: {METHOD_DEFINITION_COMMIT}")
     print(f"- ARINC v4.3 release commit/tag: {ARINC_V43_MERGE_COMMIT} / {ARINC_V43_RELEASE_TAG}")
     print("- mapping populations: 18 source + 7 instance-only")
-    print("- formal compatibility: NOT-DETERMINED; candidate disposition review pending")
+    activated = third_handshake_activated()
+    phase = "POST-ACTIVATION" if activated else "PRE-ACTIVATION"
+    print(f"- compatibility activation: {phase}")
+    print(f"- formal compatibility: {compatibility_for_activation(activated)}")
     print("- Project Configuration / instance evaluation: NOT YET ESTABLISHED / NOT-EXERCISED")
     print("- framework semantic automation: not performed")
     return 0

@@ -59,11 +59,15 @@ historical v4.2.1 origin is not retroactively described as framework-based.
 ## Third-handshake state
 
 Method-contract handshake and instance-migration handshake are complete. The
-method-side compatibility-disposition handshake is a Draft candidate at the
-independent-review gate:
+method-side compatibility-disposition handshake follows a conditional
+activation rule:
 
-- candidate disposition: `REVIEWED-COMPATIBLE-WITH-QUALIFICATION`;
-- formal compatibility before approval/merge: `NOT-DETERMINED`;
+- pre-activation formal compatibility: `NOT-DETERMINED`;
+- activation event: independent approval of the unchanged PR #15 head plus an
+  ordinary two-parent merge commit;
+- post-activation formal compatibility:
+  `REVIEWED-COMPATIBLE-WITH-QUALIFICATION` under Q-01–Q-09, with the merge SHA
+  as the immutable method-disposition identity;
 - required qualifications: Q-01–Q-09;
 - source mapping: 18/18 retained without strengthening;
 - instance-only population: 7/7 retained as non-Generic;
@@ -73,14 +77,16 @@ independent-review gate:
 
 Compatibility review concerns migration-contract structure, ownership, mapping
 and semantic interfaces. It is not execution of the instance evaluation
-protocol. After method-side approval and merge, ARINC acknowledgement is a
-separate work order and baseline change; it is not started by this Draft.
+protocol. Work order B remains prohibited before the activation event. After
+activation, ARINC acknowledgement is a separate work order and baseline change
+bound to the method-disposition merge SHA; no post-merge method status commit is
+needed.
 
 ## Validation instances
 
 | Instance | Verification type | Status | Primary thesis contribution |
 |---|---|---|---|
-| ARINC 615A protocol conformance verification | deterministic, specification-driven conformance verification | first GVS-bound legacy migration baseline; compatibility review pending; evaluation not exercised | Core/Profile/Binding/Configuration isolation and design–execution lower chain |
+| ARINC 615A protocol conformance verification | deterministic, specification-driven conformance verification | first GVS-bound legacy migration baseline; compatibility follows the PR #15 activation rule; evaluation not exercised | Core/Profile/Binding/Configuration isolation and design–execution lower chain |
 | UAV flight-management system verification | safety-driven system verification | Planned | assurance constraints, typed independence, coverage and change impact |
 | LLM service reliability/performance verification | probabilistic, weak-Oracle service verification | Planned | sufficiency, evidence/argument and coverage boundaries |
 

@@ -24,15 +24,20 @@ dependencies:
 | Instance migration head | ARINC v4.3 release / `523d42bf03a1135b3d63a00bfb47d3b879d3927e` |
 | Instance reviewed head | PR #9 head `5d149d1f8e92bbed438fe8bc78be9e8972fecb7d` |
 | Baseline identity | baseline ID `RB-2026-001-v4.3`; annotated release tag `v4.3`; tag object `28312fd9c5470cb15d76eb3762c99a25ab842cfd` |
-| Review state | `PENDING INDEPENDENT COMPATIBILITY REVIEW` |
+| Review state | pre-activation: independent compatibility rereview required; post-activation: immutable PR #15 review/merge record controls |
 | Candidate overall disposition | `REVIEWED-COMPATIBLE-WITH-QUALIFICATION` |
-| Active formal compatibility before approval/merge | `NOT-DETERMINED` |
+| Pre-activation formal compatibility | `NOT-DETERMINED` |
+| Activation event | independent approval of unchanged PR #15 head plus ordinary two-parent merge commit |
+| Post-activation formal compatibility | `REVIEWED-COMPATIBLE-WITH-QUALIFICATION`; subject to Q-01–Q-09 |
 
-The candidate overall disposition is the author's bounded proposal to the
-independent reviewer. It does not become the active formal compatibility state
-until an independent review attached to the final PR head approves it and this
-method-repository PR merges. The word `REVIEWED` in the controlled disposition
-vocabulary must not be used to imply that this Draft has already passed review.
+The candidate overall disposition is the author's bounded proposal before the
+activation event. The compatibility state is defined conditionally rather than
+by a mutable status sentence: before activation it is `NOT-DETERMINED`; after
+independent approval attaches to the unchanged PR #15 head and an ordinary
+two-parent merge commit incorporates that head, it is
+`REVIEWED-COMPATIBLE-WITH-QUALIFICATION` subject to Q-01–Q-09. The PR #15 merge
+SHA is then the immutable method-disposition identity for work order B. No
+post-merge status commit is required or permitted.
 
 ## Compatibility subject and exclusions
 
@@ -165,11 +170,13 @@ than hidden or promoted. Therefore the proposed controlled result is:
 REVIEWED-COMPATIBLE-WITH-QUALIFICATION
 ```
 
-subject to independent approval of this exact PR head and qualifications
-Q-01–Q-09. If the independent reviewer finds that these controls do not bound a
-semantic mismatch, the required result is
-`REWORK — COMPATIBILITY REMAINS NOT-DETERMINED`; the review must not force a
-compatibility status merely to complete the handshake.
+Before activation this remains a candidate subject to independent approval
+of the exact PR head and Q-01–Q-09. The ordinary two-parent merge is permitted
+only after that approval; its presence in method-repository history activates
+the qualified disposition without a follow-up status commit. If the independent
+reviewer finds that these controls do not bound a semantic mismatch, the
+activation event must not occur and the required result remains
+`REWORK — COMPATIBILITY REMAINS NOT-DETERMINED`.
 
 ## Prohibited inferences
 
@@ -183,20 +190,21 @@ This disposition must not be interpreted as:
 - Generic adoption of Test Purpose, L0–L7, A0–A4, R0–R5, RG or G;
 - permission to copy proprietary standards or raw instance evidence.
 
-## Independent review gate
+## Independent review and activation record
 
-| Review field | Required final record |
+| Review field | Activation requirement |
 |---|---|
-| Reviewer | `PENDING — must not have authored this PR's content commits` |
-| Independence statement | `PENDING` |
-| Review date | `PENDING` |
-| Reviewed method PR head | `PENDING — must equal the final unchanged head` |
-| Immutable-head/tag verification | `PENDING` |
-| 18/18 + 7 and bilingual-control review | `PENDING` |
-| Q-01–Q-09 disposition | `PENDING` |
-| GitHub Review locator | `PENDING` |
-| Review outcome | one of `APPROVE`, `APPROVE WITH ACTIONS`, `REWORK` |
+| Reviewer | named natural person who did not author the reviewed content commits |
+| Independence statement / date | required in the immutable PR #15 review record |
+| Reviewed method PR head | must equal the second parent incorporated by the ordinary PR #15 merge |
+| Immutable-head/tag verification | must pass for both method and ARINC identities |
+| 18/18 + 7 and bilingual-control review | must pass without relation/status strengthening |
+| Q-01–Q-09 disposition | must approve the qualified overall disposition unchanged |
+| GitHub Review locator | immutable PR #15 review record |
+| Review outcome | `APPROVE` or an equally explicit approval of the unchanged head; `REWORK` prevents activation |
+| Repository activation evidence | ordinary two-parent PR #15 merge commit containing the approved head |
 
-Approval must attach to the final unchanged PR head. No post-approval status
-commit is permitted; a changed head requires the independent review to run
-again.
+Approval must attach to the final unchanged PR head. A changed head requires
+rereview. Once the approved head is incorporated by the ordinary merge, the
+merge SHA—not a later status commit—becomes the immutable method-disposition
+identity.

@@ -21,7 +21,7 @@ dependencies:
 - **Repository topology:** `main` is the sole persistent remote branch; review branches are temporary governance artifacts and are deleted after merge
 - **Repository maturity:** `Normative-foundation research late stage / architecture OPEN-CANDIDATE`
 - **Latest synchronized main / method definition:** `48dd8232b7efe6b0dba3fcb75dfc154d034d2b0b` (PR #14 ordinary merge commit; Candidate GVS Core 0.3)
-- **Current review branch / merge gate:** `codex/arinc-v43-third-handshake`; candidate `REVIEWED-COMPATIBLE-WITH-QUALIFICATION`; Draft must remain at the independent compatibility-review gate and work order B must not start before ordinary merge.
+- **Current review branch / merge gate:** `codex/arinc-v43-third-handshake`; pre-activation state is `NOT-DETERMINED`. Activation requires independent approval of the unchanged PR #15 head plus an ordinary two-parent merge; post-activation state is `REVIEWED-COMPATIBLE-WITH-QUALIFICATION` under Q-01–Q-09 and work order B binds that merge SHA.
 
 ## Established baseline
 
@@ -41,7 +41,7 @@ v0.2 是由 ISO 15288、ISO 24748-1/2、ARP4754B、ARP4761A 形成的 five-sourc
 
 权威工作定义见 [Candidate GVS Core Working Definition](../docs/02_verification_framework/generic_verification_suite_core.md)；当前只形成 Candidate GVS Core、Capability Packages 和 Core/Profile/Binding/Configuration 的 working research position，成熟度仍为 `OPEN-CANDIDATE`。
 
-ARINC repository `https://github.com/ZhangChi0727/arinc-615a-conformance` 保留冻结历史来源 release commit `3299e6dae83424862f75a4c1d09b91b80d9d8b00` / annotated tag `RB-2026-001-v4.2.1`，其 origin 仍为 `PRE-FRAMEWORK LEGACY INSTANCE BASELINE`。当前 GVS-bound legacy migration baseline 的 baseline ID 是 `RB-2026-001-v4.3`，release commit 是 `523d42bf03a1135b3d63a00bfb47d3b879d3927e`，实际 annotated release tag 是 `v4.3`，tag object `28312fd…` 精确 peel 到 release commit；无 post-merge 控制提交。PR #9 自然人 Review 5029797924 如实登记为 platform `COMMENTED` / body `APPROVE` 并绑定 head `5d149d1…`。方法侧工作单 A 已完成 18/18 + 7、四层所有权与语义链候选审查，提出 `REVIEWED-COMPATIBLE-WITH-QUALIFICATION`，但在独立评审和合并前正式 compatibility 仍为 `NOT-DETERMINED`。Project Configuration 仍为 `NOT YET ESTABLISHED`，evaluation 为 `NOT-EXERCISED`。事实定义以 [Framework Validation Workspace](../docs/08_validation/README.md) 的受控入口为准。
+ARINC repository `https://github.com/ZhangChi0727/arinc-615a-conformance` 保留冻结历史来源 release commit `3299e6dae83424862f75a4c1d09b91b80d9d8b00` / annotated tag `RB-2026-001-v4.2.1`，其 origin 仍为 `PRE-FRAMEWORK LEGACY INSTANCE BASELINE`。当前 GVS-bound legacy migration baseline 的 baseline ID 是 `RB-2026-001-v4.3`，release commit 是 `523d42bf03a1135b3d63a00bfb47d3b879d3927e`，实际 annotated release tag 是 `v4.3`，tag object `28312fd…` 精确 peel 到 release commit；无 post-merge 控制提交。PR #9 自然人 Review 5029797924 如实登记为 platform `COMMENTED` / body `APPROVE` 并绑定 head `5d149d1…`。方法侧工作单 A 已完成 18/18 + 7、四层所有权与语义链候选审查。正式 compatibility 使用条件转换：独立复审未变更的 PR #15 head 并完成普通两父 merge 前为 `NOT-DETERMINED`；激活后为受 Q-01–Q-09 限定的 `REVIEWED-COMPATIBLE-WITH-QUALIFICATION`，merge SHA 是工作单 B 必须绑定的方法处置身份，无需 post-merge 状态提交。Project Configuration 仍为 `NOT YET ESTABLISHED`，evaluation 为 `NOT-EXERCISED`。事实定义以 [Framework Validation Workspace](../docs/08_validation/README.md) 的受控入口为准。
 
 ## Source state
 

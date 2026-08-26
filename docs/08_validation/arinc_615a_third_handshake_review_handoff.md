@@ -1,6 +1,6 @@
 ---
 title: ARINC 615A v4.3 Third-Handshake Independent-Review Handoff
-status: review-pending
+status: conditional-activation-defined
 version: 0.1
 baseline: post-v0.2
 owner: research
@@ -22,12 +22,13 @@ dependencies:
 | Handoff ID | `RH-ARINC615A-V43-TH3-001` |
 | Method repository | `ZhangChi0727/complex-system-verification-assurance` |
 | Review branch | `codex/arinc-v43-third-handshake` |
-| PR state | `DRAFT; INDEPENDENT REVIEW PENDING` |
+| PR state | pre-activation: `DRAFT; CORRECTION REREVIEW REQUIRED`; post-activation: ordinary merge record controls |
 | Method base / definition | `48dd8232b7efe6b0dba3fcb75dfc154d034d2b0b` |
 | ARINC reviewed head | `5d149d1f8e92bbed438fe8bc78be9e8972fecb7d` |
 | ARINC release | baseline ID `RB-2026-001-v4.3`; commit `523d42bf03a1135b3d63a00bfb47d3b879d3927e`; annotated tag `v4.3` |
-| Candidate disposition | `REVIEWED-COMPATIBLE-WITH-QUALIFICATION`; not active before approval/merge |
-| Formal compatibility at handoff | `NOT-DETERMINED` |
+| Candidate disposition | `REVIEWED-COMPATIBLE-WITH-QUALIFICATION` under Q-01–Q-09 |
+| Compatibility activation | independent approval of unchanged PR #15 head plus ordinary two-parent merge |
+| Formal compatibility | pre-activation `NOT-DETERMINED`; post-activation qualified disposition above |
 | Configuration / evaluation | `NOT YET ESTABLISHED` / `NOT-EXERCISED` |
 
 ## Review question
@@ -45,6 +46,9 @@ sufficiency, certification or cross-instance generality?
 | 2 | `docs: record ARINC third-handshake compatibility candidate` | records 18 + 7 review, ownership/chain audit and candidate disposition |
 | 3 | `test: enforce third-handshake identity and disposition gates` | adds identity, row-strengthening, state-promotion and hygiene gates plus negative tests |
 | 4 | `docs: synchronize third-handshake review handoff` | updates reader/HANDOFF surfaces and this independent-review packet |
+| 5 | `docs: normalize third-handshake review handoff` | removes an encoding artifact without changing semantics |
+| 6 | `test: close third-handshake validator false negatives` | rejects duplicate mappings and validates path/bytes/hash/commit-locator plus release/review identities as associated records |
+| 7 | `docs: make third-handshake compatibility activation explicit` | defines the pre/activation/post transition across contract, registry, disposition, HANDOFF and checker output |
 
 All are ordinary commits. No amend, rebase, squash or force-push is authorized.
 
@@ -103,6 +107,20 @@ Change Proposal input.
 - [ ] Q-01 through Q-09 are necessary, complete for the reviewed scope and not silently relaxed.
 - [ ] `ER-F01`–`ER-F05` classifications and owners are appropriate; no Core finding is hidden.
 
+## REWORK correction disposition
+
+| Finding | Correction status | Verification |
+|---|---|---|
+| F-01 duplicate mapping IDs hidden by dictionary overwrite | `CORRECTED; REREVIEW PENDING` | duplicate R01 and A01 negative tests now fail the gate |
+| F-02 evidence fields checked only as unrelated text | `CORRECTED; REREVIEW PENDING` | eight structured records bind path, bytes, SHA-256 and commit locator; release/tag/review identities are row-validated |
+| F-03 compatibility activation ambiguity | `CORRECTED; REREVIEW PENDING` | pre/activation/post rule is shared by contract, registry, disposition, workspace, HANDOFF and checker |
+| A-01 disposition vocabulary/implementation mismatch | `CORRECTED; REREVIEW PENDING` | this PR-specific gate explicitly requires the one reviewed candidate disposition |
+
+The correction review range starts at `c2197ef1258717d40871f98f77605151ee53a199` and ends at the final unchanged PR #15 head reported by GitHub after the corrections are pushed.
+Work order B remains prohibited until an independent reviewer approves the
+unchanged final head and the ordinary PR #15 merge activates the qualified
+disposition.
+
 ## Validation commands
 
 The reviewer should reproduce on the final unchanged head:
@@ -131,6 +149,8 @@ The reviewer must not have authored the content commits and must record:
 - final GitHub Review locator.
 
 Approval must attach to the final unchanged head. Do not add a later status-only
-commit: any head change invalidates the approval and requires rereview. Until
-that record exists, the PR remains Draft, compatibility remains
-`NOT-DETERMINED`, and work order B must not start.
+commit: any head change invalidates the approval and requires rereview. Before
+activation the PR remains Draft and compatibility is `NOT-DETERMINED`. The
+ordinary merge of the approved unchanged head activates the qualified
+disposition and supplies the merge SHA for work order B; work order B must not
+start earlier.

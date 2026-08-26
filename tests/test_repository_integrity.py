@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import importlib.util
 import unittest
+from unittest import mock
 from pathlib import Path
 
 
@@ -140,6 +141,14 @@ class ThirdHandshakeIdentityTests(unittest.TestCase):
         )
         self.assertTrue(self.errors(evidence=changed))
 
+    def test_weakened_activation_event_is_rejected(self) -> None:
+        changed = self.disposition.replace(
+            "independent approval of unchanged PR #15 head plus ordinary two-parent merge commit",
+            "merge PR #15",
+            1,
+        )
+        self.assertTrue(self.errors(disposition=changed))
+
     def test_wrong_method_definition_is_rejected(self) -> None:
         changed = self.registry.replace(
             integrity.METHOD_DEFINITION_COMMIT, "0" * 40
@@ -171,6 +180,41 @@ class ThirdHandshakeIdentityTests(unittest.TestCase):
     def test_instance_evaluation_promotion_is_rejected(self) -> None:
         changed = self.registry.replace("`NOT-EXERCISED`", "`INSTANCE-EXERCISED`", 1)
         self.assertTrue(self.errors(registry=changed))
+
+
+class ThirdHandshakeActivationTests(unittest.TestCase):
+    def test_pull_request_event_cannot_self_activate(self) -> None:
+        with mock.patch.dict(integrity.os.environ, {"GITHUB_EVENT_NAME": "pull_request"}):
+            self.assertFalse(integrity.third_handshake_activated())
+
+    def test_ordinary_two_parent_merge_activates_on_main_history(self) -> None:
+        merge = "a" * 40
+        with (
+            mock.patch.dict(integrity.os.environ, {}, clear=True),
+            mock.patch.object(
+                integrity,
+                "git",
+                side_effect=[merge, f"{merge} {'b' * 40} {'c' * 40}"],
+            ),
+            mock.patch.object(
+                integrity.subprocess,
+                "run",
+                return_value=mock.Mock(returncode=0),
+            ),
+        ):
+            self.assertTrue(integrity.third_handshake_activated())
+
+    def test_pre_activation_state_is_not_determined(self) -> None:
+        self.assertEqual(
+            integrity.compatibility_for_activation(False),
+            "NOT-DETERMINED",
+        )
+
+    def test_post_activation_state_is_qualified_compatible(self) -> None:
+        self.assertEqual(
+            integrity.compatibility_for_activation(True),
+            "REVIEWED-COMPATIBLE-WITH-QUALIFICATION",
+        )
 
 
 if __name__ == "__main__":

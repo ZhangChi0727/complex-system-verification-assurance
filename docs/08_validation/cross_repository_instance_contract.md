@@ -41,8 +41,9 @@ schema, implementation dependency or empirical validation result.
 | Post-merge control state | `NONE`; ARINC `main` equals the tagged release commit |
 | Migration classification | `GVS-BOUND LEGACY MIGRATION BASELINE`; historical origin remains pre-framework |
 | Project Configuration / evaluation | `NOT YET ESTABLISHED` / `NOT-EXERCISED` |
-| Formal compatibility | `NOT-DETERMINED` until the method-side third-handshake review and merge |
-| Candidate method-side disposition | `REVIEWED-COMPATIBLE-WITH-QUALIFICATION`; independent review pending |
+| Compatibility pre-activation | `NOT-DETERMINED` |
+| Compatibility activation | independent approval of the unchanged PR #15 head plus an ordinary two-parent merge commit |
+| Compatibility post-activation | `REVIEWED-COMPATIBLE-WITH-QUALIFICATION`; subject to Q-01–Q-09; merge SHA is the method-disposition identity |
 
 `RB-2026-001-v4.3` is the baseline ID and `v4.3` is the only release tag.
 They are different identity fields. Mutable `main`, `latest`, local paths and
@@ -140,12 +141,21 @@ compatibility of the `RB-2026-001-v4.3` GVS-bound legacy migration contract
 against Candidate GVS Core 0.3 at `48dd823…`. It excludes protocol conformance,
 execution, sufficiency, certification, authority acceptance and generality.
 
-For this Draft, `REVIEWED-COMPATIBLE` is prohibited because Project
-Configuration and execution evidence are absent, mappings remain open, research
-dependencies remain, and IDs/mappings are temporary. The author proposes
-`REVIEWED-COMPATIBLE-WITH-QUALIFICATION` under Q-01–Q-09 in the controlled
-disposition. Until independent review approves the unchanged head and the PR
-merges, formal compatibility remains `NOT-DETERMINED`.
+`REVIEWED-COMPATIBLE` is prohibited because Project Configuration and
+execution evidence are absent, mappings remain open, research dependencies
+remain, and IDs/mappings are temporary. The controlled conditional transition
+is:
+
+1. pre-activation: formal compatibility is `NOT-DETERMINED`;
+2. activation event: an independent review approves the unchanged PR #15 head,
+   followed by an ordinary two-parent merge containing that head;
+3. post-activation: formal compatibility is
+   `REVIEWED-COMPATIBLE-WITH-QUALIFICATION` subject to Q-01–Q-09, and the merge
+   SHA is the immutable method-disposition identity.
+
+The event is self-executing in repository history. It does not require a
+post-merge status commit, does not promote any row-level mapping and does not
+start empirical evaluation.
 
 ## Finding classification and return
 
@@ -199,10 +209,12 @@ serialization, implementation class or SysML view as the semantic contract.
    `523d42bf03a1135b3d63a00bfb47d3b879d3927e`, released as baseline ID
    `RB-2026-001-v4.3` with annotated tag `v4.3`; migration established without
    compatibility/evaluation promotion.
-3. **Compatibility-disposition handshake:** this method-repository Draft
-   verifies both immutable heads, 18/18 + 7 rows and the evidence return. It
-   remains pending independent review and merge. The later ARINC acknowledgement
-   is a separate work order and repository PR.
+3. **Compatibility-disposition handshake:** this method-repository PR
+   verifies both immutable heads, 18/18 + 7 rows and the evidence return. Its
+   formal state follows the pre/activation/post rule above. Only the ordinary
+   merge of an independently approved unchanged head activates the qualified
+   disposition. The later ARINC acknowledgement is a separate work order and
+   repository PR bound to that method-disposition merge SHA.
 
 ## Review and generalization gates
 

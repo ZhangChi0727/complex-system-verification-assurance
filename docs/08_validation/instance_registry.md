@@ -45,13 +45,15 @@ approvals.
 | Product Binding | `TMP-PB-ARINC615A-01`, version `0.1-candidate` |
 | Project Configuration | `TMP-PC-ARINC615A-01`; `NOT YET ESTABLISHED` |
 | Candidate GVS Core binding status | `ESTABLISHED FOR MIGRATION` at the method definition commit; temporary contract |
-| Compatibility status | `NOT-DETERMINED`; candidate `REVIEWED-COMPATIBLE-WITH-QUALIFICATION` is pending independent method-side review |
+| Compatibility pre-activation | `NOT-DETERMINED` |
+| Compatibility activation | independent approval of unchanged PR #15 head plus ordinary two-parent merge; merge SHA becomes method-disposition identity |
+| Compatibility post-activation | `REVIEWED-COMPATIBLE-WITH-QUALIFICATION`; subject to Q-01–Q-09 |
 | Mapping register | [ARINC 615A Object Mapping Register](arinc_615a_object_mapping_register.md), version 0.3; 18 + 7 rows |
-| Migration evidence return | [ARINC v4.3 Migration Evidence Return](arinc_615a_v43_migration_evidence_return.md), version 0.1; `REVIEW PENDING` |
-| Compatibility disposition | [Third-Handshake Compatibility Disposition](arinc_615a_third_handshake_compatibility_disposition.md), version 0.1; candidate only |
+| Migration evidence return | [ARINC v4.3 Migration Evidence Return](arinc_615a_v43_migration_evidence_return.md), version 0.1; immutable review input |
+| Compatibility disposition | [Third-Handshake Compatibility Disposition](arinc_615a_third_handshake_compatibility_disposition.md), version 0.1; conditional activation rule |
 | Evaluation protocol | [ARINC 615A Instance Evaluation Protocol](arinc_615a_instance_evaluation_protocol.md), version 0.2; `NOT-EXERCISED` |
 | Execution evidence manifest | `NOT AVAILABLE — MIGRATION-ONLY REVIEW` |
-| Open blockers | method-side third-handshake independent review/merge; later ARINC acknowledgement; controlled Project Configuration; separate protocol execution |
+| Open blockers | pre-activation: method-side independent rereview and ordinary merge; post-activation: later ARINC acknowledgement, controlled Project Configuration and separate protocol execution |
 | Non-claims | no protocol conformance, empirical instance evaluation, framework validation, stable registry, certification readiness or Generic promotion |
 
 ## Historical and active-migration boundary
@@ -63,10 +65,13 @@ controlled fields. The pre-migration control-state commit and PR reviewed head
 are provenance; neither substitutes for the tagged release commit.
 
 PR #9 merge and release establish the versioned method binding and migration
-contract. They do not establish compatibility or empirical evaluation. The
-method-side third handshake proposes a qualified compatibility disposition, but
-formal compatibility stays `NOT-DETERMINED` until independent approval and
-merge. The future ARINC acknowledgement is a separate baseline change.
+contract. They do not establish compatibility or empirical evaluation. Before
+the method-side activation event, formal compatibility is `NOT-DETERMINED`.
+Independent approval of the unchanged PR #15 head plus its ordinary two-parent
+merge activates `REVIEWED-COMPATIBLE-WITH-QUALIFICATION` under Q-01–Q-09; that
+merge SHA is the immutable method-disposition identity. The future ARINC
+acknowledgement remains a separate baseline change and execution remains
+`NOT-EXERCISED`.
 
 ## Configuration and evaluation boundary
 

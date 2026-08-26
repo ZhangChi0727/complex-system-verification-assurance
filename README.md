@@ -62,8 +62,9 @@ Repository maturity: Normative-foundation research late stage / architecture OPE
 615A v4.3 已作为 baseline ID `RB-2026-001-v4.3`、普通 merge commit
 `523d42bf03a1135b3d63a00bfb47d3b879d3927e` 和 annotated release tag
 `v4.3` 发布。方法侧第三次握手提出
-`REVIEWED-COMPATIBLE-WITH-QUALIFICATION` 候选处置并等待独立评审；正式
-compatibility 仍为 `NOT-DETERMINED`，Project Configuration 仍未建立，实例
+`REVIEWED-COMPATIBLE-WITH-QUALIFICATION` 条件处置：PR #15 未激活时正式
+compatibility 为 `NOT-DETERMINED`；独立批准未变更 head 并以普通 merge commit
+合并后自动转为受 Q-01–Q-09 限定的该处置。Project Configuration 仍未建立，实例
 评价仍为 `NOT-EXERCISED`。该治理工作不改变 ISO 15289 Task 001 的当前研究停点。
 
 ## Repository map
