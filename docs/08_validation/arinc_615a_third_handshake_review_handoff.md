@@ -134,4 +134,3 @@ Approval must attach to the final unchanged head. Do not add a later status-only
 commit: any head change invalidates the approval and requires rereview. Until
 that record exists, the PR remains Draft, compatibility remains
 `NOT-DETERMINED`, and work order B must not start.
-
