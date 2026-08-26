@@ -33,15 +33,16 @@ ARINC_V43_TAG_OBJECT = "28312fd9c5470cb15d76eb3762c99a25ab842cfd"
 ARINC_HUMAN_REVIEW_ID = "5029797924"
 V02_TAG_COMMIT = "357ad14ffc4e59abd071cb794912eb949a6ae6cf"
 
-SOURCE_SHA256 = {
-    "docs/control/contracts/EXTERNAL_GVS_BINDING.md": "97e76ec345d58f4c89d35f1118663335744adecdd6eba9551035e5e90675bd4d",
-    "docs/control/contracts/ARINC615A_PROFILE_BINDING_CONFIGURATION.md": "0f9a864feb17e7e8735a00e3109c42da9995ebdb13d66d1309cee4769fd35af8",
-    "docs/control/contracts/GVS_INSTANCE_MAPPING.md": "f5a4a30ec598b0624b910bd6fbb2895db94f150eb96f20ca800b33114166f43a",
-    "docs/control/baselines/RB-2026-001-v4.3.md": "de0483c6590293e748abe2e964e42b267fcb4518e75c4b1ac06f7a9c2bf6456e",
-    "docs/control/changes/CR-2026-004.md": "339a68b2f270f5fdecf5e37be8d05350568fdc1128d8fcb9a088eba2e8bc5ff9",
-    "docs/control/reviews/PR9_GVS_MIGRATION_REVIEW_HANDOFF.md": "30c084d803a5b9296e02867a8ed49584a091895b507edbe5fb5c2ed02362e418",
-    "docs/control/risks/RISK_REGISTER.md": "ec7064c8da3c16fc7e9a5a64d6323f93fd2d1b0e7598206f94f1fcb99842e2c5",
-    "scripts/check_repo_baseline.py": "f2f241928717434ecbd44e81a15c6f523d2149a05d0f2b8ca6e1320b627b843f",
+ARINC_REPOSITORY = "https://github.com/ZhangChi0727/arinc-615a-conformance"
+SOURCE_INVENTORY = {
+    "docs/control/contracts/EXTERNAL_GVS_BINDING.md": (9949, "97e76ec345d58f4c89d35f1118663335744adecdd6eba9551035e5e90675bd4d"),
+    "docs/control/contracts/ARINC615A_PROFILE_BINDING_CONFIGURATION.md": (8285, "0f9a864feb17e7e8735a00e3109c42da9995ebdb13d66d1309cee4769fd35af8"),
+    "docs/control/contracts/GVS_INSTANCE_MAPPING.md": (19253, "f5a4a30ec598b0624b910bd6fbb2895db94f150eb96f20ca800b33114166f43a"),
+    "docs/control/baselines/RB-2026-001-v4.3.md": (10095, "de0483c6590293e748abe2e964e42b267fcb4518e75c4b1ac06f7a9c2bf6456e"),
+    "docs/control/changes/CR-2026-004.md": (12731, "339a68b2f270f5fdecf5e37be8d05350568fdc1128d8fcb9a088eba2e8bc5ff9"),
+    "docs/control/reviews/PR9_GVS_MIGRATION_REVIEW_HANDOFF.md": (21527, "30c084d803a5b9296e02867a8ed49584a091895b507edbe5fb5c2ed02362e418"),
+    "docs/control/risks/RISK_REGISTER.md": (8008, "ec7064c8da3c16fc7e9a5a64d6323f93fd2d1b0e7598206f94f1fcb99842e2c5"),
+    "scripts/check_repo_baseline.py": (41860, "f2f241928717434ecbd44e81a15c6f523d2149a05d0f2b8ca6e1320b627b843f"),
 }
 
 REQUIRED_DOCUMENTS = [
@@ -86,9 +87,7 @@ ALLOWED_RELATIONS = {
 ALLOWED_MAPPING_STATUSES = {
     "NOT-DETERMINED", "CANDIDATE", "PARTIAL", "CONFLICT", "OUT-OF-SCOPE",
 }
-ALLOWED_CANDIDATE_DISPOSITIONS = {
-    "REVIEWED-COMPATIBLE-WITH-QUALIFICATION", "REVIEWED-INCOMPATIBLE",
-}
+EXPECTED_CANDIDATE_DISPOSITION = "REVIEWED-COMPATIBLE-WITH-QUALIFICATION"
 
 EXPECTED_SOURCE_ROWS = {
     "R01": ("Applicability/Profile Declaration", "PICS-like declaration", "realizes", "CANDIDATE"),
@@ -211,15 +210,33 @@ def parse_mapping_tables(text: str) -> tuple[dict[str, tuple[str, ...]], dict[st
     return source, additional
 
 
+def mapping_row_ids(text: str) -> tuple[list[str], list[str]]:
+    """Return every controlled mapping ID without collapsing duplicates."""
+    source_ids: list[str] = []
+    additional_ids: list[str] = []
+    for line in text.splitlines():
+        if not line.startswith("|"):
+            continue
+        cells = table_cells(line)
+        if len(cells) != 11:
+            continue
+        if SOURCE_ROW_RE.fullmatch(cells[0]):
+            source_ids.append(cells[0])
+        elif ADDITIONAL_ROW_RE.fullmatch(cells[0]):
+            additional_ids.append(cells[0])
+    return source_ids, additional_ids
+
+
 def mapping_errors(text: str) -> list[str]:
     errors: list[str] = []
     source, additional = parse_mapping_tables(text)
+    source_ids, additional_ids = mapping_row_ids(text)
     expected_source_order = list(EXPECTED_SOURCE_ROWS)
     expected_additional_order = list(EXPECTED_ADDITIONAL_ROWS)
-    if list(source) != expected_source_order:
-        errors.append(f"source mapping rows/order differ: {list(source)}")
-    if list(additional) != expected_additional_order:
-        errors.append(f"instance-only rows/order differ: {list(additional)}")
+    if source_ids != expected_source_order:
+        errors.append(f"source mapping rows/order differ: {source_ids}")
+    if additional_ids != expected_additional_order:
+        errors.append(f"instance-only rows/order differ: {additional_ids}")
     review_results: set[str] = set()
     for row_id, expected in EXPECTED_SOURCE_ROWS.items():
         cells = source.get(row_id)
@@ -253,6 +270,87 @@ def mapping_errors(text: str) -> list[str]:
     return errors
 
 
+def controlled_table_rows(text: str, width: int) -> dict[str, list[tuple[str, ...]]]:
+    """Collect Markdown rows by their first cell while preserving duplicates."""
+    rows: dict[str, list[tuple[str, ...]]] = {}
+    for line in text.splitlines():
+        if not line.startswith("|"):
+            continue
+        cells = table_cells(line)
+        if len(cells) == width:
+            rows.setdefault(cells[0].strip("`"), []).append(tuple(cells))
+    return rows
+
+
+def source_inventory_errors(evidence: str) -> list[str]:
+    errors: list[str] = []
+    rows = controlled_table_rows(evidence, 4)
+    observed_paths: list[str] = []
+    for line in evidence.splitlines():
+        if not line.startswith("|"):
+            continue
+        cells = table_cells(line)
+        path = cells[0].strip("`") if len(cells) == 4 else ""
+        if path in SOURCE_INVENTORY:
+            observed_paths.append(path)
+    if observed_paths != list(SOURCE_INVENTORY):
+        errors.append(f"source inventory rows/order differ: {observed_paths}")
+    for path, (expected_bytes, expected_digest) in SOURCE_INVENTORY.items():
+        matches = rows.get(path, [])
+        if len(matches) != 1:
+            errors.append(f"source inventory row count for {path}: {len(matches)}")
+            continue
+        cells = matches[0]
+        expected_locator = f"{ARINC_REPOSITORY}/blob/{ARINC_V43_MERGE_COMMIT}/{path}"
+        locator_match = re.fullmatch(r"\[[^\]]+\]\(([^)]+)\)", cells[3])
+        actual_locator = locator_match.group(1) if locator_match else ""
+        if cells[1] != str(expected_bytes):
+            errors.append(f"source byte count differs for {path}: {cells[1]}")
+        if cells[2].strip("`") != expected_digest:
+            errors.append(f"source SHA-256 differs for {path}")
+        if actual_locator != expected_locator:
+            errors.append(f"source locator is not commit-bound for {path}: {actual_locator}")
+    return errors
+
+
+def evidence_identity_errors(evidence: str) -> list[str]:
+    errors: list[str] = []
+    rows = controlled_table_rows(evidence, 3)
+    expected_values = {
+        "PR #9 final reviewed head": f"`{ARINC_REVIEWED_HEAD}`",
+        "v4.3 release commit": f"`{ARINC_V43_MERGE_COMMIT}`",
+        "v4.3 baseline ID": f"`{ARINC_V43_BASELINE_ID}`",
+        "v4.3 release tag": f"annotated tag `{ARINC_V43_RELEASE_TAG}`",
+        "v4.3 tag object": f"`{ARINC_V43_TAG_OBJECT}`",
+        "v4.3 peeled target": f"`{ARINC_V43_MERGE_COMMIT}`",
+        "Post-merge control state": "`NONE`",
+    }
+    for key, expected in expected_values.items():
+        matches = rows.get(key, [])
+        if len(matches) != 1:
+            errors.append(f"identity row count for {key}: {len(matches)}")
+        elif matches[0][1] != expected:
+            errors.append(f"identity value differs for {key}: {matches[0][1]}")
+    review_rows = rows.get("Natural-person review", [])
+    review_locator = (
+        f"[Review ID {ARINC_HUMAN_REVIEW_ID}]"
+        f"({ARINC_REPOSITORY}/pull/9#pullrequestreview-{ARINC_HUMAN_REVIEW_ID})"
+    )
+    if len(review_rows) != 1:
+        errors.append(f"natural-person review row count: {len(review_rows)}")
+    else:
+        review = review_rows[0]
+        if review[1] != review_locator:
+            errors.append("natural-person review ID/locator differs")
+        required_result = (
+            "reviewer `Chi Zhang`; commit `5d149d1…`; platform state `COMMENTED`; "
+            "body outcome `APPROVE`; independence and AC-05 bilingual confirmation recorded"
+        )
+        if review[2] != required_result:
+            errors.append("natural-person review result differs")
+    return errors
+
+
 def third_handshake_document_errors(
     evidence: str, disposition: str, registry: str, contract: str
 ) -> list[str]:
@@ -278,8 +376,8 @@ def third_handshake_document_errors(
     if "Candidate overall disposition | `REVIEWED-COMPATIBLE-WITH-QUALIFICATION`" not in disposition:
         errors.append("candidate overall disposition is absent or not qualified")
     candidate_match = re.search(r"Candidate overall disposition \| `([^`]+)`", disposition)
-    if not candidate_match or candidate_match.group(1) not in ALLOWED_CANDIDATE_DISPOSITIONS:
-        errors.append("candidate overall disposition is outside the allowed vocabulary")
+    if not candidate_match or candidate_match.group(1) != EXPECTED_CANDIDATE_DISPOSITION:
+        errors.append("candidate overall disposition differs from the reviewed PR #15 conclusion")
     if "Candidate overall disposition | `REVIEWED-COMPATIBLE`" in disposition:
         errors.append("unqualified REVIEWED-COMPATIBLE is prohibited for this handshake")
     if "Active formal compatibility before approval/merge | `NOT-DETERMINED`" not in disposition:
@@ -295,9 +393,8 @@ def third_handshake_document_errors(
         errors.append("missing execution manifest was not explicitly recorded")
     if "v4.3` is the only release tag" not in contract:
         errors.append("baseline ID and actual v4.3 release tag are not separated")
-    for path, digest in SOURCE_SHA256.items():
-        if path not in evidence or digest not in evidence:
-            errors.append(f"source inventory/hash missing: {path}")
+    errors.extend(source_inventory_errors(evidence))
+    errors.extend(evidence_identity_errors(evidence))
     return errors
 
 

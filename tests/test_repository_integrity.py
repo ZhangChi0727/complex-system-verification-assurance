@@ -23,6 +23,16 @@ class ThirdHandshakeMappingTests(unittest.TestCase):
     def test_controlled_18_plus_7_population_passes(self) -> None:
         self.assertEqual(integrity.mapping_errors(self.mapping), [])
 
+    def test_duplicate_source_row_is_rejected(self) -> None:
+        row = next(line for line in self.mapping.splitlines() if line.startswith("| R01 |"))
+        changed = self.mapping.replace(row, f"{row}\n{row}", 1)
+        self.assertTrue(integrity.mapping_errors(changed))
+
+    def test_duplicate_instance_only_row_is_rejected(self) -> None:
+        row = next(line for line in self.mapping.splitlines() if line.startswith("| A01 |"))
+        changed = self.mapping.replace(row, f"{row}\n{row}", 1)
+        self.assertTrue(integrity.mapping_errors(changed))
+
     def test_source_relation_strengthening_is_rejected(self) -> None:
         changed = self.mapping.replace(
             "| R02 | VerificationBasisElement | applicable CRS item | v4.3 release; legacy-origin object | `candidate-correspondence` |",
@@ -76,6 +86,59 @@ class ThirdHandshakeIdentityTests(unittest.TestCase):
 
     def test_controlled_documents_pass(self) -> None:
         self.assertEqual(self.errors(), [])
+
+    def test_swapped_source_hashes_are_rejected(self) -> None:
+        first = integrity.SOURCE_INVENTORY[
+            "docs/control/contracts/EXTERNAL_GVS_BINDING.md"
+        ][1]
+        second = integrity.SOURCE_INVENTORY[
+            "docs/control/contracts/ARINC615A_PROFILE_BINDING_CONFIGURATION.md"
+        ][1]
+        changed = self.evidence.replace(first, "__FIRST_HASH__", 1)
+        changed = changed.replace(second, first, 1).replace("__FIRST_HASH__", second, 1)
+        self.assertTrue(self.errors(evidence=changed))
+
+    def test_incorrect_source_byte_count_is_rejected(self) -> None:
+        changed = self.evidence.replace(
+            "| `docs/control/contracts/EXTERNAL_GVS_BINDING.md` | 9949 |",
+            "| `docs/control/contracts/EXTERNAL_GVS_BINDING.md` | 9950 |",
+            1,
+        )
+        self.assertTrue(self.errors(evidence=changed))
+
+    def test_incorrect_tag_object_is_rejected(self) -> None:
+        changed = self.evidence.replace(
+            f"| v4.3 tag object | `{integrity.ARINC_V43_TAG_OBJECT}` |",
+            f"| v4.3 tag object | `{'0' * 40}` |",
+            1,
+        )
+        self.assertTrue(self.errors(evidence=changed))
+
+    def test_incorrect_peeled_target_is_rejected(self) -> None:
+        changed = self.evidence.replace(
+            f"| v4.3 peeled target | `{integrity.ARINC_V43_MERGE_COMMIT}` |",
+            f"| v4.3 peeled target | `{'1' * 40}` |",
+            1,
+        )
+        self.assertTrue(self.errors(evidence=changed))
+
+    def test_mutable_source_locator_is_rejected(self) -> None:
+        immutable = (
+            f"{integrity.ARINC_REPOSITORY}/blob/"
+            f"{integrity.ARINC_V43_MERGE_COMMIT}/"
+        )
+        changed = self.evidence.replace(
+            immutable, f"{integrity.ARINC_REPOSITORY}/blob/main/", 1
+        )
+        self.assertTrue(self.errors(evidence=changed))
+
+    def test_wrong_review_id_is_rejected(self) -> None:
+        changed = self.evidence.replace(
+            f"Review ID {integrity.ARINC_HUMAN_REVIEW_ID}",
+            "Review ID 0000000000",
+            1,
+        )
+        self.assertTrue(self.errors(evidence=changed))
 
     def test_wrong_method_definition_is_rejected(self) -> None:
         changed = self.registry.replace(
