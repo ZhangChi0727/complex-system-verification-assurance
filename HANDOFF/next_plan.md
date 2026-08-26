@@ -1,10 +1,10 @@
 ---
 title: Next Plan
 status: working
-version: 1.0
+version: 1.1
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-25
+last_updated: 2026-08-26
 dependencies:
   - README.md
   - current_progress.md
@@ -24,9 +24,11 @@ dependencies:
 
 Task 001-022 已由 PR #13 合并为 `version: 0.6` work-order baseline：每项 source task 依据对应标准原文的目录和研究边界配置 Research orientation、完整 inventory 后的 hypothesis reconciliation、标准专用 research packages、公共 evidence contract、自包含 note 与 independent-review gate。该 work-order baseline 不表示任何 clause study 已开始。
 
-## Parallel governance step after this PR
+## Parallel ARINC governance state
 
-If the Candidate GVS Core/cross-repository contract PR is independently approved and merged, the next governance action is a separate ARINC PR #9 Profile migration, Framework binding and compatibility-review work order. It must bind to the immutable method merge SHA and preserve `RB-2026-001-v4.2.1` as legacy history. This governance path does not begin a standard study and does not satisfy the object-registry, executable-schema or architecture-freeze gates.
+Candidate GVS Core 0.3 is defined at method merge `48dd8232b7efe6b0dba3fcb75dfc154d034d2b0b`. ARINC PR #9 is merged and released as baseline ID `RB-2026-001-v4.3` / annotated tag `v4.3` at `523d42bf03a1135b3d63a00bfb47d3b879d3927e`, while v4.2.1 remains frozen pre-framework history.
+
+Current work order A is the method-side third-handshake Draft: independent review must verify the immutable heads, eight source hashes, 18/18 + 7 mapping, Q-01–Q-09 and the candidate `REVIEWED-COMPATIBLE-WITH-QUALIFICATION`. Work order B must not begin until A is approved and merged by ordinary merge commit. B will then acknowledge that exact method-disposition merge in a separate ARINC baseline change (`RB-2026-001-v4.3.1` baseline ID / future `v4.3.1` release tag). After both handshakes, the next separate instance step is to establish real Project Configuration values and execute the evaluation protocol; it does not close RQ8.
 
 ISO/IEC/IEEE 15289:2019 remains the first research stop regardless of this parallel governance work.
 
@@ -55,7 +57,7 @@ ISO/IEC/IEEE 15289:2019 remains the first research stop regardless of this paral
 | Executable information schema | Architecture synthesis gate and relevant schema dependencies satisfied | Executable schema candidate |
 | Versioned object registry | Stable identity/version/compatibility rules available | Controlled registry and migration rules |
 | Platform reference architecture | Information model sufficiently stable | Replaceable technology decisions |
-| External-instance integration | First apply temporary contract/mapping and immutable version binding; stable registry remains gated | ARINC PR #9 compatibility migration/review after method PR merge; controlled findings only |
+| External-instance integration | Work order A independent review/merge, then separate ARINC work order B acknowledgement; stable registry remains gated | Qualified compatibility disposition only; then establish Project Configuration and execute the evaluation protocol in another PR |
 
 ISO 29148:2018 与 ISO 15026-2:2022 的现有研究已完成独立评审修正；它们不会因评审完成而关闭上述依赖。ISO/IEC/IEEE 15026-1:2019 不再是独立 clause-study 对象或待研究标准。
 

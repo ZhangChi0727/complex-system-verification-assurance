@@ -200,4 +200,3 @@ This disposition must not be interpreted as:
 Approval must attach to the final unchanged PR head. No post-approval status
 commit is permitted; a changed head requires the independent review to run
 again.
-

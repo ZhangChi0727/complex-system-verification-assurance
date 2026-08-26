@@ -101,4 +101,3 @@ created.
 Any future mapping change requires immutable source/target identities, rationale,
 dependency, migration impact and independent review. The overall third-handshake
 candidate cannot convert a row to equivalence or close its research dependency.
-

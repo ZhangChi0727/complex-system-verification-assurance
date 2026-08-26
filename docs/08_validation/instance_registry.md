@@ -79,4 +79,3 @@ RQ8 remains `Open`.
 The temporary key must never be called stable. Future replacement by a
 versioned registry requires an explicit migration record preserving all
 historical and active-migration identities above.
-

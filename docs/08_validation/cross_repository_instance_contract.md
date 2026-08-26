@@ -212,4 +212,3 @@ commit invalidates that approval. ARINC supplies first-instance migration
 evidence only. It cannot prove completeness, scalability, reusability or
 generality, cannot produce `INSTANCE-EXERCISED`, and cannot close RQ8 without
 controlled UAV FMS, LLM service and cross-instance synthesis.
-

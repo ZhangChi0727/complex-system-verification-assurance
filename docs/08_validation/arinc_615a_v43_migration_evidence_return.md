@@ -142,4 +142,3 @@ binding, configuration or research owner.
   airworthiness, tool-qualification or authority-acceptance claim is made.
 - No proprietary standard clause, PDF, extraction, raw evidence, credential,
   private path or employer-only material is included.
-

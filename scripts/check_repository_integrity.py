@@ -53,6 +53,7 @@ REQUIRED_DOCUMENTS = [
     "docs/08_validation/arinc_615a_instance_evaluation_protocol.md",
     "docs/08_validation/arinc_615a_v43_migration_evidence_return.md",
     "docs/08_validation/arinc_615a_third_handshake_compatibility_disposition.md",
+    "docs/08_validation/arinc_615a_third_handshake_review_handoff.md",
     "scripts/check_repository_integrity.py",
     "tests/test_repository_integrity.py",
     ".github/workflows/repository-integrity.yml",
@@ -507,4 +508,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-

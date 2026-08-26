@@ -15,6 +15,7 @@ dependencies:
   - arinc_615a_instance_evaluation_protocol.md
   - arinc_615a_v43_migration_evidence_return.md
   - arinc_615a_third_handshake_compatibility_disposition.md
+  - arinc_615a_third_handshake_review_handoff.md
 ---
 
 # Framework Validation Workspace
@@ -37,6 +38,7 @@ Change Proposal、跨实例相关性、依据和独立评审链。
 - [ARINC 615A Instance Evaluation Protocol](arinc_615a_instance_evaluation_protocol.md)
 - [ARINC v4.3 Migration Evidence Return](arinc_615a_v43_migration_evidence_return.md)
 - [ARINC v4.3 Third-Handshake Compatibility Disposition](arinc_615a_third_handshake_compatibility_disposition.md)
+- [ARINC v4.3 Third-Handshake Independent-Review Handoff](arinc_615a_third_handshake_review_handoff.md)
 - [PR #14 external review disposition](pr_14_external_review_disposition.md)
 
 ## ARINC immutable identity ledger
@@ -146,4 +148,3 @@ submodules, shared internal code or implementation APIs.
 Current work is migration-contract compatibility disposition only. No stable
 registry, schema freeze, certification acceptance, instance validation,
 `INSTANCE-EXERCISED`, `VALIDATED-BASELINE` or RQ8 closure is claimed.
-

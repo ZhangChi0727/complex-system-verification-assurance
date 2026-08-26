@@ -23,4 +23,3 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_*.py' -v
       - name: Run repository-governance integrity checks
         run: python scripts/check_repository_integrity.py
-
