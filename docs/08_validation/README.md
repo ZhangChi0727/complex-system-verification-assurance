@@ -77,10 +77,17 @@ activation rule:
 
 Compatibility review concerns migration-contract structure, ownership, mapping
 and semantic interfaces. It is not execution of the instance evaluation
-protocol. Work order B remains prohibited before the activation event. After
-activation, ARINC acknowledgement is a separate work order and baseline change
-bound to the method-disposition merge SHA; no post-merge method status commit is
-needed.
+protocol. The repository checker reports only whether repository-side PR #15
+ordinary-merge evidence is present. It does not access or validate the external
+GitHub independent-approval record and therefore never declares formal
+compatibility from Git history alone. The final release gate and work order B
+must jointly confirm the named natural-person approval, its exact reviewed head,
+the ordinary merge and equality between that head and the merge's second parent.
+
+Work order B remains prohibited before that joint confirmation. After the
+controlled activation event, ARINC acknowledgement is a separate work order and
+baseline change bound to the method-disposition merge SHA; no post-merge method
+status commit is needed.
 
 ## Validation instances
 

@@ -182,12 +182,48 @@ class ThirdHandshakeIdentityTests(unittest.TestCase):
         self.assertTrue(self.errors(registry=changed))
 
 
-class ThirdHandshakeActivationTests(unittest.TestCase):
-    def test_pull_request_event_cannot_self_activate(self) -> None:
+class ThirdHandshakeMergeEvidenceTests(unittest.TestCase):
+    def test_pull_request_event_cannot_report_merge_evidence(self) -> None:
         with mock.patch.dict(integrity.os.environ, {"GITHUB_EVENT_NAME": "pull_request"}):
-            self.assertFalse(integrity.third_handshake_activated())
+            self.assertFalse(integrity.pr15_merge_evidence_present())
 
-    def test_ordinary_two_parent_merge_activates_on_main_history(self) -> None:
+    def test_non_two_parent_commit_is_not_merge_evidence(self) -> None:
+        merge = "a" * 40
+        with (
+            mock.patch.dict(integrity.os.environ, {}, clear=True),
+            mock.patch.object(
+                integrity,
+                "git",
+                side_effect=[merge, f"{merge} {'b' * 40}"],
+            ),
+        ):
+            self.assertFalse(integrity.pr15_merge_evidence_present())
+
+    def test_wrong_pr_or_message_is_not_merge_evidence(self) -> None:
+        with (
+            mock.patch.dict(integrity.os.environ, {}, clear=True),
+            mock.patch.object(integrity, "git", return_value=""),
+        ):
+            self.assertFalse(integrity.pr15_merge_evidence_present())
+
+    def test_non_head_ancestor_is_not_merge_evidence(self) -> None:
+        merge = "a" * 40
+        with (
+            mock.patch.dict(integrity.os.environ, {}, clear=True),
+            mock.patch.object(
+                integrity,
+                "git",
+                side_effect=[merge, f"{merge} {'b' * 40} {'c' * 40}"],
+            ),
+            mock.patch.object(
+                integrity.subprocess,
+                "run",
+                return_value=mock.Mock(returncode=1),
+            ),
+        ):
+            self.assertFalse(integrity.pr15_merge_evidence_present())
+
+    def test_correct_merge_reports_repository_evidence_only(self) -> None:
         merge = "a" * 40
         with (
             mock.patch.dict(integrity.os.environ, {}, clear=True),
@@ -202,19 +238,16 @@ class ThirdHandshakeActivationTests(unittest.TestCase):
                 return_value=mock.Mock(returncode=0),
             ),
         ):
-            self.assertTrue(integrity.third_handshake_activated())
-
-    def test_pre_activation_state_is_not_determined(self) -> None:
-        self.assertEqual(
-            integrity.compatibility_for_activation(False),
-            "NOT-DETERMINED",
+            present = integrity.pr15_merge_evidence_present()
+        self.assertTrue(present)
+        report = "\n".join(integrity.compatibility_reporting_lines(present))
+        self.assertIn("repository-side merge evidence: PRESENT", report)
+        self.assertIn("external independent approval: NOT AUTOMATED", report)
+        self.assertIn(
+            "formal compatibility: governed by the controlled conditional activation record",
+            report,
         )
-
-    def test_post_activation_state_is_qualified_compatible(self) -> None:
-        self.assertEqual(
-            integrity.compatibility_for_activation(True),
-            "REVIEWED-COMPATIBLE-WITH-QUALIFICATION",
-        )
+        self.assertNotIn("REVIEWED-COMPATIBLE-WITH-QUALIFICATION", report)
 
 
 if __name__ == "__main__":

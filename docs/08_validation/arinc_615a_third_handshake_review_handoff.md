@@ -49,6 +49,7 @@ sufficiency, certification or cross-instance generality?
 | 5 | `docs: normalize third-handshake review handoff` | removes an encoding artifact without changing semantics |
 | 6 | `test: close third-handshake validator false negatives` | rejects duplicate mappings and validates path/bytes/hash/commit-locator plus release/review identities as associated records |
 | 7 | `docs: make third-handshake compatibility activation explicit` | defines the pre/activation/post transition across contract, registry, disposition, HANDOFF and checker output |
+| 8 | `test: separate merge evidence from compatibility activation` | limits automation to repository-side merge evidence and returns independent approval/formal compatibility to the controlled release gate |
 
 All are ordinary commits. No amend, rebase, squash or force-push is authorized.
 
@@ -111,15 +112,18 @@ Change Proposal input.
 
 | Finding | Correction status | Verification |
 |---|---|---|
-| F-01 duplicate mapping IDs hidden by dictionary overwrite | `CORRECTED; REREVIEW PENDING` | duplicate R01 and A01 negative tests now fail the gate |
-| F-02 evidence fields checked only as unrelated text | `CORRECTED; REREVIEW PENDING` | eight structured records bind path, bytes, SHA-256 and commit locator; release/tag/review identities are row-validated |
-| F-03 compatibility activation ambiguity | `CORRECTED; REREVIEW PENDING` | pre/activation/post rule is shared by contract, registry, disposition, workspace, HANDOFF and checker |
-| A-01 disposition vocabulary/implementation mismatch | `CORRECTED; REREVIEW PENDING` | this PR-specific gate explicitly requires the one reviewed candidate disposition |
+| F-01 duplicate mapping IDs hidden by dictionary overwrite | `CLOSED; LIMITED REREVIEW PASSED` | duplicate R01 and A01 negative tests fail the gate |
+| F-02 evidence fields checked only as unrelated text | `CLOSED; LIMITED REREVIEW PASSED` | eight structured records bind path, bytes, SHA-256 and commit locator; release/tag/review identities are row-validated |
+| F-03 compatibility activation ambiguity | `DOCUMENT SEMANTICS CLOSED; RR-F01 CORRECTED; REREVIEW PENDING` | conditional record remains authoritative; automation no longer claims activation |
+| A-01 disposition vocabulary/implementation mismatch | `CLOSED; LIMITED REREVIEW PASSED` | this PR-specific gate explicitly requires the one reviewed candidate disposition |
+| RR-F01 merge evidence treated as complete activation | `CORRECTED; REREVIEW PENDING` | checker reports merge evidence only, marks approval `NOT AUTOMATED` and defers formal compatibility to the controlled conditional record |
 
 The correction review range starts at `c2197ef1258717d40871f98f77605151ee53a199` and ends at the final unchanged PR #15 head reported by GitHub after the corrections are pushed.
-Work order B remains prohibited until an independent reviewer approves the
-unchanged final head and the ordinary PR #15 merge activates the qualified
-disposition.
+The checker does not validate the external GitHub independent-approval record.
+The final release gate and work order B must jointly confirm that named approval,
+its exact reviewed head, the ordinary merge commit and equality between the
+approved head and the merge's second parent. Work order B remains prohibited
+until that joint confirmation activates the qualified disposition.
 
 ## Validation commands
 

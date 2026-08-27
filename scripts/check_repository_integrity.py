@@ -422,16 +422,8 @@ def third_handshake_document_errors(
     return errors
 
 
-def compatibility_for_activation(activated: bool) -> str:
-    return (
-        POST_ACTIVATION_COMPATIBILITY
-        if activated
-        else PRE_ACTIVATION_COMPATIBILITY
-    )
-
-
-def third_handshake_activated() -> bool:
-    """Detect the repository-side half of the reviewed PR #15 activation event."""
+def pr15_merge_evidence_present() -> bool:
+    """Detect only repository-side PR #15 ordinary-merge evidence."""
     if os.environ.get("GITHUB_EVENT_NAME") == "pull_request":
         return False
     try:
@@ -451,6 +443,15 @@ def third_handshake_activated() -> bool:
         ).returncode == 0
     except subprocess.CalledProcessError:
         return False
+
+
+def compatibility_reporting_lines(merge_evidence_present: bool) -> tuple[str, ...]:
+    merge_state = "PRESENT" if merge_evidence_present else "ABSENT"
+    return (
+        f"repository-side merge evidence: {merge_state}",
+        "external independent approval: NOT AUTOMATED",
+        "formal compatibility: governed by the controlled conditional activation record",
+    )
 
 
 def protected_delta_errors() -> list[str]:
@@ -652,10 +653,8 @@ def main() -> int:
     print(f"- MethodDefinitionCommit: {METHOD_DEFINITION_COMMIT}")
     print(f"- ARINC v4.3 release commit/tag: {ARINC_V43_MERGE_COMMIT} / {ARINC_V43_RELEASE_TAG}")
     print("- mapping populations: 18 source + 7 instance-only")
-    activated = third_handshake_activated()
-    phase = "POST-ACTIVATION" if activated else "PRE-ACTIVATION"
-    print(f"- compatibility activation: {phase}")
-    print(f"- formal compatibility: {compatibility_for_activation(activated)}")
+    for line in compatibility_reporting_lines(pr15_merge_evidence_present()):
+        print(f"- {line}")
     print("- Project Configuration / instance evaluation: NOT YET ESTABLISHED / NOT-EXERCISED")
     print("- framework semantic automation: not performed")
     return 0
