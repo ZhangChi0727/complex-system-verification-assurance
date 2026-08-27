@@ -1,19 +1,24 @@
 ---
 title: Temporary Controlled Instance Register
 status: working
-version: 0.2
+version: 0.3
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-25
+last_updated: 2026-08-26
 dependencies:
   - cross_repository_instance_contract.md
   - arinc_615a_object_mapping_register.md
   - arinc_615a_instance_evaluation_protocol.md
+  - arinc_615a_v43_migration_evidence_return.md
+  - arinc_615a_third_handshake_compatibility_disposition.md
 ---
 
 # Temporary Controlled Instance Register
 
-This is a **temporary controlled instance register** used before a versioned object registry exists. Temporary keys are navigation/mapping identities only; they are not stable object IDs, executable schema keys or compatibility approvals.
+This is a **temporary controlled instance register** used before a versioned
+object registry exists. Temporary keys are navigation/mapping identities only;
+they are not stable object IDs, executable schema keys or compatibility
+approvals.
 
 ## Registered instance
 
@@ -22,25 +27,60 @@ This is a **temporary controlled instance register** used before a versioned obj
 | Temporary mapping key | `TMP-ARINC615A-01` |
 | Instance name/type | ARINC 615A protocol conformance verification / deterministic protocol-conformance instance |
 | Canonical repository URL | <https://github.com/ZhangChi0727/arinc-615a-conformance> |
-| External active baseline release commit | `3299e6dae83424862f75a4c1d09b91b80d9d8b00` |
-| External active baseline tag/ID | `RB-2026-001-v4.2.1` |
-| Repository control-state snapshot | `0ce96f701159fd4156d5e5e9889360f53977a61b` — post-release recording commit; not the baseline content commit |
-| PR #14 authoring base | `196cfc2426a841a4adb9c9159660253896b0257c` — authoring provenance only; predates the Candidate GVS Core contract |
-| Candidate method definition identity | `NOT YET ESTABLISHED — PENDING PR #14 MERGE` |
-| Origin classification | `PRE-FRAMEWORK LEGACY INSTANCE BASELINE` |
-| Candidate GVS Core binding status | `NOT YET ESTABLISHED` |
-| Compatibility status | `NOT-DETERMINED` |
-| Mapping register | [ARINC 615A Object Mapping Register](arinc_615a_object_mapping_register.md), version 0.2 |
-| Evaluation protocol | [ARINC 615A Instance Evaluation Protocol](arinc_615a_instance_evaluation_protocol.md), version 0.2; not executed |
-| Latest independent review | none; external review pending |
-| Open blockers | method PR approval/merge; versioned binding; mapping review; instance migration; compatibility review |
-| Migration candidate | [Draft PR #9](https://github.com/ZhangChi0727/arinc-615a-conformance/pull/9), head `53a98447bcfa862f082ce443d69115067d3ff2f1`, candidate baseline `RB-2026-001-v4.3`, `UNMERGED MIGRATION CANDIDATE` |
-| Non-claims | not fully framework-based; not compatible; not validated; not certification-ready; not Generic evidence by default |
+| Historical legacy baseline release commit | `3299e6dae83424862f75a4c1d09b91b80d9d8b00` |
+| Historical legacy annotated tag | `RB-2026-001-v4.2.1` |
+| Historical origin classification | `PRE-FRAMEWORK LEGACY INSTANCE BASELINE` |
+| Pre-migration control-state commit | `0ce96f701159fd4156d5e5e9889360f53977a61b` — control provenance; not release content |
+| Active migration baseline ID | `RB-2026-001-v4.3` |
+| Active migration release commit | `523d42bf03a1135b3d63a00bfb47d3b879d3927e` |
+| Active migration annotated release tag | `v4.3` |
+| Active migration tag object / peeled target | `28312fd9c5470cb15d76eb3762c99a25ab842cfd` / `523d42bf03a1135b3d63a00bfb47d3b879d3927e` |
+| Post-merge control-state commit | `NONE` |
+| Active migration classification | `GVS-BOUND LEGACY MIGRATION BASELINE`; legacy historical origin preserved |
+| PR #9 reviewed head | `5d149d1f8e92bbed438fe8bc78be9e8972fecb7d` |
+| PR #9 human review | Review ID `5029797924`; platform `COMMENTED`; body outcome `APPROVE`; exact reviewed head above |
+| PR #14 authoring base | `196cfc2426a841a4adb9c9159660253896b0257c` — authoring provenance only |
+| Candidate method definition identity | `48dd8232b7efe6b0dba3fcb75dfc154d034d2b0b` — Candidate GVS Core 0.3 |
+| Conformance-Testing Profile | `TMP-CTP-ARINC615A-01`, version `0.1-candidate` |
+| Product Binding | `TMP-PB-ARINC615A-01`, version `0.1-candidate` |
+| Project Configuration | `TMP-PC-ARINC615A-01`; `NOT YET ESTABLISHED` |
+| Candidate GVS Core binding status | `ESTABLISHED FOR MIGRATION` at the method definition commit; temporary contract |
+| Compatibility pre-activation | `NOT-DETERMINED` |
+| Compatibility activation | independent approval of unchanged PR #15 head plus ordinary two-parent merge; merge SHA becomes method-disposition identity |
+| Compatibility post-activation | `REVIEWED-COMPATIBLE-WITH-QUALIFICATION`; subject to Q-01–Q-09 |
+| Mapping register | [ARINC 615A Object Mapping Register](arinc_615a_object_mapping_register.md), version 0.3; 18 + 7 rows |
+| Migration evidence return | [ARINC v4.3 Migration Evidence Return](arinc_615a_v43_migration_evidence_return.md), version 0.1; immutable review input |
+| Compatibility disposition | [Third-Handshake Compatibility Disposition](arinc_615a_third_handshake_compatibility_disposition.md), version 0.1; conditional activation rule |
+| Evaluation protocol | [ARINC 615A Instance Evaluation Protocol](arinc_615a_instance_evaluation_protocol.md), version 0.2; `NOT-EXERCISED` |
+| Execution evidence manifest | `NOT AVAILABLE — MIGRATION-ONLY REVIEW` |
+| Open blockers | pre-activation: method-side independent rereview and ordinary merge; post-activation: later ARINC acknowledgement, controlled Project Configuration and separate protocol execution |
+| Non-claims | no protocol conformance, empirical instance evaluation, framework validation, stable registry, certification readiness or Generic promotion |
 
-## Legacy and migration boundary
+## Historical and active-migration boundary
 
-The active baseline release commit/tag predates the Candidate GVS Core contract. The later repository control-state snapshot records release governance but does not replace the tagged content identity. Neither shall be described as “fully based on” this method repository, and historical labels shall not be rewritten. Draft PR #9 is not part of the active baseline and provides no active semantic authority. Its eventual migration must bind the final PR #14 merge SHA; no binding may use `196cfc…` or a mutable PR head as the Candidate method definition.
+The legacy v4.2.1 release predates the Candidate GVS Core and remains frozen.
+The v4.3 release is a GVS-bound migration baseline, not a retrospective rewrite
+of that origin. Baseline ID `RB-2026-001-v4.3` and release tag `v4.3` are separate
+controlled fields. The pre-migration control-state commit and PR reviewed head
+are provenance; neither substitutes for the tagged release commit.
 
-This method-repository PR does not approve or promote PR #9 concepts including `Verification Objective`, OSR, CEI, A0–A4, R0–R5 or its seven-layer evidence model. Even if PR #9 later merges, compatibility remains `NOT-DETERMINED` until the contract's third handshake and independent compatibility review complete.
+PR #9 merge and release establish the versioned method binding and migration
+contract. They do not establish compatibility or empirical evaluation. Before
+the method-side activation event, formal compatibility is `NOT-DETERMINED`.
+Independent approval of the unchanged PR #15 head plus its ordinary two-parent
+merge activates `REVIEWED-COMPATIBLE-WITH-QUALIFICATION` under Q-01–Q-09; that
+merge SHA is the immutable method-disposition identity. The future ARINC
+acknowledgement remains a separate baseline change and execution remains
+`NOT-EXERCISED`.
 
-The temporary key must never be called stable. Future replacement by a versioned registry requires an explicit migration record preserving this provenance.
+## Configuration and evaluation boundary
+
+`TMP-PC-ARINC615A-01` remains a temporary placeholder. No controlled IUT,
+setup, procedure, tool, clock/error-budget, environment, evidence-destination
+or reviewer values are registered. Consequently, no execution manifest exists,
+the evaluation protocol has not run, `INSTANCE-EXERCISED` is not obtained and
+RQ8 remains `Open`.
+
+The temporary key must never be called stable. Future replacement by a
+versioned registry requires an explicit migration record preserving all
+historical and active-migration identities above.

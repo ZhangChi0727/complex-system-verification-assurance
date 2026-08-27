@@ -1,15 +1,17 @@
 ---
 title: Cross-Repository Instance Contract
 status: working
-version: 0.2
+version: 0.3
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-25
+last_updated: 2026-08-26
 dependencies:
   - ../02_verification_framework/generic_verification_suite_core.md
   - instance_registry.md
   - arinc_615a_object_mapping_register.md
   - arinc_615a_instance_evaluation_protocol.md
+  - arinc_615a_v43_migration_evidence_return.md
+  - arinc_615a_third_handshake_compatibility_disposition.md
   - ../00_overview/innovation_statement.md
 ---
 
@@ -17,42 +19,65 @@ dependencies:
 
 ## Purpose and scope
 
-This document is the working research-position contract between the method repository and independently governed instance repositories. It defines authority, immutable version binding, temporary mappings, compatibility review and finding feedback for the **Candidate Generic Verification Suite Core (Candidate GVS Core)**. It does not create a stable object registry, executable schema, implementation dependency or compatibility approval.
+This document is the working research-position contract between the method
+repository and independently governed instance repositories. It defines
+authority, immutable version binding, temporary mappings, compatibility review
+and finding feedback for the **Candidate Generic Verification Suite Core
+(Candidate GVS Core)**. It does not create a stable object registry, executable
+schema, implementation dependency or empirical validation result.
 
-Current controlled external snapshot:
+## Current controlled ARINC snapshot
 
-- PR #14 authoring base: `196cfc2426a841a4adb9c9159660253896b0257c`; this commit predates this contract and is not a Candidate GVS Core definition identity;
-- Candidate method definition identity: `NOT YET ESTABLISHED — PENDING PR #14 MERGE`; a later instance migration shall bind the final PR #14 merge SHA, not this authoring base or a mutable PR head;
-- ARINC repository: <https://github.com/ZhangChi0727/arinc-615a-conformance>;
-- external active baseline release commit: `3299e6dae83424862f75a4c1d09b91b80d9d8b00`;
-- external active baseline tag/ID: `RB-2026-001-v4.2.1`;
-- repository control-state snapshot: `0ce96f701159fd4156d5e5e9889360f53977a61b`, a post-release recording commit and not the baseline content commit;
-- origin: `PRE-FRAMEWORK LEGACY INSTANCE BASELINE`;
-- compatibility: `NOT-DETERMINED`;
-- Draft PR #9 at `53a98447bcfa862f082ce443d69115067d3ff2f1`: `UNMERGED MIGRATION CANDIDATE`, no active semantic authority.
+| Concern | Controlled identity / state |
+|---|---|
+| PR #14 authoring provenance | `196cfc2426a841a4adb9c9159660253896b0257c`; predates the contract and is not the method definition |
+| Candidate method definition | Candidate GVS Core 0.3 / merge commit `48dd8232b7efe6b0dba3fcb75dfc154d034d2b0b` |
+| ARINC repository | <https://github.com/ZhangChi0727/arinc-615a-conformance> |
+| Historical legacy release | commit `3299e6dae83424862f75a4c1d09b91b80d9d8b00`; annotated tag `RB-2026-001-v4.2.1`; `PRE-FRAMEWORK LEGACY INSTANCE BASELINE` |
+| Pre-migration control state | `0ce96f701159fd4156d5e5e9889360f53977a61b`; not a release-content identity |
+| PR #9 reviewed head | `5d149d1f8e92bbed438fe8bc78be9e8972fecb7d` |
+| Active migration baseline | baseline ID `RB-2026-001-v4.3`; release commit `523d42bf03a1135b3d63a00bfb47d3b879d3927e`; annotated tag `v4.3` |
+| Tag object / peeled target | `28312fd9c5470cb15d76eb3762c99a25ab842cfd` / `523d42bf03a1135b3d63a00bfb47d3b879d3927e` |
+| Post-merge control state | `NONE`; ARINC `main` equals the tagged release commit |
+| Migration classification | `GVS-BOUND LEGACY MIGRATION BASELINE`; historical origin remains pre-framework |
+| Project Configuration / evaluation | `NOT YET ESTABLISHED` / `NOT-EXERCISED` |
+| Compatibility pre-activation | `NOT-DETERMINED` |
+| Compatibility activation | independent approval of the unchanged PR #15 head plus an ordinary two-parent merge commit |
+| Compatibility post-activation | `REVIEWED-COMPATIBLE-WITH-QUALIFICATION`; subject to Q-01–Q-09; merge SHA is the method-disposition identity |
+
+`RB-2026-001-v4.3` is the baseline ID and `v4.3` is the only release tag.
+They are different identity fields. Mutable `main`, `latest`, local paths and
+ordinary hyperlinks are never binding identities.
 
 ## Authority and ownership matrix
 
 | Controlled concern | Method repository | Instance repository | Prohibited shortcut |
 |---|---|---|---|
 | Candidate GVS Core semantic contracts | canonical working authority, subject to normative research/review | consume through versioned mapping; may submit findings | copy or silently redefine canonical definitions |
-| Verification Profile | defines extension contract and generalization gate | owns instance/profile specialization and rationale | promote profile taxonomy to Generic by use alone |
+| Verification Profile | defines extension contract and generalization gate | owns instance/Profile specialization and rationale | promote Profile taxonomy to Generic by use alone |
 | Product Binding | defines binding obligations and compatibility questions | owns product/protocol/tool mapping and concrete Oracle realization | bind to mutable branch or internal implementation API |
 | Project Configuration | defines separation and provenance expectations | owns selected versions, IUT/setup, parameters and run controls | encode project values as Core defaults |
 | Execution tools and raw evidence | no ownership of instance implementation | owns tools, manifests, raw records and access controls | treat tool output as Evidence without characterization |
 | Cross-instance evaluation | owns protocol and synthesis gate | executes protocol and returns controlled findings | single-instance generalization |
-| Generic tutorial | canonical authority | may host instance tutorial or identified non-authoritative derived view | duplicate an unversioned canonical tutorial |
+| Generic tutorial | canonical authority | may host an identified non-authoritative derived view | duplicate an unversioned canonical tutorial |
+
+The dependency direction is `Core → Profile → Binding → Configuration`. A lower
+layer may select or realize an upstream extension point but may not silently
+redefine it.
 
 ## Two meanings of upstream
 
-1. **Instance-baseline upstream** is the commit/tag/baseline inside an instance repository from which an instance candidate evolves. It controls the instance's own Git and evidence lineage.
-2. **External Generic Framework upstream** is an immutable method-repository commit or tagged definition context used by a Profile/Binding mapping. It controls semantic compatibility, not the instance's internal Git ancestry.
-
-Neither meaning authorizes dependence on mutable `main`, `latest`, local paths or an ordinary hyperlink as identity.
+1. **Instance-baseline upstream** is the commit/tag/baseline inside an instance
+   repository from which an instance candidate evolves. It controls instance Git
+   and evidence lineage.
+2. **External Generic Framework upstream** is the immutable method-repository
+   definition context used by a Profile/Binding. It controls semantic
+   compatibility, not instance Git ancestry.
 
 ## Immutable binding and stable-reference minimum
 
-Every binding shall identify immutable method and instance commits/tags/baselines plus a mapping version. A future stable reference requires at least:
+Every binding identifies immutable method and instance commits/tags/baselines
+plus a mapping version. A future stable reference requires at least:
 
 | Field | Required meaning |
 |---|---|
@@ -65,11 +90,11 @@ Every binding shall identify immutable method and instance commits/tags/baseline
 | `CanonicalLocator` | repository-relative or immutable remote locator |
 | `CompatibilityRule` | version-transition and consumer obligation |
 
-These are minimum future fields only. This PR does not establish a versioned object registry and does not make candidate prefixes stable.
+These remain minimum future fields only. Temporary prefixes are not stable keys.
 
 ## Temporary mapping vocabulary
 
-Exactly one mapping status is used per disposition:
+Exactly one source mapping status is used per row:
 
 - `NOT-DETERMINED`
 - `CANDIDATE`
@@ -80,35 +105,59 @@ Exactly one mapping status is used per disposition:
 - `REVIEWED-COMPATIBLE-WITH-QUALIFICATION`
 - `REVIEWED-INCOMPATIBLE`
 
-The final three statuses require an independent compatibility review. Current ARINC mappings may use only the first five.
+The final three require independent compatibility review. A candidate overall
+disposition does not replace row status or imply equivalence.
 
-Allowed candidate relations are:
-
-- `instantiates`
-- `specializes`
-- `realizes`
-- `implements`
-- `supports`
-- `indexes`
-- `classifies`
-- `candidate-correspondence`
-- `no-direct-correspondence`
-
-A relation never implies equivalence unless a later reviewed contract explicitly says so.
-
-Every mapping is directional and shall be read as:
+Allowed primary relations are `instantiates`, `specializes`, `realizes`,
+`implements`, `supports`, `indexes`, `classifies`, `candidate-correspondence`
+and `no-direct-correspondence`. Every mapping is directional:
 
 ```text
 ARINC object --primary relation--> Framework candidate/role
 ```
 
-Each row contains exactly one primary relation. Additional resemblance, uncertainty or supporting semantics belong in the rationale, not in a compound relation cell. In this direction, `instantiates` means that the concrete ARINC object is an instance of a Framework candidate class/role whose object identity is sufficiently established; `specializes` means that an ARINC type narrows a more general Framework type; `indexes` means that an ARINC object is a navigation/index artefact pointing toward Framework-relevant material without becoming that material; and `candidate-correspondence` records a non-equivalent possible correspondence whose object or role semantics remain to be reviewed. In particular, a conceptual union or typed-relation role such as `VerificationBasisElement` is not presumed to be an instantiated class.
+Each row contains exactly one primary relation. `instantiates` requires a
+sufficiently established candidate class/role; a conceptual union or typed role
+such as `VerificationBasisElement` is not presumed to be an instantiated class.
 
 ## Binding record and failure semantics
 
-A temporary binding record shall include method commit/definition context, instance baseline release commit/tag, repository control-state snapshot where relevant, Profile version, Binding version, Configuration identity, mapping-register version, evaluation-protocol version, review status and migration impact. For PR #14 the method definition identity remains `NOT YET ESTABLISHED` until merge; no external binding may cite the authoring base or changing PR head as the stable definition context. Missing identity or unavailable evidence yields `NOT-DETERMINED`; `CONFLICT` is reserved for a demonstrated semantic mismatch between identified objects; partial scope yields `PARTIAL`. No consumer may convert these states into compatibility by default.
+A temporary binding record includes method definition commit, instance release
+commit and baseline/tag identities, repository control-state snapshot where
+relevant, Profile/Binding/Configuration identities, mapping/protocol versions,
+review status and migration impact. MethodDefinitionCommit is
+`48dd8232b7efe6b0dba3fcb75dfc154d034d2b0b`; neither the PR #14 authoring base
+nor a mutable PR head may substitute for it.
 
-## Finding classification
+Missing identity or unavailable evidence yields `NOT-DETERMINED`; `CONFLICT` is
+reserved for a demonstrated semantic mismatch between identified objects;
+partial scope yields `PARTIAL`. No consumer may convert these states into
+compatibility by default.
+
+## Compatibility-disposition rule
+
+The subject is the structural, ownership, mapping and semantic-interface
+compatibility of the `RB-2026-001-v4.3` GVS-bound legacy migration contract
+against Candidate GVS Core 0.3 at `48dd823…`. It excludes protocol conformance,
+execution, sufficiency, certification, authority acceptance and generality.
+
+`REVIEWED-COMPATIBLE` is prohibited because Project Configuration and
+execution evidence are absent, mappings remain open, research dependencies
+remain, and IDs/mappings are temporary. The controlled conditional transition
+is:
+
+1. pre-activation: formal compatibility is `NOT-DETERMINED`;
+2. activation event: an independent review approves the unchanged PR #15 head,
+   followed by an ordinary two-parent merge containing that head;
+3. post-activation: formal compatibility is
+   `REVIEWED-COMPATIBLE-WITH-QUALIFICATION` subject to Q-01–Q-09, and the merge
+   SHA is the immutable method-disposition identity.
+
+The event is self-executing in repository history. It does not require a
+post-merge status commit, does not promote any row-level mapping and does not
+start empirical evaluation.
+
+## Finding classification and return
 
 Every returned finding uses one class:
 
@@ -120,9 +169,11 @@ Every returned finding uses one class:
 - `evaluation-protocol defect`;
 - `candidate generalization`.
 
-`candidate generalization` is a question for cross-instance assessment, never automatic Generic promotion.
-
-## Bidirectional feedback chain
+The minimum evidence-return record contains immutable instance and method
+identities, affected mapping row/version, finding/classification, evidence
+manifest identity or explicit absence, limitation/counterevidence,
+privacy/copyright boundary, proposed disposition and owner. A finding cannot
+change the Core until a Framework Change Proposal and independent review pass.
 
 ```text
 Instance finding
@@ -135,44 +186,41 @@ Instance finding
   → instance migration assessment
 ```
 
-The minimum evidence-return record contains:
-
-- immutable instance commit and baseline;
-- Candidate GVS Core definition context;
-- mapping-register version and affected row/object;
-- finding ID and classification;
-- evidence manifest ID, not copied protected evidence;
-- limitation, applicability and counterevidence;
-- privacy/copyright/access boundary;
-- proposed disposition and owner.
-
-A finding cannot change a canonical definition until the Framework Change Proposal and independent review have passed.
-
 ## Historical baseline and migration rule
 
-Historical method and instance baselines remain truthful. A pre-framework instance is not retrospectively relabelled as framework-based. Migration creates a new candidate binding that identifies both old and target contexts, maps changed semantics, records compatibility risk and retains a rollback/qualification path. Merging an instance migration PR does not by itself produce a compatibility verdict.
+Historical baselines remain truthful. v4.2.1 is not retrospectively relabelled
+as framework-based. v4.3 creates a GVS-bound migration baseline while preserving
+the legacy origin, changed semantics, compatibility risk and rollback/
+qualification route. A migration merge/tag is necessary but not sufficient for
+a compatibility disposition or empirical evaluation.
 
 ## Coupling prohibitions
 
-The repositories shall not establish semantic authority through:
+The repositories shall not establish semantic authority through Git submodules,
+mutable imports, copied canonical definitions, shared internal code/APIs,
+unversioned branch/local paths, imported raw evidence, or treating a
+serialization, implementation class or SysML view as the semantic contract.
 
-- Git submodules or mutable imports;
-- copying canonical definitions into the instance repository;
-- shared internal code or implementation-specific APIs;
-- unversioned `main`, `latest`, local filesystem paths or ordinary hyperlinks;
-- importing raw evidence into the method repository;
-- treating an implementation class, serialization or SysML view as the semantic contract.
+## Three-way handshake state
 
-Strong semantic contract and weak implementation coupling allow implementations to vary while keeping mapping and migration auditable.
-
-## Paired Draft PR and three-way handshake
-
-1. **Method-contract handshake:** a method-repository Draft PR defines/reviews the Candidate GVS Core context, temporary mapping rules and evaluation protocol, then merges to an immutable method commit. Only that final merge SHA establishes the method definition identity for a later ARINC migration; the PR authoring base and review heads are provenance, not stable interface versions.
-2. **Instance-migration handshake:** a separate instance-repository Draft PR binds to that immutable method commit, declares Profile/Binding/Configuration versions, applies migration mappings and reports protocol findings. It does not modify the method repository.
-3. **Compatibility-disposition handshake:** a later method-repository review verifies both immutable heads, mapping completeness and evidence-return records, then records `REVIEWED-COMPATIBLE`, `REVIEWED-COMPATIBLE-WITH-QUALIFICATION` or `REVIEWED-INCOMPATIBLE`. Instance migration is assessed again against that disposition.
-
-Each handshake requires a distinct reviewable commit/PR context. Links aid navigation but do not replace immutable identities.
+1. **Method-contract handshake:** PR #14 merged at
+   `48dd8232b7efe6b0dba3fcb75dfc154d034d2b0b`; method definition established.
+2. **Instance-migration handshake:** ARINC PR #9 merged at
+   `523d42bf03a1135b3d63a00bfb47d3b879d3927e`, released as baseline ID
+   `RB-2026-001-v4.3` with annotated tag `v4.3`; migration established without
+   compatibility/evaluation promotion.
+3. **Compatibility-disposition handshake:** this method-repository PR
+   verifies both immutable heads, 18/18 + 7 rows and the evidence return. Its
+   formal state follows the pre/activation/post rule above. Only the ordinary
+   merge of an independently approved unchanged head activates the qualified
+   disposition. The later ARINC acknowledgement is a separate work order and
+   repository PR bound to that method-disposition merge SHA.
 
 ## Review and generalization gates
 
-Compatibility dispositions and Framework Change Proposals require independent review. Certification relevance remains candidate until applicable clause-level research and review exist. ARINC supplies first-instance evidence only; it cannot prove cross-domain completeness, scalability, reusability or generalization, and cannot close RQ8 without UAV FMS, LLM service and cross-instance synthesis.
+Compatibility dispositions and Framework Change Proposals require independent
+review. Approval must attach to the final unchanged PR head; a later status
+commit invalidates that approval. ARINC supplies first-instance migration
+evidence only. It cannot prove completeness, scalability, reusability or
+generality, cannot produce `INSTANCE-EXERCISED`, and cannot close RQ8 without
+controlled UAV FMS, LLM service and cross-instance synthesis.

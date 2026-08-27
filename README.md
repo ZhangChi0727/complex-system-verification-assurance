@@ -1,10 +1,10 @@
 ---
 title: Complex System Verification Assurance Framework
 status: baseline
-version: 0.5
+version: 0.6
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-25
+last_updated: 2026-08-26
 dependencies: []
 ---
 
@@ -56,6 +56,16 @@ Repository maturity: Normative-foundation research late stage / architecture OPE
 ```
 
 [`research-baseline/v0.2`](docs/00_overview/research_baseline_v0.2.md) 保存五源 normative foundation、V0–V12 reviewed conceptual checkpoint、generic/profile 边界及 PR #6 实例定位和 meta-risk governance 的历史状态；稳定 V-ID 用于持续追踪。现行 V0–V12 语义、边界和拓扑仍由 `OPEN-CANDIDATE` 治理，不代表 executable architecture、certification acceptance 或 framework validation 已建立。后续标准研究和治理变更均作为 post-v0.2 增量管理。
+
+当前跨仓库治理增量以 Candidate GVS Core 0.3 / 方法定义提交
+`48dd8232b7efe6b0dba3fcb75dfc154d034d2b0b` 为不可变方法上下文。ARINC
+615A v4.3 已作为 baseline ID `RB-2026-001-v4.3`、普通 merge commit
+`523d42bf03a1135b3d63a00bfb47d3b879d3927e` 和 annotated release tag
+`v4.3` 发布。方法侧第三次握手提出
+`REVIEWED-COMPATIBLE-WITH-QUALIFICATION` 条件处置：PR #15 未激活时正式
+compatibility 为 `NOT-DETERMINED`；独立批准未变更 head 并以普通 merge commit
+合并后自动转为受 Q-01–Q-09 限定的该处置。Project Configuration 仍未建立，实例
+评价仍为 `NOT-EXERCISED`。该治理工作不改变 ISO 15289 Task 001 的当前研究停点。
 
 ## Repository map
 
