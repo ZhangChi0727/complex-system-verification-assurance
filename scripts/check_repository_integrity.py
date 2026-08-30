@@ -46,6 +46,12 @@ LINK_RE = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
 CONFLICT_RE = re.compile(r"^(<<<<<<<|=======|>>>>>>>)", re.MULTILINE)
 FULL_SHA_RE = re.compile(r"(?<![0-9a-f])[0-9a-f]{40}(?![0-9a-f])")
 PR_LITERAL_RE = re.compile(r"\bPR\s*#\d+\b", re.IGNORECASE)
+# STABLE_INVARIANT: mutable Git refs are navigation state, never immutable identities.
+MUTABLE_BRANCH_IDENTITY_RE = re.compile(
+    r"(?:refs/heads/|origin/|blob/)(?:main|master|latest)(?![\w.-])"
+    r"|(?:BRANCH|REF|IDENTITY|COMMIT|TAG|BASELINE)[A-Z0-9_]*\s*=\s*[\"'](?:main|master|latest)[\"']",
+    re.IGNORECASE,
+)
 
 # STABLE_INVARIANT: controlled 18+7 mapping shape and relation/status semantics.
 EXPECTED_SOURCE_SHAPE = {
@@ -313,10 +319,22 @@ def lifecycle_literal_errors(paths: list[Path], status: dict[str, Any]) -> list[
             errors.append(f"lifecycle SHA literal in executable governance code: {path.name}")
         if PR_LITERAL_RE.search(text):
             errors.append(f"PR-number literal in executable governance code: {path.name}")
+        if MUTABLE_BRANCH_IDENTITY_RE.search(text):
+            errors.append(f"mutable branch used as lifecycle identity: {path.name}")
         for tag in current_tags:
             if re.search(rf"(?<![\w.-]){re.escape(tag)}(?![\w.-])", text):
                 errors.append(f"current release-tag literal in executable governance code: {path.name}")
     return errors
+
+
+def governance_code_paths(root: Path = ROOT) -> list[Path]:
+    """Discover production governance Python and its regression tests."""
+    paths = list((root / "scripts").rglob("*.py"))
+    paths.extend((root / "tests").rglob("test_*.py"))
+    return sorted(
+        path for path in paths
+        if "__pycache__" not in path.parts and path.is_file()
+    )
 
 
 def pr_required_file_errors(changed: set[str], event_name: str, status: dict[str, Any]) -> list[str]:
@@ -388,7 +406,7 @@ def repository_errors(status: dict[str, Any]) -> list[str]:
     errors.extend(handoff_reference_errors())
     errors.extend(
         lifecycle_literal_errors(
-            [ROOT / "scripts/check_repository_integrity.py", ROOT / "tests/test_repository_integrity.py"],
+            governance_code_paths(),
             status,
         )
     )

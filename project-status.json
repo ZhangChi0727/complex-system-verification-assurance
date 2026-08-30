@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "updatedAt": "2026-08-30",
+  "updatedAt": "2026-08-31",
   "repository": {
     "role": "method",
     "displayRole": "Generic verification methodology / Candidate GVS Core owner",
@@ -12,7 +12,8 @@
       "Make the root README the sole human-readable current-status surface.",
       "Add a machine-readable project status and a deterministic README synchronizer.",
       "Retire HANDOFF files and replace lifecycle-specific validator constants with governed data.",
-      "Record completion of the ARINC 615A v4.3.1 third handshake without creating a method baseline or tag."
+      "Record completion of the ARINC 615A v4.3.1 third handshake without creating a method baseline or tag.",
+      "Close independent-review gaps in governance-code discovery, mutable-branch detection and upstream terminology."
     ],
     "stateChanges": [
       "ARINC third-handshake state becomes COMPLETE after the v4.3.1 acknowledgement release.",

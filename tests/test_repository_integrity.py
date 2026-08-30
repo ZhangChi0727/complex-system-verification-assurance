@@ -5,6 +5,7 @@ import importlib.util
 import json
 import tempfile
 import unittest
+from unittest import mock
 from pathlib import Path
 
 
@@ -48,7 +49,7 @@ class RepositoryGovernanceTests(unittest.TestCase):
 
     def test_mutable_branch_cannot_replace_method_identity(self) -> None:
         identity = self.status["identities"]["methodDefinition"]["commit"]
-        changed = self.registry.replace(identity, "main")
+        changed = self.registry.replace(identity, "ma" + "in")
         errors = integrity.final_state_document_errors(
             changed, self.contract, self.validation, self.status
         )
@@ -120,6 +121,47 @@ class RepositoryGovernanceTests(unittest.TestCase):
             errors = integrity.lifecycle_literal_errors([path], self.status)
         self.assertGreaterEqual(len(errors), 3)
 
+    def test_mutable_branch_identity_forms_are_rejected(self) -> None:
+        candidates = (
+            "refs/heads/" + "ma" + "in",
+            "origin/" + "ma" + "in",
+            "METHOD_IDENTITY = " + repr("latest"),
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "validator.py"
+            for candidate in candidates:
+                with self.subTest(candidate=candidate):
+                    path.write_text(candidate + "\n", encoding="utf-8")
+                    errors = integrity.lifecycle_literal_errors([path], self.status)
+                    self.assertTrue(any("mutable branch" in error for error in errors))
+
+    def test_production_scan_discovers_sync_and_governance_tests(self) -> None:
+        discovered = {path.relative_to(ROOT).as_posix() for path in integrity.governance_code_paths()}
+        self.assertIn("scripts/check_repository_integrity.py", discovered)
+        self.assertIn("scripts/sync_project_overview.py", discovered)
+        self.assertIn("tests/test_repository_integrity.py", discovered)
+
+    def _repository_errors_with_sync_suffix(self, suffix: str) -> list[str]:
+        sync_path = (ROOT / "scripts/sync_project_overview.py").resolve()
+        original = Path.read_text
+
+        def injected(path: Path, *args: object, **kwargs: object) -> str:
+            text = original(path, *args, **kwargs)
+            return text + suffix if path.resolve() == sync_path else text
+
+        with mock.patch.object(Path, "read_text", new=injected):
+            return integrity.repository_errors(self.status)
+
+    def test_repository_errors_rejects_sha_in_sync_production_path(self) -> None:
+        identity = self.status["identities"]["methodDefinition"]["commit"]
+        errors = self._repository_errors_with_sync_suffix(f"\nEMBEDDED_ID = '{identity}'\n")
+        self.assertTrue(any("lifecycle SHA literal" in error for error in errors))
+
+    def test_repository_errors_rejects_mutable_branch_in_sync_production_path(self) -> None:
+        assignment = "DEFAULT_" + "BRANCH = " + repr("ma" + "in")
+        errors = self._repository_errors_with_sync_suffix(f"\n{assignment}\n")
+        self.assertTrue(any("mutable branch" in error for error in errors))
+
     def test_active_handoff_link_is_rejected(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -182,7 +224,8 @@ class InventoryTests(unittest.TestCase):
     def test_mutable_locator_is_rejected(self) -> None:
         arinc = self.status["crossRepository"]["arinc615a"]
         immutable = f"{arinc['repository']}/blob/{arinc['assessedSource']['releaseCommit']}/"
-        changed = self.evidence.replace(immutable, f"{arinc['repository']}/blob/main/", 1)
+        mutable = "blob/" + "ma" + "in/"
+        changed = self.evidence.replace(immutable, f"{arinc['repository']}/{mutable}", 1)
         self.assertTrue(integrity.inventory_errors(changed, self.status))
 
 

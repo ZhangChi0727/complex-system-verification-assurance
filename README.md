@@ -4,7 +4,7 @@ status: active-research
 version: 0.7
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-30
+last_updated: 2026-08-31
 dependencies:
   - project-status.json
   - docs/00_overview/research_scope.md
@@ -91,6 +91,7 @@ Profile、Binding 和 Configuration 是实例侧的受控投影；实例结果�
 - Add a machine-readable project status and a deterministic README synchronizer.
 - Retire HANDOFF files and replace lifecycle-specific validator constants with governed data.
 - Record completion of the ARINC 615A v4.3.1 third handshake without creating a method baseline or tag.
+- Close independent-review gaps in governance-code discovery, mutable-branch detection and upstream terminology.
 
 保持不变的边界：
 

@@ -1,10 +1,10 @@
 ---
 title: Cross-Repository Instance Contract
 status: working
-version: 0.4
+version: 0.5
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-30
+last_updated: 2026-08-31
 dependencies:
   - ../../project-status.json
   - ../02_verification_framework/generic_verification_suite_core.md
@@ -50,6 +50,11 @@ Mutable branches, `latest`, local paths and ordinary hyperlinks are never bindin
 | Cross-instance synthesis | owns synthesis and promotion gate | supplies controlled instance results | generalize from one instance |
 
 Dependency direction is `Core → Profile → Binding → Configuration`. A lower layer may select or realize an extension point but may not redefine it.
+
+## Two meanings of upstream
+
+- Instance-baseline upstream controls Git and evidence lineage inside an instance repository.
+- External method upstream is the immutable method-definition context used for semantic compatibility; it does not control instance Git ancestry.
 
 ## Immutable binding and temporary mapping
 
