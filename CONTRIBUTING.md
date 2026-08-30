@@ -1,11 +1,12 @@
 ---
 title: Contributing and Change Governance
 status: working
-version: 0.2
+version: 0.3
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-25
+last_updated: 2026-08-30
 dependencies:
+  - project-status.json
   - docs/00_overview/research_scope.md
   - docs/00_overview/innovation_statement.md
   - docs/08_validation/cross_repository_instance_contract.md
@@ -14,6 +15,25 @@ dependencies:
 # Contributing
 
 本仓库即使处于个人研究阶段，也按可审计研究资产管理变更。
+
+## Project-status discipline
+
+Every pull request must update both `README.md` and `project-status.json`, even
+when the status delta is explicitly “no change.” The README must state the
+current increment, current stop and next step; `project-status.json` owns the
+machine-readable identities and state. Run:
+
+```powershell
+python scripts/sync_project_overview.py --write
+python scripts/sync_project_overview.py --check
+```
+
+Lifecycle SHA, PR number, release tag, branch and current status values belong
+in project data, not validator constants. Validators may hard-code only stable
+schema/semantic invariants and must mark them `STABLE_INVARIANT`. Pull-request
+CI derives its base from the event; push CI checks consistency without imposing
+a synthetic PR diff. Dedicated HANDOFF files and status-only follow-up PRs are
+retired: the substantive PR must leave README and project status truthful.
 
 ## Normative claims
 
@@ -67,7 +87,7 @@ DCAS-specific 内容不能直接进入 generic `docs/`。先判断其属于 Gene
 - 实例仓库不得复制、静默重定义或通过实现 API 反向控制 Candidate GVS Core；Profile、Binding、Configuration、工具和原始证据仍归实例仓库。
 - external finding 只有形成 Framework Change Proposal，并完成 cross-instance relevance、normative basis/research rationale、独立评审及 eligible registration 后，才能影响 canonical definition。
 - compatibility 与 Framework Change Proposal 必须独立评审；单一实例不能建立 Generic generalization rights 或关闭 RQ8。
-- 跨仓库变更遵守 [three-way handshake](docs/08_validation/cross_repository_instance_contract.md#paired-draft-pr-and-three-way-handshake)，不得在一个 PR 中同时改写方法与实例仓库历史。
+- 跨仓库变更遵守 [three-way handshake](docs/08_validation/cross_repository_instance_contract.md#three-way-handshake-and-compatibility)，不得在一个 PR 中同时改写方法与实例仓库历史。
 
 ## Change quality
 
