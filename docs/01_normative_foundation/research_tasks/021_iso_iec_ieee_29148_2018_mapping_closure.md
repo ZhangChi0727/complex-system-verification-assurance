@@ -170,7 +170,7 @@ Preserve every source-native 2015 locator where describing what 29148:2018 cites
 
 ### Repository deliverables
 
-Create `../consolidation/iso_29148_2018_to_iso_15288_2023_targeted_mapping.md`; update affected provenance statements in the 29148 note, standards map, gap matrix and Architecture Impact Register; update baseline/HANDOFF/CHANGELOG; create an independent-review packet containing full population reconciliation and exact changed-file list.
+Create `../consolidation/iso_29148_2018_to_iso_15288_2023_targeted_mapping.md`; update affected provenance statements in the 29148 note, standards map, gap matrix and Architecture Impact Register; update baseline, project-status.json, README and CHANGELOG; create an independent-review packet containing full population reconciliation and exact changed-file list.
 
 ### Required final answers
 
