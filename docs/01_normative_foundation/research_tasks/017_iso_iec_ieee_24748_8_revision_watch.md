@@ -144,7 +144,7 @@ The future task shall focus on review/audit terminology, purpose and participant
 
 ### Required repository updates per watch event
 
-Update the standards baseline watch date/status, add a concise CHANGELOG entry only for a material publication-state change, update HANDOFF if the queue changes, and create an Architecture Impact entry only after clause study—not from metadata. Retain evidence of the catalogue check as paraphrased metadata/link, not copyrighted draft content.
+Update the standards baseline watch date/status, add a concise CHANGELOG entry only for a material publication-state change, update project-status.json and README if the queue changes, and create an Architecture Impact entry only after clause study—not from metadata. Retain evidence of the catalogue check as paraphrased metadata/link, not copyrighted draft content.
 
 ### No-overclaim rules
 
@@ -165,7 +165,7 @@ Each watch event emits exactly one record using this dedicated subtype; do not p
 | `replacement_relation` | relation between current publication and development item |
 | `source_availability` | `NOT ACQUIRED` / `ACQUISITION PROPOSED` / `ACQUIRED` |
 | `trigger_disposition` | `NO CHANGE` / `PUBLISHED REPLACEMENT AVAILABLE` / `STATUS AMBIGUOUS` / `WATCH CLOSED` |
-| `repository_action` | exact baseline/HANDOFF/task action or no-change rationale |
+| `repository_action` | exact baseline/project-status.json/README/task action or no-change rationale |
 | `confidence_review` | metadata ambiguity and reviewer disposition |
 
 No PDF page, clause locator, source class, modality, RQ contribution or candidate disposition is permitted in this subtype.

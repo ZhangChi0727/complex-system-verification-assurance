@@ -212,7 +212,7 @@ For each Oracle attribute proposed by VAF, mark `direct support`, `indirect supp
 
 ### Repository deliverables
 
-Create `../standard_notes/iso_iec_9646_series_clause_study.md`; update ISO-G04 and only genuinely affected gaps; update `../standards_map.md` and `../consolidation/architecture_impact_register.md`; update HANDOFF and CHANGELOG states; create an independent-review packet listing population reconciliation, Part 3/ITU exclusions, changed files and Oracle disposition.
+Create `../standard_notes/iso_iec_9646_series_clause_study.md`; update ISO-G04 and only genuinely affected gaps; update `../standards_map.md` and `../consolidation/architecture_impact_register.md`; update project-status.json, README and CHANGELOG states; create an independent-review packet listing population reconciliation, Part 3/ITU exclusions, changed files and Oracle disposition.
 
 ### Required disposition
 

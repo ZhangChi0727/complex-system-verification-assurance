@@ -247,7 +247,7 @@ Task 022 may submit proposals but may not directly freeze V0–V12, executable s
 - update `../consolidation/architecture_impact_register.md` only with reviewed or explicitly `DEFERRED` proposals;
 - update `../normative_gap_matrix.md` candidate study/owner/RQ links without altering protected established basis/disposition/status absent reviewed clause evidence;
 - update `../../00_overview/innovation_statement.md` only through controlled claim deltas, never novelty establishment;
-- update roadmap, HANDOFF and CHANGELOG with actual—not anticipated—state;
+- update roadmap, project-status.json, README and CHANGELOG with actual—not anticipated—state;
 - create an independent-review packet covering population completeness, conflict handling, candidate dispositions, migrations and non-claims.
 
 ## No-overclaim rules

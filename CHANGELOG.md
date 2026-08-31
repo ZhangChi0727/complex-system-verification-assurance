@@ -1,16 +1,24 @@
 ---
 title: Changelog
 status: working
-version: 0.1
+version: 0.2
 baseline: post-v0.2
 owner: research
-last_updated: 2026-08-26
+last_updated: 2026-08-30
 dependencies:
   - README.md
-  - HANDOFF/current_progress.md
+  - project-status.json
 ---
 
 # Changelog
+
+## 2026-08-30 — lean project-management control surface
+
+- Rebuilt the root README as the sole human-readable current-state and role-routing surface, with a Mermaid method/instance architecture view.
+- Added `project-status.json` and deterministic README synchronization; future PRs must update both files.
+- Recorded completion of the ARINC v4.3.1 third handshake while preserving method-definition and compatibility-disposition identities and all non-claims.
+- Retired the HANDOFF directory after migrating the active research stop and next-step routing into README, roadmap and the research-task index.
+- Replaced lifecycle-specific validator constants with governed data and added PR-diff, drift, retirement, identity-role and negative-test gates.
 
 ## v0.1 — Research Foundation Baseline
 

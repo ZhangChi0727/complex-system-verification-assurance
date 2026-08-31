@@ -20,7 +20,7 @@ dependencies:
 
 系统研究 ISO/IEC/IEEE 15288、ISO/IEC/IEEE 24748、SAE ARP4754B、SAE ARP4761A 和受控 generic conformance-testing methodology。Task 002 的当前条款总体仅为 ISO/IEC 9646 Parts 1/2/4/5/6/7；Part 3 属 notation/execution technology，ITU-T X.29x 只保留 bibliographic relationship。planned cohort 还包括 ISO/IEC/IEEE 15289:2019、15026-1:2025、15026-4:2021、12207:2026、29119-1/-2/-3/-4、IEEE 1012:2024、15026-3:2023 与 24748-3/-4/-5/-6/-10。仅在合法取得全文和准确定位后形成规范性结论；24748-8 保持 defence-domain profile/revision-watch 边界。
 
-第一轮 five-source consolidation 已由 `research-baseline/v0.2` 保存为 historical conceptual checkpoint。post-v0.2 来源采用 Controlled Candidate-Source Baseline：候选登记、资料取得、条款研究和评审是不同状态，未研究来源不能关闭 gap。ISO/IEC/IEEE 29148:2018 与 15026-2:2022 的 clause studies 已通过独立评审，建立 Requirement/Basis→Obligation→Result 与 Evidence Item→Argument→Supported Claim/Inference 的受控接口；其中 evidence characterization 是受 15026-2, 5.3.2 约束的 framework-defined relation。后续按依赖驱动队列推进，并为每个来源登记 architecture-impact disposition；不开展 15026-1:2019 独立研究或 2019→2025 全文 delta。详细优先级见 `HANDOFF/next_plan.md`。
+第一轮 five-source consolidation 已由 `research-baseline/v0.2` 保存为 historical conceptual checkpoint。post-v0.2 来源采用 Controlled Candidate-Source Baseline：候选登记、资料取得、条款研究和评审是不同状态，未研究来源不能关闭 gap。ISO/IEC/IEEE 29148:2018 与 15026-2:2022 的 clause studies 已通过独立评审，建立 Requirement/Basis→Obligation→Result 与 Evidence Item→Argument→Supported Claim/Inference 的受控接口；其中 evidence characterization 是受 15026-2, 5.3.2 约束的 framework-defined relation。后续按依赖驱动队列推进，并为每个来源登记 architecture-impact disposition；不开展 15026-1:2019 独立研究或 2019→2025 全文 delta。当前停点由根 `README.md` / `project-status.json` 控制，详细依赖队列见 `../01_normative_foundation/research_tasks/README.md`。
 
 ## Phase 2 — Normative Gap Analysis
 

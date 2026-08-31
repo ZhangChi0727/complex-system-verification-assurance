@@ -1,0 +1,183 @@
+{
+  "schemaVersion": "1.0",
+  "updatedAt": "2026-08-31",
+  "repository": {
+    "role": "method",
+    "displayRole": "Generic verification methodology / Candidate GVS Core owner",
+    "url": "https://github.com/ZhangChi0727/complex-system-verification-assurance"
+  },
+  "currentIncrement": {
+    "title": "Lean project-management control surface",
+    "summary": [
+      "Make the root README the sole human-readable current-status surface.",
+      "Add a machine-readable project status and a deterministic README synchronizer.",
+      "Retire HANDOFF files and replace lifecycle-specific validator constants with governed data.",
+      "Record completion of the ARINC 615A v4.3.1 third handshake without creating a method baseline or tag.",
+      "Close independent-review gaps in governance-code discovery, mutable-branch detection and upstream terminology."
+    ],
+    "stateChanges": [
+      "ARINC third-handshake state becomes COMPLETE after the v4.3.1 acknowledgement release.",
+      "Current-state ownership moves from HANDOFF snapshots to README plus project-status.json."
+    ],
+    "unchangedBoundaries": [
+      "Candidate GVS Core semantics and V0-V12 remain unchanged.",
+      "Normative research conclusions, gap dispositions and research-task content remain unchanged.",
+      "Atomic baselines, change requests, reviews and historical evidence remain immutable.",
+      "Project Configuration is NOT YET ESTABLISHED; instance evaluation is NOT-EXERCISED; RQ8 remains OPEN."
+    ]
+  },
+  "development": {
+    "phase": "normative-foundation research late stage",
+    "architectureMaturity": "OPEN-CANDIDATE",
+    "currentStop": {
+      "taskId": "001",
+      "standard": "ISO/IEC/IEEE 15289:2019",
+      "objective": "Execute the clause-level information-item study and stop at independent review."
+    },
+    "nextSteps": [
+      "Execute Task 001 against the controlled ISO/IEC/IEEE 15289:2019 source.",
+      "Prepare and independently review the clause study before promoting any 15289-dependent conclusion.",
+      "After that gate, continue the dependency-driven research-task queue and later Task 022 synthesis.",
+      "In parallel, plan bounded ARINC instance evaluation without treating it as architecture validation or RQ8 closure."
+    ],
+    "nextInstanceStep": "Establish a real Project Configuration, then execute the controlled ARINC evaluation protocol.",
+    "blockedClaims": [
+      "No information model, schema, metamodel, lifecycle state machine or automation interface is frozen.",
+      "No Project Configuration is established for the ARINC instance.",
+      "No instance-evaluation or multi-domain validation claim is earned.",
+      "No general scalability or RQ8 closure claim is earned."
+    ],
+    "blockedActions": [
+      "Do not freeze an information model, schema, metamodel or automation interface before the applicable research and review gates.",
+      "Do not establish ARINC Project Configuration without controlled instance values.",
+      "Do not promote instance evaluation, architecture maturity or RQ8 from migration compatibility evidence."
+    ]
+  },
+  "claimsBoundary": {
+    "certificationReady": false,
+    "frameworkValidated": false,
+    "rq8Closed": false,
+    "generalScalabilityEstablished": false
+  },
+  "temporaryControls": [],
+  "identities": {
+    "historicalResearchBaseline": {
+      "id": "research-baseline/v0.2",
+      "tag": "research-baseline/v0.2",
+      "commit": "357ad14ffc4e59abd071cb794912eb949a6ae6cf"
+    },
+    "methodDefinition": {
+      "version": "Candidate GVS Core 0.3",
+      "commit": "48dd8232b7efe6b0dba3fcb75dfc154d034d2b0b",
+      "path": "docs/02_verification_framework/generic_verification_suite_core.md"
+    },
+    "methodCompatibilityDisposition": {
+      "commit": "c02330d21fe2d3e89e7e2d6352872d52461a6dda",
+      "path": "docs/08_validation/arinc_615a_third_handshake_compatibility_disposition.md"
+    }
+  },
+  "crossRepository": {
+    "arinc615a": {
+      "repository": "https://github.com/ZhangChi0727/arinc-615a-conformance",
+      "thirdHandshake": "COMPLETE",
+      "assessedSource": {
+        "baselineId": "RB-2026-001-v4.3",
+        "releaseTag": "v4.3",
+        "releaseCommit": "523d42bf03a1135b3d63a00bfb47d3b879d3927e",
+        "tagObject": "28312fd9c5470cb15d76eb3762c99a25ab842cfd"
+      },
+      "acknowledgementRelease": {
+        "baselineId": "RB-2026-001-v4.3.1",
+        "releaseTag": "v4.3.1",
+        "releaseCommit": "72ca6df88cb8def5221a8fa54e69551f9e7041db",
+        "tagObject": "55005cc57e26dd56ea1f0fec3ffdbbf1e67d1beb",
+        "peeledTarget": "72ca6df88cb8def5221a8fa54e69551f9e7041db"
+      },
+      "compatibility": {
+        "status": "REVIEWED-COMPATIBLE-WITH-QUALIFICATION",
+        "qualificationIds": [
+          "Q-01",
+          "Q-02",
+          "Q-03",
+          "Q-04",
+          "Q-05",
+          "Q-06",
+          "Q-07",
+          "Q-08",
+          "Q-09"
+        ]
+      },
+      "projectConfiguration": {
+        "id": "TMP-PC-ARINC615A-01",
+        "status": "NOT YET ESTABLISHED"
+      },
+      "instanceEvaluation": "NOT-EXERCISED",
+      "rq8": "OPEN",
+      "mappingPopulation": {
+        "sourceRows": 18,
+        "instanceOnlyRows": 7
+      },
+      "historicalProvenance": {
+        "methodAuthoringBase": "196cfc2426a841a4adb9c9159660253896b0257c",
+        "legacyReleaseCommit": "3299e6dae83424862f75a4c1d09b91b80d9d8b00",
+        "legacyBaselineId": "RB-2026-001-v4.2.1",
+        "controlStateCommit": "0ce96f701159fd4156d5e5e9889360f53977a61b",
+        "reviewedHead": "5d149d1f8e92bbed438fe8bc78be9e8972fecb7d",
+        "humanReviewId": "5029797924"
+      },
+      "sourceInventory": [
+        {
+          "path": "docs/control/contracts/EXTERNAL_GVS_BINDING.md",
+          "bytes": 9949,
+          "sha256": "97e76ec345d58f4c89d35f1118663335744adecdd6eba9551035e5e90675bd4d"
+        },
+        {
+          "path": "docs/control/contracts/ARINC615A_PROFILE_BINDING_CONFIGURATION.md",
+          "bytes": 8285,
+          "sha256": "0f9a864feb17e7e8735a00e3109c42da9995ebdb13d66d1309cee4769fd35af8"
+        },
+        {
+          "path": "docs/control/contracts/GVS_INSTANCE_MAPPING.md",
+          "bytes": 19253,
+          "sha256": "f5a4a30ec598b0624b910bd6fbb2895db94f150eb96f20ca800b33114166f43a"
+        },
+        {
+          "path": "docs/control/baselines/RB-2026-001-v4.3.md",
+          "bytes": 10095,
+          "sha256": "de0483c6590293e748abe2e964e42b267fcb4518e75c4b1ac06f7a9c2bf6456e"
+        },
+        {
+          "path": "docs/control/changes/CR-2026-004.md",
+          "bytes": 12731,
+          "sha256": "339a68b2f270f5fdecf5e37be8d05350568fdc1128d8fcb9a088eba2e8bc5ff9"
+        },
+        {
+          "path": "docs/control/reviews/PR9_GVS_MIGRATION_REVIEW_HANDOFF.md",
+          "bytes": 21527,
+          "sha256": "30c084d803a5b9296e02867a8ed49584a091895b507edbe5fb5c2ed02362e418"
+        },
+        {
+          "path": "docs/control/risks/RISK_REGISTER.md",
+          "bytes": 8008,
+          "sha256": "ec7064c8da3c16fc7e9a5a64d6323f93fd2d1b0e7598206f94f1fcb99842e2c5"
+        },
+        {
+          "path": "scripts/check_repo_baseline.py",
+          "bytes": 41860,
+          "sha256": "f2f241928717434ecbd44e81a15c6f523d2149a05d0f2b8ca6e1320b627b843f"
+        }
+      ]
+    }
+  },
+  "governance": {
+    "requiredPullRequestFiles": [
+      "README.md",
+      "project-status.json"
+    ],
+    "readmeMarkers": {
+      "start": "<!-- project-status:start -->",
+      "end": "<!-- project-status:end -->"
+    },
+    "handoffRetired": true
+  }
+}

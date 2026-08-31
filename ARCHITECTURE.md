@@ -52,7 +52,7 @@ Automation Rule
 - `tools/`：未来的一致性、覆盖、影响分析、模型校验和文档生成工具。
 - `examples/`：脱敏、最小可复现和端到端研究实例。
 
-- `HANDOFF/`：仓库当前进度与下一步计划的交接快照；不是事实源，事实源仍为 `docs/`、`models/`、`data/`、`domains/`。
+- `README.md` / `project-status.json`：唯一当前状态界面与机器可读状态；耐久事实仍由 `docs/`、`models/`、`data/`、`domains/` 及不可变 Git 身份支撑。
 - `publications/`：论文和教程的发布视图，不是独立事实源。
 - `archive/`：superseded baseline 或 legacy transformation material；不能替代 Git history。
 

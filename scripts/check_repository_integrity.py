@@ -1,85 +1,38 @@
 #!/usr/bin/env python3
-"""Repository-governance integrity checks for controlled research documents.
+"""Data-driven repository-governance integrity checks.
 
-The checker validates recorded identities, document structure and governance
-invariants. It deliberately does not automate Framework semantic judgment or
-access mutable state in another repository at runtime.
+Mutable lifecycle identity and current project state live in project-status.json.
+This checker contains only stable schema and semantic invariants; it does not
+query another repository or automate substantive framework judgment.
 """
 
 from __future__ import annotations
 
+import importlib.util
+import json
 import os
 import re
 import subprocess
 import sys
+from collections import Counter
 from pathlib import Path
+from typing import Any
 from urllib.parse import unquote
 
 ROOT = Path(__file__).resolve().parents[1]
+STATUS_PATH = ROOT / "project-status.json"
+
+SYNC_SPEC = importlib.util.spec_from_file_location(
+    "sync_project_overview", ROOT / "scripts/sync_project_overview.py"
+)
+assert SYNC_SPEC and SYNC_SPEC.loader
+sync = importlib.util.module_from_spec(SYNC_SPEC)
+SYNC_SPEC.loader.exec_module(sync)
+
+# STABLE_INVARIANT: document/control schema vocabulary, not lifecycle state.
 REQUIRED_FRONTMATTER = {
     "title", "status", "version", "baseline", "owner", "last_updated", "dependencies"
 }
-
-METHOD_DEFINITION_COMMIT = "48dd8232b7efe6b0dba3fcb75dfc154d034d2b0b"
-METHOD_AUTHORING_BASE = "196cfc2426a841a4adb9c9159660253896b0257c"
-ARINC_LEGACY_RELEASE_COMMIT = "3299e6dae83424862f75a4c1d09b91b80d9d8b00"
-ARINC_LEGACY_TAG = "RB-2026-001-v4.2.1"
-ARINC_CONTROL_STATE_COMMIT = "0ce96f701159fd4156d5e5e9889360f53977a61b"
-ARINC_REVIEWED_HEAD = "5d149d1f8e92bbed438fe8bc78be9e8972fecb7d"
-ARINC_V43_MERGE_COMMIT = "523d42bf03a1135b3d63a00bfb47d3b879d3927e"
-ARINC_V43_BASELINE_ID = "RB-2026-001-v4.3"
-ARINC_V43_RELEASE_TAG = "v4.3"
-ARINC_V43_TAG_OBJECT = "28312fd9c5470cb15d76eb3762c99a25ab842cfd"
-ARINC_HUMAN_REVIEW_ID = "5029797924"
-V02_TAG_COMMIT = "357ad14ffc4e59abd071cb794912eb949a6ae6cf"
-
-ARINC_REPOSITORY = "https://github.com/ZhangChi0727/arinc-615a-conformance"
-SOURCE_INVENTORY = {
-    "docs/control/contracts/EXTERNAL_GVS_BINDING.md": (9949, "97e76ec345d58f4c89d35f1118663335744adecdd6eba9551035e5e90675bd4d"),
-    "docs/control/contracts/ARINC615A_PROFILE_BINDING_CONFIGURATION.md": (8285, "0f9a864feb17e7e8735a00e3109c42da9995ebdb13d66d1309cee4769fd35af8"),
-    "docs/control/contracts/GVS_INSTANCE_MAPPING.md": (19253, "f5a4a30ec598b0624b910bd6fbb2895db94f150eb96f20ca800b33114166f43a"),
-    "docs/control/baselines/RB-2026-001-v4.3.md": (10095, "de0483c6590293e748abe2e964e42b267fcb4518e75c4b1ac06f7a9c2bf6456e"),
-    "docs/control/changes/CR-2026-004.md": (12731, "339a68b2f270f5fdecf5e37be8d05350568fdc1128d8fcb9a088eba2e8bc5ff9"),
-    "docs/control/reviews/PR9_GVS_MIGRATION_REVIEW_HANDOFF.md": (21527, "30c084d803a5b9296e02867a8ed49584a091895b507edbe5fb5c2ed02362e418"),
-    "docs/control/risks/RISK_REGISTER.md": (8008, "ec7064c8da3c16fc7e9a5a64d6323f93fd2d1b0e7598206f94f1fcb99842e2c5"),
-    "scripts/check_repo_baseline.py": (41860, "f2f241928717434ecbd44e81a15c6f523d2149a05d0f2b8ca6e1320b627b843f"),
-}
-
-REQUIRED_DOCUMENTS = [
-    "docs/02_verification_framework/generic_verification_suite_core.md",
-    "docs/08_validation/cross_repository_instance_contract.md",
-    "docs/08_validation/instance_registry.md",
-    "docs/08_validation/pr_14_external_review_disposition.md",
-    "docs/08_validation/arinc_615a_object_mapping_register.md",
-    "docs/08_validation/arinc_615a_instance_evaluation_protocol.md",
-    "docs/08_validation/arinc_615a_v43_migration_evidence_return.md",
-    "docs/08_validation/arinc_615a_third_handshake_compatibility_disposition.md",
-    "docs/08_validation/arinc_615a_third_handshake_review_handoff.md",
-    "scripts/check_repository_integrity.py",
-    "tests/test_repository_integrity.py",
-    ".github/workflows/repository-integrity.yml",
-]
-
-CONTROLLED_FILES = [
-    ROOT / "README.md",
-    ROOT / "ARCHITECTURE.md",
-    ROOT / "CONTRIBUTING.md",
-    ROOT / "CHANGELOG.md",
-    ROOT / "HANDOFF/current_progress.md",
-    ROOT / "HANDOFF/next_plan.md",
-    ROOT / "tools/README.md",
-    ROOT / "docs/01_normative_foundation/consolidation/architecture_impact_register.md",
-]
-for directory in ("docs/00_overview", "docs/02_verification_framework", "docs/08_validation"):
-    CONTROLLED_FILES.extend(sorted((ROOT / directory).glob("*.md")))
-CONTROLLED_FILES = sorted(set(CONTROLLED_FILES))
-
-LINK_RE = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
-CONFLICT_RE = re.compile(r"^(<<<<<<<|=======|>>>>>>>)", re.MULTILINE)
-COMMIT_RE = re.compile(r"^[0-9a-f]{40}$")
-SOURCE_ROW_RE = re.compile(r"^R\d{2}$")
-ADDITIONAL_ROW_RE = re.compile(r"^A\d{2}$")
-
 ALLOWED_RELATIONS = {
     "instantiates", "specializes", "realizes", "implements", "supports",
     "indexes", "classifies", "candidate-correspondence", "no-direct-correspondence",
@@ -87,578 +40,419 @@ ALLOWED_RELATIONS = {
 ALLOWED_MAPPING_STATUSES = {
     "NOT-DETERMINED", "CANDIDATE", "PARTIAL", "CONFLICT", "OUT-OF-SCOPE",
 }
-EXPECTED_CANDIDATE_DISPOSITION = "REVIEWED-COMPATIBLE-WITH-QUALIFICATION"
-PR15_NUMBER = 15
-PRE_ACTIVATION_COMPATIBILITY = "NOT-DETERMINED"
-POST_ACTIVATION_COMPATIBILITY = EXPECTED_CANDIDATE_DISPOSITION
-
-EXPECTED_SOURCE_ROWS = {
-    "R01": ("Applicability/Profile Declaration", "PICS-like declaration", "realizes", "CANDIDATE"),
-    "R02": ("VerificationBasisElement", "applicable CRS item", "candidate-correspondence", "CANDIDATE"),
-    "R03": ("VerificationObligation", "current ARINC requirement-obligation aspect", "no-direct-correspondence", "NOT-DETERMINED"),
-    "R04": ("VerificationObligation", "PR #9 Verification Objective", "candidate-correspondence", "NOT-DETERMINED"),
-    "R05": ("Obligation/Coverage aspect", "functional/state/timing and related classifications", "classifies", "CANDIDATE"),
-    "R06": ("VerificationStrategy", "Test-and-Analysis allocation", "realizes", "PARTIAL"),
-    "R07": ("VerificationCase", "VC", "instantiates", "CANDIDATE"),
-    "R08": ("VerificationProcedure", "procedure", "instantiates", "CANDIDATE"),
-    "R09": ("Observation", "packet trace/timestamp/log", "instantiates", "CANDIDATE"),
-    "R10": ("Result", "verdict", "instantiates", "CANDIDATE"),
-    "R11": ("Oracle", "discrete/robust timing rule", "implements", "CANDIDATE"),
-    "R12": ("Evidence", "characterized execution/analysis record", "candidate-correspondence", "NOT-DETERMINED"),
-    "R13": ("Argument", "scoped assurance reasoning", "realizes", "PARTIAL"),
-    "R14": ("Claim", "PR #9 CEI claim entry candidate", "indexes", "NOT-DETERMINED"),
-    "R15": ("CompositeGate", "RG/G gate package", "specializes", "NOT-DETERMINED"),
-    "R16": ("Configuration", "IUT/setup/procedure identity", "instantiates", "CANDIDATE"),
-    "R17": ("Anomaly/Change/Impact", "Problem Closure plus CR/DD", "candidate-correspondence", "NOT-DETERMINED"),
-    "R18": ("SufficiencyAssessment", "PR #9 OSR/claim-review candidate", "candidate-correspondence", "NOT-DETERMINED"),
-}
-
-EXPECTED_ADDITIONAL_ROWS = {
-    "A01": ("VerificationCase", "Test Purpose"),
-    "A02": ("Evidence", "Execution Evidence Manifest"),
-    "A03": ("Configuration", "Test Conformity Record"),
-    "A04": ("Argument", "L0–L7 ARINC evidence view"),
-    "A05": ("SufficiencyAssessment", "A0–A4 ARINC assurance states"),
-    "A06": ("SufficiencyAssessment", "R0–R5 instance research maturity"),
-    "A07": ("Configuration", "future Project Configuration `TMP-PC-ARINC615A-01`"),
-}
-
-PROTECTED_PREFIXES = (
-    "docs/01_normative_foundation/standards_baseline.md",
-    "docs/01_normative_foundation/normative_gap_matrix.md",
-    "docs/01_normative_foundation/research_tasks/",
-    "docs/01_normative_foundation/standard_notes/",
-    "docs/01_normative_foundation/reviews/",
-    "docs/02_verification_framework/generic_verification_suite_core.md",
-    "docs/00_overview/research_questions.md",
-    "docs/00_overview/innovation_statement.md",
+SOURCE_ROW_RE = re.compile(r"^R\d{2}$")
+ADDITIONAL_ROW_RE = re.compile(r"^A\d{2}$")
+LINK_RE = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
+CONFLICT_RE = re.compile(r"^(<<<<<<<|=======|>>>>>>>)", re.MULTILINE)
+FULL_SHA_RE = re.compile(r"(?<![0-9a-f])[0-9a-f]{40}(?![0-9a-f])")
+PR_LITERAL_RE = re.compile(r"\bPR\s*#\d+\b", re.IGNORECASE)
+# STABLE_INVARIANT: mutable Git refs are navigation state, never immutable identities.
+MUTABLE_BRANCH_IDENTITY_RE = re.compile(
+    r"(?:refs/heads/|origin/|blob/)(?:main|master|latest)(?![\w.-])"
+    r"|(?:BRANCH|REF|IDENTITY|COMMIT|TAG|BASELINE)[A-Z0-9_]*\s*=\s*[\"'](?:main|master|latest)[\"']",
+    re.IGNORECASE,
 )
 
+# STABLE_INVARIANT: controlled 18+7 mapping shape and relation/status semantics.
+EXPECTED_SOURCE_SHAPE = {
+    "R01": ("realizes", "CANDIDATE"),
+    "R02": ("candidate-correspondence", "CANDIDATE"),
+    "R03": ("no-direct-correspondence", "NOT-DETERMINED"),
+    "R04": ("candidate-correspondence", "NOT-DETERMINED"),
+    "R05": ("classifies", "CANDIDATE"),
+    "R06": ("realizes", "PARTIAL"),
+    "R07": ("instantiates", "CANDIDATE"),
+    "R08": ("instantiates", "CANDIDATE"),
+    "R09": ("instantiates", "CANDIDATE"),
+    "R10": ("instantiates", "CANDIDATE"),
+    "R11": ("implements", "CANDIDATE"),
+    "R12": ("candidate-correspondence", "NOT-DETERMINED"),
+    "R13": ("realizes", "PARTIAL"),
+    "R14": ("indexes", "NOT-DETERMINED"),
+    "R15": ("specializes", "NOT-DETERMINED"),
+    "R16": ("instantiates", "CANDIDATE"),
+    "R17": ("candidate-correspondence", "NOT-DETERMINED"),
+    "R18": ("candidate-correspondence", "NOT-DETERMINED"),
+}
+EXPECTED_ADDITIONAL_SHAPE = {
+    row_id: ("no-direct-correspondence", "NOT-DETERMINED")
+    for row_id in ("A01", "A02", "A03", "A04", "A05", "A06", "A07")
+}
 
-def git(*args: str) -> str:
-    return subprocess.check_output(["git", *args], cwd=ROOT, text=True).strip()
+REQUIRED_DOCUMENTS = (
+    "README.md",
+    "project-status.json",
+    "docs/02_verification_framework/generic_verification_suite_core.md",
+    "docs/08_validation/README.md",
+    "docs/08_validation/cross_repository_instance_contract.md",
+    "docs/08_validation/instance_registry.md",
+    "docs/08_validation/arinc_615a_object_mapping_register.md",
+    "docs/08_validation/arinc_615a_instance_evaluation_protocol.md",
+    "docs/08_validation/arinc_615a_v43_migration_evidence_return.md",
+    "docs/08_validation/arinc_615a_third_handshake_compatibility_disposition.md",
+    "scripts/sync_project_overview.py",
+    "scripts/check_repository_integrity.py",
+    "tests/test_repository_integrity.py",
+    ".github/workflows/repository-integrity.yml",
+)
+
+PROTECTED_PREFIXES = (
+    "docs/01_normative_foundation/normative_gap_matrix.md",
+    "docs/01_normative_foundation/standards_baseline.md",
+    "docs/01_normative_foundation/consolidation/architecture_impact_register.md",
+    "docs/02_verification_framework/generic_verification_suite_core.md",
+)
+TASK_PREFIX = "docs/01_normative_foundation/research_tasks/"
 
 
 def read(relative: str) -> str:
     return (ROOT / relative).read_text(encoding="utf-8")
 
 
-def frontmatter_keys(text: str) -> set[str]:
-    if not text.startswith("---\n"):
-        return set()
-    end = text.find("\n---\n", 4)
-    if end < 0:
-        return set()
-    return {
-        match.group(1)
-        for line in text[4:end].splitlines()
-        if (match := re.match(r"^([A-Za-z_][A-Za-z0-9_-]*):", line))
-    }
+def git(*args: str) -> str:
+    result = subprocess.run(
+        ["git", *args], cwd=ROOT, text=True, encoding="utf-8",
+        stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False,
+    )
+    return result.stdout.strip() if result.returncode == 0 else ""
 
 
-def frontmatter_dependencies(text: str) -> list[str]:
-    if not text.startswith("---\n"):
-        return []
-    end = text.find("\n---\n", 4)
-    if end < 0:
-        return []
-    dependencies: list[str] = []
-    collecting = False
-    for line in text[4:end].splitlines():
-        if line == "dependencies:":
-            collecting = True
-        elif collecting and line.startswith("  - "):
-            dependencies.append(line[4:].strip().strip("\"").strip("'"))
-        elif collecting and line and not line.startswith(" "):
-            collecting = False
-    return dependencies
+def load_status(path: Path = STATUS_PATH) -> dict[str, Any]:
+    return sync.load_status(path)
 
 
-def table_width(line: str) -> int:
-    escaped = False
-    count = 0
-    for char in line:
-        if char == "|" and not escaped:
-            count += 1
-        escaped = char == "\\" and not escaped
-    return count
-
-
-def table_cells(line: str) -> list[str]:
-    return [cell.strip() for cell in line.strip().strip("|").split("|")]
-
-
-def local_link_target(raw: str) -> str:
-    target = raw.strip()
-    if target.startswith("<") and target.endswith(">"):
-        target = target[1:-1]
-    if " " in target and not target.startswith(("http://", "https://")):
-        target = target.split(" ", 1)[0]
-    return unquote(target)
-
-
-def parse_mapping_tables(text: str) -> tuple[dict[str, tuple[str, ...]], dict[str, tuple[str, ...]]]:
-    source: dict[str, tuple[str, ...]] = {}
-    additional: dict[str, tuple[str, ...]] = {}
+def parse_table_rows(text: str, pattern: re.Pattern[str]) -> list[list[str]]:
+    rows: list[list[str]] = []
     for line in text.splitlines():
         if not line.startswith("|"):
             continue
-        cells = table_cells(line)
-        if len(cells) != 11:
-            continue
-        if SOURCE_ROW_RE.fullmatch(cells[0]):
-            source[cells[0]] = tuple(cells)
-        elif ADDITIONAL_ROW_RE.fullmatch(cells[0]):
-            additional[cells[0]] = tuple(cells)
-    return source, additional
-
-
-def mapping_row_ids(text: str) -> tuple[list[str], list[str]]:
-    """Return every controlled mapping ID without collapsing duplicates."""
-    source_ids: list[str] = []
-    additional_ids: list[str] = []
-    for line in text.splitlines():
-        if not line.startswith("|"):
-            continue
-        cells = table_cells(line)
-        if len(cells) != 11:
-            continue
-        if SOURCE_ROW_RE.fullmatch(cells[0]):
-            source_ids.append(cells[0])
-        elif ADDITIONAL_ROW_RE.fullmatch(cells[0]):
-            additional_ids.append(cells[0])
-    return source_ids, additional_ids
+        cells = [cell.strip().strip("`") for cell in line.strip().strip("|").split("|")]
+        if cells and pattern.fullmatch(cells[0]):
+            rows.append(cells)
+    return rows
 
 
 def mapping_errors(text: str) -> list[str]:
     errors: list[str] = []
-    source, additional = parse_mapping_tables(text)
-    source_ids, additional_ids = mapping_row_ids(text)
-    expected_source_order = list(EXPECTED_SOURCE_ROWS)
-    expected_additional_order = list(EXPECTED_ADDITIONAL_ROWS)
-    if source_ids != expected_source_order:
-        errors.append(f"source mapping rows/order differ: {source_ids}")
-    if additional_ids != expected_additional_order:
-        errors.append(f"instance-only rows/order differ: {additional_ids}")
-    review_results: set[str] = set()
-    for row_id, expected in EXPECTED_SOURCE_ROWS.items():
-        cells = source.get(row_id)
-        if cells is None:
-            continue
-        actual = (cells[1], cells[2], cells[4].strip("`"), cells[5].strip("`"))
-        if actual != expected:
-            errors.append(f"{row_id} missing or strengthened: expected {expected}, found {actual}")
-        if actual[2] not in ALLOWED_RELATIONS or ";" in cells[4]:
-            errors.append(f"{row_id} does not have one allowed primary relation")
-        if actual[3] not in ALLOWED_MAPPING_STATUSES:
-            errors.append(f"{row_id} has invalid mapping status {actual[3]}")
-        if not cells[7] or not cells[8] or not cells[9] or not cells[10]:
-            errors.append(f"{row_id} lacks dependency, migration, review or qualification")
-        review_results.add(cells[9].strip("`"))
-    if len(review_results) < 5:
-        errors.append("18-row third-handshake review was mechanically homogenized")
-    for row_id, expected in EXPECTED_ADDITIONAL_ROWS.items():
-        cells = additional.get(row_id)
-        if cells is None:
-            continue
-        actual = (cells[2], cells[3])
-        if actual != expected:
-            errors.append(f"{row_id} locator/object differs: expected {expected}, found {actual}")
-        if cells[1].strip("`") != "INSTANCE-ONLY-ADDITIONAL":
-            errors.append(f"{row_id} is not marked INSTANCE-ONLY-ADDITIONAL")
-        if (cells[5].strip("`"), cells[6].strip("`")) != (
-            "no-direct-correspondence", "NOT-DETERMINED"
-        ):
-            errors.append(f"{row_id} was strengthened into a Generic correspondence")
+    source_rows = parse_table_rows(text, SOURCE_ROW_RE)
+    additional_rows = parse_table_rows(text, ADDITIONAL_ROW_RE)
+    for name, rows, expected in (
+        ("source", source_rows, EXPECTED_SOURCE_SHAPE),
+        ("instance-only", additional_rows, EXPECTED_ADDITIONAL_SHAPE),
+    ):
+        ids = [row[0] for row in rows]
+        duplicates = sorted(key for key, count in Counter(ids).items() if count > 1)
+        if duplicates:
+            errors.append(f"duplicate {name} row IDs: {', '.join(duplicates)}")
+        if ids != list(expected):
+            errors.append(f"{name} row population/order differs from controlled shape")
+        for row in rows:
+            if len(row) < 7:
+                errors.append(f"{row[0]} has insufficient columns")
+                continue
+            relation_index, status_index = (4, 5) if name == "source" else (5, 6)
+            relation, status = row[relation_index], row[status_index]
+            if relation not in ALLOWED_RELATIONS:
+                errors.append(f"{row[0]} has invalid or multi-valued relation")
+            if status not in ALLOWED_MAPPING_STATUSES:
+                errors.append(f"{row[0]} has invalid mapping status")
+            if row[0] in expected and (relation, status) != expected[row[0]]:
+                errors.append(f"{row[0]} relation/status differs from controlled semantics")
     return errors
 
 
-def controlled_table_rows(text: str, width: int) -> dict[str, list[tuple[str, ...]]]:
-    """Collect Markdown rows by their first cell while preserving duplicates."""
-    rows: dict[str, list[tuple[str, ...]]] = {}
-    for line in text.splitlines():
-        if not line.startswith("|"):
-            continue
-        cells = table_cells(line)
-        if len(cells) == width:
-            rows.setdefault(cells[0].strip("`"), []).append(tuple(cells))
-    return rows
-
-
-def source_inventory_errors(evidence: str) -> list[str]:
+def inventory_errors(evidence: str, status: dict[str, Any]) -> list[str]:
     errors: list[str] = []
-    rows = controlled_table_rows(evidence, 4)
-    observed_paths: list[str] = []
-    for line in evidence.splitlines():
-        if not line.startswith("|"):
-            continue
-        cells = table_cells(line)
-        path = cells[0].strip("`") if len(cells) == 4 else ""
-        if path in SOURCE_INVENTORY:
-            observed_paths.append(path)
-    if observed_paths != list(SOURCE_INVENTORY):
-        errors.append(f"source inventory rows/order differ: {observed_paths}")
-    for path, (expected_bytes, expected_digest) in SOURCE_INVENTORY.items():
-        matches = rows.get(path, [])
-        if len(matches) != 1:
-            errors.append(f"source inventory row count for {path}: {len(matches)}")
-            continue
-        cells = matches[0]
-        expected_locator = f"{ARINC_REPOSITORY}/blob/{ARINC_V43_MERGE_COMMIT}/{path}"
-        locator_match = re.fullmatch(r"\[[^\]]+\]\(([^)]+)\)", cells[3])
-        actual_locator = locator_match.group(1) if locator_match else ""
-        if cells[1] != str(expected_bytes):
-            errors.append(f"source byte count differs for {path}: {cells[1]}")
-        if cells[2].strip("`") != expected_digest:
-            errors.append(f"source SHA-256 differs for {path}")
-        if actual_locator != expected_locator:
-            errors.append(f"source locator is not commit-bound for {path}: {actual_locator}")
+    arinc = status["crossRepository"]["arinc615a"]
+    commit = arinc["assessedSource"]["releaseCommit"]
+    repository = arinc["repository"]
+    for item in arinc["sourceInventory"]:
+        row = f"| `{item['path']}` | {item['bytes']} | `{item['sha256']}` |"
+        if evidence.count(row) != 1:
+            errors.append(f"source inventory row missing/changed: {item['path']}")
+        locator = f"{repository}/blob/{commit}/{item['path']}"
+        if locator not in evidence:
+            errors.append(f"immutable source locator missing: {item['path']}")
     return errors
 
 
-def evidence_identity_errors(evidence: str) -> list[str]:
-    errors: list[str] = []
-    rows = controlled_table_rows(evidence, 3)
-    expected_values = {
-        "PR #9 final reviewed head": f"`{ARINC_REVIEWED_HEAD}`",
-        "v4.3 release commit": f"`{ARINC_V43_MERGE_COMMIT}`",
-        "v4.3 baseline ID": f"`{ARINC_V43_BASELINE_ID}`",
-        "v4.3 release tag": f"annotated tag `{ARINC_V43_RELEASE_TAG}`",
-        "v4.3 tag object": f"`{ARINC_V43_TAG_OBJECT}`",
-        "v4.3 peeled target": f"`{ARINC_V43_MERGE_COMMIT}`",
-        "Post-merge control state": "`NONE`",
-    }
-    for key, expected in expected_values.items():
-        matches = rows.get(key, [])
-        if len(matches) != 1:
-            errors.append(f"identity row count for {key}: {len(matches)}")
-        elif matches[0][1] != expected:
-            errors.append(f"identity value differs for {key}: {matches[0][1]}")
-    review_rows = rows.get("Natural-person review", [])
-    review_locator = (
-        f"[Review ID {ARINC_HUMAN_REVIEW_ID}]"
-        f"({ARINC_REPOSITORY}/pull/9#pullrequestreview-{ARINC_HUMAN_REVIEW_ID})"
-    )
-    if len(review_rows) != 1:
-        errors.append(f"natural-person review row count: {len(review_rows)}")
-    else:
-        review = review_rows[0]
-        if review[1] != review_locator:
-            errors.append("natural-person review ID/locator differs")
-        required_result = (
-            "reviewer `Chi Zhang`; commit `5d149d1…`; platform state `COMMENTED`; "
-            "body outcome `APPROVE`; independence and AC-05 bilingual confirmation recorded"
-        )
-        if review[2] != required_result:
-            errors.append("natural-person review result differs")
-    return errors
-
-
-def third_handshake_document_errors(
-    evidence: str, disposition: str, registry: str, contract: str
+def final_state_document_errors(
+    registry: str, contract: str, validation_readme: str, status: dict[str, Any]
 ) -> list[str]:
     errors: list[str] = []
-    combined = "\n".join((evidence, disposition, registry, contract))
-    required = (
-        METHOD_DEFINITION_COMMIT, METHOD_AUTHORING_BASE, ARINC_LEGACY_RELEASE_COMMIT,
-        ARINC_LEGACY_TAG, ARINC_CONTROL_STATE_COMMIT, ARINC_REVIEWED_HEAD,
-        ARINC_V43_MERGE_COMMIT, ARINC_V43_BASELINE_ID, ARINC_V43_RELEASE_TAG,
-        ARINC_V43_TAG_OBJECT, ARINC_HUMAN_REVIEW_ID,
+    arinc = status["crossRepository"]["arinc615a"]
+    method = status["identities"]["methodDefinition"]["commit"]
+    disposition = status["identities"]["methodCompatibilityDisposition"]["commit"]
+    required = {
+        "method definition": method,
+        "method compatibility disposition": disposition,
+        "assessed baseline": arinc["assessedSource"]["baselineId"],
+        "assessed tag": arinc["assessedSource"]["releaseTag"],
+        "assessed release": arinc["assessedSource"]["releaseCommit"],
+        "assessed tag object": arinc["assessedSource"]["tagObject"],
+        "acknowledgement baseline": arinc["acknowledgementRelease"]["baselineId"],
+        "acknowledgement tag": arinc["acknowledgementRelease"]["releaseTag"],
+        "acknowledgement release": arinc["acknowledgementRelease"]["releaseCommit"],
+        "acknowledgement tag object": arinc["acknowledgementRelease"]["tagObject"],
+        "acknowledgement peeled target": arinc["acknowledgementRelease"]["peeledTarget"],
+        "compatibility": arinc["compatibility"]["status"],
+        "configuration": arinc["projectConfiguration"]["status"],
+        "evaluation": arinc["instanceEvaluation"],
+        "RQ8": arinc["rq8"],
+    }
+    for name, value in required.items():
+        for label, text in (("registry", registry), ("contract", contract)):
+            if value not in text:
+                errors.append(f"{label} missing {name}")
+    assessed_row = (
+        f"| Assessed migration baseline | baseline ID `{arinc['assessedSource']['baselineId']}`; "
+        f"release tag `{arinc['assessedSource']['releaseTag']}`;"
     )
-    for identity in required:
-        if identity not in combined:
-            errors.append(f"third-handshake identity missing: {identity}")
-    if f"Candidate method definition identity | `{METHOD_DEFINITION_COMMIT}`" not in registry:
-        errors.append("registry MethodDefinitionCommit differs from the controlled method definition")
-    if "platform state `COMMENTED`; body outcome `APPROVE`" not in evidence:
-        errors.append("human review platform/body outcomes are not separately truthful")
-    if "Post-merge control state | `NONE`" not in evidence:
-        errors.append("post-merge control state is missing or substituted")
-    if "annotated release tag | `v4.3`" not in registry:
-        errors.append("registry does not identify v4.3 as the actual annotated release tag")
-    if "Candidate overall disposition | `REVIEWED-COMPATIBLE-WITH-QUALIFICATION`" not in disposition:
-        errors.append("candidate overall disposition is absent or not qualified")
-    candidate_match = re.search(r"Candidate overall disposition \| `([^`]+)`", disposition)
-    if not candidate_match or candidate_match.group(1) != EXPECTED_CANDIDATE_DISPOSITION:
-        errors.append("candidate overall disposition differs from the reviewed PR #15 conclusion")
-    if "Candidate overall disposition | `REVIEWED-COMPATIBLE`" in disposition:
-        errors.append("unqualified REVIEWED-COMPATIBLE is prohibited for this handshake")
-    activation_contract = (
-        ("Pre-activation formal compatibility", PRE_ACTIVATION_COMPATIBILITY),
-        ("Post-activation formal compatibility", POST_ACTIVATION_COMPATIBILITY),
+    acknowledgement_row = (
+        f"| Instance acknowledgement release | baseline ID "
+        f"`{arinc['acknowledgementRelease']['baselineId']}`; release tag "
+        f"`{arinc['acknowledgementRelease']['releaseTag']}`;"
     )
-    for label, value in activation_contract:
-        if f"{label} | `{value}`" not in disposition:
-            errors.append(f"compatibility activation contract missing: {label}")
-    activation_event = (
-        "Activation event | independent approval of unchanged PR #15 head plus "
-        "ordinary two-parent merge commit"
-    )
-    if activation_event not in disposition:
-        errors.append("compatibility activation event is missing or weakened")
-    if "Compatibility activation | independent approval of the unchanged PR #15 head plus an ordinary two-parent merge commit" not in contract:
-        errors.append("cross-repository contract lacks the compatibility activation event")
-    if "Compatibility pre-activation | `NOT-DETERMINED`" not in registry:
-        errors.append("registry lacks the pre-activation compatibility state")
-    if "Compatibility post-activation | `REVIEWED-COMPATIBLE-WITH-QUALIFICATION`; subject to Q-01–Q-09" not in registry:
-        errors.append("registry lacks the qualified post-activation compatibility state")
-    qualification_ids = set(re.findall(r"(?m)^\| (Q-\d{2}) \|", disposition))
-    if qualification_ids != {f"Q-{number:02d}" for number in range(1, 10)}:
-        errors.append(f"qualification population differs: {sorted(qualification_ids)}")
-    if "Project Configuration | `TMP-PC-ARINC615A-01`; `NOT YET ESTABLISHED`" not in registry:
-        errors.append("Project Configuration was established without controlled values")
-    expected_evaluation_row = (
-        "Evaluation protocol | [ARINC 615A Instance Evaluation Protocol]"
-        "(arinc_615a_instance_evaluation_protocol.md), version 0.2; `NOT-EXERCISED`"
-    )
-    if expected_evaluation_row not in registry:
-        errors.append("instance evaluation state is missing or promoted")
-    if "`NOT AVAILABLE — MIGRATION-ONLY REVIEW`" not in evidence:
-        errors.append("missing execution manifest was not explicitly recorded")
-    if "v4.3` is the only release tag" not in contract:
-        errors.append("baseline ID and actual v4.3 release tag are not separated")
-    errors.extend(source_inventory_errors(evidence))
-    errors.extend(evidence_identity_errors(evidence))
+    for label, text in (("registry", registry), ("contract", contract)):
+        if assessed_row not in text:
+            errors.append(f"{label} has incorrect assessed-release role binding")
+        if acknowledgement_row not in text:
+            errors.append(f"{label} has incorrect acknowledgement-release role binding")
+    if f"| Method definition identity | `{method}`" not in registry:
+        errors.append("registry has incorrect method-definition role binding")
+    if f"| Method compatibility disposition identity | `{disposition}`" not in registry:
+        errors.append("registry has incorrect method-disposition role binding")
+    if f"| Method definition | Candidate GVS Core at `{method}`" not in contract:
+        errors.append("contract has incorrect method-definition role binding")
+    if f"| Method compatibility disposition | `{disposition}`" not in contract:
+        errors.append("contract has incorrect method-disposition role binding")
+    for value in (arinc["thirdHandshake"], arinc["acknowledgementRelease"]["releaseTag"]):
+        if value not in validation_readme:
+            errors.append(f"validation README missing final state value: {value}")
+    if method == disposition:
+        errors.append("method definition and compatibility disposition identities are swapped/collapsed")
+    if arinc["acknowledgementRelease"]["releaseCommit"] != arinc["acknowledgementRelease"]["peeledTarget"]:
+        errors.append("acknowledgement tag does not peel to its release commit")
+    joined = "\n".join((registry, contract, validation_readme))
+    if re.search(r"work order\s+\w+\s+remains prohibited", joined, re.IGNORECASE) or re.search(
+        r"工作单\s*\w+.*禁止启动", joined
+    ):
+        errors.append("completed handshake still reports the acknowledgement work as pending")
     return errors
 
 
-def pr15_merge_evidence_present() -> bool:
-    """Detect only repository-side PR #15 ordinary-merge evidence."""
-    if os.environ.get("GITHUB_EVENT_NAME") == "pull_request":
-        return False
-    try:
-        merge_commit = git(
-            "log", "--merges", "--fixed-strings",
-            "--grep=Merge pull request #15", "--format=%H", "-n", "1",
-        )
-        if not merge_commit:
-            return False
-        parents = git("rev-list", "--parents", "-n", "1", merge_commit).split()
-        if len(parents) != 3:
-            return False
-        return subprocess.run(
-            ["git", "merge-base", "--is-ancestor", merge_commit, "HEAD"],
-            cwd=ROOT, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
-            check=False,
-        ).returncode == 0
-    except subprocess.CalledProcessError:
-        return False
+def frontmatter_errors(path: Path, text: str) -> list[str]:
+    if not text.startswith("---\n"):
+        return [f"{path}: missing front matter"]
+    parts = text.split("---", 2)
+    if len(parts) < 3:
+        return [f"{path}: malformed front matter"]
+    keys = {
+        line.split(":", 1)[0].strip()
+        for line in parts[1].splitlines()
+        if ":" in line and not line.startswith((" ", "\t"))
+    }
+    missing = REQUIRED_FRONTMATTER - keys
+    return [f"{path}: missing front-matter field {key}" for key in sorted(missing)]
 
 
-def compatibility_reporting_lines(merge_evidence_present: bool) -> tuple[str, ...]:
-    merge_state = "PRESENT" if merge_evidence_present else "ABSENT"
-    return (
-        f"repository-side merge evidence: {merge_state}",
-        "external independent approval: NOT AUTOMATED",
-        "formal compatibility: governed by the controlled conditional activation record",
+def markdown_link_errors(path: Path, text: str) -> list[str]:
+    errors: list[str] = []
+    for raw in LINK_RE.findall(text):
+        target = unquote(raw.split("#", 1)[0].strip().strip("<>"))
+        if not target or target.startswith(("http://", "https://", "mailto:")):
+            continue
+        if not (path.parent / target).resolve().exists():
+            errors.append(f"{path}: broken link {raw}")
+    return errors
+
+
+def active_markdown_files(root: Path = ROOT) -> list[Path]:
+    files: list[Path] = []
+    for path in root.rglob("*.md"):
+        rel = path.relative_to(root).as_posix()
+        if rel.startswith(".git/") or "/reviews/" in f"/{rel}":
+            continue
+        if "review" in path.stem.lower() or "disposition" in path.stem.lower():
+            continue
+        files.append(path)
+    return files
+
+
+def controlled_markdown_files(root: Path = ROOT) -> list[Path]:
+    files = [
+        root / "README.md",
+        root / "ARCHITECTURE.md",
+        root / "CONTRIBUTING.md",
+        root / "CHANGELOG.md",
+        root / "tools/README.md",
+    ]
+    for directory in (
+        "docs/00_overview",
+        "docs/02_verification_framework",
+        "docs/08_validation",
+    ):
+        files.extend(sorted((root / directory).glob("*.md")))
+    return [path for path in files if path.is_file()]
+
+
+def handoff_reference_errors(root: Path = ROOT) -> list[str]:
+    errors: list[str] = []
+    if (root / "HANDOFF").exists():
+        errors.append("retired HANDOFF directory still exists")
+    for path in active_markdown_files(root):
+        text = path.read_text(encoding="utf-8")
+        if re.search(r"(?:\.\./)*HANDOFF/", text, re.IGNORECASE):
+            errors.append(f"active HANDOFF reference remains: {path.relative_to(root)}")
+    return errors
+
+
+def lifecycle_literal_errors(paths: list[Path], status: dict[str, Any]) -> list[str]:
+    errors: list[str] = []
+    current_tags = {
+        status["crossRepository"]["arinc615a"]["assessedSource"]["releaseTag"],
+        status["crossRepository"]["arinc615a"]["acknowledgementRelease"]["releaseTag"],
+    }
+    for path in paths:
+        text = path.read_text(encoding="utf-8")
+        if FULL_SHA_RE.search(text):
+            errors.append(f"lifecycle SHA literal in executable governance code: {path.name}")
+        if PR_LITERAL_RE.search(text):
+            errors.append(f"PR-number literal in executable governance code: {path.name}")
+        if MUTABLE_BRANCH_IDENTITY_RE.search(text):
+            errors.append(f"mutable branch used as lifecycle identity: {path.name}")
+        for tag in current_tags:
+            if re.search(rf"(?<![\w.-]){re.escape(tag)}(?![\w.-])", text):
+                errors.append(f"current release-tag literal in executable governance code: {path.name}")
+    return errors
+
+
+def governance_code_paths(root: Path = ROOT) -> list[Path]:
+    """Discover production governance Python and its regression tests."""
+    paths = list((root / "scripts").rglob("*.py"))
+    paths.extend((root / "tests").rglob("test_*.py"))
+    return sorted(
+        path for path in paths
+        if "__pycache__" not in path.parts and path.is_file()
     )
+
+
+def pr_required_file_errors(changed: set[str], event_name: str, status: dict[str, Any]) -> list[str]:
+    if event_name != "pull_request":
+        return []
+    required = set(status["governance"]["requiredPullRequestFiles"])
+    missing = sorted(required - changed)
+    return [f"pull request must update {path}" for path in missing]
+
+
+def changed_files_for_event() -> set[str]:
+    if os.getenv("GITHUB_EVENT_NAME") != "pull_request":
+        return set()
+    base = os.getenv("GITHUB_BASE_REF")
+    if not base:
+        return set()
+    ref = f"origin/{base}"
+    output = git("diff", "--name-only", f"{ref}...HEAD")
+    return {line for line in output.splitlines() if line}
 
 
 def protected_delta_errors() -> list[str]:
-    errors: list[str] = []
-    base_ref = os.environ.get("GITHUB_BASE_REF")
-    candidates = [f"origin/{base_ref}" if base_ref else "origin/main", METHOD_DEFINITION_COMMIT]
-    base = next((candidate for candidate in candidates if _rev_exists(candidate)), None)
-    if base is None:
-        return ["cannot resolve a base for protected-diff validation"]
-    changed = git("diff", "--name-only", f"{base}...HEAD").splitlines()
-    for name in changed:
-        if any(name == prefix or name.startswith(prefix) for prefix in PROTECTED_PREFIXES):
-            errors.append(f"protected file changed in third-handshake delta: {name}")
+    base = os.getenv("GITHUB_BASE_REF")
+    if not base:
+        return []
+    changed = changed_files_for_event()
+    errors = [
+        f"protected semantic file changed: {path}"
+        for path in sorted(changed)
+        if path.startswith(PROTECTED_PREFIXES)
+    ]
+    ref = f"origin/{base}"
+    for path in sorted(changed):
+        if not path.startswith(TASK_PREFIX):
+            continue
+        diff = git("diff", "--unified=0", ref, "--", path)
+        content_lines = [
+            line for line in diff.splitlines()
+            if (line.startswith("+") and not line.startswith("+++"))
+            or (line.startswith("-") and not line.startswith("---"))
+        ]
+        removed_ok = all("HANDOFF" in line for line in content_lines if line.startswith("-"))
+        added_ok = all(
+            "project-status.json" in line or "README.md" in line
+            for line in content_lines if line.startswith("+")
+        )
+        if not content_lines or not removed_ok or not added_ok:
+            errors.append(f"research-task change is not administrative HANDOFF retirement: {path}")
     return errors
 
 
-def _rev_exists(revision: str) -> bool:
-    return subprocess.run(
-        ["git", "rev-parse", "--verify", revision], cwd=ROOT,
-        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False,
-    ).returncode == 0
+def tag_errors(status: dict[str, Any]) -> list[str]:
+    baseline = status["identities"]["historicalResearchBaseline"]
+    actual = git("rev-list", "-n", "1", baseline["tag"])
+    if actual and actual != baseline["commit"]:
+        return ["historical research baseline tag target changed"]
+    return []
 
 
-def document_structure_errors() -> tuple[list[str], int, int]:
-    errors: list[str] = []
-    checked_links = 0
-    checked_tables = 0
-    for path in CONTROLLED_FILES:
-        if not path.is_file():
-            errors.append(f"missing controlled file: {path.relative_to(ROOT)}")
-            continue
-        text = path.read_text(encoding="utf-8")
-        relative = path.relative_to(ROOT).as_posix()
-        missing = REQUIRED_FRONTMATTER - frontmatter_keys(text)
-        if missing:
-            errors.append(f"{relative}: missing front matter fields {sorted(missing)}")
-        for dependency in frontmatter_dependencies(text):
-            if not dependency or dependency.startswith(("http://", "https://")):
-                continue
-            if dependency.startswith("file://") or re.match(r"^[A-Za-z]:[/\\]", dependency):
-                errors.append(f"{relative}: prohibited dependency path {dependency}")
-                continue
-            resolved = (path.parent / dependency).resolve()
-            try:
-                resolved.relative_to(ROOT)
-            except ValueError:
-                errors.append(f"{relative}: dependency escapes repository {dependency}")
-                continue
-            if not resolved.exists():
-                errors.append(f"{relative}: missing dependency {dependency}")
-        if CONFLICT_RE.search(text):
-            errors.append(f"{relative}: conflict marker")
-        for match in LINK_RE.finditer(text):
-            target = local_link_target(match.group(1))
-            if not target or target.startswith(("#", "http://", "https://", "mailto:")):
-                continue
-            if target.startswith("file://") or re.match(r"^[A-Za-z]:[/\\]", target):
-                errors.append(f"{relative}: prohibited local/absolute link {target}")
-                continue
-            file_part = target.split("#", 1)[0]
-            if not file_part:
-                continue
-            resolved = (path.parent / file_part).resolve()
-            try:
-                resolved.relative_to(ROOT)
-            except ValueError:
-                errors.append(f"{relative}: link escapes repository {target}")
-                continue
-            checked_links += 1
-            if not resolved.exists():
-                errors.append(f"{relative}: missing local link target {target}")
-        expected_width = 0
-        in_fence = False
-        for number, line in enumerate(text.splitlines(), 1):
-            if line.lstrip().startswith("```"):
-                in_fence = not in_fence
-                expected_width = 0
-            elif not in_fence and line.startswith("|") and line.endswith("|"):
-                width = table_width(line)
-                if expected_width == 0:
-                    expected_width = width
-                    checked_tables += 1
-                elif width != expected_width:
-                    errors.append(f"{relative}:{number}: table width {width}, expected {expected_width}")
-            else:
-                expected_width = 0
-    return errors, checked_links, checked_tables
-
-
-def hygiene_errors() -> list[str]:
-    errors: list[str] = []
-    tracked = git("ls-files").splitlines()
-    prohibited_suffixes = {".pdf", ".patch", ".tmp", ".bak", ".orig", ".swp"}
-    credential_names = {".env", "credentials.json", "secrets.json", "id_rsa", "id_ed25519"}
-    secret_patterns = {
-        "private key": re.compile(r"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----"),
-        "AWS access key": re.compile(r"\bAKIA[0-9A-Z]{16}\b"),
-        "GitHub token": re.compile(r"\bgh[pousr]_[A-Za-z0-9]{30,}\b"),
-    }
-    for name in tracked:
-        path = Path(name)
-        lower_name = name.lower()
-        if path.suffix.lower() in prohibited_suffixes:
-            errors.append(f"tracked prohibited artefact: {name}")
-        if path.name.lower() in credential_names or lower_name.endswith(("~", ".backup")):
-            errors.append(f"tracked temporary/credential artefact: {name}")
-        if "extract" in path.name.lower() and path.suffix.lower() in {".txt", ".md"}:
-            errors.append(f"tracked extraction artefact: {name}")
-        full = ROOT / name
-        if not full.is_file() or full.stat().st_size > 1_000_000:
-            continue
-        try:
-            text = full.read_text(encoding="utf-8")
-        except UnicodeDecodeError:
-            continue
-        if name != "scripts/check_repository_integrity.py" and re.search(
-            r"(?:C:\\Users\\|[A-Za-z]:\\Project\\|file://|/home/[^/]+/)", text
-        ):
-            errors.append(f"tracked text exposes a machine/private path: {name}")
-        for label, pattern in secret_patterns.items():
-            if pattern.search(text):
-                errors.append(f"tracked content resembles {label}: {name}")
-    return errors
-
-
-def main() -> int:
+def repository_errors(status: dict[str, Any]) -> list[str]:
     errors: list[str] = []
     for relative in REQUIRED_DOCUMENTS:
         if not (ROOT / relative).is_file():
             errors.append(f"missing required document: {relative}")
-
-    structure, checked_links, checked_tables = document_structure_errors()
-    errors.extend(structure)
-
-    mapping = read("docs/08_validation/arinc_615a_object_mapping_register.md")
-    evidence = read("docs/08_validation/arinc_615a_v43_migration_evidence_return.md")
-    disposition = read("docs/08_validation/arinc_615a_third_handshake_compatibility_disposition.md")
-    registry = read("docs/08_validation/instance_registry.md")
-    contract = read("docs/08_validation/cross_repository_instance_contract.md")
-    errors.extend(mapping_errors(mapping))
-    errors.extend(third_handshake_document_errors(evidence, disposition, registry, contract))
-
-    combined = "\n".join(
-        path.read_text(encoding="utf-8") for path in CONTROLLED_FILES if path.exists()
+    errors.extend(sync.status_errors(status, ROOT))
+    current, expected = sync.synchronized_readme(status)
+    if current != expected:
+        errors.append("README governed block differs from project-status.json")
+    errors.extend(handoff_reference_errors())
+    errors.extend(
+        lifecycle_literal_errors(
+            governance_code_paths(),
+            status,
+        )
     )
-    forbidden = {
-        "PICS direct equivalence": ("pics→verification basis", "pics -> verification basis", "pics = verification basis"),
-        "Verdict direct equivalence": ("verdict→oracle", "verdict -> oracle", "verdict = oracle"),
-        "PASS auto-promotion": ("pass → objective satisfied", "pass→objective satisfied", "pass → compliance", "pass→compliance"),
-    }
-    lower = combined.lower()
-    for label, phrases in forbidden.items():
-        if any(phrase in lower for phrase in phrases):
-            errors.append(f"prohibited semantic shortcut: {label}")
-
-    protocol = read("docs/08_validation/arinc_615a_instance_evaluation_protocol.md")
-    if "| scalability |" not in protocol or "tested ranges only" not in protocol:
-        errors.append("evaluation protocol lacks bounded scalability")
-    if "specified-binding contract checks satisfied/qualified/not satisfied" not in protocol:
-        errors.append("interface conclusion exceeds contract-check scope")
-
-    rq = read("docs/00_overview/research_questions.md")
-    if len(re.findall(r"\*\*Status:\*\* Open", rq)) != 8:
-        errors.append("RQ1–RQ8 are not all Open")
-    architecture = read("ARCHITECTURE.md")
-    progress = read("HANDOFF/current_progress.md")
-    next_plan = read("HANDOFF/next_plan.md")
-    if "OPEN-CANDIDATE" not in architecture or "OPEN-CANDIDATE" not in progress:
-        errors.append("OPEN-CANDIDATE maturity boundary is missing")
-    if "| `INSTANCE-EXERCISED` |" in architecture:
-        errors.append("INSTANCE-EXERCISED must not be an Architecture maturity row")
-    if "### Instance evaluation state" not in architecture or "orthogonal state dimension" not in architecture:
-        errors.append("orthogonal instance-evaluation contract is missing")
-    if "ISO/IEC/IEEE 15289:2019" not in next_plan or "Current research stop" not in next_plan:
-        errors.append("Task 001 / ISO 15289 current research stop is missing")
-
-    impact = read("docs/01_normative_foundation/consolidation/architecture_impact_register.md")
-    if impact.count("| `GOV-INSIGHT-GVS-INSTANCE-SEPARATION` |") != 1:
-        errors.append("GOV-INSIGHT-GVS-INSTANCE-SEPARATION is missing or duplicated")
-
-    errors.extend(hygiene_errors())
+    changed = changed_files_for_event()
+    errors.extend(pr_required_file_errors(changed, os.getenv("GITHUB_EVENT_NAME", ""), status))
     errors.extend(protected_delta_errors())
+    errors.extend(tag_errors(status))
+    mapping = read("docs/08_validation/arinc_615a_object_mapping_register.md")
+    errors.extend(mapping_errors(mapping))
+    evidence = read("docs/08_validation/arinc_615a_v43_migration_evidence_return.md")
+    errors.extend(inventory_errors(evidence, status))
+    errors.extend(
+        final_state_document_errors(
+            read("docs/08_validation/instance_registry.md"),
+            read("docs/08_validation/cross_repository_instance_contract.md"),
+            read("docs/08_validation/README.md"),
+            status,
+        )
+    )
+    for path in controlled_markdown_files():
+        text = path.read_text(encoding="utf-8")
+        if CONFLICT_RE.search(text):
+            errors.append(f"{path}: merge conflict marker")
+        errors.extend(frontmatter_errors(path, text))
+        errors.extend(markdown_link_errors(path, text))
+    return errors
+
+
+def main() -> int:
     try:
-        if git("rev-parse", "research-baseline/v0.2^{}") != V02_TAG_COMMIT:
-            errors.append("research-baseline/v0.2 tag target changed")
-    except subprocess.CalledProcessError:
-        errors.append("research-baseline/v0.2 tag unavailable")
-
-    if errors:
-        print("Repository integrity check: FAIL")
-        for error in errors:
-            print(f"- {error}")
+        status = load_status()
+    except sync.StatusError as exc:
+        print(f"ERROR: {exc}")
         return 1
-
-    print("Repository integrity check: PASS")
-    print(f"- controlled Markdown files: {len(CONTROLLED_FILES)}")
-    print(f"- resolved local links: {checked_links}")
-    print(f"- Markdown tables checked: {checked_tables}")
-    print(f"- MethodDefinitionCommit: {METHOD_DEFINITION_COMMIT}")
-    print(f"- ARINC v4.3 release commit/tag: {ARINC_V43_MERGE_COMMIT} / {ARINC_V43_RELEASE_TAG}")
-    print("- mapping populations: 18 source + 7 instance-only")
-    for line in compatibility_reporting_lines(pr15_merge_evidence_present()):
-        print(f"- {line}")
-    print("- Project Configuration / instance evaluation: NOT YET ESTABLISHED / NOT-EXERCISED")
-    print("- framework semantic automation: not performed")
+    errors = repository_errors(status)
+    if errors:
+        for error in errors:
+            print(f"ERROR: {error}")
+        return 1
+    arinc = status["crossRepository"]["arinc615a"]
+    print("repository integrity checks passed")
+    print(f"third handshake: {arinc['thirdHandshake']}")
+    print(f"compatibility: {arinc['compatibility']['status']}")
+    print("external remote approval and tag existence are release-gate checks, not local runtime checks")
     return 0
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    raise SystemExit(main())

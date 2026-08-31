@@ -19,6 +19,8 @@ jobs:
           fetch-depth: 0
       - name: Compile governance checks without SyntaxWarnings
         run: python -W error::SyntaxWarning -m compileall -q scripts tests
+      - name: Check README and project status synchronization
+        run: python scripts/sync_project_overview.py --check
       - name: Run negative and regression tests
         run: python -m unittest discover -s tests -p 'test_*.py' -v
       - name: Run repository-governance integrity checks

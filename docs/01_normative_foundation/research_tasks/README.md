@@ -9,7 +9,8 @@ dependencies:
   - ../standards_baseline.md
   - ../normative_gap_matrix.md
   - ../consolidation/architecture_impact_register.md
-  - ../../../HANDOFF/next_plan.md
+  - ../../../project-status.json
+  - ../../../README.md
   - historical/README.md
 ---
 
